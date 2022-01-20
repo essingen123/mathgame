@@ -34,7 +34,7 @@ animation-duration: 1.1s;
   animation-iteration-count: 1;
   animation-direction: forward;
 
-animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+animation-timing-function: cubic-bezier(0.7, -0.1, 0.2, 1.4);
 }
 @keyframes fbpow {
   0% {
@@ -50,13 +50,13 @@ animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   50%{
 	  opacity: 0.4;
 		  bottom:60%;
-		  transform: rotateZ(4deg);
+		  transform: rotateZ(2deg);
   }
   90%{
 	  opacity: 0.1;
 	  bottom:72%;
 	  border: solid 1px #bfb;
-	  transform: rotateZ(6deg);
+	  transform: rotateZ(-2deg);
 	  left:-4%;
   }
   100%{
@@ -64,7 +64,7 @@ animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	  bottom:87%;
 	  width:400px;
 	  left:-8%;
-	  transform: rotateZ(3deg);
+	  transform: rotateZ(0deg);
   }
 }
 
@@ -93,7 +93,6 @@ padding-top:5px;
 
 }
 #scoring{
-	
 	display: block;
 	background-color: #ccc;
 }
@@ -111,7 +110,7 @@ spansmall{
 }
 
 #timer {
-  /*width: 200px;*/
+  width: 2px;
   
   line-height: 0px;
   border: solid 1px #eee;
@@ -124,8 +123,11 @@ text-align: center;
 
   display: inline-block;
   height: 18px;
-  background: #7f8;
-  transition: all 0.1s ease-in-out;
+  background: #77ff88;
+  transition: all 0.05s ease-in-out;
+  
+  /* filter: drop-shadow(2px 1px 13px  #ff99ff); */
+
   }
 
 .progressbarboss {
@@ -218,9 +220,9 @@ margin:0;
   font-size: 16px;
   min-width: 30%;
   font-size:2rem;
-  border:3px solid #78dd89dd;
+  border:3px solid #77dd9944;
   border-radius:12px;
-  background: radial-gradient(circle at 60% 30%, #4CAF50, #6CbF60 50%);
+  background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -798,13 +800,37 @@ counttime2=100;
 	
 
 	string = ""+Math.PI;
-	string = string.substring(2);
+	string = string.substring(2,7);
 	string += string*3;
 	string += string*5;
 	op = 0;
-	while(op<50){
+	while(op<30){
 	
 		c(string[op+2] +'+'+string[op+3]);
+		
+	   op++;
+	}
+	c("1+2"); //
+	c("2+2"); //
+	c("2+1"); //
+	c("3+1"); //
+	c("5+2"); //
+	c("3+2"); //
+	
+	c("3+1"); //
+	c("1+5"); //
+	c("1+2"); //
+	
+	c("5+1"); //
+	c("5+2"); //
+	c("3+2"); //
+	c("3+1"); //
+	c("7+2"); //
+	c("5+2"); //
+	op = 0;
+	while(op<30){
+	
+		c(string[op+1] +'+'+string[op+3]);
 		
 	   op++;
 	}
@@ -875,7 +901,7 @@ counttime2 = counttime-Math.ceil(0.04*elapsed);
 element = document.getElementById('timer');
 
 element.style.width = counttime2 + 'px';
-element.style.backgroundColor = colortohex(counttime2%255,counttime2%125,counttime2%195);
+element.style.backgroundColor = colortohex(150+counttime2%55,190+counttime2%65,170+counttime2%45);
 
 //element.innerHTML = counttime2 +" "+elapsed;
   }
