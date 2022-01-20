@@ -3,58 +3,68 @@
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
 
-		<title>MATH GAME v0.01b </title>
+		<title>MATH GAME</title>
 		<style>
-	
+/*	:root {
+	--delay: 5;
+	--elapsed: 20s;
+}*/
 		.fb{
 	
 	position: absolute;
 	opacity: 0;
-	width: 120px;
+	width: 200px;
 	height:140px;
 
-	background-color: #afb;
+	background-color: #aaffbb99;
 	border-radius:50%;
 	text-align: center;
-	left:35%;
+	left:23%;
 	border: solid 9px #bfb;
 	font-size: 200%;
 	z-index:50;
 	padding-top:40px;
-	filter: drop-shadow(2px 2px 23px  #ffeefa);
+	filter: drop-shadow(2px 2px 33px  #ffeefa);
 	}
 	.fbpow{
 
   
-	animation-duration: 1s;
+animation-duration: 1.1s;
   animation-name: fbpow;
   animation-iteration-count: 1;
   animation-direction: forward;
 
-
+animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 @keyframes fbpow {
   0% {
 	bottom:0;
+	transform: rotateZ(10deg);
+	left:24%;
   }
   25% {
   opacity: 1;
 	bottom:66%;
+	transform: rotateZ(-3deg);
   }
   50%{
-	  opacity: 0.6;
+	  opacity: 0.4;
 		  bottom:60%;
+		  transform: rotateZ(4deg);
   }
-  75%{
-	  opacity: 0.2;
+  90%{
+	  opacity: 0.1;
 	  bottom:72%;
 	  border: solid 1px #bfb;
+	  transform: rotateZ(6deg);
+	  left:-4%;
   }
   100%{
 	  opacity:0;
 	  bottom:87%;
 	  width:400px;
-	  left:-4%;
+	  left:-8%;
+	  transform: rotateZ(3deg);
   }
 }
 
@@ -99,7 +109,37 @@ spansmall{
 	padding:0;
 	margin:0;
 }
+
+#timer {
+  /*width: 200px;*/
+  
+  line-height: 0px;
+  border: solid 1px #eee;
+
+
+margin: 1px;
+  padding:0;
+  
+text-align: center;
+
+  display: inline-block;
+  height: 18px;
+  background: #7f8;
+  transition: all 0.1s ease-in-out;
+  }
+
+.progressbarboss {
+  width: 100%;
+  margin: -3px auto;
+  padding:0;
+  line-height: 0px;
+  /*border: solid 1px #eee;
+  z-index:2;*/
+}
+
+
 .progressbar {
+
   width: 100%;
   margin: -3px auto;
   padding:0;
@@ -116,8 +156,8 @@ text-align: center;
   display: inline-block;
   height: 18px;
   animation: progressbar-countdown;
-  /* Placeholder, this will be updated using javascript */
-  animation-duration: 30s;
+  animation-duration: 20s;
+  /*var(--elapsed);
   /* We stop in the end */
   animation-iteration-count: 1;
   /* Stay on pause when the animation is finished finished */
@@ -126,6 +166,9 @@ text-align: center;
   animation-play-state: paused;
   /* We want a linear animation, ease-out is standard */
   animation-timing-function: linear;
+  /*animation-delay: var(--delay);*/
+  
+  
 }
 @keyframes progressbar-countdown {
   0% {
@@ -136,12 +179,15 @@ text-align: center;
 	width: 0%;
 	background: #F69;
   }
+  
 }
 
 #buttons{
 	text-align:center;
-	bottom: 12px;
+	bottom: 4px;
 	position:fixed;
+	background: radial-gradient(circle at 30% 60%, #4CAF50, #5bcF60 50%);
+padding:8px 2px;
 }
 html, body {
 letter-spacing: 6px;
@@ -158,19 +204,23 @@ letter-spacing: 6px;
 }
 
 button {
+filter: drop-shadow(12px 0 -2px  #44774);
+margin:5px;
 margin:0;
 	padding:24px;
 	background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 11px 26px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  min-width: 32%;
+  min-width: 30%;
   font-size:2rem;
-  border:0.5px solid #aea;
+  border:3px solid #78dd89dd;
+  border-radius:12px;
+  background: radial-gradient(circle at 60% 30%, #4CAF50, #6CbF60 50%);
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -297,7 +347,7 @@ whc{
 /*	transform: rotateZ(-1deg);
 	
 	display:block;
-	animation-duration: 1.2s;
+	animation-duration: 1.1s;
 	*/
   animation-name: slidein;
   animation-iteration-count: infinite;
@@ -314,7 +364,7 @@ whc{
 }
 .powit{
 	opacity: 1;
-	animation-duration: 2s;
+	animation-duration: 1s;
   animation-name: pow;
   animation-iteration-count: 1;
   animation-direction: forward;
@@ -332,7 +382,7 @@ whc{
 
 .powit2 {
 	opacity: 1;
-	animation-duration: 2s;
+	animation-duration: 1s;
   animation-name: pow2;
   animation-iteration-count: 1;
   animation-direction: forward;
@@ -355,7 +405,7 @@ top:0;
 left:0;
 margin:0;
 padding:0;
-  content: "";
+  c"ntent: "";
   position: absolute;
  width: 100%;
   height: 100%;
@@ -458,14 +508,18 @@ i2,
 
 	<script>
 	</script>
+	<div class="progressbarboss">
+	<div id='timer'></div>
+	</div>
 <div id='progressbar1'></div>
-<div id='progressbar2'></div>
-<div id='progressbar3'></div>
-<div id='progressbar4'></div>
+
 	<div id="buttons">	
 	</div>
 	
-	<script>var score=0;
+	<script>
+	var start, previousTimeStamp;
+	var counttime;
+	var score=0;
 var hiscore=10;
 
 document.getElementById('score').innerHTML = score;
@@ -475,12 +529,16 @@ document.getElementById('hiscore').innerHTML = hiscore;
 document.getElementById('score3').innerHTML = score;
 document.getElementById('hiscore3').innerHTML = hiscore;
 
+var globalprogress;
+
 function createProgressbar(id, duration, callback) {
   var progressbar = document.getElementById(id);
   progressbar.className = 'progressbar';
   var progressbarinner = document.createElement('div');
   progressbarinner.className = 'inner';
-  progressbarinner.style.animationDuration = duration;
+  
+  globalprogress = progressbarinner;
+  globalprogress.style.animationDuration = duration;
   if (typeof(callback) === 'function') { progressbarinner.addEventListener('animationend', callback);
   }
 progressbar.appendChild(progressbarinner);
@@ -516,6 +574,15 @@ next();
 score++;
 sound.play();
 
+
+//globalprogress.style.animationDuration =  "16s";
+//globalprogress.style.animationDuration
+
+//document.documentElement.style.setProperty('--delay', 10+'s');
+//document.documentElement.style.getProperty('--elapsed');
+
+//document.documentElement.style.setProperty('--elapsed', 10+'s');
+
 if(hiscore < score){
 hiscore++;
 }
@@ -534,9 +601,9 @@ setTimeout(()=> delement.classList.remove('powit2'),280)
 delement = document.getElementById('fb');
 delement.classList.add("fbpow");
 
-setTimeout(()=> delement.classList.remove('fbpow'),620) 
+setTimeout(()=> delement.classList.remove('fbpow'),920) 
 
-
+counttime = counttime+50;
 
 } else {
 delement = document.getElementById('buttons');
@@ -698,11 +765,14 @@ window.addEventListener('touchmove'||'touchdowm'||'touchend'||'mousedown', ev =>
 
 
 const reset = () => {
+elapsed= 0;
+start = undefined;
 
 ar = [];
  score=0;
 document.getElementById('score').innerHTML = score;
-
+counttime=300;
+counttime2=100;
 	w=0;
 	
 	//c(`4+4`);
@@ -779,11 +849,59 @@ setTimeout(()=> delement.classList.remove('show'),280);
 //}
 reset();
 
+
+//var element = document.getElementById('progressbar2');
+
+
+
+
+function step(timestamp) {
+  if (start === undefined) {
+	start = timestamp;
+	}
+  const elapsed = timestamp - start;
+
+  if (previousTimeStamp !== timestamp) {
+	// Math.min() is used here to make sure the element stops at exactly 200px
+	//counttime = Math.min(0.1 * elapsed, 0);
+
+//counttime2 = Math.min(0.1 * elapsed, 0);
+
+//counttime2 = 300-Math.min(0.1 * elapsed, 0);
+counttime2 = counttime-Math.ceil(0.04*elapsed);
+
+//counttime--;
+	//element.style.transform = 'translateX(' + count + 'px)';
+element = document.getElementById('timer');
+
+element.style.width = counttime2 + 'px';
+element.style.backgroundColor = colortohex(counttime2%255,counttime2%125,counttime2%195);
+
+//element.innerHTML = counttime2 +" "+elapsed;
+  }
+
+  //if (elapsed <200000) { // Stop the animation after 2 seconds
+//alert("done");
+if(counttime2>1){ // SHOULD BE TRUE TO ANIMATE
+	previousTimeStamp = timestamp
+	window.requestAnimationFrame(step);
+  } else {
+	  
+	   startscreen();
+  }
+}
+
+window.requestAnimationFrame(step);
+
+
+
+
+
 createProgressbar('progressbar1', '20s', function() {
 
 
 
-startscreen();
+//startscreen();
 //response = confirm("• GAME OVER • \nSCORE \n" + score + " OF HISCORE "+hiscore+"\n \nREADY FOR A NEW ROUND? ");
 
 //if(response){
@@ -817,6 +935,16 @@ Array.from(document.getElementsByClassName("fo")).map(el =>{
 		//alert('Finished!');
 	  }
 	});
+	
+	function colortohex(red, green, blue)
+{
+	return '#' + red.toString(16) +
+		   green.toString(16) +
+		   blue.toString(16);
+}
+
+
+	
 	
 </script>
 	</body>
