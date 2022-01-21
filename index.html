@@ -122,7 +122,7 @@ margin: 1px;
 text-align: center;
 
   display: inline-block;
-  height: 18px;
+  height: 32px;
   background: #77ff88;
   transition: all 0.05s ease-in-out;
   
@@ -608,7 +608,7 @@ delement.classList.add("fbpow");
 
 setTimeout(()=> delement.classList.remove('fbpow'),720) 
 
-counttime = counttime+55;
+counttime = counttime+65;
 
 } else {
 delement = document.getElementById('buttons');
@@ -824,14 +824,12 @@ counttime2=100;
 
 mathie = string[op++]+"+"+string[op];
 if(eval(mathie)>9){
-mathie = mathie +'-'+string[++op];
+mathie = string[--op] +'-'+string[++op];
 	}
-	if(eval(mathie)>9){
-mathie = mathie +'-'+string[++op];
+	if(eval(mathie)<0){
+mathie = string[--op];
 	}
-	if(eval(mathie)>9){
-mathie = mathie +'-'+string[++op];
-	}
+	
 	//	c(Math.ceil(op*0.1)>
 
 c(mathie);
