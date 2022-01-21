@@ -120,12 +120,12 @@ margin: 1px;
   padding:0;
   
 text-align: center;
-
+border-radius:8px;
   display: inline-block;
   height: 32px;
   background: #77ff88;
-  transition: all 0.05s ease-in-out;
-  
+  transition: all 0.2s ease-in-out;
+  transition-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
   /* filter: drop-shadow(2px 1px 13px  #ff99ff); */
 
   }
@@ -231,7 +231,7 @@ input[type=number]::-webkit-inner-spin-button,
 	margin: 0;
   }
 
-toptext {
+toptext, h1 {
 	font-size: 1rem;
 	line-height: 3.5rem;
 	color:#fefafa;
@@ -496,7 +496,7 @@ i2,
 	</div>
 	
 	
-	<toptext>MATH</toptext>
+	<toptext><h1>MATH</h1></toptext>
 	
 	
 	<div class="scorebar">
@@ -525,6 +525,9 @@ i2,
 	var counttime;
 	var score=0;
 var hiscore=10;
+
+var pluscount = 89;
+var speedish=0.055;
 
 document.getElementById('score').innerHTML = score;
 document.getElementById('hiscore').innerHTML = hiscore;
@@ -608,7 +611,7 @@ delement.classList.add("fbpow");
 
 setTimeout(()=> delement.classList.remove('fbpow'),720) 
 
-counttime = counttime+65;
+counttime = counttime+pluscount;
 
 } else {
 delement = document.getElementById('buttons');
@@ -896,14 +899,14 @@ function step(timestamp) {
 //counttime2 = Math.min(0.1 * elapsed, 0);
 
 //counttime2 = 300-Math.min(0.1 * elapsed, 0);
-counttime2 = counttime-Math.ceil(0.04*elapsed);
+counttime2 = counttime-Math.ceil(speedish*elapsed);
 
 //counttime--;
 	//element.style.transform = 'translateX(' + count + 'px)';
 element = document.getElementById('timer');
 
 element.style.width = counttime2 + 'px';
-element.style.backgroundColor = colortohex(150+counttime2%55,190+counttime2%65,170+counttime2%45);
+element.style.backgroundColor = colortohex(150+counttime2%5,190+Math.ceil(counttime2/3)%65,170+Math.ceil(counttime2/4)%25);
 
 //element.innerHTML = counttime2 +" "+elapsed;
   }
