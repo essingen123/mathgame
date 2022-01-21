@@ -3,12 +3,42 @@
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
 
-		<title>MATH GAME</title>
+		<title> 1000 Decimals of Pi • MATH GAME</title>
 		<style>
-/*	:root {
-	--delay: 5;
+		
+	
+
+.scoreoverlay{
+margin-top:-600px;
+	opacity:0.6;
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:100;
+	left:0;
+	top:0;
+	background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
+font-size:200%;
+color:#ffffff;
+font-weight: bolder;
+font-style: italic;
+padding-top:40px;
+transition: all .3s ease-in-out;
+
+}
+.show {
+margin-top:0;
+	
+	opacity:1;
+
+}
+		
+	:root {
+/*	--delay: 5;
 	--elapsed: 20s;
-}*/
+	*/
+	--fbpowro: -3deg;
+}
 		.fb{
 	
 	position: absolute;
@@ -50,7 +80,7 @@ animation-timing-function: cubic-bezier(0.7, -0.1, 0.2, 1.4);
   50%{
 	  opacity: 0.4;
 		  bottom:60%;
-		  transform: rotateZ(2deg);
+		  transform: rotateZ(var(--fbpowro));
   }
   90%{
 	  opacity: 0.1;
@@ -125,7 +155,7 @@ border-radius:8px;
   height: 32px;
   background: #77ff88;
   transition: all 0.2s ease-in-out;
-  transition-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   /* filter: drop-shadow(2px 1px 13px  #ff99ff); */
 
   }
@@ -159,7 +189,7 @@ text-align: center;
   height: 18px;
   animation: progressbar-countdown;
   animation-duration: 20s;
-  /*var(--elapsed);
+  /*var(--elapsed);*/
   /* We stop in the end */
   animation-iteration-count: 1;
   /* Stay on pause when the animation is finished finished */
@@ -188,8 +218,11 @@ text-align: center;
 	text-align:center;
 	bottom: 4px;
 	position:fixed;
-	background: radial-gradient(circle at 30% 60%, #4CAF50, #5bcF60 50%);
+	background: radial-gradient(circle at 30% 60%, #4CAF5055, #5bcF6055 50%);
+
+background-color: #7CAF80; 
 padding:8px 2px;
+
 }
 html, body {
 letter-spacing: 6px;
@@ -206,7 +239,7 @@ letter-spacing: 6px;
 }
 
 button {
-filter: drop-shadow(12px 0 -2px  #44774);
+filter: drop-shadow(12px 0 -2px #44774);
 margin:5px;
 margin:0;
 	padding:24px;
@@ -336,7 +369,7 @@ whc{
 
 .fo{
 	opacity: 0.01;
-	/*margin: 0 -20px 50px -10px;/
+	/*margin: 0 -20px 50px -10px;*/
 	/* transform: rotateZ(10deg);
 	*/
 	transition: all 0.5s ease-in-out;
@@ -358,46 +391,40 @@ whc{
 }
 @keyframes slidein {
   80% {
-	filter:hue-rotate(0deg);
+	filter:hue-rotate(20deg);
   }
   100% {
-	filter:hue-rotate(-4deg);
+	filter:hue-rotate(0deg);
   }
 }
-.powit{
-	opacity: 1;
-	animation-duration: 1s;
-  animation-name: pow;
-  animation-iteration-count: 1;
-  animation-direction: forward;
+.redpow{
+
+
+animation-duration: 0.8s;
+  animation-name: redpowani;
+  
+  
 }
-@keyframes pow {
+@keyframes redpowani {
 0% {
-	opacity:0.4;
-	filter:hue-rotate(-142deg);
+	filter:hue-rotate(-120deg);
   }
-  20% {
-  opacity:1;
+  100% {
 	filter:hue-rotate(0deg);
   }
 }
 
-.powit2 {
-	opacity: 1;
-	animation-duration: 1s;
-  animation-name: pow2;
-  animation-iteration-count: 1;
-  animation-direction: forward;
+.greenpow {
+	animation-duration: 0.8s;
+  animation-name: greenpowani;
+  
 }
-@keyframes pow2 {
+@keyframes greenpowani {
 0% {
-	opacity:0.5;
-	filter:hue-rotate(142deg);
+	filter:hue-rotate(50deg);
   }
-  20% {
-  opacity:1;
+  100% {
 	filter:hue-rotate(0deg);
-	
   }
 }
 
@@ -417,29 +444,7 @@ background: radial-gradient(circle at 10% 30%, transparent, #dddedd 50%);
 
 
 
-.show {
-	display: block !important;
-	opacity:1 !important;
-	transition: all 2s !important;
-}
 
-.scoreoverlay{
-	display:none;
-	opacity:0;
-	position:fixed;
-	width:100%;
-	height:100%;
-	z-index:100;
-	left:0;
-	top:0;
-	background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
-font-size:200%;
-color:#ffffff;
-font-weight: bolder;
-font-style: italic;
-padding-top:40px;
-transition: all 2s;
-}
 
 .scorebar{
 	display:block;
@@ -459,7 +464,7 @@ b{
 .ang,
 i2,
 #answer {
-		transition: all 2s;
+		transition: all 0.5s ease-in-out;
 }
 
 
@@ -531,7 +536,7 @@ var maxcountime =390;
 
 var pluscount = 93;
 var speedish=0.059;
-var speedincrease = 0.0003;
+var speedincrease = 0.00026;
 
 document.getElementById('score').innerHTML = score;
 document.getElementById('hiscore').innerHTML = hiscore;
@@ -592,7 +597,7 @@ sound.play();
 //globalprogress.style.animationDuration =  "16s";
 //globalprogress.style.animationDuration
 
-//document.documentElement.style.setProperty('--delay', 10+'s');
+document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20+Math.random()*40)+'deg');
 //document.documentElement.style.getProperty('--elapsed');
 
 //document.documentElement.style.setProperty('--elapsed', 10+'s');
@@ -605,17 +610,17 @@ document.getElementById('hiscore').innerHTML = hiscore;
 
 
 
-delement = document.getElementById('buttons');
-delement.classList.add("powit2");
+delement4 = document.getElementById('buttons');
+delement4.classList.add("greenpow");
 
-setTimeout(()=> delement.classList.remove('powit2'),280) 
+setTimeout(()=> delement4.classList.remove('greenpow'),800) 
 
 
 
-delement = document.getElementById('fb');
-delement.classList.add("fbpow");
+delement3 = document.getElementById('fb');
+delement3.classList.add("fbpow");
 
-setTimeout(()=> delement.classList.remove('fbpow'),720) 
+setTimeout(()=> delement3.classList.remove('fbpow'),720) 
 
 
 counttime = counttime+pluscount;
@@ -623,10 +628,10 @@ counttime = counttime+pluscount;
 speedish+=speedincrease;
 
 } else {
-delement = document.getElementById('buttons');
-delement.classList.add("powit");
+delement2 = document.getElementById('buttons');
+delement2.classList.add("redpow");
 
-setTimeout(()=> delement.classList.remove('powit'),280) 
+setTimeout(()=> delement2.classList.remove('redpow'),800) 
 
 
 //WRONG ! :)
@@ -868,7 +873,9 @@ document.getElementById('score3').innerHTML = score;
 }
 
 document.getElementById('hiscore3').innerHTML = hiscore;
+
 document.getElementById('scoreoverlay').classList.add('show');
+
 //delement.classList.add("pewits");
 
 
@@ -913,7 +920,7 @@ function step(timestamp) {
 counttime2 = counttime-Math.ceil(speedish*elapsed);
 
 if(counttime2>maxcountime){
-    counttime = counttime -10;
+	counttime = counttime -10;
 
 counttime2 =maxcountime;
 }
@@ -923,7 +930,7 @@ counttime2 =maxcountime;
 element = document.getElementById('timer');
 
 element.style.width = counttime2 + 'px';
-element.style.backgroundColor = colortohex(150+counttime2%5,190+Math.ceil(counttime2/2)%65,170+Math.ceil(counttime2/3)%45);
+element.style.backgroundColor = colortohex(120+counttime2%5,190+Math.ceil(counttime2/2)%65,120+Math.ceil(counttime2/3)%45);
 
 //element.innerHTML = counttime2 +" "+elapsed;
   }
