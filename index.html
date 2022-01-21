@@ -3,7 +3,7 @@
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
 
-		<title>1000 Decimals of Pi • MATH GAME v0.04a</title>
+		<title>1000 Decimals of Pi • MATH GAME v0.05a</title>
 		<style>
 
 .scoreoverlay{
@@ -22,14 +22,15 @@ color:#ffffff;
 font-weight: bolder;
 font-style: italic;
 padding-top:40px;
-transition: all .3s ease-in-out;
-
+transition: all 0.2s ease-in-out;
+border-radius: 30px;
 }
 .show {
-margin-top:1px;
-	
+margin-top:0;
+	border-radius:0;
 	opacity:1;
-
+transition: all 1.2s ease-in-out;
+transition-timing-function: cubic-bezier(.12,1.38,.44,.98);
 }
 		
 	:root {
@@ -212,12 +213,12 @@ text-align: center;
 
 #buttons{
 	text-align:center;
-	bottom: 10px;
+	bottom: 1px;
 	position:fixed;
 	background: radial-gradient(circle at 30% 60%, #4CAF5055, #5bcF6055 50%);
 
 background-color: #7CAF80; 
-padding:8px 2px;
+padding:12px 2px;
 
 }
 html, body {
@@ -325,7 +326,6 @@ text-align:center;
 padding:8px;
    /*white-space: nowrap;*/
 	/*transition: all 0.5s;*/
-	
 	transition: all 0.5s ease-in-out;
 }
 i3::before{
@@ -394,12 +394,8 @@ whc{
   }
 }
 .redpow{
-
-
 animation-duration: 0.8s;
   animation-name: redpowani;
-  
-  
 }
 @keyframes redpowani {
 0% {
@@ -437,9 +433,6 @@ padding:0;
   z-index: -1;
 background: radial-gradient(circle at 10% 30%, transparent, #dddedd 50%);
 }
-
-
-
 
 
 .scorebar{
@@ -583,8 +576,8 @@ score++;
 //sound.rate(0.99+Math.random()*0.01);
 
 soundx = sound.clone();
-soundx.attack = 0.2;
-soundx.volume = 0.9;
+soundx.attack = 0.6;
+soundx.volume = 0.4;
 /// hmmm meh
 soundx.playbackRate = 0.9; // try something between 0.25 and 3
 //soundx.rate = 2;
@@ -956,7 +949,7 @@ window.requestAnimationFrame(step);
 
   function colortohex(red, green, blue){
 
-return '#' + red.toString(16) +
+return ''' + red.toString(16) +
 		   green.toString(16) +
 		   blue.toString(16);
 }
@@ -966,7 +959,7 @@ return '#' + red.toString(16) +
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 <script>
 	
-var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function() {
+var sound = new Pizzicato.Sound''https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp'', function() {
 // Sound loaded!
 	//sound.play();
 });
