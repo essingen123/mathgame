@@ -525,12 +525,13 @@ i2,
 	var start, previousTimeStamp;
 	var counttime;
 	var score=0;
-var hiscore=10;
+var hiscore=63;
 
 var maxcountime =390;
 
 var pluscount = 93;
-var speedish=0.052;
+var speedish=0.059;
+var speedincrease = 0.0003;
 
 document.getElementById('score').innerHTML = score;
 document.getElementById('hiscore').innerHTML = hiscore;
@@ -582,7 +583,7 @@ function check(){
 if(document.getElementById('answer').value ==document.getElementById('eval').value){
 //if(0){
 
-//⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+//score ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 next();
 score++;
 sound.play();
@@ -619,7 +620,7 @@ setTimeout(()=> delement.classList.remove('fbpow'),720)
 
 counttime = counttime+pluscount;
 
-
+speedish+=speedincrease;
 
 } else {
 delement = document.getElementById('buttons');
