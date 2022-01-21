@@ -3,7 +3,7 @@
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
 
-		<title>1000 decimals of Pi • MATH GAME</title>
+		<title>MATH GAME</title>
 		<style>
 /*	:root {
 	--delay: 5;
@@ -533,6 +533,7 @@ document.getElementById('hiscore').innerHTML = hiscore;
 document.getElementById('score3').innerHTML = score;
 document.getElementById('hiscore3').innerHTML = hiscore;
 
+/*
 var globalprogress;
 
 function createProgressbar(id, duration, callback) {
@@ -548,8 +549,8 @@ function createProgressbar(id, duration, callback) {
 progressbar.appendChild(progressbarinner);
 progressbarinner.style.animationPlayState = 'running';
 }
-
-addEventListener('load', function() {
+*/
+//addEventListener('load', function() {
   
   
   /*
@@ -567,7 +568,7 @@ setTimeout(()=> el.remove(),380)
 }); */
 /*
 createProgressbar('progressbar2', '19s');createProgressbar('progressbar3', '17s');createProgressbar('progressbar4', '15s');*/
-});
+//});
 
 
 
@@ -819,7 +820,21 @@ counttime2=100;
 	op = 0;
 	while(op<1000){
 	
-		c(Math.ceil(op*0.1) +'+'+string[op]);
+	//	c(Math.ceil(op*0.1) +'+'+string[op]);
+
+mathie = string[op++]+"+"+string[op];
+if(eval(mathie)>9){
+mathie = mathie +'-'+string[++op];
+	}
+	if(eval(mathie)>9){
+mathie = mathie +'-'+string[++op];
+	}
+	if(eval(mathie)>9){
+mathie = mathie +'-'+string[++op];
+	}
+	//	c(Math.ceil(op*0.1)>
+
+c(mathie);
 		
 	   op++;
 	}
@@ -912,7 +927,7 @@ window.requestAnimationFrame(step);
 
 
 
-createProgressbar('progressbar1', '20s', function() {
+//createProgressbar('progressbar1', '20s', function() {
 
 
 
@@ -931,7 +946,7 @@ Array.from(document.getElementsByClassName("fo")).map(el =>{
 //}
 //reset();
 //}
-});
+//});
 
 
 
