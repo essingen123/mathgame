@@ -521,13 +521,16 @@ i2,
 	</div>
 	
 	<script>
+	// ⭐️⭐️⭐️⭐️
 	var start, previousTimeStamp;
 	var counttime;
 	var score=0;
 var hiscore=10;
 
-var pluscount = 89;
-var speedish=0.055;
+var maxcountime =390;
+
+var pluscount = 93;
+var speedish=0.052;
 
 document.getElementById('score').innerHTML = score;
 document.getElementById('hiscore').innerHTML = hiscore;
@@ -578,6 +581,8 @@ createProgressbar('progressbar2', '19s');createProgressbar('progressbar3', '17s'
 function check(){
 if(document.getElementById('answer').value ==document.getElementById('eval').value){
 //if(0){
+
+//⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 next();
 score++;
 sound.play();
@@ -611,7 +616,10 @@ delement.classList.add("fbpow");
 
 setTimeout(()=> delement.classList.remove('fbpow'),720) 
 
+
 counttime = counttime+pluscount;
+
+
 
 } else {
 delement = document.getElementById('buttons');
@@ -763,7 +771,8 @@ setTimeout(()=> el.remove(),380)
 
 document.addEventListener("DOMContentLoaded", dl);
 
-window.addEventListener('touchmove'||'touchdowm'||'touchend'||'mousedown', ev => {
+window.addEventListener('touchmove'||'touchdowm'||'touchend', ev => {
+//||'mousedown'
   if (1) {
 	ev.preventDefault();
 	ev.stopImmediatePropagation();
@@ -887,6 +896,7 @@ reset();
 
 
 function step(timestamp) {
+// 😀⭐️😀 gameloop
   if (start === undefined) {
 	start = timestamp;
 	}
@@ -901,12 +911,18 @@ function step(timestamp) {
 //counttime2 = 300-Math.min(0.1 * elapsed, 0);
 counttime2 = counttime-Math.ceil(speedish*elapsed);
 
+if(counttime2>maxcountime){
+    counttime = counttime -10;
+
+counttime2 =maxcountime;
+}
+
 //counttime--;
 	//element.style.transform = 'translateX(' + count + 'px)';
 element = document.getElementById('timer');
 
 element.style.width = counttime2 + 'px';
-element.style.backgroundColor = colortohex(150+counttime2%5,190+Math.ceil(counttime2/3)%65,170+Math.ceil(counttime2/4)%25);
+element.style.backgroundColor = colortohex(150+counttime2%5,190+Math.ceil(counttime2/2)%65,170+Math.ceil(counttime2/3)%45);
 
 //element.innerHTML = counttime2 +" "+elapsed;
   }
