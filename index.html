@@ -3,8 +3,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>1000 Decimals of Pi • MATH GAME v0.05a</title>
-    <style>
+    <title> 1000 Decimals of Pi • MATH GAME v0.05a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+<!-- 😀 Coded on a Mobile FastSpaghetti Prototype 
+So not made with qulity code intentionally, just to test out if it works-->
+<style>
 #answer {
 position: fixed;
 opacity: 0.9;
@@ -116,7 +118,7 @@ i3 {
         .fbpow {
 
 
-            animation-duration: 1.1s;
+            animation-duration: 2s;
             animation-name: fbpow;
             animation-iteration-count: 1;
             animation-direction: forward;
@@ -598,6 +600,8 @@ position: absolute;
 </div>
 
     <script>
+        arrayblaha = 1;
+        delement3 = [];
         // ⭐️⭐️⭐️⭐️
         var start, previousTimeStamp;
         var counttime;
@@ -682,38 +686,35 @@ position: absolute;
                 //globalprogress.style.animationDuration =  "16s";
                 //globalprogress.style.animationDuration
 
-                document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
-                  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-20 + Math.random() * 50) + '%');
-                  
-                
-                
-                
-                
-                //document.documentElement.style.getProperty('--elapsed');
-
+                    //document.documentElement.style.getProperty('--elapsed');
                 //document.documentElement.style.setProperty('--elapsed', 10+'s');
-
                 if (hiscore < score) {
                     hiscore++;
                 }
                 document.getElementById('score').innerHTML = score;
                 document.getElementById('hiscore').innerHTML = hiscore;
-
-
-
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
 
                 setTimeout(() => delement4.classList.remove('greenpow'), 800)
 
+                
+                document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
+                document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(1 + Math.random() * 20) + '%');
+                
+                arrayblaha++;
+                console.log(arrayblaha);
+                delement3[arrayblaha] = document.getElementById('fb').cloneNode();
+//                body.innerHTML += [arrayblaha];
+                delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
 
 
-                delement3 = document.getElementById('fb');
 //                 delement3.innerHTML +=
-                delement3.innerHTML += "⭐️"+answered+"😀"; // 🏆🏅
-                delement3.classList.add("fbpow");
+                delement3[arrayblaha].innerHTML = "⭐️"+answered+"😀"; // 🏆🏅
+                delement3[arrayblaha].classList.add("fbpow");
 
-                setTimeout(() => delement3.classList.remove('fbpow'), 720)
+           // setTimeout(() => delement3[arrayblaha].classList.remove('fbpow'), 3000);
+                setTimeout(() => delement3[arrayblaha].remove(), 2500)
 
 
                 counttime = counttime + pluscount;
@@ -726,6 +727,9 @@ position: absolute;
 
                 setTimeout(() => delement2.classList.remove('redpow'), 800)
 
+
+                document.getElementById('answer').value = '';
+                document.getElementById('answer2').innerHTML = '';
 
                 //WRONG ! :)
                 //document.getElementById('answer').value = ''; // ALSO MADE AUTOCHEck FOR FASTER action :)
@@ -754,11 +758,14 @@ position: absolute;
 
                 //alert(attribute);
                 if (attribute == "clear") {
-                    document.getElementById('answer').value = ''; document.getElementById('answer2').innerHTML = '';
+                    document.getElementById('answer').value = ''; 
+                    document.getElementById('answer2').innerHTML = '';
                 } else {
                     document.getElementById('answer').value += attribute;
                     document.getElementById('answer2').innerHTML += attribute;
                     check(); // AUTOCHEck :)
+
+                    
                 }
             }
 
@@ -842,7 +849,7 @@ position: absolute;
                     //el.style.height = "22px";
                     el.style.marginTop = "-40px";
                     el.style.opacity = "0";
-                    setTimeout(() => el.remove(), 121)
+                    setTimeout(() => el.remove(), 0)
                 });
 
                 //return null; 
@@ -1061,7 +1068,7 @@ position: absolute;
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
     <script>
-
+    
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function() {
 // Sound loaded!
 	//sound.play();
