@@ -110,7 +110,7 @@ i3 {
             left: 23%;
             border: solid 9px #bfb;
             font-size: 200%;
-            z-index: 50;
+            z-index: 200;
             padding-top: 40px;
             filter: drop-shadow(2px 2px 33px #ffeefa);
         }
@@ -118,8 +118,8 @@ i3 {
         .fbpow {
             animation-duration: 1.2s;
             animation-name: fbpow;
-            animation-iteration-count: 1;
-            animation-direction: forward;
+         /*   animation-iteration-count: 1;
+            animation-direction: forward;*/
             /*
 animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
 */
@@ -127,7 +127,7 @@ z-index: 200;
   }
         @keyframes fbpow {
             0% {
-                bottom: 0;
+                bottom: 42%;
                 transform: rotateZ(10deg);
                 left: 24%;
             }
@@ -149,14 +149,15 @@ z-index: 200;
                 bottom: 72%;
                 border: solid 1px #bfb;
                 transform: rotateZ(-2deg);
-                left: var(--fbpowoutho);
+             /*   left: var(--fbpowoutho); */
             }
             100% {
                 opacity: 0;
                 bottom: 87%;
-                width: 400px;
+                width: 60%;
                 transform: rotateZ(var(--fbpowro));
-                left: var(--fbpowoutho);
+                left:10%;
+/*left: var(--fbpowoutho);*/
             }
         }
 
