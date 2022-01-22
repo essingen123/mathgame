@@ -697,17 +697,21 @@ position: absolute;
                 document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 
                 arrayblaha++;
+
+// should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
+arrayblaha = arrayblaha%3;
+
                 console.log(arrayblaha);
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
-//                body.innerHTML += [arrayblaha];
+//              body.innerHTML += [arrayblaha];
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
 
 
-//                 delement3.innerHTML +=
+//              delement3.innerHTML +=
                 delement3[arrayblaha].innerHTML = "⭐️"+answered+"😀"; // 🏆🏅
                 delement3[arrayblaha].classList.add("fbpow");
 
-           // setTimeout(() => delement3[arrayblaha].classList.remove('fbpow'), 3000);
+                // setTimeout(() => delement3[arrayblaha].classList.remove('fbpow'), 3000);
                 setTimeout(() => delement3[arrayblaha].remove(), 1799)
 
 
@@ -720,7 +724,6 @@ position: absolute;
                 delement2.classList.add("redpow");
 
                 setTimeout(() => delement2.classList.remove('redpow'), 800)
-
 
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
@@ -864,7 +867,7 @@ position: absolute;
                     //alert('done');
                     el.classList.remove('fi');
                     //el.classList.add('fo')
-                    setTimeout(() => el.remove(), 380)
+                    setTimeout(() => el.remove(), 180)
                 });
             }
         }
