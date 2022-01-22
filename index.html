@@ -563,7 +563,6 @@ position: absolute;
         </div>
         <div id="scoring">
             SCORE <b id="score3"></b>
-
         </div>
         <div id="hiscoring">
             HISCORE <b id="hiscore3"></b>
@@ -606,8 +605,8 @@ position: absolute;
         var maxcountime = 390;
 
         var pluscount = 103;
-        var speedish = 0.052;
-        var speedincrease = 0.000026;
+        var speedish = 0.055;
+        var speedincrease = 0.000021;
 
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
@@ -655,8 +654,8 @@ position: absolute;
 
 
         function check() {
-            window.setTimeout(document.getElementById('answer').focus(), 20);
-            document.getElementById('answer').focus();
+           // window.setTimeout(document.getElementById('answer').focus(), 20);
+          //  document.getElementById('answer').focus();
             answered = document.getElementById('answer').value;
             if (answered == document.getElementById('eval').value) {
                 //if(0){
@@ -670,7 +669,7 @@ position: absolute;
                 soundx.attack = 0.6;
                 soundx.volume = 0.4;
                 /// hmmm meh
-                soundx.playbackRate = 0.9; // try something between 0.25 and 3
+                //soundx.playbackRate = 0.9; // try something between 0.25 and 3
                 //soundx.rate = 2;
                 //440 + Math.ceil( 10* Math.random()); // a5
                 soundx.play(0, 0);
@@ -810,7 +809,7 @@ arrayblaha = arrayblaha%3;
                 d.classList.add("fo");
 
                 d.innerHTML = (`<div class="ang" style=""><span id="answer2"></span>
-<input type="text" class="number" pattern=[0-9]* id="answer" name="answer" onkeyup="check();" autofocus tabindex="1" />
+<input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" onkeyup="check();" autofocus tabindex="1" />
 <input type="hidden" value="`+ evalQ(a) + `" id="eval" />
 </div>`);
                 document.body.append(d);
@@ -842,7 +841,7 @@ arrayblaha = arrayblaha%3;
                     //el.classList.add('fo')
 
                     //el.style.height = "22px";
-                    el.style.marginTop = "-40px";
+                    el.style.marginTop = "-30px";
                     el.style.opacity = "0";
                     setTimeout(() => el.remove(), 0)
                 });
@@ -865,7 +864,7 @@ arrayblaha = arrayblaha%3;
                     //alert('done');
                     el.classList.remove('fi');
                     //el.classList.add('fo')
-                    setTimeout(() => el.remove(), 180)
+                    setTimeout(() => el.remove(), 80)
                 });
             }
         }
