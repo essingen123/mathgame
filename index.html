@@ -116,23 +116,18 @@ i3 {
         }
 
         .fbpow {
-
-
-            animation-duration: 2s;
+            animation-duration: 1.8s;
             animation-name: fbpow;
             animation-iteration-count: 1;
             animation-direction: forward;
-
             animation-timing-function: cubic-bezier(0.7, -0.1, 0.2, 1.4);
         }
-
         @keyframes fbpow {
             0% {
                 bottom: 0;
                 transform: rotateZ(10deg);
                 left: 24%;
             }
-
             25% {
                 opacity: 1;
                 bottom: 66%;
@@ -153,7 +148,6 @@ i3 {
                 transform: rotateZ(-2deg);
                 left: var(--fbpowoutho);
             }
-
             100% {
                 opacity: 0;
                 bottom: 87%;
@@ -714,7 +708,7 @@ position: absolute;
                 delement3[arrayblaha].classList.add("fbpow");
 
            // setTimeout(() => delement3[arrayblaha].classList.remove('fbpow'), 3000);
-                setTimeout(() => delement3[arrayblaha].remove(), 2500)
+                setTimeout(() => delement3[arrayblaha].remove(), 1799)
 
 
                 counttime = counttime + pluscount;
