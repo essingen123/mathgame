@@ -539,8 +539,9 @@ position: absolute;
         .ang,
         i2,
         #answer {
-            transition: all 0.5s ease-in-out;
-        }
+      /*      transition: all 0.5s ease-in-out;
+     */
+   }
 
 
         #scoring {
@@ -588,7 +589,7 @@ position: absolute;
             HISCORE <b id="hiscore"></b>
         </span>
     </div>
-    <div class="fb" id="fb"></div>
+   
     <div class="progressbarboss">
         <div id='timer'></div>
     </div>
@@ -596,6 +597,8 @@ position: absolute;
     <div id="buttons">
     </div>
 </div>
+
+<div class="fb" id="fb"></div>
 
     <script>
         arrayblaha = 1;
@@ -812,10 +815,9 @@ arrayblaha = arrayblaha%3;
                 d = document.createElement("div");
                 d.classList.add("fo");
 
-                d.innerHTML = (`<div class="ang" style=""><span id="answer2"></span>
+                d.innerHTML = (`<span id="answer2"></span>
 <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" onkeyup="check();" autofocus tabindex="1" />
-<input type="hidden" value="`+ evalQ(a) + `" id="eval" />
-</div>`);
+<input type="hidden" value="`+ evalQ(a) + `" id="eval" />`);
                 document.body.append(d);
                 setTimeout(() => d.classList.add("fi"), 1)
             }, 120 + w % 6);
