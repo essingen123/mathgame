@@ -116,11 +116,11 @@ i3 {
         }
 
         .fbpow {
-            animation-duration: 1.8s;
+            animation-duration: 1.2s;
             animation-name: fbpow;
             animation-iteration-count: 1;
             animation-direction: forward;
-            animation-timing-function: cubic-bezier(0.7, -0.1, 0.2, 1.4);
+            animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         }
         @keyframes fbpow {
             0% {
@@ -141,8 +141,8 @@ i3 {
                 left:40%;
             }
 
-            90% {
-                opacity: 0.1;
+            80% {
+                opacity: 0.3;
                 bottom: 72%;
                 border: solid 1px #bfb;
                 transform: rotateZ(-2deg);
@@ -604,9 +604,9 @@ position: absolute;
 
         var maxcountime = 390;
 
-        var pluscount = 93;
-        var speedish = 0.059;
-        var speedincrease = 0.00026;
+        var pluscount = 103;
+        var speedish = 0.052;
+        var speedincrease = 0.000026;
 
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
@@ -694,7 +694,7 @@ position: absolute;
 
                 
                 document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
-                document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 12) + '%');
+                document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 
                 arrayblaha++;
                 console.log(arrayblaha);
