@@ -635,7 +635,6 @@ position: absolute;
         */
         //addEventListener('load', function() {
 
-
         /*
         createProgressbar('progressbar1', '20s', function() {
       alert("GAME OVER • YOUR SCORE " + score);
@@ -681,7 +680,7 @@ position: absolute;
                 //globalprogress.style.animationDuration =  "16s";
                 //globalprogress.style.animationDuration
 
-                    //document.documentElement.style.getProperty('--elapsed');
+                //document.documentElement.style.getProperty('--elapsed');
                 //document.documentElement.style.setProperty('--elapsed', 10+'s');
                 if (hiscore < score) {
                     hiscore++;
@@ -691,11 +690,9 @@ position: absolute;
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
 
-                setTimeout(() => delement4.classList.remove('greenpow'), 800)
-
-                
-                document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
-                document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
+                setTimeout(() => delement4.classList.remove('greenpow'), 500);
+            //    document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
+             //   document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 
                 arrayblaha++;
 
@@ -724,7 +721,7 @@ arrayblaha = arrayblaha%3;
                 delement2 = document.getElementById('buttons');
                 delement2.classList.add("redpow");
 
-                setTimeout(() => delement2.classList.remove('redpow'), 800)
+                setTimeout(() => delement2.classList.remove('redpow'), 500)
 
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
