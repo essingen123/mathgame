@@ -99,9 +99,9 @@ i3 {
 
         .fb {
 
-            position: absolute;
+            position: fixed;
             opacity: 0;
-            width: 200px;
+            width: 120px;
             height: 140px;
 
             background-color: #aaffbb99;
@@ -129,7 +129,7 @@ z-index: 200;
             0% {
                 bottom: 42%;
                 transform: rotateZ(10deg);
-                left: 24%;
+                left: 23%;
             }
             25% {
                 opacity: 1;
@@ -140,8 +140,8 @@ z-index: 200;
             50% {
                 opacity: 0.4;
                 bottom: 60%;
-                transform: rotateZ(var(--fbpowro));
-                left:40%;
+                transform: rotateZ(4deg);
+                left:23%;
             }
 
             80% {
@@ -155,7 +155,7 @@ z-index: 200;
                 opacity: 0;
                 bottom: 87%;
                 width: 60%;
-                transform: rotateZ(var(--fbpowro));
+                /*transform: rotateZ(var(--fbpowro));*/
                 left:10%;
 /*left: var(--fbpowoutho);*/
             }
