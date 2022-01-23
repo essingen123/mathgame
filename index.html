@@ -42,15 +42,7 @@ So not made with qulity code intentionally, just to test out if it works-->
             content: '';
         }
 
-        .buttonswrapper {
-            width: 100%;
-            bottom: 0;
-            position: fixed;
-            background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
-            background-color: #7CAF80;
-            padding: 3px 2px;
-            text-align: center;
-        }
+
 
         .scoreoverlay {
             margin-top: 1900px;
@@ -266,17 +258,63 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             }
         }
 
+
+        .buttonswrapper {
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+            background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
+            background-color: #7CAF80;
+            padding: 3px 1px;
+            text-align: center;
+            min-height:172px;
+                  max-height: 60%;
+        }
+
         #buttons {
             border-radius: 6px;
             display: inline-block;
             bottom: 0;
             background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
             background-color: #7CAF80;
-            padding: 1px 2px;
-            max-width: 480px;
+
+
+            padding: 32px 4px;
+            max-width: 900px;
+                 max-height:50%;
+            /* min-width */
             text-align: center;
-            max-height: 520px;
+            /* max-height: 420px; */
         }
+
+        button {
+            cursor: pointer;
+            filter: drop-shadow(0 0 8px #94af84);
+           
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+     
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+       
+          
+            font-size: 1.5rem;
+            border: 2px solid #77dd9977;
+            border-radius: 8px;
+            background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
+
+            min-width: 32%;
+            margin: 1px;
+            padding: 2px 2px;
+            height: 60px;
+            width:120px;
+            max-height: 80px;
+            min-height: 32px;
+        }
+
 
         html,
         body {
@@ -297,26 +335,6 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             /* Internet Explorer/Edge */
         }
 
-        button {
-            cursor: pointer;
-            filter: drop-shadow(0 0 8px #94af84);
-            margin: 1px;
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 11px 26px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            min-width: 31%;
-            font-size: 2rem;
-            border: 2px solid #77dd9977;
-            border-radius: 8px;
-            background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
-            max-height: 130px;
-        }
 
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
@@ -368,7 +386,7 @@ word-break: break-all;*/
             font-family: "Trebuchet MS";
             color: #ccc;
             font-size: 1.1rem;
-            min-height: 400px;
+            /* min-height: 400px; */
             overflow: none;
             background-color: #FFFFFF;
             background-repeat: repeat;
@@ -395,7 +413,7 @@ word-break: break-all;*/
             width: 50%;
             transition: all 0.5s ease-in-out;
             /*right:190px;*/
-            font-size: 200%;
+            font-size: 120%;
         }
 
         i2::before {
@@ -509,12 +527,12 @@ word-break: break-all;*/
             letter-spacing: 0px;
         }
 
-        .ang,
+        /* .ang,
         i2,
         #answer {
-            /*      transition: all 0.5s ease-in-out;
-     */
-        }
+          transition: all 0.5s ease-in-out;
+   
+        } */
 
         #scoring {
             background-color: #fafafa99;
@@ -527,7 +545,6 @@ word-break: break-all;*/
         }
     </style>
 </head>
-
 <body>
     <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> 
     <!-- onkeyup="check();" autofocus tabindex="1" --> 
