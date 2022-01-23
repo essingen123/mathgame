@@ -280,7 +280,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         .buttonswrapper {
             width: 100%;
             bottom: 0;
-            position: fixed;
+            position: absolute;
             background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
             padding: 4px 0 24px 0;
@@ -323,8 +323,8 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
           
             font-size: 1.5rem;
             border: 2px solid #77dd9977;
-            border-radius: 6px;
-            background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
+            border-radius: 12px;
+            background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
 
 
             margin: 0;
@@ -445,7 +445,8 @@ word-break: break-all;*/
             /*white-space: nowrap;*/
             width: 50%;
             min-height:120px;
-            height:30%;
+             max-height:220px;
+            height:20%;
             transition: all 0.5s ease-in-out;
             /*right:190px;*/
             font-size: 220%;
@@ -628,6 +629,11 @@ word-break: break-all;*/
     <div class="fb" id="fb"></div>
     <script>
 
+
+    mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+    eventtyper = mobile ? "touchstart" : "mousedown";
+
+
         diff = 0;
         arrayblaha = 1;
         delement3 = [];
@@ -764,6 +770,7 @@ console.log(diffspin);
                 delement2.classList.add("redpow");
                 setTimeout(() => delement2.classList.remove('redpow'), 500);
 
+
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
                 //WRONG ! :)
@@ -801,15 +808,17 @@ console.log(diffspin);
                e.preventDefault();
                myFunction();
            });*/
-                elements[i].addEventListener("touchstart", myFunction, false);
-                elements[i].addEventListener("mousedown", myFunction, false);
+                elements[i].addEventListener(eventtyper, myFunction, false);
+                // elements[i].addEventListener("mousedown", myFunction, false);
                
+
+                
                 //}
             }
 
 
-            document.getElementById('check').addEventListener("touchstart", check, false);
-            document.getElementById('check').addEventListener("mousedown", check, false);
+            document.getElementById('check').addEventListener(eventtyper, check, false);
+          //  document.getElementById('check').addEventListener("mousedown", check, false);
 
 
 // Hey logic here... should only be active in some cases when game has started.. 
