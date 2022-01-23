@@ -59,9 +59,29 @@ So not made with qulity code intentionally, just to test out if it works-->
             color: #ffffff;
             font-weight: bolder;
             font-style: italic;
-            padding-top: 40px;
-            transition: all 0.2s ease-in-out;
+            padding-top: 20px;
+            /* transition: all 2s ease-in-out; */
             border-radius: 30px;
+            animation-name: fadein;
+            animation-duration: 1s;
+        }
+
+         @keyframes fadein {
+            0% {
+               opacity: 0;
+             
+              
+            }
+
+         
+
+            100% {
+                opacity: 1;
+            
+              
+         
+                /* left: var(--fbpowoutho); */
+            }
         }
 
         .show {
@@ -69,7 +89,7 @@ So not made with qulity code intentionally, just to test out if it works-->
             margin-top: 0;
             border-radius: 0;
             opacity: 1;
-            transition: all 1.2s ease-in-out;
+            transition: all 2s ease-in-out;
             transition-timing-function: cubic-bezier(.12, 1.38, .44, .98);
         }
 
@@ -84,19 +104,23 @@ So not made with qulity code intentionally, just to test out if it works-->
         .fb {
               left: 0;
   right: 0;
+  bottom:100%;
             position: fixed;
             opacity: 0;
             width: 120px;
-            height: 140px;
-            background-color: #aaffbb99;
+            height: 110px;
+            background-color: #a7e3b3;
             border-radius: 50%;
             text-align: center;
-         margin: 5% auto; 
+
+         margin: 4% auto; 
+
             border: solid 9px #bfb;
-            font-size: 200%;
+            font-size: 170%;
             z-index: 200;
-            padding-top: 40px;
-            filter: drop-shadow(2px 2px 33px #ffeefa);
+            padding-top: 30px;
+            filter: drop-shadow(2px 2px 13px #ffeefa);
+            color:#a0c9a5;
         }
 
         .fbpow {
@@ -117,20 +141,20 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
               margin: 5% auto; 
             }
 
-            25% {
+            15% {
                 opacity: 1;
                 bottom: 66%;
                 transform: rotateZ(-3deg);
             }
 
-            50% {
+            30% {
                 opacity: 1;
                 bottom: 60%;
                 transform: rotateZ(4deg);
               
             }
 
-            80% {
+            60% {
                 opacity: 0.8;
                 bottom: 72%;
                 border: solid 1px #bfb;
@@ -194,17 +218,17 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         #timer {
             width: 2px;
             line-height: 0px;
-            border: solid 1px #eee;
+            border: solid 2px rgb(223, 247, 222, 0.3);
             margin-top: 2px;
             padding: 0;
             text-align: center;
-            border-radius: 8px;
+            border-radius: 4px;
             display: inline-block;
-            height: 32px;
+            height: 27px;
             background: #77ff88;
             transition: all 0.2s ease-in-out;
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* filter: drop-shadow(2px 1px 13px  #ff99ff); */
+            filter: drop-shadow(2px 0 15px  #2bff0066);
         }
 
         .progressbarboss {
@@ -265,13 +289,14 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             position: fixed;
             background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
-            padding: 3px 1px;
+            padding: 9px 1px;
             text-align: center;
             min-height:172px;
-                  max-height: 60%;
+            max-height: 60%;
         }
 
         #buttons {
+              width: 100%;
             border-radius: 6px;
             display: inline-block;
             bottom: 0;
@@ -279,9 +304,9 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             background-color: #7CAF80;
 
 
-            padding: 32px 4px;
+            padding: 32px 1px;
             max-width: 900px;
-                 max-height:50%;
+            max-height:50%;
             /* min-width */
             text-align: center;
             /* max-height: 420px; */
@@ -306,12 +331,12 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             border-radius: 8px;
             background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
 
-            min-width: 32%;
+  
             margin: 1px;
-            padding: 2px 2px;
-            height: 60px;
-            width:120px;
-            max-height: 80px;
+            padding: 2px 3px;
+            max-height: 60px;
+            width:32.5%;
+           
             min-height: 32px;
         }
 
@@ -354,7 +379,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             display: inline-block;
             margin-bottom: -1px;
             position: fixed;
-            left: 33%;
+            left: 43%;
             text-align: center;
         }
 
@@ -528,7 +553,7 @@ word-break: break-all;*/
             max-width: 430px;
             text-align: center;
             position: relative;
-            color: #656565;
+            color: #ffffff;
         }
 
         b {
@@ -677,7 +702,7 @@ word-break: break-all;*/
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
                 setTimeout(() => delement4.classList.remove('greenpow'), 500);
-                   document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
+                   document.documentElement.style.setProperty('--fbpowro', 4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
                 //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 arrayblaha++;
                 // should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
@@ -999,7 +1024,11 @@ word-break: break-all;*/
                 document.getElementById('score3').innerHTML = score;
             }
             document.getElementById('hiscore3').innerHTML = hiscore;
-            document.getElementById('scoreoverlay').classList.add('show');
+
+
+               setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
+//            document.getElementById('scoreoverlay').classList.add('show');
+
             //delement.classList.add("pewits");
         }
         function newround() { //startgame
