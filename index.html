@@ -18,20 +18,28 @@ So not made with qulity code intentionally, just to test out if it works-->
         }
 
         i3 {
+                text-shadow: 0 0 10px rgb(222, 204, 16), 0 0 20px rgb(198, 142, 0), 0 0 30px #ff8400, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
             text-align: center;
-            background-color: #fb5;
+            /* background-color: #fb5; */
+                        background-color: #fb5;
+
+background-color: #ff4e00;
+background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+
+
             padding: 3px;
             color: #ffd8ba;
             margin: 1px auto 1px auto;
             font-style: italic;
             display: block;
-            border: 2px solid #fed;
+            border: 8px solid #efefef99;
             font-size: 250%;
             width: 100%;
             padding: 8px;
+            /* height:50%; */
             /*white-space: nowrap;*/
             /*transition: all 0.5s;*/
-            transition: all 0.5s ease-in-out;
+            /* transition: all 0.5s ease-in-out; */
         }
 
         i3::before {
@@ -109,7 +117,7 @@ So not made with qulity code intentionally, just to test out if it works-->
         }
 
         .fbpow {
-            animation-duration: 1.2s;
+            animation-duration: 1.1s;
             animation-name: fbpow;
             /*   animation-iteration-count: 1;
             animation-direction: forward;*/
@@ -122,28 +130,29 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         @keyframes fbpow {
             0% {
                 bottom: 22%;
-                transform: rotateZ(10deg);
+                  transform: rotateZ(var(--fbpowro));
               margin: 5% auto; 
             }
 
             15% {
                 opacity: 1;
-                bottom: 66%;
-                transform: rotateZ(-3deg);
+                
+               
+               
             }
 
             30% {
                 opacity: 1;
-                bottom: 60%;
-                transform: rotateZ(4deg);
+                bottom: 50%;
+                 /* transform: rotateZ(var(--fbpowro-100)); */
               
             }
 
-            60% {
+            50% {
                 opacity: 0.8;
-                bottom: 72%;
+                bottom: 50%;
                 border: solid 1px #bfb;
-                transform: rotateZ(var(--fbpowro * -1));
+               transform: rotateZ(0deg);
              
             }
 
@@ -151,7 +160,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
                 opacity: 0;
                 bottom: 87%;
                 width: 50%;
-                transform: rotateZ(var(--fbpowro));
+               transform: rotateZ(4deg);
          
                 /* left: var(--fbpowoutho); */
             }
@@ -274,14 +283,15 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             position: fixed;
             background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
-            padding: 4px 2px 24px 2px;
+            padding: 4px 0 24px 0;
+            margin:-2px;
             text-align: center;
             min-height:172px;
             max-height: 60%;
         }
 
         #buttons {
-              width: 100%;
+            width: 100%;
             border-radius: 6px;
             display: inline-block;
             bottom: 0;
@@ -289,7 +299,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             background-color: #7CAF80;
 
 
-            padding: 1px 1px 12px 1px;
+            padding: 3px 0 12px 0;
             max-width: 900px;
             max-height:50%;
             /* min-width */
@@ -434,14 +444,16 @@ word-break: break-all;*/
             border: 2px solid #fed;
             /*white-space: nowrap;*/
             width: 50%;
+            min-height:120px;
+            height:30%;
             transition: all 0.5s ease-in-out;
             /*right:190px;*/
-            font-size: 120%;
+            font-size: 220%;
         }
 
         i2::before {
             content: '';
-            after: '  =?';
+            after: '';
         }
 
         gr {
@@ -451,7 +463,10 @@ word-break: break-all;*/
 
         whc {
             color: #fff;
-            font-size: 120%;
+            /* font-size: 120%; */
+ font-size: 220%;
+
+
         }
 
         .fo {
@@ -612,10 +627,13 @@ word-break: break-all;*/
     </div>
     <div class="fb" id="fb"></div>
     <script>
+
+        diff = 0;
         arrayblaha = 1;
         delement3 = [];
         // ⭐️⭐️⭐️⭐️
         var start, previousTimeStamp;
+var        timestamp;
         var counttime;
         var score = 0;
         var hiscore = 63;
@@ -691,8 +709,24 @@ word-break: break-all;*/
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
                 setTimeout(() => delement4.classList.remove('greenpow'), 500);
-                   document.documentElement.style.setProperty('--fbpowro', 4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
-                //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
+             //      document.documentElement.style.setProperty('--fbpowro', 6*4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
+             
+              let diffspin = elapsed - diff; 
+               diffspin = -1000*Math.abs(400/diffspin);
+             // if(diffspin < 1){ diffspin = 1;}
+               
+              
+
+console.log(diffspin);
+            // document.documentElement.style.setProperty('--fbpowro', 6 * 4 * 2 * Math.ceil(-33 + Math.random() * 60) + 'deg');
+             document.documentElement.style.setProperty('--fbpowro', diffspin + 'deg');
+               diff = elapsed;
+
+           
+          
+
+
+                   //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 arrayblaha++;
                 // should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
                 arrayblaha = arrayblaha % 3;
@@ -1039,7 +1073,8 @@ word-break: break-all;*/
                 if (start === undefined) {
                     start = timestamp;
                 }
-                const elapsed = timestamp - start;
+                //const 
+                elapsed = timestamp - start;
                 if (previousTimeStamp !== timestamp) {
                     // Math.min() is used here to make sure the element stops at exactly 200px
                     //counttime = Math.min(0.1 * elapsed, 0);
