@@ -41,9 +41,6 @@ So not made with qulity code intentionally, just to test out if it works-->
         i3::after {
             content: '';
         }
-
-
-
         .scoreoverlay {
             margin-top: 1900px;
             display: none;
@@ -69,21 +66,12 @@ So not made with qulity code intentionally, just to test out if it works-->
          @keyframes fadein {
             0% {
                opacity: 0;
-             
-              
-            }
-
-         
-
+   }
             100% {
                 opacity: 1;
-            
-              
-         
-                /* left: var(--fbpowoutho); */
+               /* left: var(--fbpowoutho); */
             }
         }
-
         .show {
             display: block;
             margin-top: 0;
@@ -92,7 +80,6 @@ So not made with qulity code intentionally, just to test out if it works-->
             transition: all 2s ease-in-out;
             transition-timing-function: cubic-bezier(.12, 1.38, .44, .98);
         }
-
         :root {
             /*	--delay: 5;
 	--elapsed: 20s;
@@ -103,8 +90,8 @@ So not made with qulity code intentionally, just to test out if it works-->
 
         .fb {
               left: 0;
-  right: 0;
-  bottom:100%;
+            right: 0;
+            bottom:100%;
             position: fixed;
             opacity: 0;
             width: 120px;
@@ -112,9 +99,7 @@ So not made with qulity code intentionally, just to test out if it works-->
             background-color: #a7e3b3;
             border-radius: 50%;
             text-align: center;
-
-         margin: 4% auto; 
-
+            margin: 4% auto; 
             border: solid 9px #bfb;
             font-size: 170%;
             z-index: 200;
@@ -289,7 +274,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             position: fixed;
             background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
-            padding: 12px 2px;
+            padding: 4px 2px 24px 2px;
             text-align: center;
             min-height:172px;
             max-height: 60%;
@@ -304,7 +289,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             background-color: #7CAF80;
 
 
-            padding: 32px 2px;
+            padding: 1px 1px 12px 1px;
             max-width: 900px;
             max-height:50%;
             /* min-width */
@@ -331,9 +316,9 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             border-radius: 6px;
             background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
 
-  
+
             margin: 0;
-            padding: 8px 5px;
+            padding: 10px 5px;
             max-height: 60px;
             width:32.5%;
             height:24.2%;
@@ -589,10 +574,8 @@ word-break: break-all;*/
 <body>
     <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> 
     <!-- onkeyup="check();" autofocus tabindex="1" --> 
-        <span id="answer2"></span>
-
-            <input type="hidden" value="" id="eval" />
-
+    <span id="answer2"></span>
+    <input type="hidden" value="" id="eval" />
     <div id="scoreoverlay" class="scoreoverlay">
         <div>🏹</div>
         <div class="wrapper">
