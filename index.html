@@ -4,23 +4,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title> 1000 Decimals of Pi • MATH GAME v0.05a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
-<!-- 😀 Coded on a Mobile FastSpaghetti Prototype 
+    <!-- 😀 Coded on a Mobile FastSpaghetti Prototype 
 So not made with qulity code intentionally, just to test out if it works-->
-<style>
-#answer {
-position: fixed;
-opacity: 0.9;
-left:45%;
-outline: none;
-border:none;
-background-color: none;
-background: none;
+    <style>
+        #answer {
+            position: fixed;
+            opacity: 0.9;
+            left: 45%;
+            outline: none;
+            border: none;
+            background-color: none;
+            background: none;
+        }
 
-
-}
-        
-
-i3 {
+        i3 {
             text-align: center;
             background-color: #fb5;
             padding: 3px;
@@ -45,21 +42,16 @@ i3 {
             content: '';
         }
 
-
-
-.buttonswrapper{
-    width:100%;
-
-
-       bottom: 0;
+        .buttonswrapper {
+            width: 100%;
+            bottom: 0;
             position: fixed;
-            background: radial-gradient(circle at 30% 60%, #4CAF5055, #5bcF6055 50%);
-
+            background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
-            padding: 8px 2px;
+            padding: 3px 2px;
+            text-align: center;
+        }
 
-  text-align: center;
-}
         .scoreoverlay {
             margin-top: 1900px;
             display: none;
@@ -98,16 +90,16 @@ i3 {
         }
 
         .fb {
-
+              left: 0;
+  right: 0;
             position: fixed;
             opacity: 0;
             width: 120px;
             height: 140px;
-
             background-color: #aaffbb99;
             border-radius: 50%;
             text-align: center;
-            left: 23%;
+         margin: 5% auto; 
             border: solid 9px #bfb;
             font-size: 200%;
             z-index: 200;
@@ -118,19 +110,21 @@ i3 {
         .fbpow {
             animation-duration: 1.2s;
             animation-name: fbpow;
-         /*   animation-iteration-count: 1;
+            /*   animation-iteration-count: 1;
             animation-direction: forward;*/
             /*
 animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
 */
-z-index: 200;
-  }
+            z-index: 200;
+        }
+
         @keyframes fbpow {
             0% {
-                bottom: 42%;
+                bottom: 22%;
                 transform: rotateZ(10deg);
-                left: 23%;
+              margin: 5% auto; 
             }
+
             25% {
                 opacity: 1;
                 bottom: 66%;
@@ -138,29 +132,29 @@ z-index: 200;
             }
 
             50% {
-                opacity: 0.4;
+                opacity: 1;
                 bottom: 60%;
                 transform: rotateZ(4deg);
-                left:23%;
+              
             }
 
             80% {
-                opacity: 0.3;
+                opacity: 0.8;
                 bottom: 72%;
                 border: solid 1px #bfb;
-                transform: rotateZ(-2deg);
-             /*   left: var(--fbpowoutho); */
+                transform: rotateZ(var(--fbpowro * -1));
+             
             }
+
             100% {
                 opacity: 0;
                 bottom: 87%;
                 width: 60%;
-                /*transform: rotateZ(var(--fbpowro));*/
-                left:10%;
-/*left: var(--fbpowoutho);*/
+                transform: rotateZ(var(--fbpowro));
+         
+                /* left: var(--fbpowoutho); */
             }
         }
-
 
         .score {
             position: absolute;
@@ -185,7 +179,6 @@ z-index: 200;
             top: 0;
             right: 0;
             padding-top: 5px;
-
         }
 
         #scoring {
@@ -212,7 +205,6 @@ z-index: 200;
             border: solid 1px #eee;
             margin-top: 2px;
             padding: 0;
-
             text-align: center;
             border-radius: 8px;
             display: inline-block;
@@ -221,7 +213,6 @@ z-index: 200;
             transition: all 0.2s ease-in-out;
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             /* filter: drop-shadow(2px 1px 13px  #ff99ff); */
-
         }
 
         .progressbarboss {
@@ -233,9 +224,7 @@ z-index: 200;
   z-index:2;*/
         }
 
-
         .progressbar {
-
             width: 100%;
             margin: -3px auto;
             padding: 0;
@@ -263,8 +252,6 @@ z-index: 200;
             /* We want a linear animation, ease-out is standard */
             animation-timing-function: linear;
             /*animation-delay: var(--delay);*/
-
-
         }
 
         @keyframes progressbar-countdown {
@@ -277,21 +264,18 @@ z-index: 200;
                 width: 0%;
                 background: #F69;
             }
-
         }
 
         #buttons {
-            border-radius: 16px;
-        display: inline-block;
+            border-radius: 6px;
+            display: inline-block;
             bottom: 0;
-          
-            background: radial-gradient(circle at 30% 60%, #4CAF5055, #5bcF6055 50%);
-
+            background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
             background-color: #7CAF80;
             padding: 1px 2px;
-max-width:440px;
-  text-align: center;
-  max-height:520px;
+            max-width: 480px;
+            text-align: center;
+            max-height: 520px;
         }
 
         html,
@@ -311,15 +295,12 @@ max-width:440px;
             /* Firefox */
             -ms-user-select: none;
             /* Internet Explorer/Edge */
-
         }
 
         button {
-            cursor:pointer;
+            cursor: pointer;
             filter: drop-shadow(0 0 8px #94af84);
-            margin: 2px;
-           
-           
+            margin: 1px;
             background-color: #4CAF50;
             /* Green */
             border: none;
@@ -331,11 +312,10 @@ max-width:440px;
             font-size: 16px;
             min-width: 31%;
             font-size: 2rem;
-            border: 3px solid #77dd9977;
-            border-radius: 12px;
+            border: 2px solid #77dd9977;
+            border-radius: 8px;
             background: radial-gradient(circle at 60% 30%, #66cc66, #44aa55 90%);
-
-  max-height:130px;
+            max-height: 130px;
         }
 
         input[type=number]::-webkit-inner-spin-button,
@@ -347,7 +327,7 @@ max-width:440px;
         toptext,
         h1 {
             font-size: 1rem;
-           /* line-height: 3.5rem;*/
+            /* line-height: 3.5rem;*/
             color: #fefafa;
             font-family: arial;
             white-space: pre;
@@ -356,8 +336,8 @@ max-width:440px;
             display: inline-block;
             margin-bottom: -1px;
             position: fixed;
-            left:33%;
-text-align: center; 
+            left: 33%;
+            text-align: center;
         }
 
         toptext b {
@@ -402,8 +382,6 @@ word-break: break-all;*/
 
         article {}
 
-        
-
         i2 {
             background-color: #fae2d9;
             border-radius: 50%;
@@ -412,7 +390,6 @@ word-break: break-all;*/
             margin: 2px 4px;
             display: inline-block;
             z-index: -1;
-
             border: 2px solid #fed;
             /*white-space: nowrap;*/
             width: 50%;
@@ -441,12 +418,11 @@ word-break: break-all;*/
             /*margin: 0 -20px 50px -10px;*/
             /* transform: rotateZ(10deg);
 	*/
-       /*     transition: all 0.5s ease-in-out;*/
+            /*     transition: all 0.5s ease-in-out;*/
         }
 
         .fi {
             opacity: 1;
-
             margin: 1px;
             padding: 0;
             /*	transform: rotateZ(-1deg);
@@ -454,17 +430,17 @@ word-break: break-all;*/
 	display:block;
 	animation-duration: 1.1s;
 	*/
-           /* animation-name: slidein;
+            /* animation-name: slidein;
             animation-iteration-count: infinite;
             animation-direction: alternate;
 */
         }
-/*
+
+        /*
         @keyframes slidein {
             80% {
                 filter: hue-rotate(20deg);
             }
-
             100% {
                 filter: hue-rotate(0deg);
             }
@@ -488,18 +464,17 @@ word-break: break-all;*/
         .greenpow {
             animation-duration: 0.8s;
             animation-name: greenpowani;
-
         }
 
         @keyframes greenpowani {
             0% {
                 filter: hue-rotate(50deg);
             }
+
             100% {
                 filter: hue-rotate(0deg);
             }
         }
-
 
         body::before {
             top: 0;
@@ -507,26 +482,25 @@ word-break: break-all;*/
             margin: 0;
             padding: 0;
             content: "";
-position: absolute;
+            position: absolute;
             width: 100%;
             height: 100%;
             z-index: -1;
             background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%);
         }
 
-
         .scorebar {
             display: inline-block;
             margin-top: 1px;
             margin-bottom: 6px;
             font-weight: normal;
-            font-size: 70%;
-            letter-spacing: 1px;
+            font-size: 80%;
+            letter-spacing: 2px;
             /*transition: all 2s;*/
-            max-width: 380px;
+            max-width: 430px;
             text-align: center;
             position: relative;
-            color:#d4afc499;
+            color: #656565;
         }
 
         b {
@@ -538,10 +512,9 @@ position: absolute;
         .ang,
         i2,
         #answer {
-      /*      transition: all 0.5s ease-in-out;
+            /*      transition: all 0.5s ease-in-out;
      */
-   }
-
+        }
 
         #scoring {
             background-color: #fafafa99;
@@ -556,8 +529,13 @@ position: absolute;
 </head>
 
 <body>
-    <div id="scoreoverlay" class="scoreoverlay">
+    <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> 
+    <!-- onkeyup="check();" autofocus tabindex="1" --> 
+        <span id="answer2"></span>
 
+            <input type="hidden" value="" id="eval" />
+
+    <div id="scoreoverlay" class="scoreoverlay">
         <div>🏹</div>
         <div class="wrapper">
             <spansmall>1000 Decimals of Pi !<br />
@@ -574,31 +552,24 @@ position: absolute;
         <br />
         <button onclick="newround()">GO⚡️</button>
     </div>
-
-
     <toptext>
         <h1>MATH</h1>
     </toptext>
-
     <div class="scorebar">
         <span class=score>SCORE
             <b id="score"></b> </span>
-
         <span class=hiscore>
             HISCORE <b id="hiscore"></b>
         </span>
     </div>
-   
     <div class="progressbarboss">
         <div id='timer'></div>
     </div>
     <div class="buttonswrapper">
-    <div id="buttons">
+        <div id="buttons">
+        </div>
     </div>
-</div>
-
-<div class="fb" id="fb"></div>
-
+    <div class="fb" id="fb"></div>
     <script>
         arrayblaha = 1;
         delement3 = [];
@@ -607,20 +578,14 @@ position: absolute;
         var counttime;
         var score = 0;
         var hiscore = 63;
-
         var maxcountime = 390;
-
         var pluscount = 103;
         var speedish = 0.055;
         var speedincrease = 0.000021;
-
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
-
-
         document.getElementById('score3').innerHTML = score;
         document.getElementById('hiscore3').innerHTML = hiscore;
-
         /*
         var globalprogress;
         
@@ -639,7 +604,6 @@ position: absolute;
         }
         */
         //addEventListener('load', function() {
-
         /*
         createProgressbar('progressbar1', '20s', function() {
       alert("GAME OVER • YOUR SCORE " + score);
@@ -656,21 +620,16 @@ position: absolute;
         /*
         createProgressbar('progressbar2', '19s');createProgressbar('progressbar3', '17s');createProgressbar('progressbar4', '15s');*/
         //});
-
-
-
         function check() {
-           // window.setTimeout(document.getElementById('answer').focus(), 20);
-          //  document.getElementById('answer').focus();
+            // window.setTimeout(document.getElementById('answer').focus(), 20);
+            //  document.getElementById('answer').focus();
             answered = document.getElementById('answer').value;
             if (answered == document.getElementById('eval').value) {
                 //if(0){
-
                 //score ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
                 next();
                 score++;
                 //sound.rate(0.99+Math.random()*0.01);
-
                 soundx = sound.clone();
                 soundx.attack = 0.6;
                 soundx.volume = 0.4;
@@ -679,12 +638,8 @@ position: absolute;
                 //soundx.rate = 2;
                 //440 + Math.ceil( 10* Math.random()); // a5
                 soundx.play(0, 0);
-
-
-
                 //globalprogress.style.animationDuration =  "16s";
                 //globalprogress.style.animationDuration
-
                 //document.documentElement.style.getProperty('--elapsed');
                 //document.documentElement.style.setProperty('--elapsed', 10+'s');
                 if (hiscore < score) {
@@ -694,94 +649,161 @@ position: absolute;
                 document.getElementById('hiscore').innerHTML = hiscore;
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
-
                 setTimeout(() => delement4.classList.remove('greenpow'), 500);
-            //    document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
-             //   document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
-                
+                   document.documentElement.style.setProperty('--fbpowro', Math.ceil(-20 + Math.random() * 40) + 'deg');
+                //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 arrayblaha++;
-
-// should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
-arrayblaha = arrayblaha%3;
-
+                // should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
+                arrayblaha = arrayblaha % 3;
                 console.log(arrayblaha);
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
-//              body.innerHTML += [arrayblaha];
+                //              body.innerHTML += [arrayblaha];
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
+                //              delement3.innerHTML +=
+                delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀"; // 🏆🏅
 
 
-//              delement3.innerHTML +=
-                delement3[arrayblaha].innerHTML = "⭐️"+answered+"😀"; // 🏆🏅
                 delement3[arrayblaha].classList.add("fbpow");
-
                 // setTimeout(() => delement3[arrayblaha].classList.remove('fbpow'), 3000);
-                setTimeout(() => delement3[arrayblaha].remove(), 1799)
 
+
+
+
+//                LOTS OF ELEMENTS IF NOT DELETED?
+                //setTimeout(() => delement3[arrayblaha].remove(), 1799);
+                delement3.forEach(function(el) {
+                         el.addEventListener("animationend", function () { el.remove(); }, false);
+
+                });
+         
 
                 counttime = counttime + pluscount;
-
                 speedish += speedincrease;
-
-            } else {
-                delement2 = document.getElementById('buttons');
-                delement2.classList.add("redpow");
-
-                setTimeout(() => delement2.classList.remove('redpow'), 500)
 
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
 
+            } else {
+
+                delement2 = document.getElementById('buttons');
+                delement2.classList.add("redpow");
+                setTimeout(() => delement2.classList.remove('redpow'), 500);
+
+                document.getElementById('answer').value = '';
+                document.getElementById('answer2').innerHTML = '';
                 //WRONG ! :)
                 //document.getElementById('answer').value = ''; // ALSO MADE AUTOCHEck FOR FASTER action :)
                 //document.getElementById('answer2').innerHTML = '';
             }
-
         }
-
         function makebuttons() {
             var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
             arry.forEach(iok => {
                 // operation
-
                 document.getElementById('buttons').innerHTML += "<button class='numkey' value='" + iok + "'>" + iok + "</button>";
                 if (iok == 9)
                     document.getElementById('buttons').innerHTML += "<button class='numkey' value='clear'>❌</button>";
-
                 if (iok == 0)
                     document.getElementById('buttons').innerHTML += "<button id='check' value=''>⚡️</button>";
             });
             var elements = document.getElementsByClassName("numkey");
-
             var myFunction = function () {
                 var attribute = this.getAttribute("value");
-
                 //alert(attribute);
                 if (attribute == "clear") {
-                    document.getElementById('answer').value = ''; 
+                    document.getElementById('answer').value = '';
                     document.getElementById('answer2').innerHTML = '';
                 } else {
+                    // once there was multiple sequences of numbers here... but stripped that for more action
                     document.getElementById('answer').value += attribute;
                     document.getElementById('answer2').innerHTML += attribute;
                     check(); // AUTOCHEck :)
-
-                    
                 }
             }
-
             for (var i = 0; i < elements.length; i++) {
                 //click waits till released
                 /*elements[i].on('touchstart mousedown', function(e) {
                e.preventDefault();
                myFunction();
            });*/
-
-
-                elements[i].addEventListener("mousedown"||"touchstart" , myFunction, false);
-
-                document.getElementById('check').addEventListener("mousedown"||"touchstart", check, false);
+                elements[i].addEventListener("mousedown" || "touchstart", myFunction, false);
+                document.getElementById('check').addEventListener("mousedown" || "touchstart", check, false);
                 //}
             }
+
+
+
+
+
+// Hey logic here... should only be active in some cases when game has started.. 
+             window.addEventListener("keydown", function (event) {
+                if (event.defaultPrevented) {
+                    return; // Do nothing if the event was already processed
+                }
+
+                 // gamenotstarted... start
+                 if (start === undefined) {
+                     newround();
+                    // break;
+                 }
+                 document.getElementById('answer').value += event.key;
+                 document.getElementById('answer2').innerHTML += event.key;
+                //  document.getElementById('answer').value += event.key;
+                //  document.getElementById('answer2').innerHTML += event.key;
+                 check(); // AUTOCHEck :)
+
+                 return ; // hmm breaks... contiunes
+
+
+                switch (event.key) {
+
+
+                   
+
+                    case "1": // IE/Edge specific value
+                    case "1":
+                        // Do something for "down arrow" key press.
+                 /*
+                       document.getElementById('answer').value += 1;
+                        document.getElementById('answer2').innerHTML += 1;
+                        check(); // AUTOCHEck :)
+                        break;
+*/
+
+
+                    case "Down": // IE/Edge specific value
+                    case "ArrowDown":
+                        // Do something for "down arrow" key press.
+                        break;
+                    case "Up": // IE/Edge specific value
+                    case "ArrowUp":
+                        // Do something for "up arrow" key press.
+                        break;
+                    case "Left": // IE/Edge specific value
+                    case "ArrowLeft":
+                        // Do something for "left arrow" key press.
+                        break;
+                    case "Right": // IE/Edge specific value
+                    case "ArrowRight":
+                        // Do something for "right arrow" key press.
+                        break;
+                    case "Enter":
+                        // Do something for "enter" or "return" key press.
+                        break;
+                    case "Esc": // IE/Edge specific value
+                    case "Escape":
+                        // Do something for "esc" key press.
+                        break;
+                    default:
+                        return; // Quit when this doesn't handle the key event.
+                }
+
+                // Cancel the default action to avoid it being handled twice
+                event.preventDefault();
+            }, true);
+            
+
+           
 
         }
         const dl = () => {
@@ -796,31 +818,41 @@ arrayblaha = arrayblaha%3;
                 return error;
                 //console.error(error);
             }
-
         }
         const v = (a) => {
-            setTimeout(() => {
+            // setTimeout(() => {
+            //     d = document.createElement("div");
+            //     d.classList.add("fo");
+            //     d.innerHTML = ('<div class="ang"><i3 id="' + w + 'b"><whc>' + a + '</whc></i3></div>');
+            //     document.body.append(d);
+            //     setTimeout(() => d.classList.add("fi"), 1)
+            // }, 1 + w % 6);
+
+
+          
                 d = document.createElement("div");
                 d.classList.add("fo");
                 d.innerHTML = ('<div class="ang"><i3 id="' + w + 'b"><whc>' + a + '</whc></i3></div>');
-
-
                 document.body.append(d);
-                setTimeout(() => d.classList.add("fi"), 1)
-            }, 1 + w % 6);
+                d.classList.add("fi");
+     
 
-            setTimeout(() => {
 
+
+         
                 d = document.createElement("div");
                 d.classList.add("fo");
 
-                d.innerHTML = (`<span id="answer2"></span>
-<input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" onkeyup="check();" autofocus tabindex="1" />
-<input type="hidden" value="`+ evalQ(a) + `" id="eval" />`);
-                document.body.append(d);
-                setTimeout(() => d.classList.add("fi"), 1)
-            }, 120 + w % 6);
 
+                d.innerHTML = (``);
+
+                document.getElementById('eval').value = (evalQ(a));
+
+           
+
+                document.body.append(d);
+              d.classList.add("fi");
+       
             w++;
         }
         //if ar === undefined
@@ -828,9 +860,7 @@ arrayblaha = arrayblaha%3;
         function c(po) {
             ar.push(po);
         }
-
         //v(ar.shift());	
-
         /*
         document.body.addEventListener('click', function(e){
         e.preventDefault();
@@ -838,24 +868,18 @@ arrayblaha = arrayblaha%3;
         */
         function next() {
             //alert("next");
-
             if (w % 1 == 0) {
                 Array.from(document.getElementsByClassName("fo")).map(el => {
                     //alert('done');
                     //el.classList.remove('fi');
                     //el.classList.add('fo')
-
                     //el.style.height = "22px";
                     el.style.marginTop = "-30px";
                     el.style.opacity = "0";
-                    setTimeout(() => el.remove(), 0)
+                  el.remove();
                 });
-
                 //return null; 
-
             }
-
-
             if (ar.length > 0) {
                 v(ar.shift())
                 /*
@@ -875,9 +899,7 @@ arrayblaha = arrayblaha%3;
         }
         /*, false)
         */
-
         document.addEventListener("DOMContentLoaded", dl);
-
         window.addEventListener('touchmove' || 'touchdowm' || 'touchend' || 'mousedown', ev => {
             //
             if (1) {
@@ -885,22 +907,16 @@ arrayblaha = arrayblaha%3;
                 ev.stopImmediatePropagation();
             };
         }, { passive: false });
-
-
-
         const reset = () => {
             elapsed = 0;
             start = undefined;
-
             ar = [];
             score = 0;
             document.getElementById('score').innerHTML = score;
             counttime = 300;
             counttime2 = 100;
             w = 0;
-
             //c(`4+4`);
-
             //c("7*2"); //
             /*	c("1+2"); //
                 c("2+2"); //
@@ -920,7 +936,6 @@ arrayblaha = arrayblaha%3;
                 c("7+2"); //
                 c("5+2"); //
                 */
-
             /*string = ""+Math.PI;
             string = string.substring(2,28);
             string += string*3;
@@ -932,15 +947,11 @@ arrayblaha = arrayblaha%3;
             	
                op++;
             }*/
-
-
             string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
             string = string.replace(/\D/g, '');
             op = 0;
             while (op < 1000) {
-
                 //	c(Math.ceil(op*0.1) +'+'+string[op]);
-
                 mathie = string[op++] + "+" + string[op];
                 if (eval(mathie) > 9) {
                     mathie = string[--op] + '-' + string[++op];
@@ -948,137 +959,87 @@ arrayblaha = arrayblaha%3;
                 if (eval(mathie) < 0) {
                     mathie = string[--op];
                 }
-
                 //	c(Math.ceil(op*0.1)>
-
                 c(mathie);
-
                 op++;
             }
-
-
             v(ar.shift());
-
-
             ////// HÄÄÄÄR
-
             startscreen();
-
-
-
         }
         function startscreen() {
-
             if (score > 0) {
                 document.getElementById('score3').innerHTML = score;
             }
-
             document.getElementById('hiscore3').innerHTML = hiscore;
-
             document.getElementById('scoreoverlay').classList.add('show');
-
             //delement.classList.add("pewits");
-
-
         }
-        function newround() {
+        function newround() { //startgame
+            
             Array.from(document.getElementsByClassName("fo")).map(el => {
                 el.classList.remove('fi');
                 setTimeout(() => el.remove(), 380)
             });
-
-
             delement = document.getElementById('scoreoverlay');
             //delement.classList.add("powit2");
-
             setTimeout(() => delement.classList.remove('show'), 280);
-
-
-
             //}
             reset();
-
-
             //var element = document.getElementById('progressbar2');
-
-
-
-
             function step(timestamp) {
                 // 😀⭐️😀 gameloop
                 if (start === undefined) {
                     start = timestamp;
                 }
                 const elapsed = timestamp - start;
-
                 if (previousTimeStamp !== timestamp) {
                     // Math.min() is used here to make sure the element stops at exactly 200px
                     //counttime = Math.min(0.1 * elapsed, 0);
-
                     //counttime2 = Math.min(0.1 * elapsed, 0);
-
                     //counttime2 = 300-Math.min(0.1 * elapsed, 0);
                     counttime2 = counttime - Math.ceil(speedish * elapsed);
-
                     if (counttime2 > maxcountime) {
                         counttime = counttime - 10;
-
                         counttime2 = maxcountime;
                     }
-
                     //counttime--;
                     //element.style.transform = 'translateX(' + count + 'px)';
                     element = document.getElementById('timer');
-
                     element.style.width = counttime2 + 'px';
                     element.style.backgroundColor = colortohex(120 + counttime2 % 5, 190 + Math.ceil(counttime2 / 2) % 65, 120 + Math.ceil(counttime2 / 3) % 45);
-
                     //element.innerHTML = counttime2 +" "+elapsed;
                 }
-
                 //if (elapsed <200000) { // Stop the animation after 2 seconds
                 //alert("done");
                 if (counttime2 > 1) { // SHOULD BE TRUE TO ANIMATE
                     previousTimeStamp = timestamp
                     window.requestAnimationFrame(step);
                 } else {
-
+                    reset();
                     startscreen();
                 }
             }
-
             window.requestAnimationFrame(step);
-
-
-
-
-
-
         }
-
         function colortohex(red, green, blue) {
-
             return '#' + red.toString(16) +
-            green.toString(16) +
+                green.toString(16) +
                 blue.toString(16);
         }
-
-
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
     <script>
-    
-        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function() {
-// Sound loaded!
-	//sound.play();
-});
+        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
+            // Sound loaded!
+            //sound.play();
+        });
         var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.66,
-            time: 0.5,
-            mix: 0.5,
+            feedback: 0.42,
+            time: 0.84,
+            mix: 0.42,
             cutoff: 900
         });
-
         sound.addEffect(dubDelay);
 //sound.play();
     </script>
