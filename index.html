@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -131,8 +130,11 @@ So intentionally not made with quality code, just to test out if it works -->
             /*   animation-iteration-count: 1;
             animation-direction: forward;*/
 
-            animation-timing-function: cubic-bezier(0.3, 0.1, 0.3, 1.2);
+            /* animation-timing-function: cubic-bezier(0.3, 0.1, 0.3, 1.2); */
+    /* transition-timing-function: cubic-bezier(0.1, -0.19, -0.3, 1.3); */
 
+    /* animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    animation-timing-function: cubic-bezier(-0.175, 0.885, 0.32, -0.275);
             z-index: 200;
         }
 
@@ -146,7 +148,7 @@ So intentionally not made with quality code, just to test out if it works -->
 
 
             50% {
-                opacity: 0.9;
+                opacity: 1;
                 bottom: 70%;
                 border: solid 1px #bfb;
                 transform: rotateZ(-2deg);
@@ -216,10 +218,10 @@ So intentionally not made with quality code, just to test out if it works -->
             text-align: center;
             border-radius: 8px;
             display: inline-block;
-            height: 27px;
+            height: 32px;
             background: #77ff88;
             transition: all 0.8s ease-in-out;
-            transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1.3);
             filter: drop-shadow(2px 0 15px #2bff0066);
         }
 
@@ -1221,7 +1223,9 @@ word-break: break-all;*/
                     //element.style.transform = 'translateX(' + count + 'px)';
                     element = document.getElementById('timer');
                     element.style.width = counttime2 + 'px';
-                    element.style.backgroundColor = colortohex(50 + counttime2 % 5, 170 + Math.ceil(counttime2 / 2) % 65, 30 + Math.ceil(counttime2 / 3) % 45);
+                    // element.style.backgroundColor = colortohex(50 + counttime2 % 5, 170 + Math.ceil(counttime2 / 2) % 65, 30 + Math.ceil(counttime2 / 3) % 45);
+                    element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
+                    
                     //element.innerHTML = counttime2 +" "+elapsed;
                 }
                 //if (elapsed <200000) { // Stop the animation after 2 seconds
