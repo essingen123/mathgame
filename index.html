@@ -7,15 +7,68 @@
     <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <style>
-        #answer {
-            position: absolute;
-            opacity: .9;
-            left: 45%;
-            outline: none;
+        #score2{
+text-align: center;
+display: inline-block;
+max-width: 100%;
+white-space: pre-wrap;
+word-break: break-all;
+/* word-wrap: break-word; */
+
+        }
+             * {
+            box-sizing: border-box
+        }
+
+        .hint {
+            position: fixed;
+            opacity: 0;
+            /* left: 45%; */
+            margin: 1px auto;
+            left:0;
+            right:0;
+            top:50px;
+            width:240px;
+            height:120px;
+            /* padding:20%; */
+            /* outline: none;
             border: none;
             background-color: none;
-            background: none
+            background: none; */
+background-color: #fff;
+color:#fb5;
+display: inline-block;
+    font-weight: bold;
+            font-style: italic;
+       animation-name: fadeout;
+            animation-duration: 2.2s;
+            z-index:399;
+            font-size: 500%;
+            border-radius: 50%;
+            border: 9px solid #acd3ac55;
         }
+
+        @keyframes fadeout {
+            0% {
+                opacity: 0.5;
+                top: 60px
+            }
+ 10% {
+                opacity: 1;
+                top: 100px
+            }
+             40% {
+                opacity: 0.8;
+                top: 80px
+            }
+            100% {
+                opacity: 0;
+                top: 50px
+            }
+        }
+
+
+
 
         i3 {
             text-shadow: 0 0 10px rgb(222, 204, 16), 0 0 20px rgb(198, 142, 0), 0 0 30px #ff8400, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
@@ -359,10 +412,7 @@
             padding: 0
         }
 
-        * {
-            box-sizing: border-box
-        }
-
+   
         i2 {
             background-color: #fae2d9;
             border-radius: 50%;
@@ -527,6 +577,8 @@
 </head>
 
 <body>
+    <!-- <div class="hint"></div> -->
+
     <div id="gamediv">
     <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> <span id="answer2"></span> <input
         type="hidden" value="" id="eval" />
@@ -549,6 +601,10 @@
     <div class="progressbarboss">
         <div id='timer'></div>
     </div>
+
+    <div id="score2"></div>
+
+
     <div class="buttonswrapper">
         <div id="buttons"> </div>
     </div>
@@ -564,12 +620,12 @@
         arrayblaha = 1;
         delement3 = [];
         var start, previousTimeStamp, timestamp, counttime;
-        var score = 0;
+        var score = 0; // starting score
         var hiscore = 63;
-        var maxcountime = 390;
-        var pluscount = 103;
-        var speedish = 0.055;
-        var speedincrease = 0.000021;
+        var maxcountime = 390; // max time left in..  pixels ;-D
+        var pluscount = 103; //how much extra time per right answer 
+        var speedish = 0.045; // starting speed
+        var speedincrease = 0.000021; //may rather be in blocks of levels or per question
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
         
@@ -586,6 +642,9 @@
                 });
                 next();
                 score++;
+
+                document.getElementById('score2').innerHTML += "⭐️";
+
                 soundx = sound.clone();
                 soundx.attack = 0.6;
                 soundx.volume = 0.4;
@@ -662,6 +721,7 @@
                 if (attribute == "clear") {
                     document.getElementById('answer').value = '';
                     document.getElementById('answer2').innerHTML = '';
+                    next();
                 } else {
                     document.getElementById('answer').value += attribute;
                     document.getElementById('answer2').innerHTML += attribute;
@@ -671,7 +731,25 @@
             for (var i = 0; i < elements.length; i++) {
                 elements[i].addEventListener(eventtyper, myFunction, false);
             }
-            document.getElementById('check').addEventListener(eventtyper, check, false);
+
+            // hint the right answer :)
+              var hint = function () {
+              //  var attribute = this.getAttribute("value");
+          
+                
+             d = document.createElement("div");
+                  d.classList.add("hint");
+                  d.setAttribute("id", "hint");
+                  d.innerHTML = (document.getElementById('eval').value);
+             document.body.append(d);
+            
+                
+
+
+            }
+            document.getElementById('check').addEventListener(eventtyper, hint, false);
+
+
             window.addEventListener("keydown", function (event) {
                 if (event.defaultPrevented) {
                     return;
@@ -740,7 +818,7 @@
             counttime2 = 100;
             w = 0;
             string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
-            string = string.replace(/\D/g, '');
+            string = string.replace(/\D/g, ''); // strip whitespaces, should've been done in string indata instead .. just lazy
             op = 0;
             while (op < 1000) {
                 mathie = string[op++] + "+" + string[op];
@@ -754,7 +832,7 @@
                 op++;
             }
             v(ar.shift());
-            startscreen();
+            startscreen(); // pink startscreen overlay
         }
 
         function startscreen() {
