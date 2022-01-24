@@ -660,20 +660,22 @@
                 next();
                 score++;
 
-                if (score % 10 === 9) {
+                if (score % 10 === 0) {
                     document.getElementById('score2').innerHTML = "";
                    scorez = score;
-                    for (let i = 0; i < Math.floor(score / 99); i++) {
+                    for (let i = 0; i < Math.floor(score / 100); i++) {
                         document.getElementById('score2').innerHTML += "🔮";
-                        scorez = scorez -99; // buggy   to fix
+                        scorez = scorez -100; // buggy  time to fix
                     }
 // console.log(scorez);
                     for (let i = 0; i < Math.floor(scorez / 10); i++) {
                         document.getElementById('score2').innerHTML += "💎";
                     }
-                    document.getElementById('score2').innerHTML += "<br/>";
+                    document.getElementById('score2').innerHTML += "<br />";
+                } else {
+                    document.getElementById('score2').innerHTML += "⭐️";
                 }
-                document.getElementById('score2').innerHTML += "⭐️";
+                
 
                 soundx = sound.clone();
                 soundx.attack = 0.6;
