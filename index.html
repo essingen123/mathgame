@@ -663,12 +663,12 @@
                 if (score % 10 === 9) {
                     document.getElementById('score2').innerHTML = "";
                    scorez = score;
-                    for (let i = 0; i < Math.round(score / 100); i++) {
+                    for (let i = 0; i < Math.floor(score / 99); i++) {
                         document.getElementById('score2').innerHTML += "🔮";
-                        scorez = scorez -100;
+                        scorez = scorez -99; // buggy   to fix
                     }
-
-                    for (let i = 0; i < Math.round(scorez / 10); i++) {
+// console.log(scorez);
+                    for (let i = 0; i < Math.floor(scorez / 10); i++) {
                         document.getElementById('score2').innerHTML += "💎";
                     }
                     document.getElementById('score2').innerHTML += "<br/>";
@@ -885,7 +885,7 @@
         }
 
         function newround() {
-            score = 0;
+            score =95;
             document.getElementById('score2').innerHTML = "😀<br />";
 
 
