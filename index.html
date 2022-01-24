@@ -3,10 +3,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <meta name="apple-mobile-web-app-capable" content="yes">
- <title> 1000 Decimals of Pi • MATH GAME v0.05a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
-    <!-- 😀 Coded on a Mobile FastSpaghetti Prototype 
-So not made with qulity code intentionally, just to test out if it works-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title> 1000 Decimals of Pi • MATH GAME v0.05a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+    <!-- 😀 Coded mostly on a Mobile, Fast Prototype . 
+So intentionally not made with quality code, just to test out if it works -->
     <style>
         #answer {
             position: fixed;
@@ -19,13 +19,13 @@ So not made with qulity code intentionally, just to test out if it works-->
         }
 
         i3 {
-                text-shadow: 0 0 10px rgb(222, 204, 16), 0 0 20px rgb(198, 142, 0), 0 0 30px #ff8400, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
+            text-shadow: 0 0 10px rgb(222, 204, 16), 0 0 20px rgb(198, 142, 0), 0 0 30px #ff8400, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
             text-align: center;
             /* background-color: #fb5; */
-                        background-color: #fb5;
+            background-color: #fb5;
 
-background-color: #ff4e00;
-background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+            background-color: #ff4e00;
+            background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 
 
             padding: 3px;
@@ -50,6 +50,7 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
         i3::after {
             content: '';
         }
+
         .scoreoverlay {
             margin-top: 1900px;
             display: none;
@@ -69,18 +70,22 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
             /* transition: all 2s ease-in-out; */
             border-radius: 30px;
             animation-name: fadein;
-            animation-duration: 1s;
+            animation-duration: .4s;
         }
 
-         @keyframes fadein {
+        @keyframes fadein {
             0% {
-               opacity: 0;
-   }
+                opacity: 0;
+                top: -400px;
+            }
+
             100% {
                 opacity: 1;
-               /* left: var(--fbpowoutho); */
+                top: 0;
+                /* left: var(--fbpowoutho); */
             }
         }
+
         .show {
             display: block;
             margin-top: 0;
@@ -89,6 +94,7 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
             transition: all 2s ease-in-out;
             transition-timing-function: cubic-bezier(.12, 1.38, .44, .98);
         }
+
         :root {
             /*	--delay: 5;
 	--elapsed: 20s;
@@ -98,9 +104,9 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
         }
 
         .fb {
-              left: 0;
+            left: 0;
             right: 0;
-            bottom:100%;
+            bottom: 100%;
             position: fixed;
             opacity: 0;
             width: 120px;
@@ -108,17 +114,17 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
             background-color: #a7e3b3;
             border-radius: 50%;
             text-align: center;
-            margin: 4% auto; 
+            margin: 4% auto;
             border: solid 9px #bfb;
             font-size: 170%;
             z-index: 200;
             padding-top: 30px;
             filter: drop-shadow(2px 2px 13px #ffeefa);
-            color:#a0c9a5;
+            color: #a0c9a5;
         }
 
         .fbpow {
-            animation-duration: 1.1s;
+            animation-duration: 0.8s;
             animation-name: fbpow;
             /*   animation-iteration-count: 1;
             animation-direction: forward;*/
@@ -131,38 +137,38 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         @keyframes fbpow {
             0% {
                 bottom: 22%;
-                  transform: rotateZ(var(--fbpowro));
-              margin: 5% auto; 
+                transform: rotateZ(var(--fbpowro));
+                margin: 5% auto;
             }
 
             15% {
                 opacity: 1;
-                
-               
-               
+
+
+
             }
 
             30% {
-                opacity: 1;
+
                 bottom: 50%;
-                 /* transform: rotateZ(var(--fbpowro-100)); */
-              
+                /* transform: rotateZ(var(--fbpowro-100)); */
+
             }
 
             50% {
                 opacity: 0.8;
                 bottom: 50%;
                 border: solid 1px #bfb;
-               transform: rotateZ(0deg);
-             
+                transform: rotateZ(0deg);
+
             }
 
             100% {
                 opacity: 0;
                 bottom: 87%;
                 width: 50%;
-               transform: rotateZ(4deg);
-         
+                transform: rotateZ(4deg);
+
                 /* left: var(--fbpowoutho); */
             }
         }
@@ -223,7 +229,7 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             background: #77ff88;
             transition: all 0.2s ease-in-out;
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(2px 0 15px  #2bff0066);
+            filter: drop-shadow(2px 0 15px #2bff0066);
         }
 
         .progressbarboss {
@@ -284,25 +290,25 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             position: absolute;
             background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
             background-color: #7CAF80;
-            padding: 4px 0 24px 0;
-            margin:-2px;
+            padding: 4px 0 5px 0;
+            margin: -2px;
             text-align: center;
-            min-height:172px;
+            min-height: 172px;
             max-height: 60%;
         }
 
         #buttons {
             width: 100%;
-            border-radius: 6px;
+            border-radius: 16px;
             display: inline-block;
             bottom: 0;
             background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
             background-color: #7CAF80;
 
 
-            padding: 3px 0 12px 0;
+            padding: 1px 0 9px 0;
             max-width: 900px;
-            max-height:50%;
+            max-height: 50%;
             /* min-width */
             text-align: center;
             /* max-height: 420px; */
@@ -311,17 +317,17 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
         button {
             cursor: pointer;
             filter: drop-shadow(0 0 8px #94af84);
-           
+
             background-color: #4CAF50;
             /* Green */
             border: none;
             color: white;
-     
+
             text-align: center;
             text-decoration: none;
             display: inline-block;
-       
-          
+
+
             font-size: 1.5rem;
             border: 2px solid #77dd9977;
             border-radius: 12px;
@@ -329,19 +335,19 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
 
 
             margin: 0;
-            padding: 10px 5px;
+            padding: 16px 5px;
             max-height: 60px;
-            width:32.5%;
-            height:24.2%;
-           max-height: 78px;
+            width: 32.5%;
+            height: 24.2%;
+            max-height: 78px;
             min-height: 38px;
         }
 
 
         html,
         body {
-            height:100%;
-            min-height:500px;
+            height: 100%;
+            min-height: 500px;
             letter-spacing: 6px;
             margin: 0;
             padding: 0;
@@ -374,23 +380,23 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             font-family: arial;
             white-space: pre;
             font-weight: bolder;
-            margin-top: -5px;
-            display: inline-block;
-            margin-bottom: -1px;
-            position: fixed;
-            left: 40%;
-            text-align: center;
-        }
 
-        toptext b {
-            font-size: 1rem;
+            display: block;
+            width: 100%;
+
+            position: fixed;
+            margin: -15px auto 2px auto;
+            text-align: center;
+            /* font-size: 1rem;
             line-height: 4rem;
             color: #fefafa;
             font-family: arial;
             white-space: pre;
             padding-left: 5px;
-            display: inline-block;
+            display: inline-block; */
         }
+
+        toptext b {}
 
         .ang {
             /* transform: rotateZ(-1deg);
@@ -412,7 +418,7 @@ word-break: break-all;*/
             font-size: 1.1rem;
             /* min-height: 400px; */
             overflow: none;
-                        background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
+            background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
 
             /* background-color: #FFFFFF; */
 
@@ -445,9 +451,9 @@ word-break: break-all;*/
             border: 2px solid #fed;
             /*white-space: nowrap;*/
             width: 50%;
-            min-height:120px;
-             max-height:220px;
-            height:20%;
+            min-height: 120px;
+            max-height: 220px;
+            height: 20%;
             transition: all 0.5s ease-in-out;
             /*right:190px;*/
             font-size: 220%;
@@ -466,13 +472,19 @@ word-break: break-all;*/
         whc {
             color: #fff;
             /* font-size: 120%; */
- font-size: 220%;
+            font-size: 220%;
 
 
         }
 
         .fo {
             opacity: 0.01;
+            display: block;
+            position: fixed;
+            top: 10%;
+            left: 0;
+            width: 100%;
+            height: 10%;
             /*margin: 0 -20px 50px -10px;*/
             /* transform: rotateZ(10deg);
 	*/
@@ -484,26 +496,70 @@ word-break: break-all;*/
             margin: 1px;
             padding: 0;
             /*	transform: rotateZ(-1deg);
-	
-	display:block;
-	animation-duration: 1.1s;
-	*/
-            /* animation-name: slidein;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-*/
+	 */
+            display: block;
+            animation-duration: 1s;
+
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+
+            animation-timing-function: linear;
+            animation-name: slidein;
         }
 
-        /*
+
         @keyframes slidein {
-            80% {
-                filter: hue-rotate(20deg);
+            0% {
+                opacity: 0;
+                filter: hue-rotate(-20deg);
+                /* left:-230px; */
+
+                /* filter: hue-rotate(0deg); */
+                font-size: 300%;
+
             }
+
             100% {
-                filter: hue-rotate(0deg);
+                opacity: 1;
+                /* filter: hue-rotate(0deg); */
             }
         }
-*/
+
+        .fa {
+            opacity: 1;
+            margin: 1px;
+            padding: 0;
+            /*	transform: rotateZ(-1deg);
+	 */
+            /* display:block; */
+            animation-duration: 1s;
+
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            /* animation-play-state: paused; */
+            animation-timing-function: ease-in-out;
+            animation-name: slideout;
+        }
+
+
+        @keyframes slideout {
+            0% {
+                opacity: 0.9;
+                /* left:0; */
+                /* filter: hue-rotate(20deg); */
+            }
+
+
+            100% {
+                /* left:-230px; */
+                opacity: 0;
+                /* filter: hue-rotate(0deg); */
+                font-size: 30%;
+                top: 40%;
+            }
+        }
+
+
         .redpow {
             animation-duration: 0.8s;
             animation-name: redpowani;
@@ -511,7 +567,7 @@ word-break: break-all;*/
 
         @keyframes redpowani {
             0% {
-                filter: hue-rotate(-122deg);
+                filter: hue-rotate(-102deg);
             }
 
             100% {
@@ -522,12 +578,13 @@ word-break: break-all;*/
         .greenpow {
             animation-duration: 0.8s;
             animation-name: greenpowani;
-        }   
+        }
 
         @keyframes greenpowani {
-              0% {
+            0% {
                 filter: hue-rotate(0deg);
             }
+
             10% {
                 filter: hue-rotate(20deg);
             }
@@ -558,7 +615,7 @@ word-break: break-all;*/
             font-size: 80%;
             letter-spacing: 2px;
             /*transition: all 2s;*/
-            max-width: 430px;
+            max-width: 520px;
             text-align: center;
             position: relative;
             color: #ffffff;
@@ -588,9 +645,10 @@ word-break: break-all;*/
         }
     </style>
 </head>
+
 <body>
-    <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> 
-    <!-- onkeyup="check();" autofocus tabindex="1" --> 
+    <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
+    <!-- onkeyup="check();" autofocus tabindex="1" -->
     <span id="answer2"></span>
     <input type="hidden" value="" id="eval" />
     <div id="scoreoverlay" class="scoreoverlay">
@@ -631,8 +689,8 @@ word-break: break-all;*/
     <script>
 
 
-    mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-    eventtyper = mobile ? "touchstart" : "mousedown";
+        mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+        eventtyper = mobile ? "touchstart" : "mousedown";
 
 
         diff = 0;
@@ -640,7 +698,7 @@ word-break: break-all;*/
         delement3 = [];
         // ⭐️⭐️⭐️⭐️
         var start, previousTimeStamp;
-var        timestamp;
+        var timestamp;
         var counttime;
         var score = 0;
         var hiscore = 63;
@@ -691,6 +749,14 @@ var        timestamp;
             //  document.getElementById('answer').focus();
             answered = document.getElementById('answer').value;
             if (answered == document.getElementById('eval').value) {
+
+
+
+                Array.from(document.getElementsByClassName("fi")).map(el => {
+                    el.classList.add("fa");
+
+                });
+
                 //if(0){
                 //score ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
                 next();
@@ -716,24 +782,24 @@ var        timestamp;
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
                 setTimeout(() => delement4.classList.remove('greenpow'), 500);
-             //      document.documentElement.style.setProperty('--fbpowro', 6*4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
-             
-              let diffspin = elapsed - diff; 
-               diffspin = -1000*Math.abs(400/diffspin);
-             // if(diffspin < 1){ diffspin = 1;}
-               
-              
+                //      document.documentElement.style.setProperty('--fbpowro', 6*4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
 
-console.log(diffspin);
-            // document.documentElement.style.setProperty('--fbpowro', 6 * 4 * 2 * Math.ceil(-33 + Math.random() * 60) + 'deg');
-             document.documentElement.style.setProperty('--fbpowro', diffspin + 'deg');
-               diff = elapsed;
-
-           
-          
+                let diffspin = elapsed - diff;
+                diffspin = -1000 * Math.abs(400 / diffspin);
+                // if(diffspin < 1){ diffspin = 1;}
 
 
-                   //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
+
+                console.log(diffspin);
+                // document.documentElement.style.setProperty('--fbpowro', 6 * 4 * 2 * Math.ceil(-33 + Math.random() * 60) + 'deg');
+                document.documentElement.style.setProperty('--fbpowro', diffspin + 'deg');
+                diff = elapsed;
+
+
+
+
+
+                //  document.documentElement.style.setProperty('--fbpowoutho', Math.ceil(-1 + Math.random() * 10) + '%');
                 arrayblaha++;
                 // should work too resuse these.. shouldn't be more than 2..3.. unlikely 4 at once
                 arrayblaha = arrayblaha % 3;
@@ -751,13 +817,25 @@ console.log(diffspin);
 
 
 
-//                LOTS OF ELEMENTS IF NOT DELETED?
+                //                LOTS OF ELEMENTS IF NOT DELETED?
                 //setTimeout(() => delement3[arrayblaha].remove(), 1799);
-                delement3.forEach(function(el) {
-                         el.addEventListener("animationend", function () { el.remove(); }, false);
+                delement3.forEach(function (el) {
+                    el.addEventListener("animationend", function () { el.remove(); }, false);
 
                 });
-         
+
+
+
+
+                // correct
+                Array.from(document.getElementsByClassName("fa")).map(el => {
+                    el.addEventListener("animationend", function () { el.remove(); }, false);
+                    // el.remove(); 
+                });
+
+
+
+
 
                 counttime = counttime + pluscount;
                 speedish += speedincrease;
@@ -769,7 +847,7 @@ console.log(diffspin);
 
                 delement2 = document.getElementById('buttons');
                 delement2.classList.add("redpow");
-                setTimeout(() => delement2.classList.remove('redpow'), 500);
+                setTimeout(() => delement2.classList.remove('redpow'), 800);
 
 
                 document.getElementById('answer').value = '';
@@ -779,6 +857,7 @@ console.log(diffspin);
                 //document.getElementById('answer2').innerHTML = '';
             }
         }
+
         function makebuttons() {
             var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
             arry.forEach(iok => {
@@ -811,51 +890,51 @@ console.log(diffspin);
            });*/
                 elements[i].addEventListener(eventtyper, myFunction, false);
                 // elements[i].addEventListener("mousedown", myFunction, false);
-               
 
-                
+
+
                 //}
             }
 
 
             document.getElementById('check').addEventListener(eventtyper, check, false);
-          //  document.getElementById('check').addEventListener("mousedown", check, false);
+            //  document.getElementById('check').addEventListener("mousedown", check, false);
 
 
-// Hey logic here... should only be active in some cases when game has started.. 
-             window.addEventListener("keydown", function (event) {
+            // Hey logic here... should only be active in some cases when game has started.. 
+            window.addEventListener("keydown", function (event) {
                 if (event.defaultPrevented) {
                     return; // Do nothing if the event was already processed
                 }
 
-                 // gamenotstarted... start
-                 if (start === undefined) {
-                     newround();
+                // gamenotstarted... start
+                if (start === undefined) {
+                    newround();
                     // break;
-                 }
-                 document.getElementById('answer').value += event.key;
-                 document.getElementById('answer2').innerHTML += event.key;
+                }
+                document.getElementById('answer').value += event.key;
+                document.getElementById('answer2').innerHTML += event.key;
                 //  document.getElementById('answer').value += event.key;
                 //  document.getElementById('answer2').innerHTML += event.key;
-                 check(); // AUTOCHEck :)
+                check(); // AUTOCHEck :)
 
-                 return ; // hmm breaks... contiunes
+                return; // hmm breaks... contiunes
 
 
                 switch (event.key) {
 
 
-                   
+
 
                     case "1": // IE/Edge specific value
                     case "1":
-                        // Do something for "down arrow" key press.
-                 /*
-                       document.getElementById('answer').value += 1;
-                        document.getElementById('answer2').innerHTML += 1;
-                        check(); // AUTOCHEck :)
-                        break;
-*/
+                    // Do something for "down arrow" key press.
+                    /*
+                          document.getElementById('answer').value += 1;
+                           document.getElementById('answer2').innerHTML += 1;
+                           check(); // AUTOCHEck :)
+                           break;
+   */
 
 
                     case "Down": // IE/Edge specific value
@@ -888,9 +967,9 @@ console.log(diffspin);
                 // Cancel the default action to avoid it being handled twice
                 event.preventDefault();
             }, true);
-            
 
-           
+
+
 
         }
         const dl = () => {
@@ -916,30 +995,26 @@ console.log(diffspin);
             // }, 1 + w % 6);
 
 
-          
-                d = document.createElement("div");
-                d.classList.add("fo");
-                d.innerHTML = ('<div class="ang"><i3 id="' + w + 'b"><whc>' + a + '</whc></i3></div>');
-                document.body.append(d);
-                d.classList.add("fi");
-     
+
+            d = document.createElement("div");
+            d.classList.add("fo");
+            d.innerHTML = ('<div class="ang"><i3 id="' + w + 'b"><whc>' + a + '</whc></i3></div>');
+            document.body.append(d);
+            d.classList.add("fi");
 
 
 
-         
-                d = document.createElement("div");
-                d.classList.add("fo");
+            // d = document.createElement("div");
+            // d.classList.add("fo");
 
 
-                d.innerHTML = (``);
+            // d.innerHTML = (``);
 
-                document.getElementById('eval').value = (evalQ(a));
+            document.getElementById('eval').value = (evalQ(a));
 
-           
+            // document.body.append(d);
+            // d.classList.add("fi");
 
-                document.body.append(d);
-              d.classList.add("fi");
-       
             w++;
         }
         //if ar === undefined
@@ -954,19 +1029,28 @@ console.log(diffspin);
         //alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
         */
         function next() {
+
             //alert("next");
-            if (w % 1 == 0) {
-                Array.from(document.getElementsByClassName("fo")).map(el => {
-                    //alert('done');
-                    //el.classList.remove('fi');
-                    //el.classList.add('fo')
-                    //el.style.height = "22px";
-                    el.style.marginTop = "-30px";
-                    el.style.opacity = "0";
-                  el.remove();
-                });
-                //return null; 
-            }
+            // if (w % 1 == 0) {
+            //     Array.from(document.getElementsByClassName("fo")).map(el => {
+            //         //alert('done');
+            //         //el.classList.remove('fi');
+            //         //el.classList.add('fo')
+            //         //el.style.height = "22px";
+            //         el.style.marginTop = "-30px";
+            //         el.style.opacity = "0";
+            //         el.remove();
+            //     });
+            //     //return null; 
+            // }
+
+
+
+
+
+
+
+
             if (ar.length > 0) {
                 v(ar.shift())
                 /*
@@ -976,12 +1060,14 @@ console.log(diffspin);
             } else {
                 //document.body.innerHTML
                 reset();
-                Array.from(document.getElementsByClassName("fo")).map(el => {
-                    //alert('done');
-                    el.classList.remove('fi');
-                    //el.classList.add('fo')
-                    setTimeout(() => el.remove(), 80)
-                });
+
+
+                // Array.from(document.getElementsByClassName("fo")).map(el => {
+                //     //alert('done');
+                //     el.classList.remove('fi');
+                //     //el.classList.add('fo')
+                //     setTimeout(() => el.remove(), 80)
+                // });
             }
         }
         /*, false)
@@ -998,7 +1084,7 @@ console.log(diffspin);
             elapsed = 0;
             start = undefined;
             ar = [];
-            score = 0;
+            // score = 0;
             document.getElementById('score').innerHTML = score;
             counttime = 300;
             counttime2 = 100;
@@ -1052,6 +1138,7 @@ console.log(diffspin);
             }
             v(ar.shift());
             ////// HÄÄÄÄR
+            /// START
             startscreen();
         }
         function startscreen() {
@@ -1061,21 +1148,25 @@ console.log(diffspin);
             document.getElementById('hiscore3').innerHTML = hiscore;
 
 
-               setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
-//            document.getElementById('scoreoverlay').classList.add('show');
+            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
+            //            document.getElementById('scoreoverlay').classList.add('show');
 
             //delement.classList.add("pewits");
         }
         function newround() { //startgame
-            
-            Array.from(document.getElementsByClassName("fo")).map(el => {
-                el.classList.remove('fi');
-                setTimeout(() => el.remove(), 380)
-            });
+            score = 0;
+            // Array.from(document.getElementsByClassName("fo")).map(el => {
+            //     el.classList.remove('fi');
+            //     setTimeout(() => el.remove(), 380)
+            // });
+
+
+
             delement = document.getElementById('scoreoverlay');
             //delement.classList.add("powit2");
             setTimeout(() => delement.classList.remove('show'), 280);
             //}
+            // perhaps not reseting score until restart?
             reset();
             //var element = document.getElementById('progressbar2');
             function step(timestamp) {
@@ -1133,7 +1224,11 @@ console.log(diffspin);
             cutoff: 900
         });
         sound.addEffect(dubDelay);
-//sound.play();
+        //sound.play();
+
+        window.onbeforeunload = function (e) {
+            return "Sure you want to leave?";
+        };
     </script>
 </body>
 
