@@ -131,7 +131,7 @@ So intentionally not made with quality code, just to test out if it works -->
             /*   animation-iteration-count: 1;
             animation-direction: forward;*/
 
-            animation-timing-function: cubic-bezier(0.3, -0.3, 0.3, 1.2);
+            animation-timing-function: cubic-bezier(0.3, 0.1, 0.3, 1.2);
 
             z-index: 200;
         }
@@ -140,13 +140,13 @@ So intentionally not made with quality code, just to test out if it works -->
             0% {
                 bottom: 32%;
                 transform: rotateZ(var(--fbpowro));
-                margin: 5% auto;
+                /* margin: 5% auto; */
             }
 
 
 
             50% {
-                opacity: 0.8;
+                opacity: 0.9;
                 bottom: 70%;
                 border: solid 1px #bfb;
                 transform: rotateZ(-2deg);
@@ -156,7 +156,7 @@ So intentionally not made with quality code, just to test out if it works -->
             100% {
                 opacity: 0;
                 bottom: 87%;
-                width: 50%;
+                width: 300px;
                 transform: rotateZ(2deg);
 
                 /* left: var(--fbpowoutho); */
@@ -218,7 +218,7 @@ So intentionally not made with quality code, just to test out if it works -->
             display: inline-block;
             height: 27px;
             background: #77ff88;
-            transition: all 0.9s ease-in-out;
+            transition: all 0.8s ease-in-out;
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: drop-shadow(2px 0 15px #2bff0066);
         }
@@ -814,7 +814,7 @@ word-break: break-all;*/
                 //      document.documentElement.style.setProperty('--fbpowro', 6*4*2*Math.ceil(-33 + Math.random() * 60) + 'deg');
 
                 let diffspin = elapsed - diff;
-                diffspin = -1000 * Math.abs(400 / diffspin);
+                diffspin = -1000 * Math.abs(800 / diffspin);
                 // if(diffspin < 1){ diffspin = 1;}
 
 
