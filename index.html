@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title> 1000 Decimals of Pi • MATH GAME v0.05a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+    <title> 1000 Decimals of Pi • MATH GAME v0.06a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . 
 So intentionally not made with quality code, just to test out if it works -->
     <style>
@@ -343,6 +343,17 @@ animation-timing-function: cubic-bezier(0.3, -0.1, 0.2, 1.4);
             min-height: 38px;
         }
 
+        html,
+        body,
+        *,
+        .game {
+            /* max-width:400px !important; */
+        margin:auto !important;
+        text-align: center;
+
+        /* display:inline-block !important;  */
+        }
+
 
         html,
         body {
@@ -647,6 +658,7 @@ word-break: break-all;*/
 </head>
 
 <body>
+
     <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
     <!-- onkeyup="check();" autofocus tabindex="1" -->
     <span id="answer2"></span>
@@ -658,6 +670,8 @@ word-break: break-all;*/
                 How many can you crank <br />
                 before time's up?<br />
             </spansmall>
+
+
         </div>
         <div id="scoring">
             SCORE <b id="score3"></b>
@@ -667,7 +681,20 @@ word-break: break-all;*/
         </div>
         <br />
         <button onclick="newround()">GO⚡️</button>
+
+        <spansmall>
+            <br />
+            Made for Mobile<br />
+            Coded to 99% on a mobile<br  />
+            Mobile-XP first<br />
+
+            <br />
+            <br />
+        
+        </spansmall>
     </div>
+
+  
     <toptext>
         <h1>MATH</h1>
     </toptext>
@@ -1230,6 +1257,7 @@ word-break: break-all;*/
             return "Sure you want to leave?";
         };
     </script>
+
 </body>
 
 </html>
