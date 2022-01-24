@@ -497,7 +497,7 @@ word-break: break-all;*/
             /*	transform: rotateZ(-1deg);
 	 */
             display: block;
-            animation-duration: 0.1s;
+            animation-duration: 0.2s;
 
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
