@@ -188,7 +188,7 @@
             100% {
                 opacity: 0;
                 bottom: 87%;
-                width: 300px;
+                /* width: 300px; */
                 transform: rotateZ(calc(var(--fbpowro)* -0.05));
 
             }
@@ -830,7 +830,7 @@
             passive: false
         });
         const reset = () => {
-            document.getElementById('score2').innerHTML = "😀<br />";
+            
             elapsed = 0;
             start = undefined;
             ar = [];
@@ -867,8 +867,13 @@
 
         function newround() {
             score = 0;
+            document.getElementById('score2').innerHTML = "😀<br />";
+
+
+
+
             delement = document.getElementById('scoreoverlay');
-            setTimeout(() => delement.classList.remove('show'), 280);
+            setTimeout(() => delement.classList.remove('show'), 10);
             reset();
 
             function step(timestamp) {
