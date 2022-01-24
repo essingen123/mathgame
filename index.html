@@ -155,8 +155,8 @@
 
 
             opacity: 0;
-            width: 120px;
-            height: 110px;
+            width: 150px;
+            height: 120px;
             background-color: rgba(163, 220, 71, .3);
             border-radius: 50%;
             text-align: center;
@@ -191,7 +191,7 @@
 
             100% {
                 opacity: 0;
-                bottom: 87%;
+                bottom: 82%;
                 /* width: 300px; */
                 transform: rotateZ(calc(var(--fbpowro)* -0.05));
 
@@ -619,9 +619,9 @@
             <div id='timer'></div>
         </div>
 
-        <div id="score2"></div>
+  
         <div id="i3" class="i3"></div>
-
+    <div id="score2"></div>
         <div class="buttonswrapper">
             <div id="buttons"> </div>
         </div>
@@ -671,7 +671,7 @@
                     for (let i = 0; i < Math.floor(scorez / 10); i++) {
                         document.getElementById('score2').innerHTML += "💎";
                     }
-                    document.getElementById('score2').innerHTML += " <br />";
+                    document.getElementById('score2').innerHTML += "<br />";
                 } else {
                     document.getElementById('score2').innerHTML += "⭐️";
                 }
@@ -887,7 +887,7 @@
         }
 
         function newround() {
-            score =95;
+            score =0;
             document.getElementById('score2').innerHTML = "😀<br />";
 
 
