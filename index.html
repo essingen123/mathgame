@@ -111,7 +111,8 @@ So intentionally not made with quality code, just to test out if it works -->
             opacity: 0;
             width: 120px;
             height: 110px;
-            background-color: #a7e3b3;
+            /* background-color: #a7e3b3; */
+             background-color: #bbdd99;
             border-radius: 50%;
             text-align: center;
             margin: 4% auto;
@@ -124,7 +125,7 @@ So intentionally not made with quality code, just to test out if it works -->
         }
 
         .fbpow {
-            animation-duration: 0.8s;
+            animation-duration: 1s;
             animation-name: fbpow;
             /*   animation-iteration-count: 1;
             animation-direction: forward;*/
@@ -1217,7 +1218,7 @@ word-break: break-all;*/
                     //element.style.transform = 'translateX(' + count + 'px)';
                     element = document.getElementById('timer');
                     element.style.width = counttime2 + 'px';
-                    element.style.backgroundColor = colortohex(50 + counttime2 % 5, 190 + Math.ceil(counttime2 / 2) % 65, 30 + Math.ceil(counttime2 / 3) % 45);
+                    element.style.backgroundColor = colortohex(50 + counttime2 % 5, 170 + Math.ceil(counttime2 / 2) % 65, 30 + Math.ceil(counttime2 / 3) % 45);
                     //element.innerHTML = counttime2 +" "+elapsed;
                 }
                 //if (elapsed <200000) { // Stop the animation after 2 seconds
