@@ -13,6 +13,10 @@
             max-width: 100%;
             white-space: pre-wrap;
             word-break: break-all;
+            word-wrap: break-word;
+            font-size: 1.5em;
+             text-shadow:  0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
+     
         }
 
         * {
@@ -67,7 +71,7 @@
         }
 
         #i3 {
-            text-shadow: 0 0 10px #decc10 0 0 20px #c68e00 0 0 30px #ff8400, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
+            
             text-align: center;
             background-color: #fb5;
             background-color: #ff4e00;
@@ -85,14 +89,14 @@
             font-size: 400%;
             height: 110px;
         }
-
-        i3::before {
+      
+        /* i3::before {
             content: '';
         }
 
         i3::after {
             content: '';
-        }
+        } */
 
         .scoreoverlay {
             margin-top: 1900px;
@@ -329,7 +333,8 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
             border: 2px solid #7d97;
             border-radius: 12px;
             background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
@@ -445,6 +450,9 @@
 
             left: 0;
             right: 0;
+
+            text-shadow: 0 0 10px #decc10, 0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
+     
         }
 
 
@@ -459,6 +467,7 @@
         }
 
         .fi {
+        
             opacity: 1;
             margin: 1px;
             padding: 0;
@@ -703,11 +712,7 @@
                         el.remove();
                     }, false);
                 });
-                Array.from(document.getElementsByClassName("fa")).map(el => {
-                    el.addEventListener("animationend", function () {
-                        el.remove();
-                    }, false);
-                });
+               
                 counttime = counttime + pluscount;
                 speedish += speedincrease;
                 document.getElementById('answer').value = '';
@@ -777,7 +782,7 @@
                 check();
 
 
-                event.preventDefault();
+             //   event.preventDefault();
             }, true);
         }
         const dl = () => {
@@ -814,6 +819,14 @@
         }
 
         function next() {
+             Array.from(document.getElementsByClassName("fa")).map(el => {
+                el.addEventListener("animationend", function () {
+                    el.remove();
+                }, false);
+            });
+
+
+            
             if (ar.length > 0) {
                 v(ar.shift())
             } else {
