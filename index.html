@@ -2,1073 +2,1079 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
-    <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
-    <style>
-        #score2 {
-            text-align: center;
-            display: inline-block;
-            max-width: 100%;
-            white-space: pre-wrap;
-            word-break: break-all;
-            word-wrap: break-word;
-            font-size: 2em;
-             text-shadow:  0 0 20px #ffffff,  0 0 70px #ffeec8;
-     letter-spacing: -4px;
-        }
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+	<!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
+	<style>
+		#score2 {
+			text-align: center;
+			display: inline-block;
+			max-width: 100%;
+			white-space: pre-wrap;
+			word-break: break-all;
+			word-wrap: break-word;
+			font-size: 2em;
+			 text-shadow:  0 0 20px #ffffff,  0 0 70px #ffeec8;
+	 letter-spacing: -4px;
+	 line-height: 2.4rem;
+	 padding-top:8px;
+		}
 
-        * {
-            box-sizing: border-box;
-        }
+		* {
+			box-sizing: border-box;
+		}
 
-        .hint {
-            position: fixed;
+		.hint {
+			position: fixed;
 
-            margin: 1px auto;
-            left: 0;
-            right: 0;
-            opacity: 0;
-            top: 50px;
-            width: 240px;
-            height: 120px;
-            background-color: #fff;
-            color: #fb5;
-            display: inline-block;
-            font-weight: 700;
-            font-style: italic;
-            animation-name: fadeout;
-            animation-duration: 2.2s;
-            z-index: 399;
-            font-size: 500%;
-            border-radius: 50%;
-            border: 9px solid #acd3ac55;
-
-
-        }
-
-        @keyframes fadeout {
-            0% {
-                opacity: .5;
-                top: 60px;
-            }
-
-            10% {
-                opacity: 1;
-                top: 100px;
-            }
-
-            40% {
-                opacity: .8;
-                top: 80px;
-            }
-
-            100% {
-                opacity: 0;
-                top: 50px;
-            }
-        }
-
-        #i3 {
-            
-            text-align: center;
-            background-color: #fb5;
-            background-color: #ff4e00;
-            background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
-            padding: 3px;
-            color: #ffd8ba;
-            margin: 1px auto;
-            font-style: italic;
-            display: block;
-            border: 8px solid #efefef99;
-            /* font-size:250%; */
-            width: 100%;
-            padding: 8px;
-            color: #fff;
-            font-size: 400%;
-            height: 110px;
-        }
-      
-        /* i3::before {
-            content: '';
-        }
-
-        i3::after {
-            content: '';
-        } */
-
-        .scoreoverlay {
-            margin-top: 1900px;
-            display: none;
-            opacity: 1;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
-            font-size: 120%;
-            color: #fff;
-            font-weight: bolder;
-            font-style: italic;
-            padding-top: 20px;
-            border-radius: 30px;
-            animation-name: fadein;
-            animation-duration: .6s;
-        }
-
-        @keyframes fadein {
-            0% {
-                opacity: 0;
-                top: -40px;
-            }
-
-            100% {
-                opacity: 1;
-                top: 0;
-            }
-        }
-
-        .show {
-            display: block;
-            margin-top: 0;
-            border-radius: 0;
-        }
-
-        :root {
-            --fbpowro: -3deg;
-            --fbpowoutho: -3deg;
-            --startpos: 1%;
-        }
-
-        .fbpow {
-            bottom: 100%;
-
-            position: fixed;
+			margin: 1px auto;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			top: 50px;
+			width: 240px;
+			height: 120px;
+			background-color: #fff;
+			color: #fb5;
+			display: inline-block;
+			font-weight: 700;
+			font-style: italic;
+			animation-name: fadeout;
+			animation-duration: 2.2s;
+			z-index: 399;
+			font-size: 500%;
+			border-radius: 50%;
+			border: 9px solid #acd3ac55;
 
 
-            left: 0;
-            right: 0;
-            margin: 2px auto;
+		}
+
+		@keyframes fadeout {
+			0% {
+				opacity: .5;
+				top: 60px;
+			}
+
+			10% {
+				opacity: 1;
+				top: 100px;
+			}
+
+			40% {
+				opacity: .8;
+				top: 80px;
+			}
+
+			100% {
+				opacity: 0;
+				top: 50px;
+			}
+		}
+
+		#i3 {
+			
+			text-align: center;
+			background-color: #fb5;
+			background-color: #ff4e00;
+			background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+			
+			/*color: #ffd8ba;*/
+			margin: 16px auto;
+			font-style: italic;
+			display: block;
+			border: 8px solid #efefef99;
+			/* font-size:250%; */
+			width: 98%;
+			padding: 2px;
+			color: #fff;
+			font-size: 370%;
+			height: 100px;
+		}
+	  
+		/* i3::before {
+			content: '';
+		}
+
+		i3::after {
+			content: '';
+		} */
+
+		.scoreoverlay {
+			margin-top: 1900px;
+			display: none;
+			opacity: 1;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+			left: 0;
+			top: 0;
+			background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
+			font-size: 120%;
+			color: #fff;
+			font-weight: bolder;
+			font-style: italic;
+			padding-top: 20px;
+			border-radius: 30px;
+			animation-name: fadein;
+			animation-duration: .6s;
+		}
+
+		@keyframes fadein {
+			0% {
+				opacity: 0;
+				top: -40px;
+			}
+
+			100% {
+				opacity: 1;
+				top: 0;
+			}
+		}
+
+		.show {
+			display: block;
+			margin-top: 0;
+			border-radius: 0;
+		}
+
+		:root {
+			--fbpowro: -3deg;
+			--fbpowoutho: -3deg;
+			--startpos: 1%;
+		}
+
+		.fbpow {
+			bottom: 100%;
+
+			position: fixed;
 
 
-            opacity: 0;
-            width: 150px;
-            height: 120px;
-            background-color: rgba(163, 220, 71, .3);
-            border-radius: 50%;
-            text-align: center;
+			left: 0;
+			right: 0;
+			margin: 2px auto;
 
-            border: solid 9px #7dda7d;
-            font-size: 170%;
-            z-index: 200;
-            padding-top: 30px;
-            filter: drop-shadow(2px 2px 13px #ffeefa);
-            color: #fff;
-            animation-duration: 1.5s;
-            animation-name: fbpow;
-            animation-timing-function: cubic-bezier(-.175, .885, .32, -.275);
-            z-index: 200;
-        }
 
-        @keyframes fbpow {
-            0% {
-                bottom: 32%;
-                transform: rotateZ(var(--fbpowro));
-                /* margin: 0 0 0 var(--fbpowstartpos); */
-                left: var(--fbpowstartpos);
-            }
+			opacity: 0;
+			width: 150px;
+			height: 120px;
+			background-color: rgba(163, 220, 71, .3);
+			border-radius: 50%;
+			text-align: center;
 
-            60% {
-                opacity: 1;
-                bottom: 78%;
-                border: solid 1px #bfb;
-                transform: rotateZ(0deg);
+			border: solid 9px #7dda7d;
+			font-size: 170%;
+			z-index: 200;
+			padding-top: 30px;
+			filter: drop-shadow(2px 2px 13px #ffeefa);
+			color: #fff;
+			animation-duration: 1.5s;
+			animation-name: fbpow;
+			animation-timing-function: cubic-bezier(-.175, .885, .32, -.275);
+			z-index: 200;
+		}
 
-            }
+		@keyframes fbpow {
+			0% {
+				bottom: 32%;
+				transform: rotateZ(var(--fbpowro));
+				/* margin: 0 0 0 var(--fbpowstartpos); */
+				left: var(--fbpowstartpos);
+			}
 
-            100% {
-                opacity: 0;
-                bottom: 81%;
-                /* width: 300px; */
-                transform: rotateZ(calc(var(--fbpowro)* -0.05));
+			60% {
+				opacity: 1;
+				bottom: 78%;
+				border: solid 1px #bfb;
+				transform: rotateZ(0deg);
 
-            }
-        }
+			}
 
-        .score {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 5px;
-        }
+			100% {
+				opacity: 0;
+				bottom: 81%;
+				/* width: 300px; */
+				transform: rotateZ(calc(var(--fbpowro)* -0.05));
 
-        .scorebar {
-            display: block;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 30px;
-            position: absolute;
-            top: 0;
-        }
+			}
+		}
 
-        .hiscore {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding-top: 5px;
-        }
+		.score {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 5px;
+		}
 
-        #scoring {
-            display: block;
-            background-color: #ccc;
-            /* make evertying in smooth transistion */
-            transition: all .5s ease-in-out;
-            
-            
-        }
+		.scorebar {
+			display: block;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 30px;
+			position: absolute;
+			top: 0;
+		}
 
-        .wrapper {
-            background-color: #fefefe11;
-            margin: 12px 0;
-            padding: 0;
-        }
+		.hiscore {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding-top: 5px;
+		}
 
-        spansmall {
-            font-size: .7rem;
-            line-height: 2px;
-            padding: 0;
-            margin: 0;
+		#scoring {
+			display: block;
+			background-color: #ccc;
+			/* make evertying in smooth transistion */
+			transition: all .5s ease-in-out;
+			
+			
+		}
 
-            /* fades due to not display :block  etc */
-            animation-duration: 3.85s;
-            animation-name: slideinfromleft;
-            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-        }
+		.wrapper {
+			background-color: #fefefe11;
+			margin: 12px 0;
+			padding: 0;
+		}
+
+		spansmall {
+			font-size: .7rem;
+			line-height: 2px;
+			padding: 0;
+			margin: 0;
+
+			/* fades due to not display :block  etc */
+			animation-duration: 3.85s;
+			animation-name: slideinfromleft;
+			animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
+		}
 spansmall:nth-child(1) {
-            animation-duration: 1.85s;
-        }
-         
+			animation-duration: 1.85s;
+		}
+		 
 
-        #timer {
-            width: 2px;
-            line-height: 0;
-            border: solid 2px #dff7de;
-            margin-top: -24px;
-            margin-bottom: 30px;
-            padding: 0;
-            text-align: center;
-            border-radius: 8px;
-            display: inline-block;
-            height: 32px;
-            background: #7f8;
-            transition: all .8s ease-in-out;
-            transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
-            filter: drop-shadow(2px 0 15px #2bff0066);
-        }
+		#timer {
+			width: 2px;
+			line-height: 0;
+			border: solid 2px #dff7de;
+			margin-top: -24px;
+			margin-bottom: 30px;
+			padding: 0;
+			text-align: center;
+			border-radius: 8px;
+			display: inline-block;
+			height: 32px;
+			background: #7f8;
+			transition: all .8s ease-in-out;
+			transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
+			filter: drop-shadow(2px 0 15px #2bff0066);
+		}
 
-        .progressbarboss {
-            width: 100%;
-            margin: -3px auto;
-            padding: 0;
-            line-height: 0;
-        }
+		.progressbarboss {
+			width: 100%;
+			margin: -3px auto;
+			padding: 0;
+			line-height: 0;
+		}
 
-        .progressbar {
-            width: 100%;
-            margin: -3px auto;
-            padding: 0;
-            line-height: 0;
-        }
+		.progressbar {
+			width: 100%;
+			margin: -3px auto;
+			padding: 0;
+			line-height: 0;
+		}
 
-        .progressbar .inner {
-            line-height: 0;
-            margin: 1px;
-            padding: 0;
-            text-align: center;
-            display: inline-block;
-            height: 18px;
-            animation: progressbar-countdown;
-            animation-duration: 20s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-play-state: paused;
-            animation-timing-function: linear;
-        }
+		.progressbar .inner {
+			line-height: 0;
+			margin: 1px;
+			padding: 0;
+			text-align: center;
+			display: inline-block;
+			height: 18px;
+			animation: progressbar-countdown;
+			animation-duration: 20s;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+			animation-play-state: paused;
+			animation-timing-function: linear;
+		}
 
-        @keyframes progressbar-countdown {
-            0% {
-                width: 100%;
-                background: #7f8;
-            }
+		@keyframes progressbar-countdown {
+			0% {
+				width: 100%;
+				background: #7f8;
+			}
 
-            100% {
-                width: 0;
-                background: #F69;
-            }
-        }
+			100% {
+				width: 0;
+				background: #F69;
+			}
+		}
 
-        .buttonswrapper {
-            width: 100%;
-            bottom: 0;
-            position: absolute;
-            background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
-            background-color: #7CAF80;
-            padding: 4px 0 3px;
-            margin: -2px;
-            text-align: center;
-            min-height: 172px;
-            max-height: 60%;
-        }
+		.buttonswrapper {
+			width: 100%;
+			bottom: 0;
+			position: absolute;
+			background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
+			background-color: #7CAF80;
+			padding: 2px 0 2px 0;
+			margin: -2px;
+			text-align: center;
+			min-height: 172px;
+			max-height: 60%;
+		}
 
-        #buttons {
-            width: 100%;
-            border-radius: 16px;
-            display: inline-block;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
-            background-color: #7CAF80;
-            padding: 8px 0 3px;
-            max-width: 900px;
-            max-height: 50%;
-            text-align: center;
-        }
+		#buttons {
+			width: 100%;
+			border-radius: 16px;
+			display: inline-block;
+			bottom: 0;
+			background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
+			background-color: #7CAF80;
+			padding: 2px 0 3px 0;
+			max-width: 900px;
+			max-height: 50%;
+			text-align: center;
+		}
 
-        button {
-            cursor: pointer;
-            filter: drop-shadow(0 0 8px #94af84);
-            background-color: #4CAF50;
-            border: none;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 2rem;
-            font-weight: bold;
-            border: 2px solid #7d97;
-            border-radius: 12px;
-            background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
-            margin: 0;
-            padding: 12px 5px;
-            max-height: 60px;
-            width: 50%;
-            min-height: 38px;
-        }
+		button {
+			cursor: pointer;
+			filter: drop-shadow(0 0 8px #94af84);
+			background-color: #4CAF50;
+			border: none;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 2rem;
+			font-weight: bold;
+			border: 2px solid #7d97;
+			border-radius: 12px;
+			background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
+			margin: 0;
+			padding: 8px 6px 8px 3px;
+			max-height: 60px;
+			width: 50%;
+			min-height: 38px;
+		}
 
-        .numkey {
-            padding: 22px 5px;
-            max-height: 60px;
-            width: 32.5%;
-            height: 24.2%;
-            max-height: 78px;
-            min-height: 38px;
-        }
+		.numkey {
+			padding: 13px 5px 13px 5px;
+			margin:2px;
+			max-height: 60px;
+			width: 32.5%;
+			height: 24.2%;
+			max-height: 78px;
+			min-height: 38px;
+		}
 
-        html,
-        body,
-        *,
-        .game {
-            margin: auto !important;
-            text-align: center;
-        }
+		html,
+		body,
+		*,
+		.game {
+			margin: auto !important;
+			text-align: center;
+		}
 
-        html,
-        body {
-            height: 100%;
-            letter-spacing: 6px;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            touch-action: none !important;
-            user-select: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
+		html,
+		body {
+			height: 100%;
+			letter-spacing: 6px;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			touch-action: none !important;
+			user-select: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+		}
 
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
 
-        toptext,
-        h1 {
-            font-size: 1rem;
-            color: #fefafa;
-            font-family: arial;
-            white-space: pre;
-            font-weight: bolder;
-            display: block;
-            width: 100%;
-            position: absolute;
-            margin: -15px auto 2px;
-            text-align: center;
-        }
+		toptext,
+		h1 {
+			font-size: 1rem;
+			color: #fefafa;
+			font-family: arial;
+			white-space: pre;
+			font-weight: bolder;
+			display: block;
+			width: 100%;
+			position: absolute;
+			margin: -15px auto 2px;
+			text-align: center;
+		}
 
-        .ang {
-            padding: 0;
-            filter: drop-shadow(-2px 0 3px #fee);
-            padding: 0;
-            margin: 8px 0 1px;
-        }
+		.ang {
+			padding: 0;
+			filter: drop-shadow(-2px 0 3px #fee);
+			padding: 0;
+			margin: 8px 0 1px;
+		}
 
-        body {
-            font-family: "Trebuchet MS";
-            color: #ccc;
-            font-size: 1.1rem;
-            overflow: none;
-            background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
-            background-repeat: repeat;
-            margin: 0;
-            padding: 0;
-        }
+		body {
+			font-family: "Trebuchet MS";
+			color: #ccc;
+			font-size: 1.1rem;
+			overflow: none;
+			background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
+			background-repeat: repeat;
+			margin: 0;
+			padding: 0;
+		}
 
-        i2 {
-            background-color: #fae2d9;
-            border-radius: 50%;
-            padding: 1px 2px;
-            color: #bca996;
-            margin: 2px 4px;
-            display: inline-block;
-            z-index: -1;
-            border: 2px solid #fed;
-            width: 50%;
-            min-height: 120px;
-            max-height: 220px;
-            height: 20%;
-            transition: all .5s ease-in-out;
-            font-size: 220%;
-        }
+		i2 {
+			background-color: #fae2d9;
+			border-radius: 50%;
+			padding: 1px 2px;
+			color: #bca996;
+			margin: 2px 4px;
+			display: inline-block;
+			z-index: -1;
+			border: 2px solid #fed;
+			width: 50%;
+			min-height: 120px;
+			max-height: 220px;
+			height: 20%;
+			transition: all .5s ease-in-out;
+			font-size: 220%;
+		}
 
-        i2::before {
-            content: '';
-        }
+		i2::before {
+			content: '';
+		}
 
-        gr {
-            color: #dfc7b6;
-            font-size: 50%;
-        }
+		gr {
+			color: #dfc7b6;
+			font-size: 50%;
+		}
 
 
-        .fox {
-            position: absolute;
+		.fox {
+			position: absolute;
 
-            display: block;
-            margin: auto;
+			display: block;
+			margin: 12px auto;
 
-            left: 0;
-            right: 0;
+			left: 0;
+			right: 0;
 font-weight: bolder;
-            text-shadow: 0 0 10px #decc10, 0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
-     
-        }
+			text-shadow: 0 0 10px #decc10, 0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
+	 
+		}
 
 
-        .fo {
-            opacity: .01;
-            display: inline-block;
+		.fo {
+			opacity: .01;
+			display: inline-block;
 
-            top: 13%;
-            left: 0;
-            width: 100%;
+			top: 13%;
+			left: 0;
+			width: 100%;
 
-        }
+		}
 
-        .fi {
-        
-            opacity: 1;
-            margin: 1px;
-            padding: 0;
-            display: block;
-            animation-duration: .2s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in-out;
-            animation-name: slidein;
-
-
-        }
-
-        @keyframes slidein {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .fa {
-            opacity: 1;
-            margin: 1px;
-            padding: 0;
-            animation-duration: .2s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in-out;
-            animation-name: slideout;
-        }
-
-        @keyframes slideout {
-            0% {
-                opacity: .6;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .redpow {
-            animation-duration: .8s;
-            animation-name: redpowani;
-        }
-
-        @keyframes redpowani {
-            0% {
-                filter: hue-rotate(-102deg);
-            }
-
-            100% {
-                filter: hue-rotate(0deg);
-            }
-        }
-
-        .greenpow {
-            animation-duration: .8s;
-            animation-name: greenpowani;
-        }
-
-        @keyframes greenpowani {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-
-            10% {
-                filter: hue-rotate(20deg);
-            }
-
-            100% {
-                filter: hue-rotate(0deg);
-            }
-        }
-
-        body::before {
-            top: 0;
-            left: 0;
-            margin: 0;
-            padding: 0;
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%);
-        }
-
-        .scorebar {
-            display: inline-block;
-            margin-top: 1px;
-            margin-bottom: 6px;
-            font-weight: 400;
-            font-size: 80%;
-            letter-spacing: 2px;
-            max-width: 520px;
-            text-align: center;
-            position: relative;
-            color: #fff;
-        }
-
-        b {
-            padding-left: 14px;
-            padding-right: 10px;
-            letter-spacing: 0;
-        }
-
-        #scoring {
-            background-color: #fafafa99;
-            padding: 12px;
+		.fi {
+		
+			opacity: 1;
+			
+			
+			animation-duration: .2s;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+			animation-timing-function: ease-in-out;
+			animation-name: slidein;
 
 
-            animation-duration: .5s;
-            animation-name: slideinfromright;
-            /* animation-delay: .5s; */
-            /* cubix-bezier bounce */
-            /* animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+		}
+
+		@keyframes slidein {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.fa {
+			opacity: 1;
+			
+			animation-duration: .2s;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+			animation-timing-function: ease-in-out;
+			animation-name: slideout;
+		}
+
+		@keyframes slideout {
+			0% {
+				opacity: .6;
+			}
+
+			100% {
+				opacity: 0;
+			}
+		}
+
+		.redpow {
+			animation-duration: .8s;
+			animation-name: redpowani;
+		}
+
+		@keyframes redpowani {
+			0% {
+				filter: hue-rotate(-102deg);
+			}
+
+			100% {
+				filter: hue-rotate(0deg);
+			}
+		}
+
+		.greenpow {
+			animation-duration: .8s;
+			animation-name: greenpowani;
+		}
+
+		@keyframes greenpowani {
+			0% {
+				filter: hue-rotate(0deg);
+			}
+
+			10% {
+				filter: hue-rotate(20deg);
+			}
+
+			100% {
+				filter: hue-rotate(0deg);
+			}
+		}
+
+		body::before {
+			top: 0;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%);
+		}
+
+		.scorebar {
+			display: inline-block;
+			margin-top: 1px;
+			margin-bottom: 6px;
+			font-weight: 400;
+			font-size: 80%;
+			letter-spacing: 2px;
+			max-width: 520px;
+			text-align: center;
+			position: relative;
+			color: #fff;
+		}
+
+		b {
+			padding-left: 14px;
+			padding-right: 10px;
+			letter-spacing: 0;
+		}
+
+		#scoring {
+			background-color: #fafafa99;
+			padding: 12px;
+
+
+			animation-duration: .5s;
+			animation-name: slideinfromright;
+			/* animation-delay: .5s; */
+			/* cubix-bezier bounce */
+			/* animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
 /* animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.955); */
 animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-        }
+		}
 
-        #hiscoring {
-            background-color: #fafafacc;
-            padding: 12px;
-            
+		#hiscoring {
+			background-color: #fafafacc;
+			padding: 12px;
+			
 
-            animation-duration: .85s;
-            animation-name: slideinfromleft;
-            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-        }
+			animation-duration: .85s;
+			animation-name: slideinfromleft;
+			animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
+		}
 
-        .slideinfromleft{
-            animation-duration: .5s;
-            animation-name: slideinfromleft;
-        }
-        @keyframes slideinfromleft {
-            0% {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
+		.slideinfromleft{
+			animation-duration: .5s;
+			animation-name: slideinfromleft;
+		}
+		@keyframes slideinfromleft {
+			0% {
+				opacity: 0;
+				transform: translateX(-100%);
+			}
 
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
 
-        .slideinfromright{
-            animation-duration: .5s;
-            animation-name: slideinfromright;
-        }
-        @keyframes slideinfromright {
-            0% {
-                opacity: 0;
-                transform: translateX(100%);
-            }
+		.slideinfromright{
+			animation-duration: .5s;
+			animation-name: slideinfromright;
+		}
+		@keyframes slideinfromright {
+			0% {
+				opacity: 0;
+				transform: translateX(100%);
+			}
 
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-    </style>
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+	</style>
 </head>
 
 <body>
-    <!-- <div class="hint"></div> -->
-    <div id="gamediv">
-        <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> <span id="answer2"></span>
-        <input type="hidden" value="" id="eval" />
-        <div id="scoreoverlay" class="scoreoverlay">
-            <div>🏹</div>
-            <div class="wrapper">
-                <spansmall>1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
-                </spansmall>
-            </div>
-            <div id="scoring"> SCORE <b id="score3"></b> </div>
-            <div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div><br /> <button onclick="newround()">GO⚡️</button>
-            <spansmall><br /><br /> Made for Mobile<br /> Coded to 99% on a mobile<br /> Mobile-XP first<br /> <br /> <br />
-            </spansmall>
-        </div>
-        <toptext>
-            <h1>MATH</h1>
-        </toptext>
-        <div class="scorebar"> <span class=score>SCORE <b id="score"></b> </span> <span class=hiscore> HISCORE <b
-                    id="hiscore"></b> </span> </div>
-        <div class="progressbarboss">
-            <div id='timer'></div>
-        </div>
+	<!-- <div class="hint"></div> -->
+	<div id="gamediv">
+		<input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> <span id="answer2"></span>
+		<input type="hidden" value="" id="eval" />
+		<div id="scoreoverlay" class="scoreoverlay">
+			<div>🏹</div>
+			<div class="wrapper">
+				<spansmall>1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
+				</spansmall>
+			</div>
+			<div id="scoring"> SCORE <b id="score3"></b> </div>
+			<div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div><br /> <button onclick="newround()">GO⚡️</button>
+			<spansmall><br /><br /> Made for Mobile<br /> Coded to 99% on a mobile<br /> Mobile-XP first<br /> <br /> <br />
+			</spansmall>
+		</div>
+		<toptext>
+			<h1>MATH</h1>
+		</toptext>
+		<div class="scorebar"> <span class=score>SCORE <b id="score"></b> </span> <span class=hiscore> HISCORE <b
+					id="hiscore"></b> </span> </div>
+		<div class="progressbarboss">
+			<div id='timer'></div>
+		</div>
 
   
-        <div id="i3" class="i3"></div>
-    <div id="score2"></div>
-        <div class="buttonswrapper">
-            <div id="buttons"> </div>
-        </div>
-        <div class="fb" id="fb"></div>
+		<div id="i3" class="i3"></div>
+	<div id="score2"></div>
+		<div class="buttonswrapper">
+			<div id="buttons"> </div>
+		</div>
+		<div class="fb" id="fb"></div>
 
-    </div>
-    <script>
+	</div>
+	<script>
 
 
-        mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-        eventtyper = mobile ? "touchstart" : "mousedown";
-        var diff = 0;
-        var arrayblaha = 1;
-        var delement3 = [];
-        var start, previousTimeStamp, timestamp, counttime;
-        var score = 0; // starting score
+		mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+		eventtyper = mobile ? "touchstart" : "mousedown";
+		var diff = 0;
+		var arrayblaha = 1;
+		var delement3 = [];
+		var start, previousTimeStamp, timestamp, counttime;
+		var score = 0; // starting score
 
 /* get hiscore from local storage */
-        var hiscore = localStorage.getItem("hiscore");
-        if (hiscore == null) {
-            //hiscore = 84/8
-            hiscore = 5;
-        }
-      
+		var hiscore = localStorage.getItem("hiscore");
+		if (hiscore == null) {
+			//hiscore = 84/8
+			hiscore = 5;
+		}
+	  
 
 
-        var maxcountime = 390; // max time left in..  pixels ;-D
-        var pluscount = 203; //how much extra time per right answer 
-        var speedish = 0.089; // starting speed
-        var speedincrease = 0.000031; //may rather be in blocks of levels or per question
+		var maxcountime = 390; // max time left in..  pixels ;-D
+		var pluscount = 203; //how much extra time per right answer 
+		var speedish = 0.089; // starting speed
+		var speedincrease = 0.000031; //may rather be in blocks of levels or per question
 
-        var alternate, diffspin = 0; // can use score, but it might change in the future
+		var alternate, diffspin = 0; // can use score, but it might change in the future
 
-        document.getElementById('score').innerHTML = score;
-        document.getElementById('hiscore').innerHTML = hiscore;
-        document.getElementById('score3').innerHTML = score;
-        document.getElementById('hiscore3').innerHTML = hiscore;
+		document.getElementById('score').innerHTML = score;
+		document.getElementById('hiscore').innerHTML = hiscore;
+		document.getElementById('score3').innerHTML = score;
+		document.getElementById('hiscore3').innerHTML = hiscore;
 
-        function check() {
-            answered = document.getElementById('answer').value;
-            if (answered == document.getElementById('eval').value) {
-                Array.from(document.getElementsByClassName("fi")).map(el => {
-                    el.classList.add("fa");
-                });
-                next();
-                score++;
+		function check() {
+			answered = document.getElementById('answer').value;
+			if (answered == document.getElementById('eval').value) {
+				Array.from(document.getElementsByClassName("fi")).map(el => {
+					el.classList.add("fa");
+				});
+				next();
+				score++;
 
-                if (score % 10 === 0) {
-                    document.getElementById('score2').innerHTML = "";
-                   scorez = score;
-                    for (let i = 0; i < Math.floor(score / 100); i++) {
-                        document.getElementById('score2').innerHTML += "🔮";
-                        scorez = scorez -100; // buggy  time to fix
-                    }
+				if (score % 10 === 0) {
+					document.getElementById('score2').innerHTML = "";
+				   scorez = score;
+					for (let i = 0; i < Math.floor(score / 100); i++) {
+						document.getElementById('score2').innerHTML += "🔮";
+						scorez = scorez -100; // buggy  time to fix
+					}
 // console.log(scorez);
-                    for (let i = 0; i < Math.floor(scorez / 10); i++) {
-                        document.getElementById('score2').innerHTML += "💎";
-                    }
-                    document.getElementById('score2').innerHTML += "<br />";
-                } else {
-                    document.getElementById('score2').innerHTML += "⭐️";
-                }
-                
+					for (let i = 0; i < Math.floor(scorez / 10); i++) {
+						document.getElementById('score2').innerHTML += "💎";
+					}
+					document.getElementById('score2').innerHTML += "<br />";
+				} else {
+					document.getElementById('score2').innerHTML += "⭐️";
+				}
+				
 
-                soundx = sound.clone();
-                soundx.attack = 0.6;
-                soundx.volume = 0.4;
-                soundx.play(0, 0);
-                if (hiscore < score) {
-                    hiscore++;
-                }
-                document.getElementById('score').innerHTML = score;
-                document.getElementById('hiscore').innerHTML = hiscore;
-                delement4 = document.getElementById('buttons');
-                delement4.classList.add("greenpow");
-                setTimeout(() => delement4.classList.remove('greenpow'), 500);
+				soundx = sound.clone();
+				soundx.attack = 0.6;
+				soundx.volume = 0.4;
+				soundx.play(0, 0);
+				if (hiscore < score) {
+					hiscore++;
+				}
+				document.getElementById('score').innerHTML = score;
+				document.getElementById('hiscore').innerHTML = hiscore;
+				delement4 = document.getElementById('buttons');
+				delement4.classList.add("greenpow");
+				setTimeout(() => delement4.classList.remove('greenpow'), 500);
 
-                alternate == -1 ? alternate = 1 : alternate = -1;
+				alternate == -1 ? alternate = 1 : alternate = -1;
 
-                let diffspin2 = 0.1 * (elapsed - diff);
-                if (diffspin2 > 1) {
-                    diffspin2 = 1;
-                }
-                diffspin = Math.abs(1200 / diffspin2) - 0.8 * diffspin;
+				let diffspin2 = 0.1 * (elapsed - diff);
+				if (diffspin2 > 1) {
+					diffspin2 = 1;
+				}
+				diffspin = Math.abs(1200 / diffspin2) - 0.8 * diffspin;
 
-                // diffspin = -1000 * Math.abs(1200 / diffspin);
+				// diffspin = -1000 * Math.abs(1200 / diffspin);
 
-                document.documentElement.style.setProperty('--fbpowro', 0.5 * alternate * diffspin + 'deg');
+				document.documentElement.style.setProperty('--fbpowro', 0.5 * alternate * diffspin + 'deg');
 
-                if (alternate == -1) {
-                    document.documentElement.style.setProperty('--fbpowstartpos', -100 + '%');
-                } else {
-                    document.documentElement.style.setProperty('--fbpowstartpos', 100 + '%');
-                }
+				if (alternate == -1) {
+					document.documentElement.style.setProperty('--fbpowstartpos', -100 + '%');
+				} else {
+					document.documentElement.style.setProperty('--fbpowstartpos', 100 + '%');
+				}
 
-                diff = elapsed;
-                arrayblaha++;
-                arrayblaha = arrayblaha % 3;
-                delement3[arrayblaha] = document.getElementById('fb').cloneNode();
-                delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
-                delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
-                delement3[arrayblaha].classList.add("fbpow");
-                delement3.forEach(function (el) {
-                    el.addEventListener("animationend", function () {
-                        el.remove();
-                    }, false);
-                });
-               
-                counttime = counttime + pluscount;
-                speedish += speedincrease;
-                document.getElementById('answer').value = '';
-                document.getElementById('answer2').innerHTML = '';
-            } else {
-                delement2 = document.getElementById('buttons');
-                delement2.classList.add("redpow");
-                setTimeout(() => delement2.classList.remove('redpow'), 800);
-                document.getElementById('answer').value = '';
-                document.getElementById('answer2').innerHTML = '';
-            }
-        }
+				diff = elapsed;
+				arrayblaha++;
+				arrayblaha = arrayblaha % 3;
+				delement3[arrayblaha] = document.getElementById('fb').cloneNode();
+				delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
+				delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
+				delement3[arrayblaha].classList.add("fbpow");
+				delement3.forEach(function (el) {
+					el.addEventListener("animationend", function () {
+						el.remove();
+					}, false);
+				});
+			   
+				counttime = counttime + pluscount;
+				speedish += speedincrease;
+				document.getElementById('answer').value = '';
+				document.getElementById('answer2').innerHTML = '';
+			} else {
+				delement2 = document.getElementById('buttons');
+				delement2.classList.add("redpow");
+				setTimeout(() => delement2.classList.remove('redpow'), 800);
+				document.getElementById('answer').value = '';
+				document.getElementById('answer2').innerHTML = '';
+			}
+		}
 
-        function makebuttons() {
-            var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-            arry.forEach(iok => {
-                document.getElementById('buttons').innerHTML += "<button class='numkey' value='" + iok + "'>" + iok + "</button>";
-                if (iok == 9)
-                    document.getElementById('buttons').innerHTML += "<button class='numkey' value='clear'>❌</button>";
-                if (iok == 0)
-                    document.getElementById('buttons').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
-            });
-            var elements = document.getElementsByClassName("numkey");
-            var myFunction = function () {
-                var attribute = this.getAttribute("value");
-                if (attribute == "clear") {
-                    document.getElementById('answer').value = '';
-                    document.getElementById('answer2').innerHTML = '';
-                    next();
-                } else {
-                    document.getElementById('answer').value += attribute;
-                    document.getElementById('answer2').innerHTML += attribute;
-                    check();
-                }
-            }
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].addEventListener(eventtyper, myFunction, false);
-            }
+		function makebuttons() {
+			var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+			arry.forEach(iok => {
+				document.getElementById('buttons').innerHTML += "<button class='numkey' value='" + iok + "'>" + iok + "</button>";
+				if (iok == 9)
+					document.getElementById('buttons').innerHTML += "<button class='numkey' value='clear'>❌</button>";
+				if (iok == 0)
+					document.getElementById('buttons').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
+			});
+			var elements = document.getElementsByClassName("numkey");
+			var myFunction = function () {
+				var attribute = this.getAttribute("value");
+				if (attribute == "clear") {
+					document.getElementById('answer').value = '';
+					document.getElementById('answer2').innerHTML = '';
+					next();
+				} else {
+					document.getElementById('answer').value += attribute;
+					document.getElementById('answer2').innerHTML += attribute;
+					check();
+				}
+			}
+			for (var i = 0; i < elements.length; i++) {
+				elements[i].addEventListener(eventtyper, myFunction, false);
+			}
 
-            // hint the right answer :)
-            var hint = function () {
-                //  var attribute = this.getAttribute("value");
-
-
-                d = document.createElement("div");
-                d.classList.add("hint");
-                d.setAttribute("id", "hint");
-                d.innerHTML = (document.getElementById('eval').value);
-                document.body.append(d);
+			// hint the right answer :)
+			var hint = function () {
+				//  var attribute = this.getAttribute("value");
 
 
+				d = document.createElement("div");
+				d.classList.add("hint");
+				d.setAttribute("id", "hint");
+				d.innerHTML = (document.getElementById('eval').value);
+				document.body.append(d);
 
 
-            }
-            document.getElementById('check').addEventListener(eventtyper, hint, false);
 
 
-            window.addEventListener("keydown", function (event) {
-                if (event.defaultPrevented) {
-                    return;
-                }
-                if (start === undefined) {
-                    newround();
-                }
-                document.getElementById('answer').value += event.key;
-                document.getElementById('answer2').innerHTML += event.key;
-                check();
+			}
+			document.getElementById('check').addEventListener(eventtyper, hint, false);
 
 
-             //   event.preventDefault();
-            }, true);
-        }
-        const dl = () => {
-           reset();
-           startscreen();
-            makebuttons();
-        }
-        var q = z = w = 0;
-
-        function evalQ(a) {
-            try {
-                return eval(a);
-            } catch (error) {
-                return error;
-            }
-        }
-        const v = (a) => {
-            d = document.createElement("div");
-            d.classList.add("fox");
-            // d.classList.add("ang");
-            d.innerHTML = (a);
-
-            document.getElementById('i3').append(d);
-            //     document.body.append(d);
-            //document.body.append(d);
-            d.classList.add("fi");
-            document.getElementById('eval').value = (evalQ(a));
-            w++;
-        }
-        var ar = [];
-
-        function c(po) {
-            ar.push(po);
-        }
-
-        function next() {
-             Array.from(document.getElementsByClassName("fa")).map(el => {
-                el.addEventListener("animationend", function () {
-                    el.remove();
-                }, false);
-            });
+			window.addEventListener("keydown", function (event) {
+				if (event.defaultPrevented) {
+					return;
+				}
+				if (start === undefined) {
+					newround();
+				}
+				document.getElementById('answer').value += event.key;
+				document.getElementById('answer2').innerHTML += event.key;
+				check();
 
 
-            
-            if (ar.length > 0) {
-                v(ar.shift())
-            } else {
-                // ... 
-                // if (q < 10) {
-                //     q++;
-                //     v(q);
-                // } else {
-                //     v(q);
-                // }
+			 //   event.preventDefault();
+			}, true);
+		}
+		const dl = () => {
+		   reset();
+		   startscreen();
+			makebuttons();
+		}
+		var q = z = w = 0;
 
-                // do not need to call rset here too... ?
-              //  reset();
-            }
-        }
-        document.addEventListener("DOMContentLoaded", dl);
-        window.addEventListener('touchmove' || 'touchdowm' || 'touchend' || 'mousedown', ev => {
-            if (1) {
-                ev.preventDefault();
-                ev.stopImmediatePropagation();
-            };
-        }, {
-            passive: false
-        });
-        const reset = () => {
-            
-            elapsed = 0;
-            start = undefined;
-            ar = [];
-            document.getElementById('score').innerHTML = score;
-            counttime = 300;
-            counttime2 = 100;
-            w = 0;
+		function evalQ(a) {
+			try {
+				return eval(a);
+			} catch (error) {
+				return error;
+			}
+		}
+		const v = (a) => {
+			d = document.createElement("div");
+			d.classList.add("fox");
+			// d.classList.add("ang");
+			d.innerHTML = (a);
+
+			document.getElementById('i3').append(d);
+			//	 document.body.append(d);
+			//document.body.append(d);
+			d.classList.add("fi");
+			document.getElementById('eval').value = (evalQ(a));
+			w++;
+		}
+		var ar = [];
+
+		function c(po) {
+			ar.push(po);
+		}
+
+		function next() {
+			 Array.from(document.getElementsByClassName("fa")).map(el => {
+				el.addEventListener("animationend", function () {
+					el.remove();
+				}, false);
+			});
 
 
-            // c('c=2;c*2;c**=3;');
-            // c('c=2;c*2;c**=3;');
-            string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
-            string = string.replace(/\D/g, ''); // strip whitespaces, should've been done in string indata instead .. just lazy
-            op = 0;
-            while (op < 1000) {
-                mathie = string[op++] + "+" + string[op];
-                if (eval(mathie) > 9) {
-                    mathie = string[--op] + '-' + string[++op];
-                }
-                if (eval(mathie) < 0) {
-                    mathie = string[--op];
-                }
-                c(mathie);
-                op++;
-            }
-            v(ar.shift());
+			
+			if (ar.length > 0) {
+				v(ar.shift())
+			} else {
+				// ... 
+				// if (q < 10) {
+				//	 q++;
+				//	 v(q);
+				// } else {
+				//	 v(q);
+				// }
+
+				// do not need to call rset here too... ?
+			  //  reset();
+			}
+		}
+		document.addEventListener("DOMContentLoaded", dl);
+		window.addEventListener('touchmove' || 'touchdowm' || 'touchend' || 'mousedown', ev => {
+			if (1) {
+				ev.preventDefault();
+				ev.stopImmediatePropagation();
+			};
+		}, {
+			passive: false
+		});
+		const reset = () => {
+			
+			elapsed = 0;
+			start = undefined;
+			ar = [];
+			document.getElementById('score').innerHTML = score;
+			counttime = 300;
+			counttime2 = 100;
+			w = 0;
+
+
+			// c('c=2;c*2;c**=3;');
+			// c('c=2;c*2;c**=3;');
+			string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
+			string = string.replace(/\D/g, ''); // strip whitespaces, should've been done in string indata instead .. just lazy
+			op = 0;
+			while (op < 1000) {
+				mathie = string[op++] + "+" + string[op];
+				if (eval(mathie) > 9) {
+					mathie = string[--op] + '-' + string[++op];
+				}
+				if (eval(mathie) < 0) {
+					mathie = string[--op];
+				}
+				c(mathie);
+				op++;
+			}
+			v(ar.shift());
 
 //console.log('startscreen call');
-  //          startscreen(); // pink start screen overlay
+  //		  startscreen(); // pink start screen overlay
 
-           
-        }
+		   
+		}
 
-        function startscreen() {
-            if (score > 0) {
-
-
-                 /* save hiscore to local storage*/
-                 console.log("saving?");
-                 console.log("hiscore" + hiscore);
-                 console.log("score" + score);
-                if (score >= hiscore) {
-                    hiscore = score;
-                    result = localStorage.setItem('hiscore', hiscore);
-                    console.log('saving code runned!');
-                    console.log(result);
-                }
-
-                document.getElementById('score3').innerHTML = score;
+		function startscreen() {
+			if (score > 0) {
 
 
-                document.getElementById('score3').innerHTML = score + "<br />";
-                /*add each character with delay */
+				 /* save hiscore to local storage*/
+				// console.log("saving?");
+				 //console.log("hiscore" + hiscore);
+				 //console.log("score" + score);
+				if (score >= hiscore) {
+					hiscore = score;
+					result = localStorage.setItem('hiscore', hiscore);
+					//console.log('saving code runned!');
+					//console.log(result);
+				}
 
-                var stripped = document.getElementById('score2').innerHTML.replace(/(<([^>]+)>)/ig, "");
+				document.getElementById('score3').innerHTML = score;
 
-                var i = 0;
-                var interval = setInterval(function () {
-                    if (i < stripped.length) {
-                        //+ "<br />" + document.getElementById('score2').innerHTML;
+
+				document.getElementById('score3').innerHTML = score + "<br />";
+				/*add each character with delay */
+
+				var stripped = document.getElementById('score2').innerHTML.replace(/(<([^>]+)>)/ig, "");
+
+				var i = 0;
+				function interval(){
+					if (i < stripped.length) {
+						//+ "<br />" + document.getElementById('score2').innerHTML;
 
 //strip all html tags from the string
-                        
-                       
-                        
-                        document.getElementById('score3').innerHTML += stripped.substring(i, 1+i);
-                        // + document.getElementById('score3').innerHTML.substring(i + 1);
-//                        document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
-                        i++; // increment i
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 100);
-                
-           
-           
-            }
-            document.getElementById('hiscore3').innerHTML = hiscore;
-            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
-        }
+						
+					   
+						
+						document.getElementById('score3').innerHTML += stripped.substring(i, 1+i);
+						// + document.getElementById('score3').innerHTML.substring(i + 1);
+//						document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
+						i++; // increment i
+					
+					    
+document.setTimeout( interval(), i*900);
+					    
+					} else {
+						//clearInterval(interval);
+					}
+				}
+				
+				interval();
+		   
+		   
+			}
+			document.getElementById('hiscore3').innerHTML = hiscore;
+			setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
+		}
 
-        function newround() {
-            score =0;
-            document.getElementById('score2').innerHTML = "😀<br />";
-
-
-
-
-            delement = document.getElementById('scoreoverlay');
-            //somehow this is not working.. 
-            setTimeout(() => delement.classList.remove('show'), 30);
-
-
-         reset();
+		function newround() {
+			score =0;
+			document.getElementById('score2').innerHTML = "😀<br />";
 
 
 
-            function step(timestamp) {
-                if (start === undefined) {
-                    start = timestamp;
-                }
-                elapsed = timestamp - start;
-                if (previousTimeStamp !== timestamp) {
-                    counttime2 = counttime - Math.ceil(speedish * elapsed);
-                    if (counttime2 > maxcountime) {
-                        counttime = counttime - 10;
-                        counttime2 = maxcountime;
-                    }
-                    element = document.getElementById('timer');
-                    element.style.width = counttime2 + 'px';
-                    element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
-                }
-                if (counttime2 > 1) {
-                    previousTimeStamp = timestamp
-                    window.requestAnimationFrame(step);
-                } else {
-               //     reset();
-                 startscreen();
-                }
-            }
-            window.requestAnimationFrame(step);
-        }
 
-        function colortohex(red, green, blue) {
-            return '#' + red.toString(16) +
-                green.toString(16) +
-                blue.toString(16);
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
+			delement = document.getElementById('scoreoverlay');
+			//somehow this is not working.. 
+			setTimeout(() => delement.classList.remove('show'), 30);
 
-    <script>
-        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
 
-        });
-        var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.42,
-            time: 0.84,
-            mix: 0.42,
-            cutoff: 900
-        });
-        sound.addEffect(dubDelay);
+		 reset();
 
-    </script>
+
+
+			function step(timestamp) {
+				if (start === undefined) {
+					start = timestamp;
+				}
+				elapsed = timestamp - start;
+				if (previousTimeStamp !== timestamp) {
+					counttime2 = counttime - Math.ceil(speedish * elapsed);
+					if (counttime2 > maxcountime) {
+						counttime = counttime - 10;
+						counttime2 = maxcountime;
+					}
+					element = document.getElementById('timer');
+					element.style.width = counttime2 + 'px';
+					element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
+				}
+				if (counttime2 > 1) {
+					previousTimeStamp = timestamp
+					window.requestAnimationFrame(step);
+				} else {
+			   //	 reset();
+				 startscreen();
+				}
+			}
+			window.requestAnimationFrame(step);
+		}
+
+		function colortohex(red, green, blue) {
+			return '#' + red.toString(16) +
+				green.toString(16) +
+				blue.toString(16);
+		}
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
+
+	<script>
+		var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
+
+		});
+		var dubDelay = new Pizzicato.Effects.DubDelay({
+			feedback: 0.42,
+			time: 0.84,
+			mix: 0.42,
+			cutoff: 900
+		});
+		sound.addEffect(dubDelay);
+
+	</script>
 </body>
 
 </html>
