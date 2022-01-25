@@ -10,6 +10,22 @@
     <style>
     
                             @import url('http://fonts.cdnfonts.com/css/games');
+
+                            .buttons {
+	width: 100%;
+	border-radius: 16px;
+	display: inline-block;
+	bottom: 0;
+	/* background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%); */
+	background: radial-gradient(circle at 30% 60%, #a4a4a455 12%, #3e3e3e55 50%);
+	background-color: #c2c2c2;
+	padding: 12px 0 3px 0;
+	max-width: 900px;
+	max-height: 50%;
+	text-align: center;
+    opacity: 1;
+}
+
  #score2 {
 	text-align: center;
 	display: inline-block;
@@ -60,15 +76,16 @@
 	word-break: break-all;
 	word-wrap: break-word;
 	font-size: 2em;
-	text-shadow: 0 0 20px #30303044, 0 0 70px #ffbc2c44;
+	text-shadow: 0 0 20px #30303022, 0 0 70px #ffbc2c44;
 	letter-spacing: -4px;
 	line-height: 2.4rem;
 	padding-top: 8px;
-	color: #ffffff55;
+	color: #ffffff88;
 	font-size: 300%;
 	font-style: italic;
 	animation-name: fadeout;
 	animation-duration: 2.2s;
+    font-weight: bolder;
 	
 }
 @keyframes fadeout {
@@ -270,30 +287,26 @@ spansmall: nth-child(1) {
 	width: 100%;
 	bottom: 0;
 	position: absolute;
-	background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%);
-	background-color: #7CAF80;
-	padding: 2px 0 2px 0;
+	/* background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%); */
+	background: radial-gradient(circle at 30% 60%, #88888855, #9f9f9f55 50%);
+
+	/* background-color: #7CAF80; */
+	padding: 4px 0 2px 0;
 	margin: -2px;
 	text-align: center;
 	min-height: 172px;
 	max-height: 60%;
+    border-radius:  12px 12px 0 0;
+
 }
-#buttons {
-	width: 100%;
-	border-radius: 16px;
-	display: inline-block;
-	bottom: 0;
-	background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%);
-	background-color: #7CAF80;
-	padding: 2px 0 3px 0;
-	max-width: 900px;
-	max-height: 50%;
-	text-align: center;
-}
+
 button {
 	cursor: pointer;
-	filter: drop-shadow(0 0 8px #94af84);
-	background-color: #4CAF50;
+	/* filter: drop-shadow(0 0 8px #94af84); */
+	/* filter: drop-shadow(0 0 8px #4f4f4f); */
+	filter: drop-shadow(0 0 2px #333);
+	/* background-color: #4CAF50; */
+	background-color: #aeaeae;
 	border: none;
 	color: #fff;
 	text-align: center;
@@ -301,23 +314,33 @@ button {
 	display: inline-block;
 	font-size: 2rem;
 	font-weight: 700;
-	border: 2px solid #7d97;
+	/* border: 2px solid #7d97; */
+    border: 2px solid rgba(142, 142, 142, 1);
 	border-radius: 12px;
 	background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
+
 	margin: 0;
-	padding: 8px 6px 8px 3px;
+	padding: 10px 6px 8px 3px;
 	max-height: 60px;
 	width: 50%;
 	min-height: 38px;
+
 }
 .numkey {
+
+     /* background: radial-gradient(circle at 60% 30%, #838383, #303030 90%); */
+     background: radial-gradient(circle at 60% 30%, #72727288, #3c3c3c22 90%);
+
+    border: 4px solid rgba(244, 244, 244, 0.1);
 	padding: 13px 5px 13px 5px;
 	margin: 2px;
 	max-height: 60px;
 	width: 32.5%;
-	height: 24.2%;
+	/* height: 24.2%; */
+    min-height:70px;
 	max-height: 78px;
-	min-height: 38px;
+    font-size: 150%;
+        margin:8px;
 }
 html,body,*,.game {
 	margin: auto !important;
@@ -466,30 +489,37 @@ gr {
 	}
 }
 .redpow {
-	animation-duration: .8s;
-	animation-name: #FF0000powani;
+	animation-duration: 0.3s;
+	animation-name: redpowani;
 }
 @keyframes redpowani {
 	0% {
-	filter: hue-rotate(-62deg);
-	}
+	 /* filter: hue-rotate(-2deg);  */
+    /* opacity: 0.6; */
+     /* background: radial-gradient(circle at 60% 30%, #292929, #707070 90%); */
+background-color: #33221133;
+    }
 	100% {
-	filter: hue-rotate(0deg);
+	/* filter: hue-rotate(0deg);
+     opacity: 1; */
+     background-color: #ff991100;
 	}
 }
 .greenpow {
 	animation-duration: .8s;
-	animation-name: #008000powani;
+	animation-name: greenpowani;
 }
 @keyframes greenpowani {
 	0% {
-	filter: hue-rotate(0deg);
-	}
-	10% {
-	filter: hue-rotate(-20deg);
+        background-color: #77667744;
+	/* filter: hue-rotate(-62deg); 
+    opacity: 0.5; */
+    /* background: radial-gradient(circle at 60% 30%, #c5ffac, #707070 90%); */
 	}
 	100% {
-	filter: hue-rotate(0deg);
+	/* filter: hue-rotate(0deg);
+     opacity: 1; */
+     background-color: #ccffcc00;
 	}
 }
 body::before {
@@ -616,7 +646,7 @@ b {
 
         <div id="score2"></div>
         <div class="buttonswrapper">
-            <div id="buttons"> </div>
+            <div id="buttons" class="buttons"> </div>
         </div>
         <div class="fb" id="fb"></div>
 
@@ -823,6 +853,7 @@ try {
                 }
 
 
+                // level = 1+ Math.round(score / 10 - score*0.03,0);
                 level = 1+ Math.round(score / 10 - score*0.03,0);
 
 
@@ -873,16 +904,16 @@ try {
                 
                 speedish = levelspeedincrease + level * speedincrease;
                 // speedish += speedincrease;
-                document.getElementById('timer').style.transitionDuration = 1.1-11*speedish + 's';
+                document.getElementById('timer').style.transitionDuration = 1-10*speedish + 's';
 
 
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
             } else {
                 // NOT CORRECT.. YET! 
-                delement2 = document.getElementById('buttons');
-                delement2.classList.add("redpow");
-                setTimeout(() => delement2.classList.remove('redpow'), 800);
+                // delement2 = document.getElementById('buttons');
+                // delement2.classList.add("redpow");
+                // setTimeout(() => delement2.classList.remove('redpow'), 800);
               
                 if(answered.length >= document.getElementById('eval').value.length ){
                 document.getElementById('answer').value = '';
@@ -903,6 +934,15 @@ try {
             });
             var elements = document.getElementsByClassName("numkey");
             var myFunction = function () {
+
+            
+
+
+                   this.classList.add("redpow");
+                setTimeout(() => this.classList.remove('dar'), 800);
+                
+
+
                 if (canVibrate) window.navigator.vibrate(50);
                 var attribute = this.getAttribute("value");
                 if (attribute == "clear") {
