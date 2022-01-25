@@ -760,10 +760,30 @@ var soundx;
 
               try {
                soundx.removeEffect(dubDelay);
+
                    // window.navigator.vibrate(100);
-                
+                // soundx.removeEffect(stereoDelay);
                 } catch (error) {
              //     console.log(error);
+                }  
+   
+
+                try {
+                    soundx.removeEffect(stereoPanner);
+
+                    // window.navigator.vibrate(100);
+                    // soundx.removeEffect(stereoDelay);
+                } catch (error) {
+                    //     console.log(error);
+                }  
+
+                try {
+                    soundx.removeEffect(stereoPanner2);
+
+                    // window.navigator.vibrate(100);
+                    // soundx.removeEffect(stereoDelay);
+                } catch (error) {
+                    //     console.log(error);
                 }  
 
               
@@ -771,6 +791,7 @@ var soundx;
                 // soundx.attack = 0.6;
                 // soundx.volume = 0.9;
                  soundx.addEffect(dubDelay);
+                //    soundx.addEffect(stereoDelay);
              //   soundx.removeEffect(dubDelay);
 
 //                soundx.sourceNode.playbackRate.value = 2;
@@ -784,21 +805,21 @@ var soundx;
 
                  switch (score % 2) {
                     case 0:
-                   //     soundx.addEffect(stereoPanner);
+                      soundx.addEffect(stereoPanner);
 
                         break;
                     case 1:
-                     //   soundx.addEffect(stereoPanner2);
+                     soundx.addEffect(stereoPanner2);
                         break;
                 }
             
-                soundx.play(0, 0);
+                soundx.play(0, 0.07);
                 
               
 
 
 
-                switch (score%10) {
+                switch (-1+score%10) {
                     case 0:
                         soundx.sourceNode.playbackRate.value = 1;
                         // soundx.sourceNode.playbackRate.value = 0.5;
@@ -807,16 +828,21 @@ var soundx;
                         soundx.sourceNode.playbackRate.value = 0.75;
                         break;
                     case 2:
-                        soundx.sourceNode.playbackRate.value = 1;
-                        break;
-                    case 5:
                         soundx.sourceNode.playbackRate.value = 1.25;
                         break;
+                   
                     case 3:
-                        soundx.sourceNode.playbackRate.value = 1.5;
+                        soundx.sourceNode.playbackRate.value = 1.25-.125;
+                        
+                        //soundx.sourceNode.playbackRate.value = 1.125;
                         break;
                     case 4:
-                        soundx.sourceNode.playbackRate.value = 1.75;
+                        soundx.sourceNode.playbackRate.value = 1.5;
+                        break;
+
+                     case 5:
+                        // soundx.sourceNode.playbackRate.value = 1.25;
+                        soundx.sourceNode.playbackRate.value = 0.75 + 0.125;
                         break;
                     case 6:
                         soundx.sourceNode.playbackRate.value = 2;
@@ -825,13 +851,13 @@ var soundx;
                         soundx.sourceNode.playbackRate.value = 2.25;
                         break;
                     case 8:
-                        soundx.sourceNode.playbackRate.value = 2.5;
+                        soundx.sourceNode.playbackRate.value = 2.5-1+0.01;
                         break;
                     // case 9:
                     //     soundx.sourceNode.playbackRate.value = 2.75;
                     //     break;
                     case 9:
-                        soundx.sourceNode.playbackRate.value = 3;
+                        soundx.sourceNode.playbackRate.value = 3-1;
                         break;
 
                 }
@@ -1189,7 +1215,7 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
        //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-              sound.attack = 0.5;
+              sound.attack = 0.6;
             // sound.decay = 0.6;
            // sound.cutoff = 600;
 // sound.volume = 0.8;
@@ -1211,9 +1237,18 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
                 feedback: 0.79,
                 // time: 0.84,
                 time: 0.42,
-                mix: .65,
-                cutoff: 800
+                mix: .66,
+                cutoff: 870
             });
+
+                    // var stereoDelay = new Pizzicato.Effects.StereoDelay({
+                    //         feedback: 0.79,
+                    //         // time: 0.84,
+                    //         time: 0.42,
+                    //         mix: .66,
+                    //         cutoff: 870
+                    //     });
+
            // soundx.addEffect(dubDelay);
 /*
             var dubDelay2 = new Pizzicato.Effects.DubDelay({
@@ -1232,16 +1267,15 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
                 //     });
                 // sound.addEffect(dubDelay3);
 
-/*
+
             var stereoPanner = new Pizzicato.Effects.StereoPanner({
-                pan: 0.1
+                pan: -0.4
             });
             var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
-                            pan: 0.9,
-                     
+                pan: 0.4     
              });
 
-             */
+             
 
      
     </script>
