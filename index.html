@@ -693,7 +693,16 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         var delement3 = [];
         var start, previousTimeStamp, timestamp, counttime;
         var score = 0; // starting score
-        var hiscore = 63;
+
+/* get hiscore from local storage */
+        var hiscore = localStorage.getItem("hiscore");
+        if (hiscore == null) {
+            //hiscore = 84/8
+            hiscore = 5;
+        }
+      
+
+
         var maxcountime = 390; // max time left in..  pixels ;-D
         var pluscount = 203; //how much extra time per right answer 
         var speedish = 0.089; // starting speed
@@ -849,8 +858,8 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
             }, true);
         }
         const dl = () => {
-            reset();
-            
+           reset();
+           startscreen();
             makebuttons();
         }
         var q = z = w = 0;
@@ -893,7 +902,16 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
             if (ar.length > 0) {
                 v(ar.shift())
             } else {
-                reset();
+                // ... 
+                // if (q < 10) {
+                //     q++;
+                //     v(q);
+                // } else {
+                //     v(q);
+                // }
+
+                // do not need to call rset here too... ?
+              //  reset();
             }
         }
         document.addEventListener("DOMContentLoaded", dl);
@@ -933,11 +951,28 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
                 op++;
             }
             v(ar.shift());
-            startscreen(); // pink start screen overlay
+
+//console.log('startscreen call');
+  //          startscreen(); // pink start screen overlay
+
+           
         }
 
         function startscreen() {
             if (score > 0) {
+
+
+                 /* save hiscore to local storage*/
+                 console.log("saving?");
+                 console.log("hiscore" + hiscore);
+                 console.log("score" + score);
+                if (score >= hiscore) {
+                    hiscore = score;
+                    result = localStorage.setItem('hiscore', hiscore);
+                    console.log('saving code runned!');
+                    console.log(result);
+                }
+
                 document.getElementById('score3').innerHTML = score;
 
 
@@ -979,8 +1014,13 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
 
 
             delement = document.getElementById('scoreoverlay');
-            setTimeout(() => delement.classList.remove('show'), 10);
-            reset();
+            //somehow this is not working.. 
+            setTimeout(() => delement.classList.remove('show'), 30);
+
+
+         reset();
+
+
 
             function step(timestamp) {
                 if (start === undefined) {
@@ -1001,8 +1041,8 @@ animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
                     previousTimeStamp = timestamp
                     window.requestAnimationFrame(step);
                 } else {
-                    reset();
-                 //   startscreen();
+               //     reset();
+                 startscreen();
                 }
             }
             window.requestAnimationFrame(step);
