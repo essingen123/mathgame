@@ -750,9 +750,74 @@
 
 
                 soundx = sound.clone();
-                soundx.attack = 0.6;
-                soundx.volume = 0.4;
-                soundx.play(0, 0);
+                // soundx.attack = 0.6;
+                soundx.volume = 0.3;
+//                soundx.sourceNode.playbackRate.value = 2;
+              //  soundx.playbackRate.value = 2;
+                //
+                   //soundx.playbackRate = 0.9; // try something between 0.25 and 3
+                // soundx.rate = 2;
+                // soundx.pitch = 2;
+                //soundx.playbackRate.value = 2;
+               // soundx.playbackRate = 2;
+
+                 switch (score % 2) {
+                    case 0:
+                        soundx.addEffect(stereoPanner);
+
+                        break;
+                    case 1:
+                        soundx.addEffect(stereoPanner2);
+                        break;
+                }
+            
+                soundx.play(0, 0.19);
+                
+              
+
+
+
+                switch (-1+score%10) {
+                    case 0:
+                        soundx.sourceNode.playbackRate.value = 0.5;
+                        // soundx.sourceNode.playbackRate.value = 0.5;
+                        break;
+                    case 1:
+                        soundx.sourceNode.playbackRate.value = 0.75;
+                        break;
+                    case 2:
+                        soundx.sourceNode.playbackRate.value = 1;
+                        break;
+                    case 3:
+                        soundx.sourceNode.playbackRate.value = 1.25;
+                        break;
+                    case 4:
+                        soundx.sourceNode.playbackRate.value = 1.5;
+                        break;
+                    case 5:
+                        soundx.sourceNode.playbackRate.value = 1.75;
+                        break;
+                    case 6:
+                        soundx.sourceNode.playbackRate.value = 2;
+                        break;
+                    case 7:
+                        soundx.sourceNode.playbackRate.value = 2.25;
+                        break;
+                    case 8:
+                        soundx.sourceNode.playbackRate.value = 2.5;
+                        break;
+                    // case 9:
+                    //     soundx.sourceNode.playbackRate.value = 2.75;
+                    //     break;
+                    case 9:
+                        soundx.sourceNode.playbackRate.value = 3;
+                        break;
+
+                }
+                
+                
+                
+
                 if (hiscore < score) {
                     hiscore++;
                 }
@@ -1074,16 +1139,57 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
 
     <script>
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
+       //     sound.play();
+            // sound.sourceNode.playbackRate.value = 0.5;
+            sound.attack = 0.9;
+            sound.decay = 0.6;
+           // sound.cutoff = 600;
 
+            // sound.release = 0.4;
         });
+        var flanger = new Pizzicato.Effects.Flanger({
+                time: 0.45,
+                speed: 0.2,
+                depth: 0.1,
+                feedback: 0.1,
+                mix: 0.8    
+            });
+
+            sound.addEffect(flanger);
+
         var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.42,
-            time: 0.84,
-            mix: 0.42,
-            cutoff: 900
-        });
-        sound.addEffect(dubDelay);
+                feedback: 0.49,
+                time: 0.74,
+                mix: .52,
+                cutoff: 600
+            });
+            sound.addEffect(dubDelay);
 
+            var dubDelay2 = new Pizzicato.Effects.DubDelay({
+                    feedback: 0.49,
+                    time: 0.74 * 3,
+                    mix: .48,
+                    cutoff: 400
+                });
+
+                 var dubDelay2 = new Pizzicato.Effects.DubDelay({
+                        feedback: 0.49,
+                        time: 0.74 * 4,
+                        mix: .42,
+                        cutoff: 500
+                    });
+                sound.addEffect(dubDelay2);
+
+
+            var stereoPanner = new Pizzicato.Effects.StereoPanner({
+                pan: 0.1
+            });
+            var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
+                            pan: 0.9,
+                     
+             });
+
+     
     </script>
 </body>
 
