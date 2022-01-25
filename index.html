@@ -225,6 +225,10 @@
         #scoring {
             display: block;
             background-color: #ccc;
+            /* make evertying in smooth transistion */
+            transition: all .5s ease-in-out;
+            
+            
         }
 
         .wrapper {
@@ -238,7 +242,16 @@
             line-height: 2px;
             padding: 0;
             margin: 0;
+
+            /* fades due to not display :block  etc */
+            animation-duration: 3.85s;
+            animation-name: slideinfromleft;
+            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
+spansmall:nth-child(1) {
+            animation-duration: 1.85s;
+        }
+         
 
         #timer {
             width: 2px;
@@ -581,21 +594,63 @@ font-weight: bolder;
         #scoring {
             background-color: #fafafa99;
             padding: 12px;
+
+
+            animation-duration: .5s;
+            animation-name: slideinfromright;
+            /* animation-delay: .5s; */
+            /* cubix-bezier bounce */
+            /* animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+/* animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.955); */
+animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
 
         #hiscoring {
             background-color: #fafafacc;
             padding: 12px;
+            
+
+            animation-duration: .85s;
+            animation-name: slideinfromleft;
+            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
+        }
+
+        .slideinfromleft{
+            animation-duration: .5s;
+            animation-name: slideinfromleft;
+        }
+        @keyframes slideinfromleft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slideinfromright{
+            animation-duration: .5s;
+            animation-name: slideinfromright;
+        }
+        @keyframes slideinfromright {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 
 <body>
     <!-- <div class="hint"></div> -->
-
-
-
-
     <div id="gamediv">
         <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> <span id="answer2"></span>
         <input type="hidden" value="" id="eval" />
@@ -859,6 +914,10 @@ font-weight: bolder;
             counttime = 300;
             counttime2 = 100;
             w = 0;
+
+
+            // c('c=2;c*2;c**=3;');
+            // c('c=2;c*2;c**=3;');
             string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
             string = string.replace(/\D/g, ''); // strip whitespaces, should've been done in string indata instead .. just lazy
             op = 0;
@@ -874,13 +933,39 @@ font-weight: bolder;
                 op++;
             }
             v(ar.shift());
-            startscreen(); // pink startscreen overlay
+            startscreen(); // pink start screen overlay
         }
 
         function startscreen() {
             if (score > 0) {
                 document.getElementById('score3').innerHTML = score;
-                document.getElementById('score3').innerHTML = score + "<br />" + document.getElementById('score2').innerHTML;
+
+
+                document.getElementById('score3').innerHTML = score + "<br />";
+                /*add each character with delay */
+
+                var stripped = document.getElementById('score2').innerHTML.replace(/(<([^>]+)>)/ig, "");
+
+                var i = 0;
+                var interval = setInterval(function () {
+                    if (i < stripped.length) {
+                        //+ "<br />" + document.getElementById('score2').innerHTML;
+
+//strip all html tags from the string
+                        
+                       
+                        
+                        document.getElementById('score3').innerHTML += stripped.substring(i, 1+i);
+                        // + document.getElementById('score3').innerHTML.substring(i + 1);
+//                        document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
+                        i++; // increment i
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 100);
+                
+           
+           
             }
             document.getElementById('hiscore3').innerHTML = hiscore;
             setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
@@ -917,7 +1002,7 @@ font-weight: bolder;
                     window.requestAnimationFrame(step);
                 } else {
                     reset();
-                    startscreen();
+                 //   startscreen();
                 }
             }
             window.requestAnimationFrame(step);
