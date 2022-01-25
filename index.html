@@ -4,9 +4,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
     <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <style>
+    
+                            @import url('http://fonts.cdnfonts.com/css/games');
+ 
         #score2 {
             text-align: center;
             display: inline-block;
@@ -219,6 +223,16 @@ display: block;
             top: 0;
         }
 
+         .level {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left:0;
+            padding-top: 5px;
+            margin: 0 auto;
+        }
+
+
         .hiscore {
             position: absolute;
             top: 0;
@@ -242,14 +256,17 @@ display: block;
         }
 
         spansmall {
+            line-height: 1rem;
+      
+            display: block;
             font-size: .7rem;
-            line-height: 2px;
-            padding: 0;
-            margin: 0;
-
+            /* line-height: 2px; */
+            padding: 8px;
+            margin: 2px;
+      /* margin-top:42px; */
             /* fades due to not display :block  etc */
-            animation-duration: 3.85s;
-            animation-name: slideinfromleft;
+            animation-duration: 1.15s !important;
+           
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
 
@@ -266,10 +283,12 @@ display: block;
             padding: 4px;
             text-align: center;
             border-radius: 8px;
-            display: inline-block;
+            display: block;
             height: 34px;
             background: #7f8;
-            transition: all .8s ease-in-out;
+
+            transition: all 1s ease-in-out;
+
             transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
             filter: drop-shadow(2px 0 15px #2bff0066);
         }
@@ -401,17 +420,37 @@ display: block;
             margin: 0;
         }
 
-        toptext,
+        
         h1 {
+            font-size: 1.8rem;
+            /* line-height: 1.2rm; */
+            color: #fefafa;
+          font-family: 'Games', sans-serif, arial;
+            white-space: pre;
+            font-weight: bolder;
+            display: block;
+            width: 100%;
+            /* height: 12px; */
+            /* position: absolute; */
+            padding: -12px auto 3px auto;
+            text-align: center;
+            color:#ffd8be;
+            font-variant: small-caps;
+            letter-spacing: 1px;
+        }
+
+        toptext {
             font-size: 1rem;
             color: #fefafa;
-            font-family: arial;
+            /* font-family: arial; */
+             font-family: 'Games', sans-serif, arial;
             white-space: pre;
             font-weight: bolder;
             display: block;
             width: 100%;
             position: absolute;
-            margin: -15px auto 2px;
+            top:40px;
+            margin: 25px auto 2px;
             text-align: center;
         }
 
@@ -424,6 +463,7 @@ display: block;
 
         body {
             font-family: "Trebuchet MS";
+            
             color: #ccc;
             font-size: 1.1rem;
             overflow: none;
@@ -594,6 +634,8 @@ display: block;
             letter-spacing: 0;
         }
 
+      
+
         #scoring {
             background-color: #fafafa99;
             padding: 12px;
@@ -607,6 +649,20 @@ display: block;
             /* animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.955); */
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
+
+
+        
+   
+        #leveling {
+            background-color: #d4b2877a;
+            padding: 4px;
+            margin: 12px auto 12px auto;
+            display: block;
+            animation-duration: .85s;
+            animation-name: fadein;
+            animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
+        }
+
 
         #hiscoring {
             background-color: #fafafacc;
@@ -662,22 +718,26 @@ display: block;
         <div id="scoreoverlay" class="scoreoverlay">
             <div>🏹</div>
             <div class="wrapper">
-                <spansmall>1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
+                 <h1>Math Game</h1>
+                <spansmall class="slideinfromleft">1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
                 </spansmall>
             </div>
             <div id="scoring"> SCORE <b id="score3"></b> </div>
-            <div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div><br /> <button onclick="newround()">GO⚡️</button>
-            <spansmall><br /><br /> Made for Mobile<br /> Coded to 99% on a mobile<br /> Mobile-XP first<br /> <br />
+            <div id="leveling"> LVL <b id="level3"></b> </div>
+            <div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div>
+            
+            <br /> <button onclick="newround()">GO⚡️</button>
+            <spansmall class="slideinfrom"><br /><br /> Made for Mobile<br /> Coded to 99% on a mobile<br /> Mobile-XP first<br /> <br />
                 <br />
             </spansmall>
         </div>
-        <toptext>
-            <h1>MATH</h1>
-        </toptext>
-        <div class="scorebar"> <span class=score>SCORE <b id="score"></b> </span> <span class=hiscore> HISCORE <b
-                    id="hiscore"></b> </span> </div>
-       
-            <div id='timer'></div>
+        <toptext>⚠️ • • ⚠️</toptext>
+        <div class="scorebar">
+            <span class=score>SCORE <b id="score"></b> </span>
+            <span class=level> LVL <b id="level"></b> </span>
+            <span class=hiscore> HISCORE <b id="hiscore"></b> </span> </div>
+        </div>
+        <div id='timer'></div>
        
 
 
@@ -701,6 +761,7 @@ var soundx;
         var delement3 = [];
         var start, previousTimeStamp, timestamp, counttime;
         var score = 0; // starting score
+        var level = 1; // starting 
 
         /* get hiscore from local storage */
         var hiscore = localStorage.getItem("hiscore");
@@ -715,16 +776,25 @@ var soundx;
         // var pluscount = 203; //how much extra time per right answer 
         // var speedish = 0.089; // starting speed
         var pluscount = 300; //how much extra time per right answer 
-        var speedish = 0.093; // starting speed
+       
+        var speedish = 0.02; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
-        var speedincrease = 0.000051; //may rather be in blocks of levels or per question
+        var speedincrease = 0.005; //may rather be in blocks of levels or per question
+  
+        var levelspeedincrease = 0.03; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
+
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
+        document.getElementById('level').innerHTML = level;
+
         document.getElementById('score3').innerHTML = score;
         document.getElementById('hiscore3').innerHTML = hiscore;
+
+
+        document.getElementById('level3').innerHTML = level;
 
         function check() {
             answered = document.getElementById('answer').value;
@@ -756,9 +826,15 @@ var soundx;
                     document.getElementById('score2').innerHTML += "⭐️";
                 }
 
+try {
+    soundx.removeEffect(flanger);
+} catch (error) {
+    
+}
 
               try {
                soundx.removeEffect(dubDelay);
+               
 
                    // window.navigator.vibrate(100);
                 // soundx.removeEffect(stereoDelay);
@@ -789,7 +865,12 @@ var soundx;
                 soundx = sound.clone();
                 // soundx.attack = 0.6;
                 // soundx.volume = 0.9;
+
+                soundx.addEffect(flanger);
+
+
                  soundx.addEffect(dubDelay);
+                
                 //    soundx.addEffect(stereoDelay);
              //   soundx.removeEffect(dubDelay);
 
@@ -867,8 +948,16 @@ var soundx;
                 if (hiscore < score) {
                     hiscore++;
                 }
+
+
+                level = 1+ Math.round(score / 10 - score*0.03,0);
+
+
+
                 document.getElementById('score').innerHTML = score;
                 document.getElementById('hiscore').innerHTML = hiscore;
+                document.getElementById('level').innerHTML = level;
+
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
                 setTimeout(() => delement4.classList.remove('greenpow'), 500);
@@ -906,7 +995,14 @@ var soundx;
                 });
 
                 counttime = counttime + pluscount;
-                speedish += speedincrease;
+
+
+                
+                speedish = levelspeedincrease + level * speedincrease;
+                // speedish += speedincrease;
+                document.getElementById('timer').style.transitionDuration = 1.1-9*speedish + 's';
+
+
                 document.getElementById('answer').value = '';
                 document.getElementById('answer2').innerHTML = '';
             } else {
@@ -1109,7 +1205,7 @@ var soundx;
 
                  interval();
                 function interval() {
-                    var timecounter = 50
+                    var timecounter = 80
                     if (i < stripped.length) {
                         //+ "<br />" + document.getElementById('score2').innerHTML;
 
@@ -1127,7 +1223,7 @@ var soundx;
 
                         
                        
-setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370  : timecounter);
+setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270  : timecounter);
 
 
                     } else {
@@ -1140,7 +1236,8 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
 
             }
             document.getElementById('hiscore3').innerHTML = hiscore;
-            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 2);
+            document.getElementById('level3').innerHTML = level;
+            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 90);
         }
 
         function newround() {
@@ -1214,26 +1311,27 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
        //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-              sound.attack = 0.4;
+              sound.attack = 0.9;
             // sound.decay = 0.6;
            // sound.cutoff = 600;
-// sound.volume = 0.8;
+ sound.volume = 0.8;
             // sound.release = 0.4;
         });
 
-        /*
+   
         var flanger = new Pizzicato.Effects.Flanger({
-                time: 0.45,
-                speed: 0.2,
-                depth: 0.1,
-                feedback: 0.1,
-                mix: 0.8    
+            attack: 0.6,
+                time: 0.4,
+                speed: 0.01,
+                depth: 0.01,
+                feedback: 0.2,
+                mix: 0.4    
             });
 
-            sound.addEffect(flanger);
-*/
+            // sound.addEffect(flanger);
+
         var dubDelay = new Pizzicato.Effects.DubDelay({
-                feedback: 0.79,
+                feedback: 0.74,
                 // time: 0.84,
                 time: 0.42,
                 mix: .66,
