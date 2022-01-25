@@ -751,7 +751,7 @@
 
                 soundx = sound.clone();
                 // soundx.attack = 0.6;
-                soundx.volume = 0.3;
+                soundx.volume = 0.9;
 //                soundx.sourceNode.playbackRate.value = 2;
               //  soundx.playbackRate.value = 2;
                 //
@@ -763,15 +763,15 @@
 
                  switch (score % 2) {
                     case 0:
-                        soundx.addEffect(stereoPanner);
+                   //     soundx.addEffect(stereoPanner);
 
                         break;
                     case 1:
-                        soundx.addEffect(stereoPanner2);
+                     //   soundx.addEffect(stereoPanner2);
                         break;
                 }
             
-                soundx.play(0, 0.19);
+                soundx.play(0, 0.18);
                 
               
 
@@ -788,13 +788,13 @@
                     case 2:
                         soundx.sourceNode.playbackRate.value = 1;
                         break;
-                    case 3:
+                    case 5:
                         soundx.sourceNode.playbackRate.value = 1.25;
                         break;
-                    case 4:
+                    case 3:
                         soundx.sourceNode.playbackRate.value = 1.5;
                         break;
-                    case 5:
+                    case 4:
                         soundx.sourceNode.playbackRate.value = 1.75;
                         break;
                     case 6:
@@ -1141,12 +1141,14 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
        //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            sound.attack = 0.9;
-            sound.decay = 0.6;
+             sound.attack = 0.5;
+            // sound.decay = 0.6;
            // sound.cutoff = 600;
-
+sound.volume = 0.8;
             // sound.release = 0.4;
         });
+
+        /*
         var flanger = new Pizzicato.Effects.Flanger({
                 time: 0.45,
                 speed: 0.2,
@@ -1156,15 +1158,15 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
             });
 
             sound.addEffect(flanger);
-
-        var dubDelay = new Pizzicato.Effects.DubDelay({
-                feedback: 0.49,
-                time: 0.74,
-                mix: .52,
-                cutoff: 600
-            });
-            sound.addEffect(dubDelay);
-
+*/
+        // var dubDelay = new Pizzicato.Effects.DubDelay({
+        //         feedback: 0.49,
+        //         time: 0.74,
+        //         mix: .52,
+        //         cutoff: 600
+        //     });
+        //     soundx.addEffect(dubDelay);
+/*
             var dubDelay2 = new Pizzicato.Effects.DubDelay({
                     feedback: 0.49,
                     time: 0.74 * 3,
@@ -1172,15 +1174,16 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
                     cutoff: 400
                 });
 
-                 var dubDelay2 = new Pizzicato.Effects.DubDelay({
-                        feedback: 0.49,
-                        time: 0.74 * 4,
-                        mix: .42,
-                        cutoff: 500
-                    });
-                sound.addEffect(dubDelay2);
+    sound.addEffect(dubDelay2);*/
+                //  var dubDelay3 = new Pizzicato.Effects.DubDelay({
+                //         feedback: 0.49,
+                //         time: 0.74 * 4,
+                //         mix: .42,
+                //         cutoff: 500
+                //     });
+                // soundx.addEffect(dubDelay3);
 
-
+/*
             var stereoPanner = new Pizzicato.Effects.StereoPanner({
                 pan: 0.1
             });
@@ -1188,6 +1191,8 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
                             pan: 0.9,
                      
              });
+
+             */
 
      
     </script>
