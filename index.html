@@ -729,10 +729,15 @@ var soundx;
 
         function check() {
             answered = document.getElementById('answer').value;
+
+
             if (answered == document.getElementById('eval').value) {
                 Array.from(document.getElementsByClassName("fi")).map(el => {
                     el.classList.add("fa");
                 });
+
+
+
                 next();
                 score++;
 
@@ -870,6 +875,7 @@ var soundx;
                 delement3[arrayblaha].classList.add("fbpow");
                 delement3.forEach(function (el) {
                     el.addEventListener("animationend", function () {
+                         el.innerHTML = "";
                         el.remove();
                     }, false);
                 });
@@ -981,10 +987,13 @@ var soundx;
         }
 
         function next() {
-            Array.from(document.getElementsByClassName("fa")).map(el => {
-                el.addEventListener("animationend", function () {
+
+            Array.from(document.getElementsByClassName("fox")).map(el => {
+                // el.addEventListener("animationend", function () {
+                     el.innerHTML = "";
                     el.remove();
-                }, false);
+                    console.log("removed");
+                // }, false);
             });
 
 
@@ -1144,6 +1153,21 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
                     previousTimeStamp = timestamp
                     window.requestAnimationFrame(step);
                 } else {
+
+                    // GAME OVER!
+
+                    // this logic below should be put elsewhere :-S
+                       Array.from(document.getElementsByClassName("fox")).map(el => {
+                        // el.addEventListener("animationend", function () {
+                            el.innerHTML="";
+                            
+                            el.remove();
+                        // }, false);
+
+
+                        
+
+                    });
                     //	 reset();
                     startscreen();
                 }
@@ -1184,10 +1208,10 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
             sound.addEffect(flanger);
 */
         var dubDelay = new Pizzicato.Effects.DubDelay({
-                feedback: 0.78,
+                feedback: 0.79,
                 // time: 0.84,
                 time: 0.42,
-                mix: .49,
+                mix: .65,
                 cutoff: 800
             });
            // soundx.addEffect(dubDelay);
