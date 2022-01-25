@@ -689,7 +689,9 @@
 
     </div>
     <script>
-
+var soundx;
+    const canVibrate = window.navigator.vibrate
+    
 
         mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         eventtyper = mobile ? "touchstart" : "mousedown";
@@ -749,9 +751,21 @@
                 }
 
 
+              try {
+               soundx.removeEffect(dubDelay);
+                   // window.navigator.vibrate(100);
+                
+                } catch (error) {
+             //     console.log(error);
+                }  
+
+              
                 soundx = sound.clone();
                 // soundx.attack = 0.6;
-                soundx.volume = 0.9;
+                // soundx.volume = 0.9;
+                 soundx.addEffect(dubDelay);
+             //   soundx.removeEffect(dubDelay);
+
 //                soundx.sourceNode.playbackRate.value = 2;
               //  soundx.playbackRate.value = 2;
                 //
@@ -771,15 +785,15 @@
                         break;
                 }
             
-                soundx.play(0, 0.18);
+                soundx.play(0, 0);
                 
               
 
 
 
-                switch (-1+score%10) {
+                switch (score%10) {
                     case 0:
-                        soundx.sourceNode.playbackRate.value = 0.5;
+                        soundx.sourceNode.playbackRate.value = 1;
                         // soundx.sourceNode.playbackRate.value = 0.5;
                         break;
                     case 1:
@@ -882,6 +896,7 @@
             });
             var elements = document.getElementsByClassName("numkey");
             var myFunction = function () {
+                if (canVibrate) window.navigator.vibrate(50);
                 var attribute = this.getAttribute("value");
                 if (attribute == "clear") {
                     document.getElementById('answer').value = '';
@@ -1138,13 +1153,15 @@ setTimeout(() => { interval() },  120+-i*14+ i*i * 2);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 
     <script>
+
+        
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
        //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-             sound.attack = 0.5;
+              sound.attack = 0.3;
             // sound.decay = 0.6;
            // sound.cutoff = 600;
-sound.volume = 0.8;
+// sound.volume = 0.8;
             // sound.release = 0.4;
         });
 
@@ -1159,13 +1176,14 @@ sound.volume = 0.8;
 
             sound.addEffect(flanger);
 */
-        // var dubDelay = new Pizzicato.Effects.DubDelay({
-        //         feedback: 0.49,
-        //         time: 0.74,
-        //         mix: .52,
-        //         cutoff: 600
-        //     });
-        //     soundx.addEffect(dubDelay);
+        var dubDelay = new Pizzicato.Effects.DubDelay({
+                feedback: 0.733,
+                // time: 0.84,
+                    time: 0.28,
+                mix: .49,
+                cutoff: 800
+            });
+           // soundx.addEffect(dubDelay);
 /*
             var dubDelay2 = new Pizzicato.Effects.DubDelay({
                     feedback: 0.49,
@@ -1181,7 +1199,7 @@ sound.volume = 0.8;
                 //         mix: .42,
                 //         cutoff: 500
                 //     });
-                // soundx.addEffect(dubDelay3);
+                // sound.addEffect(dubDelay3);
 
 /*
             var stereoPanner = new Pizzicato.Effects.StereoPanner({
