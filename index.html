@@ -1165,7 +1165,7 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
         var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
        //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-              sound.attack = 0.3;
+              sound.attack = 0.5;
             // sound.decay = 0.6;
            // sound.cutoff = 600;
 // sound.volume = 0.8;
@@ -1184,9 +1184,9 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 370 
             sound.addEffect(flanger);
 */
         var dubDelay = new Pizzicato.Effects.DubDelay({
-                feedback: 0.75,
+                feedback: 0.78,
                 // time: 0.84,
-                time: 0.28,
+                time: 0.42,
                 mix: .49,
                 cutoff: 800
             });
