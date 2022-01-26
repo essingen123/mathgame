@@ -10,8 +10,7 @@
     <style>
     
                             @import url('http://fonts.cdnfonts.com/css/games');
-
-                            .buttons {
+.buttons {
 	width: 100%;
 	border-radius: 16px;
 	display: inline-block;
@@ -19,13 +18,12 @@
 	/* background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%); */
 	background: radial-gradient(circle at 30% 60%, #22212155 12%, #00000055 50%);
 	background-color: #3d3a3e;
-	padding: 12px 0 3px 0;
+	padding: 6px 0 3px 0;
 	max-width: 900px;
 	max-height: 50%;
 	text-align: center;
     opacity: 1;
 }
-
  #score2 {
 	text-align: center;
 	display: inline-block;
@@ -337,17 +335,18 @@ button {
 	max-height: 60px;
 	width: 32.5%;
 	/* height: 24.2%; */
-    min-height:70px;
+    min-height:64px;
 	max-height: 78px;
     font-size: 140%;
         margin:8px;
         	color: rgb(223, 212, 228);
 }
 html,body,*,.game {
-	margin: auto !important;
+	margin: -4px auto; /* not optimal really .. */
 	text-align: center;
 }
 html,body {
+
 	height: 100%;
 	letter-spacing: 6px;
 	margin: 0;
@@ -539,7 +538,7 @@ body::before {
 }
 .scorebar {
 	display: inline-block;
-	margin-top: 1px;
+	margin-top: 24px;
 	margin-bottom: 6px;
 	font-weight: 400;
 	font-size: 80%;
@@ -566,16 +565,16 @@ b {
 	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
 }
 #leveling {
-	background-color: #d4b2877a;
-	padding: 4px;
-	margin: 12px auto 12px auto;
+	background-color: #91228087;
+	padding: 12px;
+	margin: 11px auto 12px auto;
 	display: block;
 	animation-duration: .85s;
 	animation-name: fadein;
 	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
 }
 #hiscoring {
-	background-color: #fafafacc;
+	background-color: #fafafa99;
 	padding: 12px;
 	animation-duration: .85s;
 	animation-name: slideinfromleft;
