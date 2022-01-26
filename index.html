@@ -806,18 +806,12 @@
 
                 try {
                     soundx.removeEffect(stereoPanner);
-
-                    // window.navigator.vibrate(100);
-                    // soundx.removeEffect(stereoDelay);
                 } catch (error) {
                     //     console.log(error);
                 }
 
                 try {
                     soundx.removeEffect(stereoPanner2);
-
-                    // window.navigator.vibrate(100);
-                    // soundx.removeEffect(stereoDelay);
                 } catch (error) {
                     //     console.log(error);
                 }
@@ -846,16 +840,19 @@
 
                 switch (score % 2) {
                     case 0:
-                        soundx.addEffect(stereoPanner);
-
+                        try {
+                            soundx.addEffect(stereoPanner);
+                        } catch (error) {}
                         break;
                     case 1:
-                        soundx.addEffect(stereoPanner2);
+                        try {
+                            soundx.addEffect(stereoPanner2);
+                        } catch (error) {}
                         break;
                 }
 
-                soundx.play(0.05, 0.079);
-
+                // soundx.play(0.05, 0.079);
+                soundx.play(0.01, 0.13);
 
 
 
@@ -873,7 +870,7 @@
                         break;
 
                     case 3:
-                        soundx.sourceNode.playbackRate.value = 1.25 - .125;
+                        soundx.sourceNode.playbackRate.value = 1.125;
 
                         //soundx.sourceNode.playbackRate.value = 1.125;
                         break;
@@ -883,22 +880,22 @@
 
                     case 5:
                         // soundx.sourceNode.playbackRate.value = 1.25;
-                        soundx.sourceNode.playbackRate.value = 0.75 + 0.125;
+                        soundx.sourceNode.playbackRate.value = 0.875;
                         break;
                     case 6:
-                        soundx.sourceNode.playbackRate.value = 2;
+                        soundx.sourceNode.playbackRate.value = 1.005;
                         break;
                     case 7:
-                        soundx.sourceNode.playbackRate.value = 2.25 - 1 + 0.01;
+                        soundx.sourceNode.playbackRate.value = 1.253;
                         break;
                     case 8:
-                        soundx.sourceNode.playbackRate.value = 2.5 - 1 + 0.01;
+                        soundx.sourceNode.playbackRate.value = 1.505;
                         break;
                         // case 9:
                         //     soundx.sourceNode.playbackRate.value = 2.75;
                         //     break;
                     case 9:
-                        soundx.sourceNode.playbackRate.value = 3 - 1 + 0.01;
+                        soundx.sourceNode.playbackRate.value = 0.0997;
                         break;
 
                 }
@@ -1320,17 +1317,17 @@
             sound.attack = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.8;
+            sound.volume = 1.8;
             // sound.release = 0.4;
         });
 
 
         var flanger = new Pizzicato.Effects.Flanger({
             attack: 0.6,
-            time: 0.4,
-            speed: 0.01,
-            depth: 0.01,
-            feedback: 0.2,
+            time: 12,
+            speed: 0.001,
+            depth: 0.02,
+            feedback: 0.01,
             mix: 0.4
         });
 
