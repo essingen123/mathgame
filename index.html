@@ -23,6 +23,7 @@
 	max-height: 50%;
 	text-align: center;
     opacity: 1;
+ 
 }
  #score2 {
 	text-align: center;
@@ -213,6 +214,7 @@
 	padding: 5px;
 }
 .scorebar {
+
 	display: block;
 	margin: 0;
 	padding: 0;
@@ -325,7 +327,7 @@ button {
 
 }
 .numkey {
-
+   margin: -2px auto  !important; /* not optimal really .. */
      /* background: radial-gradient(circle at 60% 30%, #838383, #303030 90%); */
      background: radial-gradient(circle at 50% 40%, #353535, #252525 90%);
 
@@ -341,8 +343,13 @@ button {
         margin:8px;
         	color: rgb(223, 212, 228);
 }
-html,body,*,.game {
-	margin: -4px auto; /* not optimal really .. */
+html,body,* {
+	margin: auto; /* not optimal really .. */
+	text-align: center;
+}
+
+.game {
+	margin: auto !important; /* not optimal really .. */
 	text-align: center;
 }
 html,body {
@@ -537,8 +544,9 @@ body::before {
 	background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%);
 }
 .scorebar {
-	display: inline-block;
-	margin-top: 24px;
+	display: block;
+
+	margin-top: 16px;
 	margin-bottom: 6px;
 	font-weight: 400;
 	font-size: 80%;
@@ -547,11 +555,16 @@ body::before {
 	text-align: center;
 	position: relative;
 	color: #fff;
+
+padding:24px;
+    /* margin-right:12px; */
 }
 b {
-	padding-left: 8px;
-	padding-right: 6px;
+
 	letter-spacing: 0;
+     padding: 12px;
+        /* margin-left: 12px; */
+   
 }
 #scoring {
 	background-color: #fafafa99;
@@ -566,7 +579,7 @@ b {
 }
 #leveling {
 	background-color: #91228087;
-	padding: 12px;
+		padding: 12px;
 	margin: 11px auto 12px auto;
 	display: block;
 	animation-duration: .85s;
@@ -574,7 +587,7 @@ b {
 	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
 }
 #hiscoring {
-	background-color: #fafafa99;
+	background-color: #fafafacc;
 	padding: 12px;
 	animation-duration: .85s;
 	animation-name: slideinfromleft;
