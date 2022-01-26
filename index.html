@@ -32,16 +32,17 @@
         
         #score2 {
             text-align: center;
-            display: inline-block;
+            display: block;
             max-width: 100%;
             white-space: pre-wrap;
             word-break: break-all;
             word-wrap: break-word;
-            font-size: 2em;
+            font-size: 1.5em;
             text-shadow: 0 0 20px #ffffff, 0 0 70px #ffeec8;
             letter-spacing: -4px;
             line-height: 2rem;
-            padding-top: 3px;
+            padding-top: 1px;
+            margin-top: -24px;
         }
         
         * {
@@ -90,7 +91,7 @@
             margin: 0 auto;
             left: 0;
             right: 0;
-            margin-top: -52px;
+            margin-top: -50px;
             position: fixed;
             max-width: 100%;
             white-space: pre-wrap;
@@ -135,8 +136,8 @@
             width: 98%;
             padding: 1px;
             color: #fff;
-            font-size: 370%;
-            height: 92px;
+            font-size: 330%;
+            height: 86px;
             display: block;
             margin: 2px auto 3px auto;
         }
@@ -310,7 +311,7 @@
             /* background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%); */
             background: radial-gradient(circle at 30% 60%, #323232c8, #262626de 50%);
             /* background-color: #7CAF80; */
-            padding: 48px 0 2px 0;
+            padding: 42px 0 2px 0;
             text-align: center;
             min-height: 170px;
             max-height: 60%;
@@ -416,19 +417,20 @@
             white-space: pre;
             font-weight: 700er;
             display: block;
-            width: 60%;
+            width: 240px;
             position: absolute;
             left: 0;
             right: 0;
-            top: 44px;
+            top: 19px;
             margin: 25px auto 2px auto;
             text-align: center;
             background: rgb(131, 58, 180);
-            background: linear-gradient(90deg, rgba(131, 58, 180, 1) 1%, rgba(139, 192, 117, 1) 20%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(150, 187, 107, 1) 80%, rgba(121, 29, 253, 1) 99%);
+            /* background: linear-gradient(90deg, rgba(131, 58, 180, 1) 1%, rgba(139, 192, 117, 1) 20%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(150, 187, 107, 1) 80%, rgba(121, 29, 253, 1) 99%); */
+            background: linear-gradient(90deg, rgba(58, 180, 66, 0.5) 1%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(58, 180, 66, 0.5) 99%);
             /* border-radius: 4%; */
             border-radius: 100%;
             opacity: 0.5;
-            height: 3px;
+            height: 8px;
             border: 1px solid #fff;
         }
         
@@ -459,7 +461,7 @@
             border: 2px solid #fed;
             width: 50%;
             min-height: 120px;
-            max-height: 220px;
+            max-height: 180px;
             display: block;
             margin: 28px 4px;
             height: 420px;
@@ -579,8 +581,8 @@
         
         .scorebar {
             display: inline-block;
-            margin-top: 16px;
-            margin-bottom: 6px;
+            margin-top: 10px;
+            margin-bottom: 4px;
             font-weight: 400;
             font-size: 80%;
             letter-spacing: 2px;
@@ -588,7 +590,7 @@
             text-align: center;
             position: relative;
             color: #fff;
-            padding: 24px;
+            padding: 16px;
             /* margin-right:12px; */
         }
         
@@ -970,14 +972,15 @@
                 // delement2.classList.add("redpow");
                 // setTimeout(() => delement2.classList.remove('redpow'), 800);
 
+                //console.log("???");
+                sethint();
 
-
-
+                // supprt for future MANY CHARACTERS
                 if (answered.length >= document.getElementById('eval').value.length) {
 
-                    document.getElementById('answer').value = '';
+                    //document.getElementById('answer').value = '';
                     //   document.getElementById('answer2').innerHTML = '_';
-                    sethint();
+                    // sethint();
                 }
 
             }
@@ -1377,13 +1380,20 @@
         function sethint() {
             let rightanswer = "" + document.getElementById('eval').value;
 
-
+            // hmm just supports two character length
             if (rightanswer.length > 1) {
                 console.log("execs...");
                 let hintpart = rightanswer.substr(0, 1);
                 console.log(hintpart);
                 document.getElementById('answer').value = hintpart;
                 document.getElementById('answer2').innerHTML = hintpart + "_";
+            } else {
+                console.log("execs...");
+                // let hintpart = rightanswer.substr(0, 1);
+                // console.log(hintpart);
+                document.getElementById('answer').value = '';
+                document.getElementById('answer2').innerHTML = '_';
+
             }
         }
     </script>
