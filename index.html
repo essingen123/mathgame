@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+    <title>1000 Decimals of Pi • MATH GAME v0.007c • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <!-- <link href="./custom.css" rel="stylesheet"> -->
     <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
@@ -961,7 +961,7 @@
                 speedish = levelspeedincrease + level * speedincrease;
                 // speedish += speedincrease;
                 let transitionspeed = 1 - Math.round(5 * speedish, 4);
-                console.log(transitionspeed);
+                // console.log(transitionspeed);
                 document.getElementById('timer').style.transitionDuration = transitionspeed + 's';
 
 
@@ -1099,7 +1099,7 @@
                 // el.addEventListener("animationend", function () {
                 el.innerHTML = "";
                 el.remove();
-                console.log("removed");
+                // console.log("removed");
                 // }, false);
             });
 
@@ -1382,13 +1382,13 @@
 
             // hmm just supports two character length
             if (rightanswer.length > 1) {
-                console.log("execs...");
+                // console.log("execs...");
                 let hintpart = rightanswer.substr(0, 1);
                 console.log(hintpart);
                 document.getElementById('answer').value = hintpart;
                 document.getElementById('answer2').innerHTML = hintpart + "_";
             } else {
-                console.log("execs...");
+                // console.log("execs...");
                 // let hintpart = rightanswer.substr(0, 1);
                 // console.log(hintpart);
                 document.getElementById('answer').value = '';
