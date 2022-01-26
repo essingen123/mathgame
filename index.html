@@ -4,672 +4,491 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
+
     <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
+    <!-- <link href="./custom.css" rel="stylesheet"> -->
+    <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
+
     <style>
-    
-                            @import url('http://fonts.cdnfonts.com/css/games');
-.buttons {
-	width: 100%;
-	border-radius: 16px;
-	display: inline-block;
-	bottom: 0;
-	/* background: radial-gradient(circle at 30% 60%, #4CAF5055 12%, #5bcF6055 50%); */
-	background: radial-gradient(circle at 30% 60%, #22212155 12%, #00000055 50%);
-	background-color: #3d3a3e;
-	padding: 6px 0 3px 0;
-	max-width: 900px;
-	max-height: 50%;
-	text-align: center;
-    opacity: 1;
- 
-}
- #score2 {
-	text-align: center;
-	display: inline-block;
-	max-width: 100%;
-	white-space: pre-wrap;
-	word-break: break-all;
-	word-wrap: break-word;
-	font-size: 2em;
-	text-shadow: 0 0 20px #ffffff, 0 0 70px #ffeec8;
-	letter-spacing: -4px;
-	line-height: 2rem;
-	padding-top: 3px;
-}
-* {
-	box-sizing: border-box;
-}
-.hint {
-	position: fixed;
-	margin: 1px auto;
-	left: 0;
-	right: 0;
-	opacity: 0;
-	top: 50px;
-	width: 240px;
-	height: 120px;
-	background-color: #fff;
-	color: #fb5;
-	display: inline-block;
-	font-weight: 700;
-	font-style: italic;
-	animation-name: fadeout;
-	animation-duration: 2.2s;
-	z-index: 399;
-	font-size: 500%;
-	border-radius: 50%;
-	border: 9px solid #acd3ac55;
-}
-.answer2 {
-	text-align: center;
-	display: inline-block;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-	top: 260px;
-	position: fixed;
-	max-width: 100%;
-	white-space: pre-wrap;
-	word-break: break-all;
-	word-wrap: break-word;
-	font-size: 2em;
-	text-shadow: 0 0 20px #30303022, 0 0 70px #ffbc2c44;
-	letter-spacing: -4px;
-	line-height: 2.4rem;
-	padding-top: 8px;
-	color: #ffffff88;
-	font-size: 300%;
-	font-style: italic;
-	animation-name: fadeout;
-	animation-duration: 2.2s;
-    font-weight: bolder;
-	
-}
-@keyframes fadeout {
-	0% {
-	opacity: .5;
-	top: 60px;
-	}
-	10% {
-	opacity: 1;
-	top: 100px;
-	}
-	40% {
-	opacity: .8;
-	top: 80px;
-	}
-	100% {
-	opacity: 0;
-	top: 50px;
-	}
-}
-.i3 {
-	text-align: center;
-	background-color: #fb5;
-	
-	background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
-	
-	font-style: italic;
-	border: 6px solid #efefef99;
-	
-	width: 98%;
-	padding: 1px;
-	color: #fff;
-	font-size: 370%;
-	
-	height: 92px;
-	display: block;
-	margin: 2px auto 3px auto;
-}
-
-.scoreoverlay {
-	margin-top: 1900px;
-	display: none;
-	opacity: 1;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	z-index: 100;
-	left: 0;
-	top: 0;
-	background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
-	font-size: 120%;
-	color: #fff;
-	font-weight: 700er;
-	font-style: italic;
-	padding-top: 20px;
-	border-radius: 30px;
-	animation-name: fadein;
-	animation-duration: .6s;
-}
-@keyframes fadein {
-	0% {
-	opacity: 0;
-	top: -40px;
-	}
-	100% {
-	opacity: 1;
-	top: 0;
-	}
-}
-.show {
-	display: block;
-	margin-top: 0;
-	border-radius: 0;
-}
-: root {
-	--fbpowro: -3deg;
-	--fbpowoutho: -3deg;
-	--startpos: 1%;
-}
-.fbpow {
-	position: fixed;
-	display: block;
-	left: 0;
-	right: 0;
-	margin: 2px auto;
-	opacity: 0;
-	width: 150px;
-	height: 112px;
-	background-color: rgba(163, 220, 71, .3);
-	border-radius: 50%;
-	text-align: center;
-	border: solid 120px #99e49911;
-	font-size: 170%;
-	z-index: 200;
-	padding-top: 30px;
-	filter: drop-shadow(2px 2px 13px #ffeefa);
-	color: #fff;
-	animation-duration: 1.5s;
-	animation-name: fbpow;
-	animation-timing-function: cubic-bezier(-.175, .885, .32, -.275);
-	z-index: 200;
-}
-@keyframes fbpow {
-	0% {
-	bottom: 32%;
-	transform: rotateZ(var(--fbpowro));
-	
-	left: var(--fbpowstartpos);
-	}
-	60% {
-	opacity: 1;
-	bottom: 78%;
-	border: solid 1px #ffffff33;
-	transform: rotateZ(0deg);
-	}
-	100% {
-	opacity: 0;
-	bottom: 81%;
-	
-	transform: rotateZ(calc(var(--fbpowro)* -0.05));
-	}
-}
-.score {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 5px;
-}
-.scorebar {
-
-	display: block;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 30px;
-	position: absolute;
-	top: 0;
-}
-.level {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	padding-top: 5px;
-	margin: 0 auto;
-}
-.hiscore {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding-top: 5px;
-}
-#scoring {
-	display: block;
-	background-color: #ccc;
-	
-	transition: all .5s ease-in-out;
-}
-.wrapper {
-	background-color: #fefefe11;
-	margin: 12px 0;
-	padding: 0;
-}
-spansmall {
-	line-height: 1rem;
-	display: block;
-	font-size: .7rem;
-	
-	padding: 8px;
-	margin: 2px;
-	
-	
-	animation-duration: 1.15s !important;
-	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-}
-spansmall: nth-child(1) {
-	animation-duration: 1.85s;
-}
-#timer {
-	width: 1px;
-	/* line-height: 0; */
-	
-	border: solid 2px #ddd;
-	
-	padding: 4px;
-	text-align: center;
-	
-	border-radius: 6px;
-	display: block;
-	
-	height: 24px;
-	
-	background: #fff;
-	transition: all 1s ease-in-out;
-	transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
-	margin-bottom:-12px;
-}
-
-.buttonswrapper {
-	width: 100%;
-	bottom: 0;
-	position: absolute;
-	/* background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%); */
-	background: radial-gradient(circle at 30% 60%, #323232c8, #262626de 50%);
-
-	/* background-color: #7CAF80; */
-	padding: 4px 0 2px 0;
-	margin: -2px;
-	text-align: center;
-	min-height: 172px;
-	max-height: 60%;
-    border-radius:  12px 12px 0 0;
-
-}
-
-button {
-	cursor: pointer;
-	/* filter: drop-shadow(0 0 8px #94af84); */
-	/* filter: drop-shadow(0 0 8px #4f4f4f); */
-	/* filter: drop-shadow(0 0 12px rgb(90, 20, 80)); */
-	/* background-color: #4CAF50; */
-	background-color: #aeaeae;
-	border: none;
-	color: #fff;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 1.8rem;
-	font-weight: 700;
-	/* border: 2px solid #7d97; */
-    border: 2px solid rgba(140, 140, 140, 0.5);
-	border-radius: 12px;
-	background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
-
-	margin: 0;
-	padding: 10px 6px 8px 3px;
-	max-height: 60px;
-	width: 50%;
-	min-height: 38px;
-
-}
-.numkey {
-   margin: -2px auto  !important; /* not optimal really .. */
-     /* background: radial-gradient(circle at 60% 30%, #838383, #303030 90%); */
-     background: radial-gradient(circle at 50% 40%, #353535, #252525 90%);
-
-    border: 1px solid rgba(84, 84, 84, 0.2);
-	padding: 13px 5px 13px 5px;
-	margin: 4px;
-	max-height: 60px;
-	width: 32.5%;
-	/* height: 24.2%; */
-    min-height:64px;
-	max-height: 78px;
-    font-size: 140%;
-        margin:8px;
-        	color: rgb(223, 212, 228);
-}
-html,body,* {
-	margin: auto; /* not optimal really .. */
-	text-align: center;
-}
-
-.game {
-	margin: auto !important; /* not optimal really .. */
-	text-align: center;
-}
-html,body {
-
-	height: 100%;
-	letter-spacing: 6px;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	touch-action: none !important;
-	user-select: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-}
-input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-h1 {
-	font-size: 1.8rem;
-	
-	color: #fefafa;
-	font-family: 'Games', sans-serif, arial;
-	white-space: pre;
-	font-weight: 700er;
-	display: block;
-	width: 100%;
-	
-	
-	padding: -12px auto 3px auto;
-	text-align: center;
-	color: #ffd8be;
-	font-variant: small-caps;
-	letter-spacing: 1px;
-}
-toptext {
-	font-size: 1rem;
-	color: #fefafa;
-	
-	font-family: 'Games', sans-serif, arial;
-	white-space: pre;
-	font-weight: 700er;
-	display: block;
-	width: 60%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 44px;
-	margin: 25px auto 2px auto;
-	text-align: center;
-	background: rgb(131,58,180);
-	background: linear-gradient(90deg, rgba(131,58,180,1) 1%, rgba(139,192,117,1) 20%, rgba(252,176,69,1) 35%, rgba(253,29,29,1) 50%, rgba(253,185,29,1) 65%, rgba(150,187,107,1) 80%, rgba(121,29,253,1) 99%);
-	
-	/* border-radius: 4%; */
-    	border-radius: 100%;
-	opacity: 0.5;
-	height: 3px;
-	border: 1px solid #fff;
-}
-.ang {
-	padding: 0;
-	filter: drop-shadow(-2px 0 3px #fee);
-	padding: 0;
-	margin: 8px 0 1px;
-}
-body {
-	font-family: "Trebuchet MS";
-	color: #ccc;
-	font-size: 1.1rem;
-	overflow: none;
-	background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
-	background-repeat: repeat;
-	margin: 0;
-	padding: 0;
-}
-i2 {
-	background-color: #fae2d9;
-	border-radius: 50%;
-	padding: 1px 2px;
-	color: #bca996;
-	z-index: -1;
-	border: 2px solid #fed;
-	width: 50%;
-	min-height: 120px;
-	max-height: 220px;
-	
-	display: block;
-	margin: 28px 4px;
-	height: 420px;
-	transition: all .5s ease-in-out;
-	font-size: 220%;
-}
-i2::before {
-	content: '';
-}
-gr {
-	color: #dfc7b6;
-	font-size: 50%;
-}
-.fox {
-	position: absolute;
-	display: block;
-	margin: 2px auto;
-	left: 0;
-	right: 0;
-	font-weight: 700er;
-	text-shadow: 0 0 10px #decc10, 0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
-}
-.fo {
-
-}
-.fi {
-	opacity: 1;
-	animation-duration: .2s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-timing-function: ease-in-out;
-	animation-name: slidein;
-}
-@keyframes slidein {
-	0% {
-	opacity: 0;
-	}
-	100% {
-	opacity: 1;
-	}
-}
-.fa {
-	opacity: 1;
-	animation-duration: .2s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-timing-function: ease-in-out;
-	animation-name: slideout;
-}
-@keyframes slideout {
-	0% {
-	opacity: .6;
-	}
-	100% {
-	opacity: 0;
-	}
-}
-.redpow {
-	animation-duration: 0.8s;
-	animation-name: redpowani;
-}
-@keyframes redpowani {
-	0% {
-        color:#ce7a31;
-	 /* filter: hue-rotate(-2deg);  */
-    /* opacity: 0.6; */
-     /* background: radial-gradient(circle at 60% 30%, #292929, #707070 90%); */
-background-color: #e8e7e6;
-    }
-	100% {
-	/* filter: hue-rotate(0deg);
-     opacity: 1; */
-     background-color: #ff9911;
-	}
-}
-.greenpow {
-	animation-duration: .8s;
-	animation-name: greenpowani;
-}
-@keyframes greenpowani {
-	0% {
-        /* background-color: #77667744; */
-        /* background-color: #77667744; */
-	/* filter: hue-rotate(-62deg); 
-    opacity: 0.5; */
-    /* background: radial-gradient(circle at 60% 30%, #c5ffac, #707070 90%); */
-	}
-	100% {
-	/* filter: hue-rotate(0deg);
-     opacity: 1; */
-     /* background-color: #ccffcc00; */
-	}
-}
-body::before {
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%);
-}
-.scorebar {
-	display: block;
-
-	margin-top: 16px;
-	margin-bottom: 6px;
-	font-weight: 400;
-	font-size: 80%;
-	letter-spacing: 2px;
-	max-width: 520px;
-	text-align: center;
-	position: relative;
-	color: #fff;
-
-padding:24px;
-    /* margin-right:12px; */
-}
-b {
-
-	letter-spacing: 0;
-     padding: 12px;
-        /* margin-left: 12px; */
-   
-}
-#scoring {
-	background-color: #fafafa99;
-	padding: 12px;
-	animation-duration: .5s;
-	animation-name: slideinfromright;
-	
-	
-	
-	
-	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-}
-#leveling {
-	background-color: #91228087;
-		padding: 12px;
-	margin: 11px auto 12px auto;
-	display: block;
-	animation-duration: .85s;
-	animation-name: fadein;
-	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-}
-#hiscoring {
-	background-color: #fafafacc;
-	padding: 12px;
-	animation-duration: .85s;
-	animation-name: slideinfromleft;
-	animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
-}
-.slideinfromleft {
-	animation-duration: .5s;
-	animation-name: slideinfromleft;
-}
-@keyframes slideinfromleft {
-	0% {
-	opacity: 0;
-	transform: translateX(-100%);
-	}
-	100% {
-	opacity: 1;
-	transform: translateX(0);
-	}
-}
-.slideinfromright {
-	animation-duration: .5s;
-	animation-name: slideinfromright;
-}
-@keyframes slideinfromright {
-	0% {
-	opacity: 0;
-	transform: translateX(100%);
-	}
-	100% {
-	opacity: 1;
-	transform: translateX(0);
-	}
-}
-
-
-
+        /*! CSS Used from: Embedded */
+        
+        .buttons {
+            width: 100%;
+            border-radius: 16px;
+            display: inline-block;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 60%, #22212155 12%, #00000055 50%);
+            background-color: #3d3a3e;
+            padding: 6px 0 3px 0;
+            max-width: 900px;
+            max-height: 50%;
+            text-align: center;
+            opacity: 1
+        }
+        
+        #score2 {
+            text-align: center;
+            display: inline-block;
+            max-width: 100%;
+            white-space: pre-wrap;
+            word-break: break-all;
+            word-wrap: break-word;
+            font-size: 2em;
+            text-shadow: 0 0 20px #fff, 0 0 70px #ffeec8;
+            letter-spacing: -4px;
+            line-height: 2rem;
+            padding-top: 3px
+        }
+        
+        * {
+            box-sizing: border-box !important;
+        }
+        
+        .answer2 {
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 260px;
+            position: fixed;
+            max-width: 100%;
+            white-space: pre-wrap;
+            word-break: break-all;
+            word-wrap: break-word;
+            font-size: 2em;
+            text-shadow: 0 0 20px #30303022, 0 0 70px #ffbc2c44;
+            letter-spacing: -4px;
+            line-height: 2.4rem;
+            padding-top: 8px;
+            color: #ffffff88;
+            font-size: 300%;
+            font-style: italic;
+            animation-name: fadeout;
+            animation-duration: 2.2s;
+            font-weight: bolder
+        }
+        
+        .i3 {
+            text-align: center;
+            background-color: #fb5;
+            background-image: linear-gradient(315deg, #ff4e00 0, #ec9f05 74%);
+            font-style: italic;
+            border: 6px solid #efefef99;
+            width: 98%;
+            padding: 1px;
+            color: #fff;
+            font-size: 370%;
+            height: 92px;
+            display: block;
+            margin: 2px auto 3px auto
+        }
+        
+        .scoreoverlay {
+            margin-top: 1900px;
+            display: none;
+            opacity: 1;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
+            font-size: 120%;
+            color: #fff;
+            font-weight: 700er;
+            font-style: italic;
+            padding-top: 20px;
+            border-radius: 30px;
+            animation-name: fadein;
+            animation-duration: .6s
+        }
+        
+        .show {
+            display: block;
+            margin-top: 0;
+            border-radius: 0
+        }
+        
+        .score {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px
+        }
+        
+        .scorebar {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            top: 0
+        }
+        
+        .level {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding-top: 5px;
+            margin: 0 auto
+        }
+        
+        .hiscore {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding-top: 5px
+        }
+        
+        #scoring {
+            display: block;
+            background-color: #ccc;
+            transition: all .5s ease-in-out
+        }
+        
+        .wrapper {
+            background-color: #fefefe11;
+            margin: 12px 0;
+            padding: 0
+        }
+        
+        spansmall {
+            line-height: 1rem;
+            display: block;
+            font-size: .7rem;
+            padding: 8px;
+            margin: 2px;
+            animation-duration: 1.15s!important;
+            animation-timing-function: cubic-bezier(.455, .03, .515, 1.0955)
+        }
+        
+        #timer {
+            width: 1px;
+            border: solid 2px #ddd;
+            padding: 4px;
+            text-align: center;
+            border-radius: 6px;
+            display: block;
+            height: 24px;
+            background: #fff;
+            transition: all 1s ease-in-out;
+            transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
+            margin-bottom: -12px;
+            margin-top: -12px;
+        }
+        
+        .buttonswrapper {
+            width: 100%;
+            bottom: 0;
+            position: absolute;
+            background: radial-gradient(circle at 30% 60%, #323232c8, #262626de 50%);
+            padding: 4px 0 2px 0;
+            /* margin: -2px;  /* NOOooo */
+            text-align: center;
+            min-height: 172px;
+            max-height: 60%;
+            border-radius: 12px 12px 0 0
+        }
+        
+        button {
+            cursor: pointer;
+            background-color: #aeaeae;
+            border: none;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border: 2px solid rgba(140, 140, 140, .5);
+            border-radius: 12px;
+            background: radial-gradient(circle at 60% 30%, #27c927, #1aa531 90%);
+            margin: 0;
+            padding: 10px 6px 8px 3px;
+            max-height: 60px;
+            width: 50%;
+            min-height: 38px
+        }
+        
+        .numkey {
+            margin: 1px auto!important;
+            background: radial-gradient(circle at 50% 40%, #353535, #252525 90%);
+            border: 1px solid rgba(84, 84, 84, .2);
+            padding: 13px 5px 13px 5px;
+            margin: 4px;
+            max-height: 60px;
+            width: 32.5%;
+            min-height: 64px;
+            max-height: 78px;
+            font-size: 140%;
+            margin: 8px;
+            color: #dfd4e4
+        }
+        
+        *,
+        body {
+            margin: auto;
+            text-align: center;
+            /* display: block; */
+        }
+        
+        body {
+            /* height: 100%; */
+            letter-spacing: 6px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            touch-action: none!important;
+            user-select: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: #fefafa;
+            font-family: Games, sans-serif, arial;
+            white-space: pre;
+            font-weight: 700er;
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: #ffd8be;
+            font-variant: small-caps;
+            letter-spacing: 1px
+        }
+        
+        toptext {
+            font-size: 1rem;
+            color: #fefafa;
+            font-family: Games, sans-serif, arial;
+            white-space: pre;
+            font-weight: 700er;
+            display: block;
+            width: 60%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 44px;
+            margin: 25px auto 2px auto;
+            text-align: center;
+            background: #833ab4;
+            background: linear-gradient(90deg, rgba(131, 58, 180, 1) 1%, rgba(139, 192, 117, 1) 20%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(150, 187, 107, 1) 80%, rgba(121, 29, 253, 1) 99%);
+            border-radius: 100%;
+            opacity: .5;
+            height: 3px;
+            border: 1px solid #fff
+        }
+        
+        body {
+            font-family: "Trebuchet MS";
+            color: #ccc;
+            font-size: 1.1rem;
+            overflow: none;
+            background: radial-gradient(circle at 40% 30%, transparent, #6c6c6c55 50%);
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0
+        }
+        
+        .fox {
+            position: absolute;
+            display: block;
+            margin: 2px auto;
+            left: 0;
+            right: 0;
+            font-weight: 700er;
+            text-shadow: 0 0 10px #decc10, 0 0 20px #fff, 0 0 30px #ffd2a2, 0 0 40px #f90, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8
+        }
+        
+        .fi {
+            opacity: 1;
+            animation-duration: .2s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+            animation-name: slidein
+        }
+        
+        body::before {
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 40% 30%, transparent, #dddedd55 50%)
+        }
+        
+        .scorebar {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: 400;
+            font-size: 80%;
+            letter-spacing: 2px;
+            max-width: 520px;
+            text-align: center;
+            position: relative;
+            color: #fff;
+            padding: 24px
+        }
+        
+        b {
+            letter-spacing: 0;
+            padding: 12px
+        }
+        
+        #scoring {
+            background-color: #fafafa99;
+            padding: 12px;
+            animation-duration: .5s;
+            animation-name: slideinfromright;
+            animation-timing-function: cubic-bezier(.455, .03, .515, 1.0955)
+        }
+        
+        #leveling {
+            background-color: #91228087;
+            padding: 12px;
+            margin: 11px auto 12px auto;
+            display: block;
+            animation-duration: .85s;
+            animation-name: fadein;
+            animation-timing-function: cubic-bezier(.455, .03, .515, 1.0955)
+        }
+        
+        #hiscoring {
+            background-color: #fafafacc;
+            padding: 12px;
+            animation-duration: .85s;
+            animation-name: slideinfromleft;
+            animation-timing-function: cubic-bezier(.455, .03, .515, 1.0955)
+        }
+        
+        .slideinfromleft {
+            animation-duration: .5s;
+            animation-name: slideinfromleft
+        }
+        /*! CSS Used keyframes */
+        
+        @keyframes fadeout {
+            0% {
+                opacity: .5;
+                top: 60px
+            }
+            10% {
+                opacity: 1;
+                top: 100px
+            }
+            40% {
+                opacity: .8;
+                top: 80px
+            }
+            100% {
+                opacity: 0;
+                top: 50px
+            }
+        }
+        
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+                top: -40px
+            }
+            100% {
+                opacity: 1;
+                top: 0
+            }
+        }
+        
+        @keyframes slidein {
+            0% {
+                opacity: 0
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        
+        @keyframes slideinfromright {
+            0% {
+                opacity: 0;
+                transform: translateX(100%)
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+        
+        @keyframes slideinfromleft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%)
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- <div class="hint"></div> -->
     <div id="gamediv">
-        <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" /> 
+        <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
         <span id="answer2" class="answer2"></span>
         <input type="hidden" value="" id="eval" />
         <div id="scoreoverlay" class="scoreoverlay">
             <div>🏹</div>
             <div class="wrapper">
-                 <h1>Math Game</h1>
+                <h1>Math Game</h1>
                 <spansmall class="slideinfromleft">1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
                 </spansmall>
             </div>
             <div id="scoring"> SCORE <b id="score3"></b> </div>
             <div id="leveling"> LVL <b id="level3"></b> </div>
             <div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div>
-            
+
             <br /> <button onclick="newround()">GO⚡️</button>
             <spansmall class="slideinfrom"><br /><br /> Made for Mobile<br /> Coded to 99% on a mobile<br /> Mobile-XP first<br /> <br />
                 <br />
             </spansmall>
         </div>
-        <toptext><!-- ⚠️---></toptext>
+        <toptext>
+            <!-- ⚠️--->
+        </toptext>
         <div class="scorebar">
             <span class=score>SCORE <b id="score"></b> </span>
             <span class=level> LVL <b id="level"></b> </span>
             <span class=hiscore> HISCORE <b id="hiscore"></b> </span> </div>
-        </div>
-        <div id='timer'></div><br />
-       
-        <div id="i3" class="i3"></div><br />
+    </div>
+    <div id='timer'></div><br />
 
-        <div id="score2"></div>
-        <div class="buttonswrapper">
-            <div id="buttons" class="buttons"> </div>
-        </div>
-        <div class="fb" id="fb"></div>
+    <div id="i3" class="i3"></div><br />
+
+    <div id="score2"></div>
+    <div class="buttonswrapper">
+        <div id="buttons" class="buttons"> </div>
+    </div>
+    <div class="fb" id="fb"></div>
 
     </div>
     <script>
-var soundx;
-    const canVibrate = window.navigator.vibrate
-    
+        var soundx;
+        const canVibrate = window.navigator.vibrate
+
 
         mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         eventtyper = mobile ? "touchstart" : "mousedown";
@@ -693,11 +512,11 @@ var soundx;
         // var pluscount = 203; //how much extra time per right answer 
         // var speedish = 0.089; // starting speed
         var pluscount = 300; //how much extra time per right answer 
-       
+
         var speedish = 0.02; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
-  
+
         var levelspeedincrease = 0.03; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
@@ -744,22 +563,22 @@ var soundx;
                     document.getElementById('score2').innerHTML += "⭐️";
                 }
 
-try {
-    soundx.removeEffect(flanger);
-} catch (error) {
-    
-}
-
-              try {
-               soundx.removeEffect(dubDelay);
-               
-
-                   // window.navigator.vibrate(100);
-                // soundx.removeEffect(stereoDelay);
+                try {
+                    soundx.removeEffect(flanger);
                 } catch (error) {
-             //     console.log(error);
-                }  
-   
+
+                }
+
+                try {
+                    soundx.removeEffect(dubDelay);
+
+
+                    // window.navigator.vibrate(100);
+                    // soundx.removeEffect(stereoDelay);
+                } catch (error) {
+                    //     console.log(error);
+                }
+
 
                 try {
                     soundx.removeEffect(stereoPanner);
@@ -768,7 +587,7 @@ try {
                     // soundx.removeEffect(stereoDelay);
                 } catch (error) {
                     //     console.log(error);
-                }  
+                }
 
                 try {
                     soundx.removeEffect(stereoPanner2);
@@ -777,9 +596,9 @@ try {
                     // soundx.removeEffect(stereoDelay);
                 } catch (error) {
                     //     console.log(error);
-                }  
+                }
 
-              
+
                 soundx = sound.clone();
                 // soundx.attack = 0.6;
                 // soundx.volume = 0.9;
@@ -787,37 +606,37 @@ try {
                 soundx.addEffect(flanger);
 
 
-                 soundx.addEffect(dubDelay);
-                
-                //    soundx.addEffect(stereoDelay);
-             //   soundx.removeEffect(dubDelay);
+                soundx.addEffect(dubDelay);
 
-//                soundx.sourceNode.playbackRate.value = 2;
-              //  soundx.playbackRate.value = 2;
+                //    soundx.addEffect(stereoDelay);
+                //   soundx.removeEffect(dubDelay);
+
+                //                soundx.sourceNode.playbackRate.value = 2;
+                //  soundx.playbackRate.value = 2;
                 //
-                   //soundx.playbackRate = 0.9; // try something between 0.25 and 3
+                //soundx.playbackRate = 0.9; // try something between 0.25 and 3
                 // soundx.rate = 2;
                 // soundx.pitch = 2;
                 //soundx.playbackRate.value = 2;
-               // soundx.playbackRate = 2;
+                // soundx.playbackRate = 2;
 
-                 switch (score % 2) {
+                switch (score % 2) {
                     case 0:
-                      soundx.addEffect(stereoPanner);
+                        soundx.addEffect(stereoPanner);
 
                         break;
                     case 1:
-                     soundx.addEffect(stereoPanner2);
+                        soundx.addEffect(stereoPanner2);
                         break;
                 }
-            
+
                 soundx.play(0.05, 0.079);
-                
-              
 
 
 
-                switch (-1+score%10) {
+
+
+                switch (-1 + score % 10) {
                     case 0:
                         soundx.sourceNode.playbackRate.value = 1;
                         // soundx.sourceNode.playbackRate.value = 0.5;
@@ -828,17 +647,17 @@ try {
                     case 2:
                         soundx.sourceNode.playbackRate.value = 1.25;
                         break;
-                   
+
                     case 3:
-                        soundx.sourceNode.playbackRate.value = 1.25-.125;
-                        
+                        soundx.sourceNode.playbackRate.value = 1.25 - .125;
+
                         //soundx.sourceNode.playbackRate.value = 1.125;
                         break;
                     case 4:
                         soundx.sourceNode.playbackRate.value = 1.5;
                         break;
 
-                     case 5:
+                    case 5:
                         // soundx.sourceNode.playbackRate.value = 1.25;
                         soundx.sourceNode.playbackRate.value = 0.75 + 0.125;
                         break;
@@ -846,22 +665,22 @@ try {
                         soundx.sourceNode.playbackRate.value = 2;
                         break;
                     case 7:
-                        soundx.sourceNode.playbackRate.value = 2.25-1+0.01;
+                        soundx.sourceNode.playbackRate.value = 2.25 - 1 + 0.01;
                         break;
                     case 8:
-                        soundx.sourceNode.playbackRate.value = 2.5-1+0.01;
+                        soundx.sourceNode.playbackRate.value = 2.5 - 1 + 0.01;
                         break;
-                    // case 9:
-                    //     soundx.sourceNode.playbackRate.value = 2.75;
-                    //     break;
+                        // case 9:
+                        //     soundx.sourceNode.playbackRate.value = 2.75;
+                        //     break;
                     case 9:
-                        soundx.sourceNode.playbackRate.value = 3-1 + 0.01;
+                        soundx.sourceNode.playbackRate.value = 3 - 1 + 0.01;
                         break;
 
                 }
-                
-                
-                
+
+
+
 
                 if (hiscore < score) {
                     hiscore++;
@@ -869,7 +688,7 @@ try {
 
 
                 // level = 1+ Math.round(score / 10 - score*0.03,0);
-                level = 1+ Math.round(score / 10 - score*0.03,0);
+                level = 1 + Math.round(score / 10 - score * 0.03, 0);
 
 
 
@@ -906,9 +725,9 @@ try {
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
                 delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
                 delement3[arrayblaha].classList.add("fbpow");
-                delement3.forEach(function (el) {
-                    el.addEventListener("animationend", function () {
-                         el.innerHTML = "";
+                delement3.forEach(function(el) {
+                    el.addEventListener("animationend", function() {
+                        el.innerHTML = "";
                         el.remove();
                     }, false);
                 });
@@ -916,10 +735,10 @@ try {
                 counttime = counttime + pluscount;
 
 
-                
+
                 speedish = levelspeedincrease + level * speedincrease;
                 // speedish += speedincrease;
-                document.getElementById('timer').style.transitionDuration = 1-10*speedish + 's';
+                document.getElementById('timer').style.transitionDuration = 1 - 10 * speedish + 's';
 
 
                 document.getElementById('answer').value = '';
@@ -929,10 +748,10 @@ try {
                 // delement2 = document.getElementById('buttons');
                 // delement2.classList.add("redpow");
                 // setTimeout(() => delement2.classList.remove('redpow'), 800);
-              
-                if(answered.length >= document.getElementById('eval').value.length ){
-                document.getElementById('answer').value = '';
-                document.getElementById('answer2').innerHTML = '';
+
+                if (answered.length >= document.getElementById('eval').value.length) {
+                    document.getElementById('answer').value = '';
+                    document.getElementById('answer2').innerHTML = '';
                 }
 
             }
@@ -948,14 +767,14 @@ try {
                     document.getElementById('buttons').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
             });
             var elements = document.getElementsByClassName("numkey");
-            var myFunction = function () {
+            var myFunction = function() {
 
-            
+
 
 
                 this.classList.add("redpow");
                 setTimeout(() => this.classList.remove('redpow'), 800);
-                
+
 
 
                 if (canVibrate) window.navigator.vibrate(50);
@@ -975,7 +794,7 @@ try {
             }
 
             // hint the right answer :)
-            var hint = function () {
+            var hint = function() {
                 //  var attribute = this.getAttribute("value");
 
 
@@ -992,7 +811,7 @@ try {
             document.getElementById('check').addEventListener(eventtyper, hint, false);
 
 
-            window.addEventListener("keydown", function (event) {
+            window.addEventListener("keydown", function(event) {
                 if (event.defaultPrevented) {
                     return;
                 }
@@ -1045,9 +864,9 @@ try {
 
             Array.from(document.getElementsByClassName("fox")).map(el => {
                 // el.addEventListener("animationend", function () {
-                     el.innerHTML = "";
-                    el.remove();
-                    console.log("removed");
+                el.innerHTML = "";
+                el.remove();
+                console.log("removed");
                 // }, false);
             });
 
@@ -1106,11 +925,11 @@ try {
             //     c(mathie);
             //     op++;
             // }
-                
+
             //multiplication below
             while (op < 1000) {
                 mathie = string[op++] + "*" + string[op];
-              c(mathie);
+                c(mathie);
                 op++;
             }
 
@@ -1148,7 +967,8 @@ try {
 
                 var i = 0;
 
-                 interval();
+                interval();
+
                 function interval() {
                     var timecounter = 80
                     if (i < stripped.length) {
@@ -1161,14 +981,16 @@ try {
                         document.getElementById('score3').innerHTML += stripped.substring(i, 1 + i);
                         // + document.getElementById('score3').innerHTML.substring(i + 1);
                         //						document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
-                        
-                        
+
+
                         i++; // increment i
 
 
-                        
-                       
-setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270  : timecounter);
+
+
+                        setTimeout(() => {
+                            interval()
+                        }, 7 > stripped.length - i ? timecounter += 270 : timecounter);
 
 
                     } else {
@@ -1176,7 +998,7 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270 
                     }
                 } // interval
 
-               
+
 
 
             }
@@ -1186,7 +1008,7 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270 
         }
 
         function newround() {
-             document.getElementById('answer').value = '';
+            document.getElementById('answer').value = '';
             document.getElementById('answer2').innerHTML = '';
 
             score = 0;
@@ -1218,9 +1040,9 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270 
                     element = document.getElementById('timer');
                     element.style.width = counttime2 + 'px';
                     // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
-             // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
-            element.style.opacity = .004 * (elapsed % 1000);
-             
+                    // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
+                    element.style.opacity = .004 * (elapsed % 1000);
+
                 }
                 if (counttime2 > 1) {
                     previousTimeStamp = timestamp
@@ -1230,15 +1052,15 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270 
                     // GAME OVER!
 
                     // this logic below should be put elsewhere :-S
-                       Array.from(document.getElementsByClassName("fox")).map(el => {
+                    Array.from(document.getElementsByClassName("fox")).map(el => {
                         // el.addEventListener("animationend", function () {
-                            el.innerHTML="";
-                            
-                            el.remove();
+                        el.innerHTML = "";
+
+                        el.remove();
                         // }, false);
 
 
-                        
+
 
                     });
                     //	 reset();
@@ -1257,75 +1079,69 @@ setTimeout(() => { interval() },  7 > stripped.length - i ?  timecounter += 270 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 
     <script>
-
-        
-        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function () {
-       //     sound.play();
+        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function() {
+            //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-              sound.attack = 0.9;
+            sound.attack = 0.9;
             // sound.decay = 0.6;
-           // sound.cutoff = 600;
- sound.volume = 0.8;
+            // sound.cutoff = 600;
+            sound.volume = 0.8;
             // sound.release = 0.4;
         });
 
-   
+
         var flanger = new Pizzicato.Effects.Flanger({
             attack: 0.6,
-                time: 0.4,
-                speed: 0.01,
-                depth: 0.01,
-                feedback: 0.2,
-                mix: 0.4    
-            });
+            time: 0.4,
+            speed: 0.01,
+            depth: 0.01,
+            feedback: 0.2,
+            mix: 0.4
+        });
 
-            // sound.addEffect(flanger);
+        // sound.addEffect(flanger);
 
         var dubDelay = new Pizzicato.Effects.DubDelay({
-                feedback: 0.74,
-                // time: 0.84,
-                time: 0.42,
-                mix: .66,
-                cutoff: 890
-            });
+            feedback: 0.74,
+            // time: 0.84,
+            time: 0.42,
+            mix: .66,
+            cutoff: 890
+        });
 
-                    // var stereoDelay = new Pizzicato.Effects.StereoDelay({
-                    //         feedback: 0.79,
-                    //         // time: 0.84,
-                    //         time: 0.42,
-                    //         mix: .66,
-                    //         cutoff: 870
-                    //     });
+        // var stereoDelay = new Pizzicato.Effects.StereoDelay({
+        //         feedback: 0.79,
+        //         // time: 0.84,
+        //         time: 0.42,
+        //         mix: .66,
+        //         cutoff: 870
+        //     });
 
-           // soundx.addEffect(dubDelay);
-/*
-            var dubDelay2 = new Pizzicato.Effects.DubDelay({
-                    feedback: 0.49,
-                    time: 0.74 * 3,
-                    mix: .48,
-                    cutoff: 400
-                });
+        // soundx.addEffect(dubDelay);
+        /*
+                    var dubDelay2 = new Pizzicato.Effects.DubDelay({
+                            feedback: 0.49,
+                            time: 0.74 * 3,
+                            mix: .48,
+                            cutoff: 400
+                        });
 
-    sound.addEffect(dubDelay2);*/
-                //  var dubDelay3 = new Pizzicato.Effects.DubDelay({
-                //         feedback: 0.49,
-                //         time: 0.74 * 4,
-                //         mix: .42,
-                //         cutoff: 500
-                //     });
-                // sound.addEffect(dubDelay3);
+            sound.addEffect(dubDelay2);*/
+        //  var dubDelay3 = new Pizzicato.Effects.DubDelay({
+        //         feedback: 0.49,
+        //         time: 0.74 * 4,
+        //         mix: .42,
+        //         cutoff: 500
+        //     });
+        // sound.addEffect(dubDelay3);
 
 
-            var stereoPanner = new Pizzicato.Effects.StereoPanner({
-                pan: -0.4
-            });
-            var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
-                pan: 0.4     
-             });
-
-             
-
-     
+        var stereoPanner = new Pizzicato.Effects.StereoPanner({
+            pan: -0.4
+        });
+        var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
+            pan: 0.4
+        });
     </script>
 </body>
 
