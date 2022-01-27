@@ -878,11 +878,18 @@
 
                 // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
 
-                //sheppards tone out of this :D
-                soundx2.sourceNode.playbackRate.value = 1.00 + 0.04 * ((0 + score) % 100)
-                    // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
-                    // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
-                    // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
+                //todo? sheppards tone out of this :D .. meh too much of a hassle this time
+                console.log(score);
+                var minusploppitcher = score * 0.01 + parseFloat(1.6 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
+                // console.log(minusploppitcher);
+                let ploppitcher = parseFloat(minusploppitcher);
+                // console.log(ploppitcher);
+
+                soundx2.sourceNode.playbackRate.value = ploppitcher;
+                //soundx2.sourceNode.playbackRate.value = 1.00 + 0.04 * ((0 + score) % 100)
+                // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
+                // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
+                // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
 
                 // switch (score % 10) {
                 //     case 0:
