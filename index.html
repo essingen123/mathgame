@@ -20,7 +20,7 @@
             position: static;
             display: inline-block;
             animation-name: bigbouncerani;
-            animation-duration: 0.9s;
+            animation-duration: 3.5s;
             /* width: 100%; */
             animation-iteration-count: 1;
             /* animation-duration: 1.5s;
@@ -35,13 +35,15 @@
         
         @keyframes bigbouncerani {
             0% {
+                opacity: 1;
                 font-size: 1%;
                 /* top: 0; */
-                transform: rotateZ(-120deg);
+                transform: rotateZ(-720deg);
             }
-            40% {
-                font-size: 400%;
-                transform: rotateZ(10deg);
+            80% {
+                opacity: 0.7;
+                font-size: 300%;
+                transform: rotateZ(720deg);
                 /* top: 0; */
             }
             100% {
@@ -323,6 +325,9 @@
             left: 0;
             padding-top: 5px;
             margin: 0 auto;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ab009c, 0 10px 30px #ee33aa, 0 10px 60px #ee33aa;
+            font-weight: bolder;
         }
         
         .hiscore {
@@ -824,8 +829,33 @@
             answered = document.getElementById('answer').value;
 
 
+
+
+
             if (answered == document.getElementById('eval').value) {
                 //CORRECT! 
+
+
+                // console.log(score);
+                var minusploppitcher = score * 0.01 + parseFloat(1.6 + 0.3 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
+                // console.log(minusploppitcher);
+                let ploppitcher = parseFloat(minusploppitcher);
+                // console.log(ploppitcher);
+
+                soundx2 = sound2.clone();
+                // soundx3 = sound2.clone();
+                soundx2.volume = 0.17;
+                soundx2.play(0.16, 0.01);
+                soundx2.sourceNode.playbackRate.value = ploppitcher;
+
+
+                soundx2b = sound2b.clone();
+                // soundx3 = sound2.clone();
+                soundx2b.volume = 0.5;
+                soundx2b.play();
+                //  soundx2b.sourceNode.playbackRate.value = ploppitcher;
+
+
 
                 Array.from(document.getElementsByClassName("fi")).map(el => {
                     el.classList.add("fa");
@@ -843,9 +873,13 @@
                 if (score % 10 === 0) {
                     document.getElementById('score2').innerHTML = "";
                     scorez = score;
-                    for (let i = 0; i < Math.floor(score / 100); i++) {
+                    for (let i = 0; i < Math.floor(score / 50); i++) {
                         // document.getElementById('score2').innerHTML += "🔮";
-                        scorez = scorez - 100; // buggy  time to fix
+                        scorez = scorez - 50; // buggy  time to fix
+
+                        soundx5 = sound5.clone();
+                        soundx5.play(1.9, 0);
+
 
                         let elementx = document.createElement('span');
                         elementx.classList.add('bounceleft');
@@ -857,6 +891,9 @@
                     // console.log(scorez);
                     for (let i = 0; i < Math.floor(scorez / 10); i++) {
                         // document.getElementById('score2').innerHTML += "💎";
+                        soundx4 = sound4.clone();
+                        soundx4.play(2.9, 0);
+
 
 
                         let elementx = document.createElement('span');
@@ -927,8 +964,6 @@
                 soundx.addEffect(flanger);
 
 
-                soundx2 = sound2.clone();
-                // soundx3 = sound2.clone();
 
 
 
@@ -957,8 +992,7 @@
                         break;
                 }
 
-                soundx2.volume = 0.5;
-                soundx2.play(0.01, 0.01);
+
 
                 // soundx3.volume = 0.05;
                 // soundx3.play(.01, 0);
@@ -967,7 +1001,7 @@
 
 
                 soundx.play();
-                let pitcharray = [1.01, 0.75, 1.25, 1.125, 1.505, 0.875, 1.004, 1.253, 1.502, 0.998];
+                let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
                 let pitchtonevol = pitcharray[score % pitcharray.length];
                 // soundx.volume = pitchtonevol;
                 soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
@@ -975,13 +1009,7 @@
                 // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
 
                 //todo? sheppards tone out of this :D .. meh too much of a hassle this time
-                console.log(score);
-                var minusploppitcher = score * 0.01 + parseFloat(1.6 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
-                // console.log(minusploppitcher);
-                let ploppitcher = parseFloat(minusploppitcher);
-                // console.log(ploppitcher);
 
-                soundx2.sourceNode.playbackRate.value = ploppitcher;
                 //soundx2.sourceNode.playbackRate.value = 1.00 + 0.04 * ((0 + score) % 100)
                 // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
                 // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
@@ -1039,14 +1067,22 @@
                 }
 
 
+
+                let levelbefore = level;
                 // level = 1+ Math.round(score / 10 - score*0.03,0);
                 level = 1 + Math.round(score / 10 - score * 0.03, 0);
+                if (levelbefore != level) {
+                    // levlup
+                    document.getElementById('level').innerHTML = level;
+
+                    soundx7 = sound7.clone();
+                    soundx7.play();
 
 
-
-                document.getElementById('score').innerHTML = score;
-                document.getElementById('hiscore').innerHTML = hiscore;
-                document.getElementById('level').innerHTML = level;
+                    document.getElementById('score').innerHTML = score;
+                    document.getElementById('hiscore').innerHTML = hiscore;
+                    document.getElementById('level').innerHTML = level;
+                }
 
                 delement4 = document.getElementById('buttons');
                 delement4.classList.add("greenpow");
@@ -1104,6 +1140,19 @@
 
             } else {
                 // NOT CORRECT.. YET! 
+
+
+
+                // console.log(score);
+                // var minusploppitcher = score * 0.01 + parseFloat(1.6 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
+                // // console.log(minusploppitcher);
+                // let ploppitcher = parseFloat(minusploppitcher);
+                // // console.log(ploppitcher);g
+
+                soundx3 = sound3.clone();
+                soundx3.play();
+
+
                 // delement2 = document.getElementById('buttons');
                 // delement2.classList.add("redpow");
                 // setTimeout(() => delement2.classList.remove('redpow'), 800);
@@ -1283,20 +1332,32 @@
             op = 0;
 
             // addition below
-            // while (op < 1000) {
-            //     mathie = string[op++] + "+" + string[op];
-            //     if (eval(mathie) > 9) {
-            //         mathie = string[--op] + '-' + string[++op];
-            //     }
-            //     if (eval(mathie) < 0) {
-            //         mathie = string[--op];
-            //     }
-            //     c(mathie);
-            //     op++;
-            // }
+            while (op < 50) {
+                mathie = string[op++] + "+" + string[op];
+                if (eval(mathie) > 9) {
+                    // just press the number..
+                    mathie = string[--op];
+                }
+
+                c(mathie);
+                op++;
+            }
+
+            // addition + subtraction below
+            while (op < 51) {
+                mathie = string[op++] + "+" + string[op];
+                if (eval(mathie) > 9) {
+                    mathie = string[--op] + '-' + string[++op];
+                }
+                if (eval(mathie) < 0) {
+                    mathie = string[--op];
+                }
+                c(mathie);
+                op++;
+            }
 
             //multiplication below
-            while (op < 1000) {
+            while (op < 101) {
                 mathie = string[op++] + "*" + string[op];
                 c(mathie);
                 op++;
@@ -1377,6 +1438,14 @@
         }
 
         function newround() {
+
+            soundx3 = sound3.clone();
+            soundx3.play();
+            // soundx8 = sound8.clone();
+            sound8.play();
+
+
+
             document.getElementById('answer').value = '';
             document.getElementById('answer2').innerHTML = '_';
 
@@ -1422,6 +1491,12 @@
                 } else {
 
                     // GAME OVER!
+                    sound8.stop();
+
+
+                    soundx6 = sound6.clone();
+                    soundx6.play();
+
 
                     // this logic below should be put elsewhere :-S
                     Array.from(document.getElementsByClassName("fox")).map(el => {
@@ -1451,17 +1526,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 
     <script>
-        var sound2 = new Pizzicato.Sound('./plop.mp3', function() {
+        //
+
+
+        var sound2b = new Pizzicato.Sound('./snd/coinx.mp3', function() {
+
+        });
+
+        var sound2 = new Pizzicato.Sound('./snd/plop.mp3', function() {
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
             sound.attack = 0.4;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.1;
+            sound.volume = 0.09;
             // sound.release = 0.4;
         });
-        var sound = new Pizzicato.Sound('./success.mp3', function() {
+        var sound3 = new Pizzicato.Sound('./snd/failx3.mp3', function() {
+
+        });
+
+        var sound4 = new Pizzicato.Sound('./snd/10pointsx3.mp3', function() {
+
+        });
+        var sound5 = new Pizzicato.Sound('./snd/100pointsx2b.mp3', function() {
+
+        });
+        var sound6 = new Pizzicato.Sound('./snd/gameover.mp3', function() {
+
+        });
+
+        var sound7 = new Pizzicato.Sound('./snd/levelup.mp3', function() {
+
+        });
+
+        var sound8 = new Pizzicato.Sound('./snd/newgame.mp3', function() {
+            sound8.loop = true;
+
+
+        });
+
+
+
+        var sound = new Pizzicato.Sound('./snd/success.mp3', function() {
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
             sound.attack = 0.4;
