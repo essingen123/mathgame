@@ -319,15 +319,30 @@
         }
         
         .level {
-            position: absolute;
-            top: 0;
+            position: fixed !important;
+            display: block;
+            /* top: 30px; */
             right: 0;
             left: 0;
-            padding-top: 5px;
-            margin: 0 auto;
+            /* padding-top: 5px; */
+            margin: -11px auto;
             color: #ffffff;
             text-shadow: 0 0 10px #ab009c, 0 10px 30px #ee33aa, 0 10px 60px #ee33aa;
             font-weight: bolder;
+            position: static;
+            display: block;
+            animation-name: bigbouncerani;
+            animation-duration: 3.5s;
+            /* width: 100%; */
+            animation-iteration-count: 1;
+            /* animation-duration: 1.5s;
+            animation-name: fbpow; */
+            /* animation-timing-function: cubic-bezier(-.175, .285, .82, -.175); */
+            animation-timing-function: ease-in-out;
+            z-index: 200;
+            margin-left: 0;
+            /* top: 0; */
+            transform: rotateZ(0);
         }
         
         .hiscore {
@@ -485,7 +500,7 @@
             letter-spacing: 1px;
         }
         
-        toptext {
+        topgradient {
             font-size: 1rem;
             color: #fefafa;
             font-family: 'Games', sans-serif, arial;
@@ -757,9 +772,9 @@
 
             </spansmall>
         </div>
-        <toptext>
+        <topgradient>
             <!-- ⚠️--->
-        </toptext>
+        </topgradient>
         <div class="scorebar">
             <span class=score>SCORE <b id="score"></b> </span>
             <span class=level> LVL <b id="level"></b> </span>
@@ -810,7 +825,7 @@
         // var speedish = 0.3; // starting speed for testing, too fast for prod
         var speedincrease = 0.006; //may rather be in blocks of levels or per question
 
-        var levelspeedincrease = 0.03; // became starting speed
+        var startlevelspeed = 0.03; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
@@ -877,8 +892,8 @@
                         // document.getElementById('score2').innerHTML += "🔮";
                         scorez = scorez - 50; // buggy  time to fix
 
-                        soundx5 = sound5.clone();
-                        soundx5.play(1.9, 0);
+                        sound5.volume = 0.5;
+                        sound5.play(1.9, 0);
 
 
                         let elementx = document.createElement('span');
@@ -891,8 +906,10 @@
                     // console.log(scorez);
                     for (let i = 0; i < Math.floor(scorez / 10); i++) {
                         // document.getElementById('score2').innerHTML += "💎";
-                        soundx4 = sound4.clone();
-                        soundx4.play(2.9, 0);
+
+                        // only plays one sound when not cloned, easy setup..
+                        sound4.volume = 0.7;
+                        sound4.play(0.9, 0);
 
 
 
@@ -1072,16 +1089,22 @@
                 // level = 1+ Math.round(score / 10 - score*0.03,0);
                 level = 1 + Math.round(score / 10 - score * 0.03, 0);
                 if (levelbefore != level) {
-                    // levlup
+                    // levlup levelup level up :D
                     document.getElementById('level').innerHTML = level;
 
-                    soundx7 = sound7.clone();
-                    soundx7.play();
+                    // sound7 = sound7.clone();
+                    sound7.volume = 0.6;
+                    sound7.play();
 
 
                     document.getElementById('score').innerHTML = score;
                     document.getElementById('hiscore').innerHTML = hiscore;
+
+                    // top bar score ... 
                     document.getElementById('level').innerHTML = level;
+                    document.getElementById('level').style.webkitAnimationPlayState = "none";
+                    document.getElementById('level').style.webkitAnimationPlayState = "running";
+
                 }
 
                 delement4 = document.getElementById('buttons');
@@ -1124,7 +1147,7 @@
 
 
 
-                speedish = levelspeedincrease + level * speedincrease;
+                speedish = startlevelspeed + level * speedincrease;
                 // speedish += speedincrease;
 
 
@@ -1262,7 +1285,7 @@
             d.innerHTML = (a2);
 
             document.getElementById('i3').append(d);
-            //	 document.body.append(d);
+            //   document.body.append(d);
             //document.body.append(d);
             d.classList.add("fi");
             let rightanswer = /* dont remove --->"" + */ "" + evalQ(a); // "" + convert to string
@@ -1295,10 +1318,10 @@
             } else {
                 // ... 
                 // if (q < 10) {
-                //	 q++;
-                //	 v(q);
+                //   q++;
+                //   v(q);
                 // } else {
-                //	 v(q);
+                //   v(q);
                 // }
 
                 // do not need to call rset here too... ?
@@ -1332,9 +1355,10 @@
             op = 0;
 
             // addition below
-            while (op < 50) {
+            while (op < 30) {
                 mathie = string[op++] + "+" + string[op];
-                if (eval(mathie) > 9) {
+                // if (eval(mathie) > 9) {
+                if (eval(mathie) > 14) {
                     // just press the number..
                     mathie = string[--op];
                 }
@@ -1344,7 +1368,7 @@
             }
 
             // addition + subtraction below
-            while (op < 51) {
+            while (op >= 30 && op < 50) {
                 mathie = string[op++] + "+" + string[op];
                 if (eval(mathie) > 9) {
                     mathie = string[--op] + '-' + string[++op];
@@ -1357,7 +1381,7 @@
             }
 
             //multiplication below
-            while (op < 101) {
+            while (op >= 50 && op < 1000) {
                 mathie = string[op++] + "*" + string[op];
                 c(mathie);
                 op++;
@@ -1367,7 +1391,7 @@
             v(ar.shift());
 
             //console.log('startscreen call');
-            //		  startscreen(); // pink start screen overlay
+            //        startscreen(); // pink start screen overlay
 
 
         }
@@ -1410,7 +1434,7 @@
 
                         document.getElementById('score3').innerHTML += stripped.substring(i, 1 + i);
                         // + document.getElementById('score3').innerHTML.substring(i + 1);
-                        //						document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
+                        //                      document.getElementById('score3').innerHTML += document.getElementById('score3').innerHTML.substring(0, i) + "|";
 
 
                         i++; // increment i
@@ -1510,7 +1534,7 @@
 
 
                     });
-                    //	 reset();
+                    //   reset();
                     startscreen();
                 }
             }
@@ -1529,7 +1553,7 @@
         //
 
 
-        var sound2b = new Pizzicato.Sound('./snd/coinx.mp3', function() {
+        var sound2b = new Pizzicato.Sound('./snd/coin.mp3', function() {
 
         });
 
@@ -1547,7 +1571,7 @@
 
         });
 
-        var sound4 = new Pizzicato.Sound('./snd/10pointsx3.mp3', function() {
+        var sound4 = new Pizzicato.Sound('./snd/10pointsx2.mp3', function() {
 
         });
         var sound5 = new Pizzicato.Sound('./snd/100pointsx2b.mp3', function() {
@@ -1557,7 +1581,8 @@
 
         });
 
-        var sound7 = new Pizzicato.Sound('./snd/levelup.mp3', function() {
+        var sound7 = new Pizzicato.Sound('./snd/levelupx4.mp3', function() {
+
 
         });
 
