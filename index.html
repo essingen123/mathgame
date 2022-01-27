@@ -1581,9 +1581,13 @@
                 if (previousTimeStamp !== timestamp) {
 
 
+
+                    counttime2b = counttime2;
                     // this probably in current version becomes sort of a bug when increasing and should be more optimized ... floor is better than round + ceil anywhow.. s
                     counttime2 = counttime - Math.floor(speedish * elapsed);
 
+                    // just to ease the bug i can fix.. but are too lazy too.. :-S .. that hopefully leads to genius things, as usual ;-) .. seriously - it actually does
+                    counttime2 = ((counttime2b + counttime2) / 2);
 
                     if (counttime2 > maxcountime) {
 
