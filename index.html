@@ -299,7 +299,7 @@
             display: block;
             height: 24px;
             background: #fff;
-            transition: all 1s ease-in-out;
+            transition: all 0.6s ease-in-out;
             transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
             margin-bottom: -12px;
             margin-top: -14px;
@@ -734,7 +734,7 @@
 
         var speedish = 0.02; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
-        var speedincrease = 0.005; //may rather be in blocks of levels or per question
+        var speedincrease = 0.003; //may rather be in blocks of levels or per question
 
         var levelspeedincrease = 0.03; // became starting speed
 
@@ -832,7 +832,7 @@
 
 
                 soundx2 = sound2.clone();
-                soundx3 = sound2.clone();
+                // soundx3 = sound2.clone();
 
 
 
@@ -862,25 +862,25 @@
                 }
 
                 soundx2.volume = 0.5;
-                soundx2.play(0.0, 0);
+                soundx2.play(0.01, 0.01);
 
-                soundx3.volume = 0.2;
-                soundx3.play(.01, 0);
+                // soundx3.volume = 0.05;
+                // soundx3.play(.01, 0);
                 // soundx3.play(.06, 0);
                 // soundx4.play(.09, 0);
 
 
-                soundx.play(0.05, 0.079);
+                soundx.play(0.01, 0.01);
                 let pitcharray = [1.01, 0.75, 1.25, 1.125, 1.505, 0.875, 1.004, 1.253, 1.502, 0.998];
                 let pitchtonevol = pitcharray[score % pitcharray.length];
-                soundx.volume = pitchtonevol;
+                // soundx.volume = pitchtonevol;
                 soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
 
                 // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
 
                 //sheppards tone out of this :D
-                soundx2.sourceNode.playbackRate.value = 2 + 0.05 * ((0 + score) % 2)
-                soundx3.sourceNode.playbackRate.value = 1 - 0.05 * ((5 + score) % 3)
+                soundx2.sourceNode.playbackRate.value = 1.2 + 0.02 * ((0 + score) % 100)
+                    // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
                     // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
                     // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
 
@@ -987,9 +987,15 @@
 
                 speedish = levelspeedincrease + level * speedincrease;
                 // speedish += speedincrease;
+
+
+
                 let transitionspeed = 1 - Math.round(5 * speedish, 4);
                 // console.log(transitionspeed);
-                document.getElementById('timer').style.transitionDuration = transitionspeed + 's';
+
+
+                //bugs?
+                // document.getElementById('timer').style.transitionDuration = transitionspeed + 's';
 
 
 
@@ -1292,8 +1298,10 @@
                 }
                 elapsed = timestamp - start;
                 if (previousTimeStamp !== timestamp) {
-                    counttime2 = counttime - Math.ceil(speedish * elapsed);
+                    counttime2 = counttime - Math.round(speedish * elapsed);
                     if (counttime2 > maxcountime) {
+
+                        // improve below? 
                         counttime = counttime - 10;
                         counttime2 = maxcountime;
                     }
@@ -1356,7 +1364,7 @@
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.7;
+            sound.volume = 0.1;
             // sound.release = 0.4;
         });
 
@@ -1376,7 +1384,7 @@
             feedback: 0.64,
             // time: 0.84,
             time: 0.42,
-            mix: .5,
+            mix: .9,
             cutoff: 890
         });
 
