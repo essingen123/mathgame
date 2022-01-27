@@ -918,7 +918,7 @@
 
                 soundx2b = sound2b.clone();
                 // soundx3 = sound2.clone();
-                soundx2b.volume = 0.5;
+                soundx2b.volume = 0.0015 + 0.01 * (score % 4);
                 soundx2b.play();
                 //  soundx2b.sourceNode.playbackRate.value = ploppitcher;
 
@@ -960,8 +960,8 @@
                         // document.getElementById('score2').innerHTML += "💎";
 
                         // only plays one sound when not cloned, easy setup..
-                        sound4.volume = 0.7;
-                        sound4.play(0.9, 0);
+                        sound4.volume = 0.95;
+                        sound4.play(0.7, 0);
 
 
 
@@ -1655,17 +1655,18 @@
 
 
         var sound2b = new Pizzicato.Sound('./snd/coin.mp3', function() {
-
+            sound.attack = 0.5;
+            sound.volume = 0.04;
         });
 
         var sound2 = new Pizzicato.Sound('./snd/plop.mp3', function() {
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            sound.attack = 0.4;
+            sound.attack = 0.1;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.09;
+            sound.volume = 0.04;
             // sound.release = 0.4;
         });
         var sound3 = new Pizzicato.Sound('./snd/failx3.mp3', function() {
