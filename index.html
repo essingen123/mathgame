@@ -797,7 +797,6 @@
                     soundx.removeEffect(dubDelay);
 
 
-                    // window.navigator.vibrate(100);
                     // soundx.removeEffect(stereoDelay);
                 } catch (error) {
                     //     console.log(error);
@@ -818,13 +817,24 @@
 
 
                 soundx = sound.clone();
+
+                soundx.addEffect(dubDelay);
+
+
+                // soundx2.removeEffect(dubDelay);
+
+                // soundx3.removeEffect(dubDelay);
+                // soundx4 = sound2.clone();
                 // soundx.attack = 0.6;
                 // soundx.volume = 0.9;
 
                 soundx.addEffect(flanger);
 
 
-                soundx.addEffect(dubDelay);
+                soundx2 = sound2.clone();
+                soundx3 = sound2.clone();
+
+
 
                 //    soundx.addEffect(stereoDelay);
                 //   soundx.removeEffect(dubDelay);
@@ -851,54 +861,72 @@
                         break;
                 }
 
-                // soundx.play(0.05, 0.079);
-                soundx.play(0.01, 0.13);
+                soundx2.volume = 0.5;
+                soundx2.play(0.0, 0);
+
+                soundx3.volume = 0.2;
+                soundx3.play(.01, 0);
+                // soundx3.play(.06, 0);
+                // soundx4.play(.09, 0);
 
 
+                soundx.play(0.05, 0.079);
+                let pitcharray = [1.01, 0.75, 1.25, 1.125, 1.505, 0.875, 1.004, 1.253, 1.502, 0.998];
+                let pitchtonevol = pitcharray[score % pitcharray.length];
+                soundx.volume = pitchtonevol;
+                soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
 
+                // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
 
-                switch (-1 + score % 10) {
-                    case 0:
-                        soundx.sourceNode.playbackRate.value = 1;
-                        // soundx.sourceNode.playbackRate.value = 0.5;
-                        break;
-                    case 1:
-                        soundx.sourceNode.playbackRate.value = 0.75;
-                        break;
-                    case 2:
-                        soundx.sourceNode.playbackRate.value = 1.25;
-                        break;
+                //sheppards tone out of this :D
+                soundx2.sourceNode.playbackRate.value = 2 + 0.05 * ((0 + score) % 2)
+                soundx3.sourceNode.playbackRate.value = 1 - 0.05 * ((5 + score) % 3)
+                    // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
+                    // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
 
-                    case 3:
-                        soundx.sourceNode.playbackRate.value = 1.125;
+                // switch (score % 10) {
+                //     case 0:
+                //         soundx.sourceNode.playbackRate.value = 1 * pitch;
+                //         // soundx.sourceNode.playbackRate.value = 0.5;
 
-                        //soundx.sourceNode.playbackRate.value = 1.125;
-                        break;
-                    case 4:
-                        soundx.sourceNode.playbackRate.value = 1.5;
-                        break;
+                //         break;
+                //     case 1:
+                //         soundx.sourceNode.playbackRate.value = 0.75 * pitch;
+                //         break;
+                //     case 2:
+                //         soundx.sourceNode.playbackRate.value = 1.25 * pitch;
+                //         break;
 
-                    case 5:
-                        // soundx.sourceNode.playbackRate.value = 1.25;
-                        soundx.sourceNode.playbackRate.value = 0.875;
-                        break;
-                    case 6:
-                        soundx.sourceNode.playbackRate.value = 1.005;
-                        break;
-                    case 7:
-                        soundx.sourceNode.playbackRate.value = 1.253;
-                        break;
-                    case 8:
-                        soundx.sourceNode.playbackRate.value = 1.505;
-                        break;
-                        // case 9:
-                        //     soundx.sourceNode.playbackRate.value = 2.75;
-                        //     break;
-                    case 9:
-                        soundx.sourceNode.playbackRate.value = 0.0997;
-                        break;
+                //     case 3: 1.25, 1.125, 0.875
+                //         soundx.sourceNode.playbackRate.value = 1.125 * pitch;
 
-                }
+                //         //soundx.sourceNode.playbackRate.value = 1.125;
+                //         break;
+                //     case 4:
+                //         soundx.sourceNode.playbackRate.value = 1.5 * pitch;
+                //         break;
+
+                //     case 5:
+                //         // soundx.sourceNode.playbackRate.value = 1.25;
+                //         soundx.sourceNode.playbackRate.value = 0.875 * pitch;
+                //         break;
+                //     case 6:
+                //         soundx.sourceNode.playbackRate.value = 1.005 * pitch;
+                //         break;
+                //     case 7:
+                //         soundx.sourceNode.playbackRate.value = 1.253 * pitch;
+                //         break;
+                //     case 8:
+                //         soundx.sourceNode.playbackRate.value = 1.505 * pitch;
+                //         break;
+                //         // case 9:
+                //         //     soundx.sourceNode.playbackRate.value = 2.75;
+                //         //     break;
+                //     case 9:
+                //         soundx.sourceNode.playbackRate.value = 0.997 * pitch;
+                //         break;
+
+                // }
 
 
 
@@ -1311,33 +1339,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 
     <script>
-        var sound = new Pizzicato.Sound('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3', function() {
+        var sound2 = new Pizzicato.Sound('./plop.mp3', function() {
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            sound.attack = 0.9;
+            sound.attack = 0.4;
+            // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 1.8;
+            sound.volume = 0.1;
+            // sound.release = 0.4;
+        });
+        var sound = new Pizzicato.Sound('./success.mp3', function() {
+            //     sound.play();
+            // sound.sourceNode.playbackRate.value = 0.5;
+            sound.attack = 0.4;
+            // sound.decay = 0.9;
+            // sound.decay = 0.6;
+            // sound.cutoff = 600;
+            sound.volume = 0.7;
             // sound.release = 0.4;
         });
 
 
         var flanger = new Pizzicato.Effects.Flanger({
-            attack: 0.6,
+            attack: 0,
             time: 12,
             speed: 0.001,
             depth: 0.02,
-            feedback: 0.01,
+            feedback: 0.09,
             mix: 0.4
         });
 
         // sound.addEffect(flanger);
 
         var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.74,
+            feedback: 0.64,
             // time: 0.84,
             time: 0.42,
-            mix: .66,
+            mix: .5,
             cutoff: 890
         });
 
