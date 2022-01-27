@@ -732,9 +732,9 @@
         // var speedish = 0.089; // starting speed
         var pluscount = 300; //how much extra time per right answer 
 
-        var speedish = 0.02; // startspeed for the very first question
+        var speedish = 0.09; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
-        var speedincrease = 0.003; //may rather be in blocks of levels or per question
+        var speedincrease = 0.006; //may rather be in blocks of levels or per question
 
         var levelspeedincrease = 0.03; // became starting speed
 
@@ -870,7 +870,7 @@
                 // soundx4.play(.09, 0);
 
 
-                soundx.play(0.01, 0.01);
+                soundx.play();
                 let pitcharray = [1.01, 0.75, 1.25, 1.125, 1.505, 0.875, 1.004, 1.253, 1.502, 0.998];
                 let pitchtonevol = pitcharray[score % pitcharray.length];
                 // soundx.volume = pitchtonevol;
@@ -879,7 +879,7 @@
                 // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
 
                 //sheppards tone out of this :D
-                soundx2.sourceNode.playbackRate.value = 1.2 + 0.02 * ((0 + score) % 100)
+                soundx2.sourceNode.playbackRate.value = 1.00 + 0.04 * ((0 + score) % 100)
                     // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
                     // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
                     // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
@@ -1303,6 +1303,7 @@
 
                         // improve below? 
                         counttime = counttime - 10;
+                        counttime = counttime - (counttime2 - (maxcountime + counttime2) / 2);
                         counttime2 = maxcountime;
                     }
                     element = document.getElementById('timer');
