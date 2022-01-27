@@ -20,7 +20,7 @@
             position: static;
             display: inline-block;
             animation-name: bigbouncerani;
-            animation-duration: 3.5s;
+            animation-duration: 1.4s;
             /* width: 100%; */
             animation-iteration-count: 1;
             /* animation-duration: 1.5s;
@@ -36,14 +36,20 @@
         @keyframes bigbouncerani {
             0% {
                 opacity: 1;
-                font-size: 1%;
+                font-size: 5%;
                 /* top: 0; */
                 transform: rotateZ(-720deg);
             }
-            80% {
+            30% {
+                opacity: 1;
+                font-size: 100%;
+                /* top: 0; */
+                transform: rotateZ(0deg);
+            }
+            60% {
                 opacity: 0.7;
                 font-size: 300%;
-                transform: rotateZ(720deg);
+                transform: rotateZ(360deg);
                 /* top: 0; */
             }
             100% {
@@ -734,7 +740,7 @@
             background-color: #fafafa43;
             transition: all .9s ease-in-out;
             padding: 12px;
-            animation-duration: 2.9s;
+            animation-duration: 1.5s;
             animation-name: slideinfromright;
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
@@ -744,7 +750,7 @@
             padding: 12px;
             margin: 11px auto 12px auto;
             display: block;
-            animation-duration: 2.55s;
+            animation-duration: 1.7s;
             animation-name: fadein;
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
@@ -752,7 +758,7 @@
         #hiscoring {
             background-color: #fafafa44;
             padding: 12px;
-            animation-duration: 2.85s;
+            animation-duration: 2s;
             animation-name: slideinfromleft;
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
         }
@@ -937,12 +943,12 @@
                 next();
                 score++;
 
-                if (score % 10 === 0) {
+                if (score % 5 === 0) {
                     document.getElementById('score2').innerHTML = "";
                     scorez = score;
-                    for (let i = 0; i < Math.floor(score / 50); i++) {
+                    for (let i = 0; i < Math.floor(score / 25); i++) {
                         // document.getElementById('score2').innerHTML += "🔮";
-                        scorez = scorez - 50; // buggy  time to fix
+                        scorez = scorez - 25; // buggy  time to fix
 
                         sound5.volume = 0.5;
                         sound5.play(1.9, 0);
@@ -956,7 +962,7 @@
 
                     }
                     // console.log(scorez);
-                    for (let i = 0; i < Math.floor(scorez / 10); i++) {
+                    for (let i = 0; i < Math.floor(scorez / 5); i++) {
                         // document.getElementById('score2').innerHTML += "💎";
 
                         // only plays one sound when not cloned, easy setup..
