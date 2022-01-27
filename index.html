@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>1000 Decimals of Pi • MATH GAME v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
+    <title>1000 Decimals of Pi • MATH GAME Pi v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
     <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <!-- <link href="./custom.css" rel="stylesheet"> -->
     <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
@@ -318,7 +318,7 @@
             top: 0;
         }
         
-        .level {
+        #level2 {
             position: fixed !important;
             display: block;
             /* top: 30px; */
@@ -344,6 +344,8 @@
             /* top: 0; */
             transform: rotateZ(0);
         }
+        
+        .level {}
         
         .hiscore {
             position: absolute;
@@ -516,7 +518,8 @@
             text-align: center;
             background: rgb(131, 58, 180);
             /* background: linear-gradient(90deg, rgba(131, 58, 180, 1) 1%, rgba(139, 192, 117, 1) 20%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(150, 187, 107, 1) 80%, rgba(121, 29, 253, 1) 99%); */
-            background: linear-gradient(90deg, rgba(58, 180, 66, 0.5) 1%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(58, 180, 66, 0.5) 99%);
+            /* background: linear-gradient(90deg, rgba(58, 180, 66, 0.5) 1%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(58, 180, 66, 0.5) 99%); */
+            background: linear-gradient(90deg, rgba(222, 75, 200, 0.742) 1%, rgb(167, 69, 252) 35%, rgb(0, 0, 0) 50%, rgba(167, 69, 252) 65%, rgba(222, 75, 200, 0.742) 99%);
             /* border-radius: 4%; */
             border-radius: 100%;
             opacity: 0.5;
@@ -757,9 +760,9 @@
 
         <input type="hidden" value="" id="eval" />
         <div id="scoreoverlay" class="scoreoverlay">
-            <div>🏹</div>
+
             <div class="wrapper">
-                <h1>Math Game</h1>
+                <h1>Math Game Pi 🏹</h1>
                 <spansmall class="slideinfromleft">1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
                 </spansmall>
             </div>
@@ -777,7 +780,7 @@
         </topgradient>
         <div class="scorebar">
             <span class=score>SCORE <b id="score"></b> </span>
-            <span class=level> LVL <b id="level"></b> </span>
+            <span class=level id="level2"> LVL <b id="level"></b> </span>
             <span class=hiscore> HISCORE <b id="hiscore"></b> </span>
         </div>
     </div>
@@ -1085,25 +1088,32 @@
 
 
 
+                document.getElementById('score').innerHTML = score;
+                document.getElementById('hiscore').innerHTML = hiscore;
+
+
                 let levelbefore = level;
                 // level = 1+ Math.round(score / 10 - score*0.03,0);
                 level = 1 + Math.round(score / 10 - score * 0.03, 0);
                 if (levelbefore != level) {
                     // levlup levelup level up :D
-                    document.getElementById('level').innerHTML = level;
 
                     // sound7 = sound7.clone();
                     sound7.volume = 0.6;
                     sound7.play();
 
 
-                    document.getElementById('score').innerHTML = score;
-                    document.getElementById('hiscore').innerHTML = hiscore;
+                    document.getElementById('level').innerHTML = level;
 
                     // top bar score ... 
                     document.getElementById('level').innerHTML = level;
-                    document.getElementById('level').style.webkitAnimationPlayState = "none";
-                    document.getElementById('level').style.webkitAnimationPlayState = "running";
+
+                    document.getElementById('level2').style.webkitAnimationPlayState = "paused";
+                    document.getElementById('level2').style.webkitAnimationPlayState = "revert";
+                    document.getElementById('level2').style.webkitAnimationPlayState = "unset";
+
+                    document.getElementById('level2').style.webkitAnimationPlayState = "paused";
+                    document.getElementById('level2').style.webkitAnimationPlayState = "running";
 
                 }
 
@@ -1474,6 +1484,7 @@
             document.getElementById('answer2').innerHTML = '_';
 
             score = 0;
+            level = 1;
             document.getElementById('score2').innerHTML = "😀<br />";
 
 
@@ -1494,7 +1505,7 @@
                 }
                 elapsed = timestamp - start;
                 if (previousTimeStamp !== timestamp) {
-                    counttime2 = counttime - Math.round(speedish * elapsed);
+                    counttime2 = counttime - Math.ceil(speedish * elapsed);
                     if (counttime2 > maxcountime) {
 
                         // improve below? 
