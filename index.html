@@ -15,6 +15,73 @@
     <!-- @import url('http://fonts.cdnfonts.com/css/games'); -->
     <style>
         @import url('https://fonts.cdnfonts.com/css/games');
+        .bigbouncer {
+            /* display: inline-block; */
+            position: static;
+            display: inline-block;
+            animation-name: bigbouncerani;
+            animation-duration: 0.9s;
+            /* width: 100%; */
+            animation-iteration-count: 1;
+            /* animation-duration: 1.5s;
+            animation-name: fbpow; */
+            /* animation-timing-function: cubic-bezier(-.175, .285, .82, -.175); */
+            animation-timing-function: ease-in-out;
+            z-index: 200;
+            margin-left: 0;
+            /* top: 0; */
+            transform: rotateZ(0);
+        }
+        
+        @keyframes bigbouncerani {
+            0% {
+                font-size: 1%;
+                /* top: 0; */
+                transform: rotateZ(-120deg);
+            }
+            40% {
+                font-size: 400%;
+                transform: rotateZ(10deg);
+                /* top: 0; */
+            }
+            100% {
+                font-size: 100%;
+                transform: rotateZ(0);
+                /* top: 0; */
+            }
+        }
+        
+        .sidebouncer {
+            /* display: inline-block; */
+            display: inline-block;
+            position: static;
+            animation-name: sidebouncerani;
+            animation-duration: .6s;
+            /* width: 100%; */
+            animation-iteration-count: 1;
+            /* animation-duration: 1.5s;
+            animation-name: fbpow; */
+            animation-timing-function: cubic-bezier(-.175, .885, .32, -.275);
+            z-index: 200;
+            margin-left: 0;
+            /* top: 0; */
+        }
+        
+        @keyframes sidebouncerani {
+            0% {
+                opacity: 0;
+                margin-left: -20px;
+                transform: rotateZ(-80deg);
+                /* top: 0; */
+            }
+            100% {
+                opacity: 1;
+                margin-left: 0;
+                transform: rotateZ(0deg);
+                /* top: 0; */
+            }
+        }
+        
         .buttons {
             width: 100%;
             border-radius: 16px;
@@ -44,6 +111,8 @@
             line-height: 2rem;
             padding-top: 1px;
             margin-top: -24px;
+            position: absolute;
+            width: 100%;
         }
         
         * {
@@ -775,16 +844,43 @@
                     document.getElementById('score2').innerHTML = "";
                     scorez = score;
                     for (let i = 0; i < Math.floor(score / 100); i++) {
-                        document.getElementById('score2').innerHTML += "🔮";
+                        // document.getElementById('score2').innerHTML += "🔮";
                         scorez = scorez - 100; // buggy  time to fix
+
+                        let elementx = document.createElement('span');
+                        elementx.classList.add('bounceleft');
+                        elementx.innerHTML = "<span class='bigbouncer'>🔮</span>";
+                        setTimeout(() => document.getElementById('score2').append(elementx), 50);
+
+
                     }
                     // console.log(scorez);
                     for (let i = 0; i < Math.floor(scorez / 10); i++) {
-                        document.getElementById('score2').innerHTML += "💎";
+                        // document.getElementById('score2').innerHTML += "💎";
+
+
+                        let elementx = document.createElement('span');
+                        elementx.classList.add('bounceleft');
+                        elementx.innerHTML = "<span class='bigbouncer'>💎</span>";
+                        setTimeout(() => document.getElementById('score2').append(elementx), 50);
+
+
                     }
                     document.getElementById('score2').innerHTML += "<br />";
                 } else {
-                    document.getElementById('score2').innerHTML += "⭐️";
+
+
+
+
+                    // delement4 = document.getElementById('buttons');
+                    // delement4.classList.add("greenpow");
+                    // setTimeout(() => document.getElementById('score2').innerHTML += "<span class='sidebouncer'>⭐️<span>", 50);
+                    let elementx = document.createElement('span');
+                    elementx.classList.add('bounceleft');
+                    elementx.innerHTML = "<span class='sidebouncer'>⭐️</span>";
+                    setTimeout(() => document.getElementById('score2').append(elementx), 50);
+
+
                 }
 
                 try {
