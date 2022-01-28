@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>1000 Decimals of Pi • MATH GAME Pi v0.007a • 😀 Coded on a Mobile FastSpaghetti Prototype</title>
-    <!-- 😀 Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
+    <title>The Math Game of Pi 😀 • v0.0089b • Coded on a Mobile </title>
+    <!-- ((😀  FastSpaghetti Prototype code alert ;) Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <!-- <link href="./custom.css" rel="stylesheet"> -->
     <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
     <!-- @import url('http://fonts.cdnfonts.com/css/games'); -->
@@ -92,6 +92,7 @@
         
         .buttons {
             width: 100%;
+            max-width: 650px;
             border-radius: 16px;
             display: inline-block;
             bottom: 0;
@@ -99,7 +100,6 @@
             background: radial-gradient(circle at 30% 60%, #22212155 12%, #00000055 50%);
             background-color: #3d3a3e;
             padding: 6px 0 3px 0;
-            max-width: 900px;
             max-height: 50%;
             text-align: center;
             opacity: 1;
@@ -209,7 +209,7 @@
             }
         }
         
-        .i3 {
+        .moutput {
             text-align: center;
             background-color: #fb5;
             background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
@@ -218,10 +218,20 @@
             width: 98%;
             padding: 1px;
             color: #fff;
-            font-size: 330%;
+            /* font-size: 330%; */
+            font-size: 130%;
             height: 86px;
             display: block;
             margin: 2px auto 3px auto;
+            max-width: 650px;
+            display: flex;
+            /* width: 50%; */
+            /* height: 200px; */
+            margin: auto;
+            /* border-radius: 10px; */
+            /* border: 3px dashed #1c87c9; */
+            align-items: center;
+            justify-content: center;
         }
         
         .scoreoverlay {
@@ -407,7 +417,7 @@
             padding: 0;
         }
         
-        spansmall {
+        .spansmall {
             line-height: 1rem;
             display: block;
             font-size: .7rem;
@@ -415,9 +425,11 @@
             margin: 2px;
             animation-duration: 1.15s !important;
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
+            max-width: 430px;
+            margin: 2px auto;
         }
         
-        spansmall: nth-child(1) {
+        .spansmall: nth-child(1) {
             animation-duration: 1.85s;
         }
         
@@ -475,6 +487,7 @@
             max-height: 60px;
             width: 50%;
             min-height: 38px;
+            max-width: 250px;
         }
         
         .numkey {
@@ -505,6 +518,7 @@
             margin: auto !important;
             /* not optimal really .. */
             text-align: center;
+            max-width: 650px;
         }
         
         html,
@@ -803,6 +817,49 @@
                 background-color: #fafafa43;
             }
         }
+        
+        .superbounce {
+            animation: bounce-top 1.9s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+        }
+        
+        @keyframes bounce-top {
+            0% {
+                transform: translateY(-95px);
+                animation-timing-function: ease-in;
+                opacity: 1;
+            }
+            24% {
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(-44px);
+                animation-timing-function: ease-in;
+            }
+            65% {
+                transform: translateY(-18px);
+                animation-timing-function: ease-in;
+            }
+            82% {
+                transform: translateY(-7px);
+                animation-timing-function: ease-in;
+            }
+            91% {
+                transform: translateY(-4px);
+                animation-timing-function: ease-in;
+            }
+            25%,
+            55%,
+            75%,
+            87% {
+                transform: translateY(2px);
+                animation-timing-function: ease-out;
+            }
+            100% {
+                transform: translateY(1px);
+                animation-timing-function: ease-out;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -815,20 +872,22 @@
         <div id="scoreoverlay" class="scoreoverlay">
 
             <div class="wrapper">
-                <h1>Math Game Pi 🏹</h1>
-                <spansmall class="slideinfromleft">1000 Decimals of Pi !<br /> How many can you crank <br /> before time's up?<br /> <br />
-                </spansmall>
+                <h1>The Pi Math Game 🏹</h1>
+                <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
+                    <br /> before time's up?<br /> <br />
+                </span>
             </div>
             <div id="scoring"> SCORE <b id="score3"></b>
                 <div id='score3x'></div>
             </div>
             <div id="leveling"> LVL <b id="level3"></b> </div>
             <div id="hiscoring"> HISCORE <b id="hiscore3"></b> </div>
-            <br /> <button onclick="newround()">GO⚡️</button>
-            <spansmall class="slideinfrom"><br /> Coded to an estimated ~89% on a mobile phone, as a mobile-XP first and updated with the Amazing AI CoPilot from GitHub<br />
+            <br /> <button class="superbounce" onclick="newround()">GO Train ⚡️</button>
+            <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
+                the Amazing AI CoPilot from GitHub<br />
                 <br /> <br />
 
-            </spansmall>
+            </span>
         </div>
         <topgradient>
             <!-- ⚠️--->
@@ -841,7 +900,7 @@
     </div>
     <div id='timer'></div><br />
 
-    <div id="i3" class="i3"></div><br />
+    <div id="moutput" class="moutput"></div><br />
 
     <div id="score2"></div>
     <div class="buttonswrapper">
@@ -1357,7 +1416,7 @@
             let a2 = a.replace('*', '•');
             d.innerHTML = (a2);
 
-            document.getElementById('i3').append(d);
+            document.getElementById('moutput').append(d);
             //   document.body.append(d);
             //document.body.append(d);
             d.classList.add("fi");
@@ -1423,12 +1482,45 @@
 
             // c('c=2;c*2;c**=3;');
             // c('c=2;c*2;c**=3;');
+            c(`/* Warm Warp up! Press 0+1? <br />*/
+             1`);
+            c(`2`);
+            c(`3`);
+            c(`4`);
+            c(`5`);
+            c(`1+1`);
+            c(`10+3`);
+            c(`10+2`);
+            c(`10+1`);
+            c(`10+2`);
+            c(`10+1`);
+            c(`1+1`);
+            c(`2+1`);
+            c(`3+1`);
+            c(`3+2`);
+            c(`1+0`);
+            c(`2+1`);
+            c(`2+2`);
+            c(`2+3`);
+            c(`2+4`);
+            c(`2+5`);
+            c(`2+6`);
+            c(`2+7`);
+            c(`3+1`);
+            c(`3+2`);
+            c(`3+3`);
+            c(`3+4`);
+            c(`3+5`);
+            c(`3+6`);
+            // c('c=2;cc(`1+1`);*2;c**=3;');
+            // c('c=2;c*2;c**=3;');
+            // c('c=2;c*2;c**=3;');
             string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
             string = string.replace(/\D/g, ''); // strip whitespaces, should've been done in string indata instead .. just lazy
             op = 0;
 
             // addition below
-            while (op < 30) {
+            while (op < 10) {
                 mathie = string[op++] + "+" + string[op];
                 // if (eval(mathie) > 9) {
                 if (eval(mathie) > 14) {
@@ -1441,7 +1533,7 @@
             }
 
             // addition + subtraction below
-            while (op >= 30 && op < 50) {
+            while (op >= 10 && op < 20) {
                 mathie = string[op++] + "+" + string[op];
                 if (eval(mathie) > 9) {
                     mathie = string[--op] + '-' + string[++op];
