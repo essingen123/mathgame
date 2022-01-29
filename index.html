@@ -245,11 +245,11 @@
             width: 100%;
             height: 100%;
             background-repeat: repeat;
-            background-size: 100% 100%;
+            background-size: 125% 150%;
             background-position: center;
             /* todo: bg gif should be slower though */
             background-image: url('vortex3.gif');
-            opacity: 0.025;
+            opacity: 0.04;
             /* z-index: 400; */
         }
         
@@ -264,11 +264,11 @@
             width: 100%;
             height: 100%;
             background-repeat: repeat;
-            background-size: 100% 100%;
+            /* background-size: 100% 100%; */
             background-position: center;
             /* todo: gif should be very much slower different? */
-            background-image: url('vortex2.gif');
-            opacity: 0.001;
+            background-image: url('introtest1.png');
+            opacity: 0.05;
             /* z-index: 400; */
         }
         
@@ -1116,12 +1116,12 @@
                 switch (score % 2) {
                     case 0:
                         try {
-                            soundx.addEffect(stereoPanner2);
+                            soundx.removeEffect(stereoPanner2);
                         } catch (error) {}
                         break;
                     case 1:
                         try {
-                            soundx.addEffect(stereoPanner);
+                            soundx.removeEffect(stereoPanner);
                         } catch (error) {}
                         break;
                 }
