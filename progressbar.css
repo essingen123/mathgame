@@ -52,14 +52,15 @@
 }
 
 .cssProgress .cssProgress-active-right {
-    -webkit-animation: cssProgressActiveRight 12s linear infinite;
-    animation: cssProgressActiveRight 12s linear infinite;
+    -webkit-animation: cssProgressActiveRight 2s linear infinite;
+    animation: cssProgressActiveRight 3s linear infinite;
 }
 
 .progress2 {
-    background-color: #EEE;
+    background-color: #eee;
     border-radius: 9px;
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0 14px #eeccaa88;
 }
 
 .progress2 .cssProgress-bar {
@@ -76,19 +77,19 @@
 
 @-webkit-keyframes cssProgressActiveRight {
     0% {
-        background-position: -35px -35px;
+        background-position: 0 0;
     }
     100% {
-        background-position: 0 0;
+        background-position: -35px -35px;
     }
 }
 
 @keyframes cssProgressActiveRight {
     0% {
-        background-position: -35px -35px;
+        background-position: 0 0;
     }
     100% {
-        background-position: 0 0;
+        background-position: -35px -35px;
     }
 }
 

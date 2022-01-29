@@ -108,7 +108,7 @@
       letter-spacing: -4px;
       line-height: 2rem;
       padding-top: 1px;
-      margin-top: -24px;
+      margin-top: -20px;
       position: absolute;
       width: 100%;
   }
@@ -798,9 +798,9 @@
       /* margin-right:12px; */
   }
   
-  b {
+  .b {
       letter-spacing: 0;
-      padding: 12px;
+      padding: 4px;
       /* margin-left: 12px; */
   }
   
@@ -917,3 +917,103 @@
       }
   }
   /* </style> */
+  
+  .superbounce {
+      position: relative;
+      overflow: hidden;
+      /* width: 50px;
+      height: 50px; */
+      display: inline-block;
+      margin: 25px 0 25px 25px;
+      /* border-radius: 5px; */
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      /* line-height: 50px; */
+      /* font-size: 12px; */
+      /* font-family: sans-serif; */
+      /* border: 2px solid #ffffff33; */
+  }
+  
+  .superbounce:nth-child(1) {
+      background: cornflowerblue;
+  }
+  
+  .superbounce:nth-child(2) {
+      background: salmon;
+  }
+  
+  .superbounce:nth-child(3) {
+      background: gray;
+  }
+  /**
+ * The "shine" element
+ */
+  
+  .superbounce:after {
+      content: "";
+      position: absolute;
+      top: -110%;
+      left: -210%;
+      width: 200%;
+      height: 200%;
+      opacity: 0;
+      transform: rotate(30deg);
+      background: rgba(255, 255, 255, 0.13);
+      background: linear-gradient( to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0.0) 100%);
+      transition-property: left, top, opacity;
+      transition-duration: 0.7s, 0.7s, 0.15s;
+      transition-timing-function: ease-in-out;
+  }
+  /* Hover state - trigger effect */
+  
+  .superbounce:hover:after {
+      opacity: 1;
+      top: -300%;
+      left: -30%;
+      /* transition-property: left, top, opacity;
+      transition-duration: 0.7s, 0.7s, 0.15s;
+      transition-timing-function: ease-in-out; */
+  }
+  /* Active state */
+  
+  .superbounce:active:after {
+      opacity: 0;
+  }
+  
+  .gradient-border {
+      --border-width: 3px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 200px;
+      font-family: Lato, sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: white;
+      background: #222;
+      border-radius: var(--border-width);
+  }
+  
+  .gradient-border::after {
+      position: absolute;
+      content: "";
+      top: calc(-1 * var(--border-width));
+      left: calc(-1 * var(--border-width));
+      z-index: -1;
+      width: calc(100% + var(--border-width) * 2);
+      height: calc(100% + var(--border-width) * 2);
+      background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+      background-size: 300% 300%;
+      background-position: 0 50%;
+      border-radius: calc(2 * var(--border-width));
+      animation: moveGradient 4s alternate infinite;
+  }
+  
+  @keyframes moveGradient {
+      50% {
+          background-position: 100% 50%;
+      }
+  }
