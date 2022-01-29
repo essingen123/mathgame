@@ -249,7 +249,7 @@
             background-position: center;
             /* todo: bg gif should be slower though */
             background-image: url('vortex3.gif');
-            opacity: 0.01;
+            opacity: 0.025;
             /* z-index: 400; */
         }
         
@@ -268,7 +268,7 @@
             background-position: center;
             /* todo: gif should be very much slower different? */
             background-image: url('vortex2.gif');
-            opacity: 0.01;
+            opacity: 0.001;
             /* z-index: 400; */
         }
         
@@ -625,8 +625,8 @@
             /* border-radius: 4%; */
             border-radius: 100%;
             opacity: 0.9;
-            height: 9px;
-            border: 4px dotted rgba(255, 231, 209, 0.5);
+            height: 5px;
+            border: 2px dotted rgba(255, 231, 209, 0.5);
         }
         
         .ang {
@@ -1099,7 +1099,8 @@
                     let elementx = document.createElement('span');
                     elementx.classList.add('bounceleft');
                     elementx.innerHTML = "<span class='sidebouncer'>⭐️</span>";
-                    setTimeout(() => document.getElementById('score2').append(elementx), 50);
+                    // delau for the star to show up.. 
+                    setTimeout(() => document.getElementById('score2').append(elementx), 980);
 
                 }
 
@@ -1217,8 +1218,8 @@
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
                 // delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
-
-                setTimeout(() => delement3[arrayblaha].innerHTML = "⭐️", 700);
+                // Maybe shoulndt be a delay
+                setTimeout(() => delement3[arrayblaha].innerHTML = "⭐️", 100);
 
 
 
