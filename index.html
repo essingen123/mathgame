@@ -41,7 +41,7 @@
             <!-- start the boot camp, let's  warm warp up ;-) -->
             <br />
 
-            <button class="superbounce" onclick="newround()"><i>Go train!</i> ⚡️</button>
+            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
             <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
                 the Amazing AI CoPilot from GitHub<br />
                 <br /> <br />
@@ -59,7 +59,7 @@
     </div>
     <!-- <div id='timer'></div><br /> -->
 
-    <div class="cssProgress" style="width:300px; height:24px; left:0; right:0; margin:-2px auto 8px !important; text-align: center;">
+    <div class="cssProgress" style="width:390px; height:24px; left:0; right:0; margin:-2px auto 8px !important; text-align: center;">
         <div class="progress2" style="left:0; right:0; height: 24px; margin:0 auto !important; text-align: center;">
             <div style='height:24px;' class=" cssProgress-active-right timer" id='timerstripe'>
                 <!-- <!-- data-percent="65" ,,.. <span class="cssProgress-label">65%</span>-->
@@ -86,7 +86,7 @@
         var diff = 0;
         var arrayblaha = 1;
         var delement3 = [];
-        var start, previousTimeStamp, timestamp, counttime;
+        var start, previousTimeStamp, timestamp, bigtimeclock;
 
         // solve the bug, todo: fix the bug
         //var startscore = score = 49; //0; // starting score
@@ -100,18 +100,20 @@
             hiscore = 5;
         }
 
+        // var lifetimeleft = 20; // life in start
+        var bigtimeclockstart = 820; // ... ehh life? time in start (??)
+        var lifetimeleftstart = 50; // time in start (??)
 
-
-        var maxcountime = 310; // max time left in..  pixels ;-D
-        // var pluscount = 203; //how much extra time per right answer 
+        var maxlifetime = 400; // max time left in..  pixels ;-D
+        // var extralifetime = 203; //how much extra time per right answer 
         // var speedish = 0.089; // starting speed
-        var pluscount = 300; //how much extra time per right answer 
+        var extralifetime = 230; //how much extra time per right answer 
 
         var speedish = 0.09; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
 
-        var startlevelspeed = 0.033; // became starting speed
+        var startlevelspeed = 0.029; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
@@ -138,21 +140,21 @@
 
 
                 // console.log(score);
-                var minusploppitcher = score * 0.01 + parseFloat(1.6 + 0.3 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
+                var minusploppitcher = score * 0.011 + parseFloat(1.6 + 0.3 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
                 // console.log(minusploppitcher);
                 let ploppitcher = parseFloat(minusploppitcher);
                 // console.log(ploppitcher);
 
                 soundx2 = sound2.clone();
                 // soundx3 = sound2.clone();
-                soundx2.volume = 0.17;
+                soundx2.volume = 0.41;
                 soundx2.play(0.16, 0.01);
                 soundx2.sourceNode.playbackRate.value = ploppitcher;
 
 
                 soundx2b = sound2b.clone();
                 // soundx3 = sound2.clone();
-                soundx2b.volume = 0.0015 + 0.01 * (score % 4);
+                soundx2b.volume = 0.006 + 0.0015 * (score % 4);
                 soundx2b.play();
                 //  soundx2b.sourceNode.playbackRate.value = ploppitcher;
 
@@ -350,13 +352,13 @@
                     }, false);
                 });
 
-                counttime = counttime + pluscount;
+                bigtimeclock = bigtimeclock + extralifetime;
 
 
 
                 speedish = startlevelspeed + level * speedincrease;
                 // speedish += speedincrease;
-
+                console.log(speedish);
 
 
                 //let transitionspeed = 1 - Math.round(5 * speedish, 4);
@@ -510,7 +512,7 @@
 
         function next() {
             // meassure time for question
-            console.log(counttime);
+            console.log(bigtimeclock);
 
             Array.from(document.getElementsByClassName("fox")).map(el => {
                 // el.addEventListener("animationend", function () {
@@ -552,8 +554,8 @@
             start = undefined;
             ar = [];
             document.getElementById('score').innerHTML = score;
-            counttime = 300;
-            counttime2 = 100;
+            bigtimeclock = bigtimeclockstart;
+            lifetimeleft = lifetimeleftstart;
             w = 0;
 
 
@@ -775,25 +777,25 @@
 
 
 
-                    counttime2b = counttime2;
+                    lifetimeleftstore = lifetimeleft;
 
 
                     // this probably in current version becomes sort of a bug when increasing and should be more optimized ... floor is better than round + ceil anywhow.. s
-                    counttime2 = 325 + counttime - Math.floor(speedish * elapsed);
+                    lifetimeleft = 2 + bigtimeclock - Math.floor(speedish * elapsed);
                     //325 ??? some kind of hack .. s
 
 
                     // just to ease the bug i can fix.. but are too lazy too.. :-S .. that hopefully leads to genius things, as usual ;-) .. seriously - it actually does
-                    counttime2 = ((counttime2b + counttime2) / 2);
+                    lifetimeleft = ((lifetimeleftstore + lifetimeleft) / 2);
 
 
                     // HERE FIX! 
-                    if (counttime2 > maxcountime) {
+                    if (lifetimeleft > maxlifetime) {
 
                         // improve below? 
-                        counttime = counttime - 10;
-                        counttime = counttime - (counttime2 - (maxcountime + counttime2) / 2);
-                        counttime2 = maxcountime;
+                        bigtimeclock = bigtimeclock - 10;
+                        bigtimeclock = bigtimeclock - (lifetimeleft - (maxlifetime + lifetimeleft) / 2);
+                        lifetimeleft = maxlifetime;
                     }
 
 
@@ -804,22 +806,22 @@
 
 
                     // element = document.getElementById('timer');
-                    // element.style.width = counttime2 + 'px';
+                    // element.style.width = lifetimeleft + 'px';
                     // //  element.style.opacity = .004 * (elapsed % 1000);
 
                     element = document.getElementById('timerstripe');
-                    element.style.width = counttime2 + 'px';
+                    element.style.width = lifetimeleft + 'px';
 
                     if (score % 12 == 0)
-                        element.style.backgroundColor = colortohex(100 + Math.ceil(counttime2 / 2.5) % 150, 155 + Math.ceil(counttime2 / 2) % 85, 130 + Math.ceil(counttime2 / 3) % 70);
+                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 155 + Math.ceil(lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
 
                     // element.style.backgroundColor = '#000000';
 
-                    // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(counttime2 / 3) % 65, 123);
+                    // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(lifetimeleft / 3) % 65, 123);
                     // element.style.opacity = .004 * (elapsed % 1000);
 
                 }
-                if (counttime2 > 1) {
+                if (lifetimeleft > 1) {
                     previousTimeStamp = timestamp
                     window.requestAnimationFrame(step);
                 } else {
@@ -912,7 +914,7 @@
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.1;
+            sound.volume = 0.19;
             // sound.release = 0.4;
         });
 
@@ -990,6 +992,8 @@
 
             }
         }
+
+        const clg = console.log; // Yay for closures!
     </script>
 </body>
 

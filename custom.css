@@ -205,7 +205,7 @@
       padding: 1px;
       color: #fff;
       /* font-size: 330%; */
-      font-size: 130%;
+      font-size: 150%;
       height: 86px;
       display: block;
       margin: 2px auto 3px auto;
@@ -273,7 +273,7 @@
       background: radial-gradient(circle at 50% 30%, #f22f22bb, #f29 40%, rgb(53, 10, 109) 95%);
       font-size: 120%;
       color: #fff;
-      font-weight: 700er;
+      font-weight: 700;
       font-style: italic;
       padding-top: 20px;
       border-radius: 30px;
@@ -360,9 +360,8 @@
   
   .scorebar {
       display: block;
-      margin: 0;
-      padding: 0;
-      width: 100%;
+      padding: 0 8px 0 8px;
+      width: 96%;
       height: 30px;
       position: absolute;
       top: 0;
@@ -599,14 +598,14 @@
   }
   
   h1 {
-      font-size: 1.8rem;
+      font-size: 1.35rem;
       color: #fefafa;
       font-family: 'Games', sans-serif, arial;
       white-space: pre;
-      font-weight: 700er;
+      font-weight: 700;
       display: block;
       width: 100%;
-      padding: -12px auto 3px auto;
+      padding: -2px auto 3px auto;
       text-align: center;
       color: #ffd8be;
       font-variant: small-caps;
@@ -618,7 +617,7 @@
       color: #fefafa;
       font-family: 'Games', sans-serif, arial;
       white-space: pre;
-      font-weight: 700er;
+      font-weight: 700;
       display: block;
       width: 240px;
       position: absolute;
@@ -688,7 +687,8 @@
       margin: 2px auto;
       left: 0;
       right: 0;
-      font-weight: 700er;
+      font-weight: 800;
+      letter-spacing: 2px;
       text-shadow: 0 0 10px #decc10, 0 0 20px #ffffff, 0 0 30px #ffd2a2, 0 0 40px #ff9900, 0 0 50px #e66b00, 0 0 60px #f4a600, 0 0 70px #ffeec8;
   }
   
@@ -800,7 +800,7 @@
   
   .b {
       letter-spacing: 0;
-      padding: 4px;
+      padding: 2px;
       /* margin-left: 12px; */
   }
   
@@ -983,7 +983,7 @@
   
   .gradient-border {
       --border-width: 3px;
-      position: relative;
+      position: fixed;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -994,17 +994,23 @@
       text-transform: uppercase;
       color: white;
       background: #222;
-      border-radius: var(--border-width);
+      border-radius: 32px;
+      z-index: -4;
+      margin: -1px;
   }
   
-  .gradient-border::after {
+  .superbounce::before {
       position: absolute;
       content: "";
-      top: calc(-1 * var(--border-width));
-      left: calc(-1 * var(--border-width));
-      z-index: -1;
-      width: calc(100% + var(--border-width) * 2);
-      height: calc(100% + var(--border-width) * 2);
+      margin: 1px auto;
+      top: 1px;
+      left: 0px;
+      right: 0px;
+      z-index: -3;
+      width: 100%;
+      height: 1px;
+      margin: 0;
+      opacity: 0.5;
       background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
       background-size: 300% 300%;
       background-position: 0 50%;
