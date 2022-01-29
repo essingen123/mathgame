@@ -234,6 +234,42 @@
             justify-content: center;
         }
         
+        .scoreoverlay::before {
+            display: block;
+            content: '';
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            background-size: 100% 100%;
+            background-position: center;
+            background-image: url('vortex3.gif');
+            opacity: 0.03;
+            /* z-index: 400; */
+        }
+        
+        .gamediv::before {
+            display: block;
+            content: '';
+            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            background-size: 100% 100%;
+            background-position: center;
+            background-image: url('vortex.gif');
+            opacity: 0.01;
+            /* z-index: 400; */
+        }
+        
         .scoreoverlay {
             margin-top: 1100px;
             /* display: none; */
@@ -244,7 +280,7 @@
             z-index: 100;
             left: 0;
             top: 0;
-            background: radial-gradient(circle at 50% 30%, #f22f2299, #f29 40%);
+            background: radial-gradient(circle at 50% 30%, #f22f22bb, #f29 40%, rgb(53, 10, 109) 95%);
             font-size: 120%;
             color: #fff;
             font-weight: 700er;
@@ -287,15 +323,14 @@
             right: 0;
             margin: 2px auto;
             opacity: 0;
-            width: 150px;
-            height: 112px;
+            width: 100px;
+            height: 50px;
             background-color: rgba(163, 220, 71, .3);
             border-radius: 50%;
             text-align: center;
             border: solid 120px #99e49911;
-            font-size: 170%;
-            z-index: 200;
-            padding-top: 30px;
+            font-size: 160%;
+            padding-top: 10px;
             filter: drop-shadow(2px 2px 13px #ffeefa);
             color: #fff;
             animation-duration: 1.5s;
@@ -310,9 +345,12 @@
                 transform: rotateZ(var(--fbpowro));
                 left: var(--fbpowstartpos);
             }
+            50% {
+                opacity: 0.5;
+            }
             60% {
                 opacity: 1;
-                bottom: 78%;
+                bottom: 62%;
                 border: solid 1px #ffffff33;
                 transform: rotateZ(0deg);
             }
@@ -427,6 +465,8 @@
             animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
             max-width: 430px;
             margin: 2px auto;
+            color: #fff1ff;
+            letter-spacing: 3px;
         }
         
         .spansmall: nth-child(1) {
@@ -434,10 +474,6 @@
         }
         
         #timer {
-            /* background-image: url('./stripes.gif');
-            background-repeat: repeat;
-            background-size: 12px 10px;
-            background-position: center; */
             width: 1px;
             /* line-height: 0; */
             border: solid 2px #dddddd99;
@@ -451,6 +487,11 @@
             transition-timing-function: cubic-bezier(.2, .9, .3, 1.3);
             margin-bottom: -12px;
             margin-top: -14px;
+            /* background-image: url('./stripes.gif'); */
+            background-repeat: repeat;
+            background-size: 12px 10px;
+            background-position: center;
+            /* z-index: 400; */
         }
         
         .buttonswrapper {
@@ -572,18 +613,18 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: 19px;
+            top: 22px;
             margin: 25px auto 2px auto;
             text-align: center;
             background: rgb(131, 58, 180);
             /* background: linear-gradient(90deg, rgba(131, 58, 180, 1) 1%, rgba(139, 192, 117, 1) 20%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(150, 187, 107, 1) 80%, rgba(121, 29, 253, 1) 99%); */
             /* background: linear-gradient(90deg, rgba(58, 180, 66, 0.5) 1%, rgba(252, 176, 69, 1) 35%, rgba(253, 29, 29, 1) 50%, rgba(253, 185, 29, 1) 65%, rgba(58, 180, 66, 0.5) 99%); */
-            background: linear-gradient(90deg, rgba(222, 75, 200, 0.742) 1%, rgb(167, 69, 252) 35%, rgb(0, 0, 0) 50%, rgba(167, 69, 252) 65%, rgba(222, 75, 200, 0.742) 99%);
+            background: linear-gradient(90deg, rgba(255, 0, 162, 0.9) 1%, rgb(112, 47, 133) 55%, rgb(18, 13, 45) 50%, rgb(112, 47, 133) 55%, rgba(255, 0, 162, 0.9) 99%);
             /* border-radius: 4%; */
             border-radius: 100%;
-            opacity: 0.5;
-            height: 8px;
-            border: 1px solid #fff;
+            opacity: 0.9;
+            height: 5px;
+            border: 2px dotted rgb(255, 231, 209);
         }
         
         .ang {
@@ -869,7 +910,7 @@
 
 <body>
     <!-- <div class="hint"></div> -->
-    <div id="gamediv">
+    <div id="gamediv" class="gamediv">
         <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
 
         <input type="hidden" value="" id="eval" />
@@ -926,8 +967,11 @@
         var arrayblaha = 1;
         var delement3 = [];
         var start, previousTimeStamp, timestamp, counttime;
-        var score = 0; // starting score
-        var level = 1; // starting 
+
+        // solve the bug, todo: fix the bug
+        //var startscore = score = 49; //0; // starting score
+        var startscore = score = 0; //0; // starting score
+        var startlevel = level = 1; // starting 
 
         /* get hiscore from local storage */
         var hiscore = localStorage.getItem("hiscore");
@@ -1005,6 +1049,8 @@
 
 
                 next();
+
+
                 score++;
 
                 if (score % 5 === 0) {
@@ -1048,76 +1094,38 @@
 
 
 
-
-                    // delement4 = document.getElementById('buttons');
-                    // delement4.classList.add("greenpow");
-                    // setTimeout(() => document.getElementById('score2').innerHTML += "<span class='sidebouncer'>⭐️<span>", 50);
                     let elementx = document.createElement('span');
                     elementx.classList.add('bounceleft');
                     elementx.innerHTML = "<span class='sidebouncer'>⭐️</span>";
                     setTimeout(() => document.getElementById('score2').append(elementx), 50);
 
-
                 }
 
                 try {
                     soundx.removeEffect(flanger);
-                } catch (error) {
-
-                }
-
-                try {
                     soundx.removeEffect(dubDelay);
-
-
-                    // soundx.removeEffect(stereoDelay);
                 } catch (error) {
-                    //     console.log(error);
+
                 }
 
 
-                try {
-                    soundx.removeEffect(stereoPanner);
-                } catch (error) {
-                    //     console.log(error);
-                }
 
-                try {
-                    soundx.removeEffect(stereoPanner2);
-                } catch (error) {
-                    //     console.log(error);
+                switch (score % 2) {
+                    case 0:
+                        try {
+                            soundx.addEffect(stereoPanner2);
+                        } catch (error) {}
+                        break;
+                    case 1:
+                        try {
+                            soundx.addEffect(stereoPanner);
+                        } catch (error) {}
+                        break;
                 }
-
 
                 soundx = sound.clone();
-
                 soundx.addEffect(dubDelay);
-
-
-                // soundx2.removeEffect(dubDelay);
-
-                // soundx3.removeEffect(dubDelay);
-                // soundx4 = sound2.clone();
-                // soundx.attack = 0.6;
-                // soundx.volume = 0.9;
-
                 soundx.addEffect(flanger);
-
-
-
-
-
-                //    soundx.addEffect(stereoDelay);
-                //   soundx.removeEffect(dubDelay);
-
-                //                soundx.sourceNode.playbackRate.value = 2;
-                //  soundx.playbackRate.value = 2;
-                //
-                //soundx.playbackRate = 0.9; // try something between 0.25 and 3
-                // soundx.rate = 2;
-                // soundx.pitch = 2;
-                //soundx.playbackRate.value = 2;
-                // soundx.playbackRate = 2;
 
                 switch (score % 2) {
                     case 0:
@@ -1132,81 +1140,15 @@
                         break;
                 }
 
-
-
-                // soundx3.volume = 0.05;
-                // soundx3.play(.01, 0);
-                // soundx3.play(.06, 0);
-                // soundx4.play(.09, 0);
-
-
                 soundx.play();
                 let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
                 let pitchtonevol = pitcharray[score % pitcharray.length];
                 // soundx.volume = pitchtonevol;
                 soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
 
-                // let pitcharray = [1.25, 1.125, 0.875, 1, 1.505];
-
-                //todo? sheppards tone out of this :D .. meh too much of a hassle this time
-
-                //soundx2.sourceNode.playbackRate.value = 1.00 + 0.04 * ((0 + score) % 100)
-                // soundx3.sourceNode.playbackRate.value = 1 - 0.001 * ((5 + score) % 3)
-                // soundx3.sourceNode.playbackRate.value = 1 + 0.02 * ((5 + score) % 10)
-                // soundx4.sourceNode.playbackRate.value = 1 + 0.02 * ((7.5 + score) % 10)
-
-                // switch (score % 10) {
-                //     case 0:
-                //         soundx.sourceNode.playbackRate.value = 1 * pitch;
-                //         // soundx.sourceNode.playbackRate.value = 0.5;
-
-                //         break;
-                //     case 1:
-                //         soundx.sourceNode.playbackRate.value = 0.75 * pitch;
-                //         break;
-                //     case 2:
-                //         soundx.sourceNode.playbackRate.value = 1.25 * pitch;
-                //         break;
-
-                //     case 3: 1.25, 1.125, 0.875
-                //         soundx.sourceNode.playbackRate.value = 1.125 * pitch;
-
-                //         //soundx.sourceNode.playbackRate.value = 1.125;
-                //         break;
-                //     case 4:
-                //         soundx.sourceNode.playbackRate.value = 1.5 * pitch;
-                //         break;
-
-                //     case 5:
-                //         // soundx.sourceNode.playbackRate.value = 1.25;
-                //         soundx.sourceNode.playbackRate.value = 0.875 * pitch;
-                //         break;
-                //     case 6:
-                //         soundx.sourceNode.playbackRate.value = 1.005 * pitch;
-                //         break;
-                //     case 7:
-                //         soundx.sourceNode.playbackRate.value = 1.253 * pitch;
-                //         break;
-                //     case 8:
-                //         soundx.sourceNode.playbackRate.value = 1.505 * pitch;
-                //         break;
-                //         // case 9:
-                //         //     soundx.sourceNode.playbackRate.value = 2.75;
-                //         //     break;
-                //     case 9:
-                //         soundx.sourceNode.playbackRate.value = 0.997 * pitch;
-                //         break;
-
-                // }
-
-
-
-
                 if (hiscore < score) {
                     hiscore++;
                 }
-
-
 
                 document.getElementById('score').innerHTML = score;
                 document.getElementById('hiscore').innerHTML = hiscore;
@@ -1272,7 +1214,8 @@
                 arrayblaha = arrayblaha % 3;
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
-                delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
+                // delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
+                delement3[arrayblaha].innerHTML = "⭐️";
                 delement3[arrayblaha].classList.add("fbpow");
                 delement3.forEach(function(el) {
                     el.addEventListener("animationend", function() {
@@ -1440,6 +1383,8 @@
         }
 
         function next() {
+            // meassure time for question
+            console.log(counttime);
 
             Array.from(document.getElementsByClassName("fox")).map(el => {
                 // el.addEventListener("animationend", function () {
@@ -1649,6 +1594,8 @@
 
         function newround() {
 
+
+
             soundx3 = sound3.clone();
             soundx3.play();
             // soundx8 = sound8.clone();
@@ -1659,8 +1606,8 @@
             document.getElementById('answer').value = '';
             document.getElementById('answer2').innerHTML = '_';
 
-            score = 0;
-            level = 1;
+            score = startscore; // score
+            level = startlevel; //llevel
             document.getElementById('level').innerHTML = level;
             document.getElementById('score2').innerHTML = "😀<br />";
 
@@ -1703,11 +1650,13 @@
 
 
                     counttime2b = counttime2;
-                  
-                  
+
+
                     // this probably in current version becomes sort of a bug when increasing and should be more optimized ... floor is better than round + ceil anywhow.. s
                     counttime2 = 325 + counttime - Math.floor(speedish * elapsed);
-//325 ??? some kind of hack .. s
+                    //325 ??? some kind of hack .. s
+
+
                     // just to ease the bug i can fix.. but are too lazy too.. :-S .. that hopefully leads to genius things, as usual ;-) .. seriously - it actually does
                     counttime2 = ((counttime2b + counttime2) / 2);
 
