@@ -1217,7 +1217,12 @@
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
                 delement3[arrayblaha] = document.body.appendChild(delement3[arrayblaha]);
                 // delement3[arrayblaha].innerHTML = "⭐️" + answered + "😀";
-                delement3[arrayblaha].innerHTML = "⭐️";
+
+                setTimeout(() => delement3[arrayblaha].innerHTML = "⭐️";, 700);
+
+
+
+
                 delement3[arrayblaha].classList.add("fbpow");
                 delement3.forEach(function(el) {
                     el.addEventListener("animationend", function() {
