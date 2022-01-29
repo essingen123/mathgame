@@ -1,5 +1,4 @@
-# readme
-Simple math game.
+# Math Game Pi
 Coded mostly on a mobile. Which here for example means that the code is mostly put into one file and it's quality with tabbing and consistency were of second priority. 
  Focus was just that it runned to clean up later, if useful / gameplay fun enough. 
  
