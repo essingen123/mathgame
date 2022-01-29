@@ -245,11 +245,13 @@
             width: 100%;
             height: 100%;
             background-repeat: repeat;
-            background-size: 125% 150%;
+            /* background-size: 125% 150%; */
+            background-size: 170% 100%;
             background-position: center;
             /* todo: bg gif should be slower though */
-            background-image: url('vortex3.gif');
-            opacity: 0.04;
+            /* background-image: url('vortex3.gif'); */
+            background-image: url('.gfx/intro0.gif');
+            opacity: 0.05;
             /* z-index: 400; */
         }
         
@@ -267,8 +269,8 @@
             /* background-size: 100% 100%; */
             background-position: center;
             /* todo: gif should be very much slower different? */
-            background-image: url('introtest1.png');
-            opacity: 0.05;
+            background-image: url('./gfx/intro1.gif');
+            opacity: 0.02;
             /* z-index: 400; */
         }
         
@@ -1739,7 +1741,7 @@
         //
 
 
-        var sound2b = new Pizzicato.Sound('./snd/coin.mp3', function() {
+        var sound2b = new Pizzicato.Sound('./snd/coinx.mp3', function() {
             sound.attack = 0.5;
             sound.volume = 0.04;
         });
