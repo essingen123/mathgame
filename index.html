@@ -149,7 +149,7 @@
                 soundx2.play(0.16, 0.01);
                 let ploppitcher = score % 30 * 0.01 + parseFloat(1.6 + 10 * (0.6 * parseFloat(1 / (-score % 50 - 8))));
                 soundx2.sourceNode.playbackRate.value = ploppitcher;
-                soundx2.volume = 0.5 + 0.04 * (2 + score % 4);
+                soundx2.volume = 0.36 + 0.02 * (2 + score % 4);
 
                 //  soundx2z = sound2.clone();
                 // soundx2z.play(0.16, 0.01);
@@ -313,7 +313,7 @@
                     // levlup levelup level up :D
 
                     // sound7 = sound7.clone();
-                    sound7.volume = 0.6;
+                    sound7.volume = 0.7;
                     sound7.play();
                     document.getElementById('level').innerHTML = level;
 
@@ -950,8 +950,7 @@
         });
 
         var sound8 = new Pizzicato.Sound('./snd/newgame.mp3', function() {
-            sound8.volume = 0.4;
-            sound8.volume = 0.8;
+            sound8.volume = 0.35;
             // sound.release = 0.4;
             sound8.loop = true;
 

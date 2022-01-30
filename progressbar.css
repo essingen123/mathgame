@@ -37,18 +37,18 @@
 .cssProgress .cssProgress-label {
     /* position: absolute; */
     position: fixed;
-    opacity: 1;
     /* z-index: 1; */
     /* overflow: hidden; */
-    margin-top: 3px;
-    margin-left: 7px;
+    margin-top: 1px;
+    margin-left: 8px;
     /* hmm margin-left 7? isn't it centered.. */
     left: 0px;
     right: 0px;
     /* color: rgba(0, 0, 0, 0.6); */
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
-    text-shadow: 0px 1px 4px rgb(42, 0, 24), 0px 2px 14px rgb(220, 30, 240);
+    opacity: 0.95;
+    text-shadow: 0px -2px 4px rgba(99, 75, 96, 0.582), 0px 2px 14px rgb(167, 39, 181);
 }
 
 .cssProgress .cssProgress-active-right {
