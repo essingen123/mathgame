@@ -360,8 +360,8 @@
   
   .scorebar {
       display: block;
-      padding: 0 8px 0 8px;
-      width: 96%;
+      padding: 0 10px 0 10px;
+      width: 92%;
       height: 30px;
       position: absolute;
       top: 0;
