@@ -1,5 +1,7 @@
 # Math Game Pi
-Coded mostly on a mobile, so code is mostly put into one file and it's quality with tabbing and consistency were of second priority. Focus was just that it runned to clean up later, if useful / gameplay fun enough. 
+Coded mostly on a mobile, so the code is mostly put into one file.
+
+It's quality with tabbing and consistency were of second priority. Focus was just that it runned to clean up later, if useful / gameplay fun enough. 
  During desktop coding improvements using the a companion; the coding AI-assistant from Github. Quite amazing thingy this CoPilot. 
 
 Game ready to try here
