@@ -1,5 +1,5 @@
 # Math Game Pi
-First MVP prototype coded on a mobile; which mean I only used one code-file, skipped quality to clean up later.  
+First MVP prototype coded on a mobile; which here means I only used one code-file and skipped quality to clean up later.  
 
 During desktop clean up - improvements where done using the quite amazing CoPilot AI-assistant from Github. 
 
