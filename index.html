@@ -62,6 +62,7 @@
     <div class="cssProgress" style="width:356px; height:24px; left:0; right:0; margin:-2px auto 8px !important; text-align: center;">
         <div class="progress2" style="left:0; right:0; height: 24px; margin:0 auto !important; text-align: center;">
             <div style='height:24px;' class=" cssProgress-active-right timer" id='timerstripe'>
+                <span class="cssProgress-label">💜</span>
                 <!-- <!-- data-percent="65" ,,.. <span class="cssProgress-label">65%</span>-->
             </div>
         </div>
@@ -139,22 +140,50 @@
                 //CORRECT! 
 
 
-                // console.log(score);
-                var minusploppitcher = score * 0.011 + parseFloat(1.6 + 0.3 + 10 * (0.8 * parseFloat(1 / (-score - 8))));
-                // console.log(minusploppitcher);
-                let ploppitcher = parseFloat(minusploppitcher);
-                // console.log(ploppitcher);
 
+                //plop 
                 soundx2 = sound2.clone();
-                // soundx3 = sound2.clone();
-                soundx2.volume = 0.41;
+
+                // PLOP! plop after coin
+                // PLOP! plop after coin
                 soundx2.play(0.16, 0.01);
+                let ploppitcher = score % 30 * 0.01 + parseFloat(1.6 + 10 * (0.6 * parseFloat(1 / (-score % 50 - 8))));
                 soundx2.sourceNode.playbackRate.value = ploppitcher;
+                soundx2.volume = 0.5 + 0.04 * (2 + score % 4);
+
+                //  soundx2z = sound2.clone();
+                // soundx2z.play(0.16, 0.01);
+
+                // let ploppitcherz = (15 + score) % 30 * 0.01 + parseFloat(1.6 + 10 * (0.6 * parseFloat(1 / (-(15 + score) % 50 - 8))));
+                // soundx2z.sourceNode.playbackRate.value = ploppitcherz;
+                // soundx2z.volume = 0 + 0.04 * (2 + (15 + score) % 4);
+
+                // let x = (score % 20);
+                // // let vol1 = parseFloat((x ^ 2) * (-1 / 24) + (12 * x ^ .3) - (12));
+                // let vol1 = 0.15 * parseFloat((x * x) * (-1 / 24) + (12 * x ** .3) - (13));
+                // soundx2.volume = vol1;
+                // x = x * 0.3;
+                // let pitch1 = .8 * parseFloat(1 + (2 * (x ** 2 * .7 ** x) * 0.05) * 2);
+                // soundx2.sourceNode.playbackRate.value = pitch1;
+
+                // x = (10 + score % 20);
+                // // let vol1 = parseFloat((x ^ 2) * (-1 / 24) + (12 * x ^ .3) - (12));
+                // let vol2 = 0.15 * parseFloat((x * x) * (-1 / 24) + (12 * x ** .3) - (13));
+                // soundx2z.volume = vol2;
+                // x = x * 0.3;
+                // let pitch2 = 0.8 * parseFloat(1 + (2 * (x ** 2 * .7 ** x) * 0.05) * 2);
+                // soundx2z.sourceNode.playbackRate.value = pitch2;
 
 
+
+
+
+                // sound2xb COIN-SOUND
                 soundx2b = sound2b.clone();
                 // soundx3 = sound2.clone();
-                soundx2b.volume = 0.006 + 0.0015 * (score % 4);
+                soundx2b.volume = 0.16 + 0.04 * (score % 4);
+                // COIN! first coin then plop.. hmm better than first plop then coin
+                soundx2b.play(0, 0.01);
                 soundx2b.play();
                 //  soundx2b.sourceNode.playbackRate.value = ploppitcher;
 
@@ -286,8 +315,6 @@
                     // sound7 = sound7.clone();
                     sound7.volume = 0.6;
                     sound7.play();
-
-
                     document.getElementById('level').innerHTML = level;
 
                     // top bar score ... 
@@ -333,6 +360,8 @@
                 }
 
                 diff = elapsed;
+
+
                 arrayblaha++;
                 arrayblaha = arrayblaha % 3;
                 delement3[arrayblaha] = document.getElementById('fb').cloneNode();
@@ -723,10 +752,11 @@
         function newround() {
 
 
-
+            // button sound sound3
             soundx3 = sound3.clone();
             soundx3.play();
             // soundx8 = sound8.clone();
+            // Game music sound8
             sound8.play();
 
 
@@ -781,22 +811,41 @@
 
 
                     // this probably in current version becomes sort of a bug when increasing and should be more optimized ... floor is better than round + ceil anywhow.. s
-                    lifetimeleft = 2 + bigtimeclock - Math.floor(speedish * elapsed);
-                    //325 ??? some kind of hack .. s
+                    //lifetimeleft = 2 + bigtimeclock - Math.floor(speedish * elapsed);
 
 
-                    // just to ease the bug i can fix.. but are too lazy too.. :-S .. that hopefully leads to genius things, as usual ;-) .. seriously - it actually does
-                    lifetimeleft = ((lifetimeleftstore + lifetimeleft) / 2);
-
-
-                    // HERE FIX! 
+                    lifetimeleft = bigtimeclock - Math.floor(speedish * elapsed);
                     if (lifetimeleft > maxlifetime) {
 
-                        // improve below? 
+                        // improve below?
                         bigtimeclock = bigtimeclock - 10;
                         bigtimeclock = bigtimeclock - (lifetimeleft - (maxlifetime + lifetimeleft) / 2);
                         lifetimeleft = maxlifetime;
                     }
+
+                    //elapsed since next !!! !"=#=!"#=
+                    //epalsedsincenext = elapsed 
+
+
+
+                    //2 + bigtimeclock - Math.floor(speedish * elapsed);
+
+
+                    //325 ??? some kind of hack .. s
+
+
+                    // just to ease the bug i can fix.. but are too lazy too.. :-S .. that hopefully leads to genius things, as usual ;-) .. seriously - it actually does
+                    //     lifetimeleft = ((lifetimeleftstore + lifetimeleft) / 2);
+
+
+                    // HERE FIX! 
+                    // if (lifetimeleft > maxlifetime) {
+
+                    //     // improve below? 
+                    //     bigtimeclock = bigtimeclock - 10;
+                    //     bigtimeclock = bigtimeclock - (lifetimeleft - (maxlifetime + lifetimeleft) / 2);
+                    //     lifetimeleft = maxlifetime;
+                    // }
 
 
 
@@ -826,7 +875,8 @@
                     window.requestAnimationFrame(step);
                 } else {
 
-                    // GAME OVER!
+                    // GAME OVER! 
+                    // game music
                     sound8.stop();
 
 
@@ -900,6 +950,9 @@
         });
 
         var sound8 = new Pizzicato.Sound('./snd/newgame.mp3', function() {
+            sound8.volume = 0.4;
+            sound8.volume = 0.8;
+            // sound.release = 0.4;
             sound8.loop = true;
 
 
@@ -908,13 +961,14 @@
 
 
         var sound = new Pizzicato.Sound('./snd/success.mp3', function() {
+            // MELODY SOUND!
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
             sound.attack = 0.4;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.19;
+            sound.volume = 0.32;
             // sound.release = 0.4;
         });
 
