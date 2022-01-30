@@ -82,14 +82,17 @@
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
 
-
+        var diff = 0;
         var elapsedsincenext = 0;
         var elapsedsincelast = 0;
         var elapsed = 0;
 
+
+
         mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         eventtyper = mobile ? "touchstart" : "mousedown";
-        var diff = 0;
+
+
         var arrayblaha = 1;
         var delement3 = [];
         var start, previousTimeStamp, timestamp;
@@ -518,7 +521,7 @@
             }, true);
         }
         const dl = () => {
-            reset();
+            //            reset();
             startscreen();
             makebuttons();
         }
@@ -557,17 +560,29 @@
 
         function next() {
             // clg('RUNNING!!!!')
-            // if (elapsedsincenext <=f 0) {
+            if (elapsedsincenext === 0) {
 
-            // } else {
+            } else {
 
 
-            // meassure time for question
-            elapsedsincenext = parseFloat(elapsed - elapsedsincenext);
-            // clg('since next:' + elapsedsincenext);
-            let timesincenext = Math.round(elapsedsincenext, 3);
-            clg('timesincenext:' + timesincenext);
-            // }
+                // meassure time for question
+                elapsedsincenext = parseFloat(elapsed - elapsedsincenext);
+                // clg('since next:' + elapsedsincenext);
+                let timesincenext = Math.round(elapsedsincenext, 3);
+                clg('timesincenext:' + timesincenext);
+
+
+                // moutput. = "a";
+
+
+                // gei('level2').innerHTML += 'timesincenext';
+
+                let elementhtml = "<div style='display:inner-block;float:left;background-color:#f0a; width:5px;height:" + timesincenext / 60 + "px;'></div>";
+                gei('gamediv').innerHTML += elementhtml;
+
+            }
+
+
             elapsedsincenext = elapsed;
             // console.log(epalsedsincenext);
             //  console.log(ar); 
@@ -611,7 +626,11 @@
         });
         const reset = () => {
 
+            diff = 0;
+            elapsedsincenext = 0;
+            elapsedsincelast = 0;
             elapsed = 0;
+
             start = undefined;
             ar = [];
             document.getElementById('score').innerHTML = score;
@@ -910,7 +929,7 @@
                     element.style.width = lifetimeleft + 'px';
 
                     if (score % 12 == 0)
-                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 155 + Math.ceil(90 + lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
+                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 55 + Math.ceil(90 + lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
 
                     // element.style.backgroundColor = '#000000';
 
@@ -1108,6 +1127,20 @@
         }
 
         const clg = console.log; // Yay for closures!
+        //  const gei = document.getElementById.bind(document); //wowswers
+
+
+
+
+        // const gei = (id) => {
+        //         return document.getElementById(id);
+        //     }
+        // const gei = document.getElementById.bind(document); //wowsers!s
+
+        // /* WORKS?! */ 
+        const gei = (id) => document.getElementById(id); //wowsers!s
+        //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
+        //return document.getElementById.bind(document); //wowsers!s
     </script>
 </body>
 
