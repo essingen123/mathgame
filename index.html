@@ -40,12 +40,13 @@
             <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
             <!-- start the boot camp, let's  warm warp up ;-) -->
             <br />
-
-            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
+            <span class="gradient">
+            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button></span>
             <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
                 the Amazing AI CoPilot from GitHub<br />
                 <br /> <br />
 
+            
             </span>
         </div>
         <!-- <topgradient>
@@ -67,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div id="moutput" class="moutput"></div><br /> 123
+    <div id="moutput" class="moutput"></div><br />
 
     <div id="score2"></div>
     <div class="buttonswrapper">
@@ -82,12 +83,19 @@
         const canVibrate = window.navigator.vibrate
 
 
+        var elapsedsincenext = 0;
+        var elapsedsincelast = 0;
+        var elapsed = 0;
+
         mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
         eventtyper = mobile ? "touchstart" : "mousedown";
         var diff = 0;
         var arrayblaha = 1;
         var delement3 = [];
-        var start, previousTimeStamp, timestamp, bigtimeclock;
+        var start, previousTimeStamp, timestamp;
+        // may skip!?
+
+        var bigtimeclockstart = 820; // ... ehh life? time in start (??)
 
         // solve the bug, todo: fix the bug
         //var startscore = score = 49; //0; // starting score
@@ -102,19 +110,18 @@
         }
 
         // var lifetimeleft = 20; // life in start
-        var bigtimeclockstart = 820; // ... ehh life? time in start (??)
-        var lifetimeleftstart = 50; // time in start (??)
+        var lifetimeleftstart = 350; // time in start (??)
 
-        var maxlifetime = 400; // max time left in..  pixels ;-D
+        var maxlifetime = 390; // max time left in..  pixels ;-D
         // var extralifetime = 203; //how much extra time per right answer 
         // var speedish = 0.089; // starting speed
         var extralifetime = 230; //how much extra time per right answer 
 
-        var speedish = 0.09; // startspeed for the very first question
+        var speedish = 0.2; // startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
 
-        var startlevelspeed = 0.029; // became starting speed
+        var startlevelspeed = 0.05; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
@@ -201,6 +208,10 @@
 
                 next();
 
+                if (score % 40 === 5) {
+                    // ambient music 2
+                    sound9.play(0.16, 0.01);
+                }
 
                 score++;
 
@@ -385,13 +396,14 @@
                     }, false);
                 });
 
-                bigtimeclock = bigtimeclock + extralifetime;
+                //                bigtimeclock = bigtimeclock + extralifetime;
+                lifetimeleft = lifetimeleft + extralifetime;
 
 
 
                 speedish = startlevelspeed + level * speedincrease;
                 // speedish += speedincrease;
-                console.log(speedish);
+                // console.log(speedish);
 
 
                 //let transitionspeed = 1 - Math.round(5 * speedish, 4);
@@ -544,8 +556,24 @@
         }
 
         function next() {
+            // clg('RUNNING!!!!')
+            // if (elapsedsincenext <=f 0) {
+
+            // } else {
+
+
             // meassure time for question
-            console.log(bigtimeclock);
+            elapsedsincenext = parseFloat(elapsed - elapsedsincenext);
+            // clg('since next:' + elapsedsincenext);
+            let timesincenext = Math.round(elapsedsincenext, 3);
+            clg('timesincenext:' + timesincenext);
+            // }
+            elapsedsincenext = elapsed;
+            // console.log(epalsedsincenext);
+            //  console.log(ar); 
+
+
+
 
             Array.from(document.getElementsByClassName("fox")).map(el => {
                 // el.addEventListener("animationend", function () {
@@ -587,6 +615,8 @@
             start = undefined;
             ar = [];
             document.getElementById('score').innerHTML = score;
+
+            //may skip??
             bigtimeclock = bigtimeclockstart;
             lifetimeleft = lifetimeleftstart;
             w = 0;
@@ -678,7 +708,8 @@
             }
 
 
-            v(ar.shift());
+            //v(ar.shift());
+            next();
 
             //console.log('startscreen call');
             //        startscreen(); // pink start screen overlay
@@ -807,7 +838,7 @@
                 elapsed = timestamp - start;
                 if (previousTimeStamp !== timestamp) {
 
-
+                    // clg(elapsed);
 
 
 
@@ -817,18 +848,31 @@
                     // this probably in current version becomes sort of a bug when increasing and should be more optimized ... floor is better than round + ceil anywhow.. s
                     //lifetimeleft = 2 + bigtimeclock - Math.floor(speedish * elapsed);
 
+                    let elapsediff = elapsed - elapsedsincelast;
+                    // clg(elapsediff);
 
-                    lifetimeleft = bigtimeclock - Math.floor(speedish * elapsed);
+                    let killtime = 1 * parseFloat(speedish * elapsediff);
+                    // clg(killtime);
+
+
+                    lifetimeleft = lifetimeleft - killtime;
+                    elapsedsincelast = elapsed;
+
+
+
+
                     if (lifetimeleft > maxlifetime) {
 
                         // improve below?
-                        bigtimeclock = bigtimeclock - 10;
-                        bigtimeclock = bigtimeclock - (lifetimeleft - (maxlifetime + lifetimeleft) / 2);
+                        // bigtimeclock = bigtimeclock - 10;
+                        // bigtimeclock = bigtimeclock - (lifetimeleft - (maxlifetime + lifetimeleft) / 2);
+
+
                         lifetimeleft = maxlifetime;
                     }
 
                     //elapsed since next !!! !"=#=!"#=
-                    //epalsedsincenext = elapsed 
+
 
 
 
@@ -866,7 +910,7 @@
                     element.style.width = lifetimeleft + 'px';
 
                     if (score % 12 == 0)
-                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 155 + Math.ceil(lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
+                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 155 + Math.ceil(90 + lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
 
                     // element.style.backgroundColor = '#000000';
 
@@ -964,6 +1008,18 @@
 
 
 
+        var sound9 = new Pizzicato.Sound('./snd/pausegame.mp3', function() {
+            // GAME MUSIC
+            sound9.volume = 0.43;
+            // sound.release = 0.4;
+            sound9.loop = false;
+
+
+        });
+
+
+
+
         var sound = new Pizzicato.Sound('./snd/success.mp3', function() {
             // MELODY SOUND!
             //     sound.play();
@@ -1038,7 +1094,7 @@
             if (rightanswer.length > 1) {
                 // console.log("execs...");
                 let hintpart = rightanswer.substr(0, 1);
-                console.log(hintpart);
+                // console.log(hintpart);
                 document.getElementById('answer').value = hintpart;
                 document.getElementById('answer2').innerHTML = hintpart + "_";
             } else {
