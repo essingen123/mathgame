@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div id="moutput" class="moutput"></div><br />
+    <div id="moutput" class="moutput"></div><br /> 123
 
     <div id="score2"></div>
     <div class="buttonswrapper">
@@ -78,7 +78,7 @@
 
     </div>
     <script>
-        var soundx;
+        // ? var soundx;
         const canVibrate = window.navigator.vibrate
 
 
@@ -149,7 +149,7 @@
                 soundx2.play(0.16, 0.01);
                 let ploppitcher = score % 30 * 0.01 + parseFloat(1.6 + 10 * (0.6 * parseFloat(1 / (-score % 50 - 8))));
                 soundx2.sourceNode.playbackRate.value = ploppitcher;
-                soundx2.volume = 0.36 + 0.02 * (2 + score % 4);
+                soundx2.volume = 0.28 + 0.02 * (2 + score % 4);
 
                 //  soundx2z = sound2.clone();
                 // soundx2z.play(0.16, 0.01);
@@ -256,24 +256,27 @@
                 try {
                     soundx.removeEffect(flanger);
                     soundx.removeEffect(dubDelay);
+
+                    switch (score % 2) {
+                        case 0:
+                            try {
+                                soundx.removeEffect(stereoPanner2);
+                            } catch (error) {}
+                            break;
+                        case 1:
+                            try {
+                                soundx.removeEffect(stereoPanner);
+                            } catch (error) {}
+                            break;
+                    }
+
                 } catch (error) {
 
                 }
 
 
 
-                switch (score % 2) {
-                    case 0:
-                        try {
-                            soundx.removeEffect(stereoPanner2);
-                        } catch (error) {}
-                        break;
-                    case 1:
-                        try {
-                            soundx.removeEffect(stereoPanner);
-                        } catch (error) {}
-                        break;
-                }
+
 
                 soundx = sound.clone();
                 soundx.addEffect(dubDelay);
@@ -292,10 +295,11 @@
                         break;
                 }
 
+                // MELODY
                 soundx.play();
                 let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
                 let pitchtonevol = pitcharray[score % pitcharray.length];
-                // soundx.volume = pitchtonevol;
+                soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
                 soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
 
                 if (hiscore < score) {
@@ -950,7 +954,8 @@
         });
 
         var sound8 = new Pizzicato.Sound('./snd/newgame.mp3', function() {
-            sound8.volume = 0.35;
+            // GAME MUSIC
+            sound8.volume = 0.63;
             // sound.release = 0.4;
             sound8.loop = true;
 
@@ -967,7 +972,7 @@
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.32;
+            sound.volume = 0.22;
             // sound.release = 0.4;
         });
 
