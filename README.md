@@ -1,10 +1,20 @@
 # Math Game Pi
-First MVP / functional prototype coded on a mobile; which here means I only used one code-file and skipped quality to clean up later.  
+An experimental simple math Quiz Game. 
 
-During desktop code clean up sessions - improvements were done using the quite amazing CoPilot AI-assistant from Github. 
 
-Game ready to try here
+**Game ready to try here**
 https://essingen123.github.io/mathgame
+
+**Project & Design Principles**
+First MVP / functional prototype coded on a mobile. Yes, quite
+wonderful, it actually did work. 
+ Tradeoffs in quality prioritizing practicality; using a minimal of files
+ and skipped code quality to clean up later.  
+
+**CoPilot AI** 
+During desktop code clean up sessions - improvements were done using 
+the quite amazing CoPilot AI-assistant from Github. 
+
 
 
 ![image](https://user-images.githubusercontent.com/20803840/151665677-3da049d3-4c5d-4935-b8e2-8b85fb4a1cd8.png)
