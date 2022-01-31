@@ -1,9 +1,10 @@
 # Math Game Pi
-An experimental simple math Quiz Game. 
-
+An experimental simple Quiz / Math Game. 
 
 **Game ready to try here**
 https://essingen123.github.io/mathgame
+
+<img src="https://user-images.githubusercontent.com/20803840/151665677-3da049d3-4c5d-4935-b8e2-8b85fb4a1cd8.png" width="50%" />
 
 **Project & Design Principles**
 First MVP / functional prototype coded on a mobile. Yes, quite
@@ -17,5 +18,4 @@ the quite amazing CoPilot AI-assistant from Github.
 
 
 
-![image](https://user-images.githubusercontent.com/20803840/151665677-3da049d3-4c5d-4935-b8e2-8b85fb4a1cd8.png)
 
