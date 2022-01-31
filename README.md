@@ -1,7 +1,7 @@
 # Math Game Pi
-First MVP prototype coded on a mobile; which here means I only used one code-file and skipped quality to clean up later.  
+First MVP / functional prototype coded on a mobile; which here means I only used one code-file and skipped quality to clean up later.  
 
-During desktop clean up - improvements where done using the quite amazing CoPilot AI-assistant from Github. 
+During desktop code clean up sessions - improvements were done using the quite amazing CoPilot AI-assistant from Github. 
 
 Game ready to try here
 https://essingen123.github.io/mathgame
