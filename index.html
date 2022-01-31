@@ -20,21 +20,22 @@
 <body>
     <div id="scoreoverlay" dragable="true" class="scoreoverlay" onclick="newround();" ondrag="newround();">
 
-        <div class="wrapper">
-            <h1>Math Game Pi 🏹</h1>
-            <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
+
+        <h1>Math Game Pi 🏹</h1>
+        <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
                 <br /> before time's up?<br /> <br />
             </span>
-        </div>
-        <div id="scoring"> SCORE <span class="b" id="score3"></span>
-            <div id='score3x'></div>
-        </div>
-        <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
-        <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
-        <!-- start the boot camp, let's  warm warp up ;-) -->
-        <br />
+        <div class="wrapper tilt">
+            <div id="scoring"> SCORE <span class="b" id="score3"></span>
+                <div id='score3x'></div>
+            </div>
+            <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
+            <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
+            <!-- start the boot camp, let's  warm warp up ;-) -->
+        </div><br /><br /><br /><br /><br />
+
         <span class="gradient">
-            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
+            <button style="top: 12px;"class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
         </span>
         <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
             the Amazing AI CoPilot from GitHub<br />
@@ -837,6 +838,9 @@
             document.getElementById('hiscore3').innerHTML = hiscore;
             document.getElementById('level3').innerHTML = level;
             // intro screen!
+
+            setTimeout(() => document.getElementById('scoreoverlay').classList.remove('hide'), 1);
+
             setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 20);
 
 
@@ -871,21 +875,24 @@
             delement = document.getElementById('scoreoverlay');
 
 
-            delement.classList.remove('show');
+            delement.classList.add('hide');
+
+
+            // delement.classList.remove('show');
 
             // delement.setAttribute('animation-duration', '-2.5s');
             // delement.style.animationDuration = "-1.5s";
 
 
 
-            delement.classList.add('show');
+            //delement.classList.add('show');
 
             // delement.setAttribute('animation-duration', '-2.5s');
 
 
 
             //somehow this is not working.. 
-            setTimeout(() => delement.classList.remove('show'), 30);
+            setTimeout(() => delement.classList.remove('show'), 530);
 
 
             reset();
