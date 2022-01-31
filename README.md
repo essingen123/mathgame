@@ -9,7 +9,7 @@ https://essingen123.github.io/mathgame
 **Project & Design Principles**
 First MVP / functional prototype coded on a mobile. Yes, quite
 wonderful, it actually did work. 
- Tradeoffs in code structure / quality prioritizing practicality; using a minimal of files
+ Tradeoffs in code structure prioritizing faster testing and practicality; using a minimal of files
  and skipped code quality to clean up later.  
  
 **Installation** 
