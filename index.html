@@ -18,70 +18,74 @@
 </head>
 
 <body>
+    <div id="scoreoverlay" dragable="true" class="scoreoverlay" onclick="newround();" ondrag="newround();">
 
-    <!-- <div class="hint"></div> -->
-    <div id="gamediv" class="gamediv">
-        <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
-
-        <input type="hidden" value="" id="eval" />
-        <div id="scoreoverlay" dragable="true" class="scoreoverlay" onclick="newround();" ondrag="newround();">
-
-            <div class="wrapper">
-                <h1>Math Game Pi 🏹</h1>
-                <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
-                    <br /> before time's up?<br /> <br />
-                </span>
-            </div>
-            <div id="scoring"> SCORE <span class="b" id="score3"></span>
-                <div id='score3x'></div>
-            </div>
-            <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
-            <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
-            <!-- start the boot camp, let's  warm warp up ;-) -->
-            <br />
-            <span class="gradient">
-            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button></span>
-            <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
-                the Amazing AI CoPilot from GitHub<br />
-                <br /> <br />
-
-            
+        <div class="wrapper">
+            <h1>Math Game Pi 🏹</h1>
+            <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
+                <br /> before time's up?<br /> <br />
             </span>
         </div>
-        <!-- <topgradient>
+        <div id="scoring"> SCORE <span class="b" id="score3"></span>
+            <div id='score3x'></div>
+        </div>
+        <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
+        <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
+        <!-- start the boot camp, let's  warm warp up ;-) -->
+        <br />
+        <span class="gradient">
+            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
+        </span>
+        <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
+            the Amazing AI CoPilot from GitHub<br />
+            <br />
+    
+    
+        </span>
+    </div>
+    <div id="megadiv" class="megadiv">
+        <!-- <div class="hint"></div> -->
+        <div id="gamediv" class="gamediv">
+            <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
+
+            <input type="hidden" value="" id="eval" />
+            <!-- <topgradient>
            ⚠️ 
-        </topgradient> -->
-        <div class="scorebar">
-            <span class=score>SCORE <span class="b" id="score"></span> </span>
-            <span class=level id="level2"> LVL <span class="b" id="level"></span> </span>
-            <span class=hiscore> HISCORE <span class="b" id="hiscore"></span> </span>
-        </div>
-    </div>
-    <!-- <div id='timer'></div><br /> -->
-
-    <div class="cssProgress" style="width:356px; height:24px; left:0; right:0; margin:-2px auto 8px !important; text-align: center;">
-        <div class="progress2" style="left:0; right:0; height: 24px; margin:0 auto !important; text-align: center;">
-            <div style='height:24px;' class=" cssProgress-active-right timer" id='timerstripe'>
-                <span class="cssProgress-label">💜</span>
-                <!-- <!-- data-percent="65" ,,.. <span class="cssProgress-label">65%</span>-->
+            </topgradient> -->
+            <div class="scorebar">
+                <span class=score>SCORE <span class="b" id="score"></span> </span>
+                <span class=level id="level2"> LVL <span class="b" id="level"></span> </span>
+                <span class=hiscore> HISCORE <span class="b" id="hiscore"></span> </span>
             </div>
+
+            <!-- <div id='timer'></div><br /> -->
+
+            <div class="cssProgress" style="width:90%; height:24px; left:0; right:0; margin:-2px auto 8px !important; text-align: center;">
+                <div class="progress2" style="left:0; right:0; height: 24px; margin:0 auto !important; text-align: center;">
+                    <div style='height:24px;' class=" cssProgress-active-right timer" id='timerstripe'>
+                        <span class="cssProgress-label">💜</span>
+                        <!-- <!-- data-percent="65" ,,.. <span class="cssProgress-label">65%</span>-->
+                    </div>
+                </div>
+            </div>
+            <div id="moutput" class="moutput"></div><br />
+
+            <div id="score2"></div>
+
+        </div>
+        <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
+        <div id="gamediv2" class="gamediv2">
+            <div class="buttonswrapper">
+                <div style="display:block;position:relative;width:80%;height:36px;overflow:hidden;margin-top:0;top:0; text-align:left;margin:0 auto;padding:0 24px;" id="timechart"></div>
+                <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
+                <span id="answer2" class="answer2"></span>
+                <div id="buttons" class="buttons"> </div>
+            </div>
+            <div class="fb" id="fb"></div>
+
         </div>
     </div>
-    <div id="moutput" class="moutput"></div><br />
 
-    <div id="score2"></div>
-
-    <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
-
-    <div class="buttonswrapper">
-        <div style="display:inline-block;position:absolute;width:80%;height:36px;overflow:hidden;margin-top:0;top:0; text-align:left;margin:0 auto;padding:0 24px;" id="timechart"></div>
-        <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
-        <span id="answer2" class="answer2"></span>
-        <div id="buttons" class="buttons"> </div>
-    </div>
-    <div class="fb" id="fb"></div>
-
-    </div>
     <script>
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
