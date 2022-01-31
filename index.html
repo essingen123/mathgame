@@ -71,11 +71,11 @@
 
     <div id="score2"></div>
 
+    <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
 
     <div class="buttonswrapper">
+        <div style="display:inline-block;position:absolute;width:80%;height:36px;overflow:hidden;margin-top:0;top:0; text-align:left;margin:0 auto;padding:0 24px;" id="timechart"></div>
         <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
-        <div style="margin-top:-24px;opacity:0.6;margin-bottom:-1px;display:block;width:100%;height:40px; position: relative; float:left;max-width:320px;" id="timechart"></div>
-
         <span id="answer2" class="answer2"></span>
         <div id="buttons" class="buttons"> </div>
     </div>
@@ -592,11 +592,24 @@
 
                 // let elementhtml = "<div style='display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;background-color:#f0a; height:1px;width:" + timesincenext / 30 + "px;'></div>";
                 // geiha('timechart2', elementhtml);
-                let elementhtml = "<div style='display:inline-block;background-color:#f0a; width:8px;height:" + ((timesincenext / 300) > 40 ? 40 : (timesincenext / 300)) + "px;'></div>";
+
+                // simple clean up
+                if (score % 80 == 0) {
+                    geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:40px;"></div>');
+                }
+
+                // Ternary operator, condition ? expr1 : expr2
+                // or just below as ... condition || ...
+                barheightmax = 36 - 2;
+                barheight = Math.round(timesincenext / 180);
+                clg(barheight);
+                barheight < barheightmax || (barheight = barheightmax);
+                barheight += 2;
+                clg(barheight);
+                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;width:6px;height:" + barheight + "px;'></div>";
                 geiha('timechart', elementhtml);
 
-                if (score > 50)
-                    geih('timechart', elementhtml);
+
 
 
             }
@@ -1169,6 +1182,20 @@
         //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
         //return document.getElementById.bind(document); //wowsers!s
     </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182873219-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-182873219-6');
+    </script>
+
 </body>
 
 </html>
