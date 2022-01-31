@@ -24,7 +24,7 @@
         <input type="hidden" class="number" pattern=[0-9]* id="answer" name="answer" />
 
         <input type="hidden" value="" id="eval" />
-        <div id="scoreoverlay" class="scoreoverlay">
+        <div id="scoreoverlay" dragable="true" class="scoreoverlay" onclick="newround();" ondrag="newround();">
 
             <div class="wrapper">
                 <h1>Math Game Pi 🏹</h1>
@@ -800,6 +800,7 @@
             }
             document.getElementById('hiscore3').innerHTML = hiscore;
             document.getElementById('level3').innerHTML = level;
+            // intro screen!
             setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 20);
 
 
@@ -978,7 +979,7 @@
                 blue.toString(16);
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
+    <script src="Pizzicato.js"></script>
 
     <script>
         //
