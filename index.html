@@ -11,10 +11,10 @@
     <title>Math Game Pi 😀 • v0.0089b • Coded on a Mobile </title>
     <!-- ((Welcome to the Math Game of Pi 😀  FastSpaghetti Prototype code alert ;) Coded mostly on a Mobile, Fast Prototype . So intentionally not made with quality code, just to test out if it works -->
     <!-- <link href="./custom.css" rel="stylesheet"> -->
-    <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
+    <!-- <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet"> -->
     <!-- @import url('http://fonts.cdnfonts.com/css/games'); -->
-    <link href="custom.css" rel="stylesheet">
-    <link href="progressbar.css" rel="stylesheet">
+    <link href="./css/custom.css" rel="stylesheet">
+    <link href="./css/progressbar.css" rel="stylesheet">
 </head>
 
 <body>
@@ -71,9 +71,11 @@
 
     <div id="score2"></div>
 
-    <div style="opacity:0.6;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart"></div>
 
     <div class="buttonswrapper">
+        <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
+        <div style="margin-top:-24px;opacity:0.6;margin-bottom:-1px;display:block;width:100%;height:40px; position: relative; float:left;max-width:100%;" id="timechart"></div>
+
         <span id="answer2" class="answer2"></span>
         <div id="buttons" class="buttons"> </div>
     </div>
@@ -115,18 +117,18 @@
         }
 
         // var lifetimeleft = 20; // life in start
-        var lifetimeleftstart = 350; // time in start (??)
+        var lifetimeleftstart = 150; // time in start (??)
 
-        var maxlifetime = 390; // max time left in..  pixels ;-D
+        var maxlifetime = 450; // max time left in..  pixels ;-D
         // var extralifetime = 203; //how much extra time per right answer 
         // var speedish = 0.089; // starting speed
-        var extralifetime = 230; //how much extra time per right answer 
+        var extralifetime = 30; //how much extra time per right answer 
 
-        var speedish = 0.2; // startspeed for the very first question
+        var speedish = 0.05; // hmm effects startspeed for the very first question
         // var speedish = 0.3; // starting speed for testing, too fast for prod
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
 
-        var startlevelspeed = 0.05; // became starting speed
+        var startlevelspeed = 0.017; // became starting speed
 
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
@@ -314,9 +316,13 @@
                 // MELODY
                 soundx.play();
                 let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
-                let pitchtonevol = pitcharray[score % pitcharray.length];
+                // make a aha-melody ;-) ? 
+                // let pitcharray = [1, 1, (1 + 0.125 * 6)];
+
+
+                let pitchtonevol = pitcharray[(score - 1) % pitcharray.length];
                 soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
-                soundx.sourceNode.playbackRate.value = pitcharray[score % pitcharray.length];
+                soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
 
                 if (hiscore < score) {
                     hiscore++;
@@ -402,8 +408,12 @@
                 });
 
                 //                bigtimeclock = bigtimeclock + extralifetime;
-                lifetimeleft = lifetimeleft + extralifetime;
 
+
+                lifetimeleft = lifetimeleft + extralifetime + 30;
+
+                // MIGHT BECOME BUGGY.. but a bit fun for more bounce:
+                setTimeout(() => lifetimeleft = lifetimeleft + extralifetime - 30, 470);
 
 
                 speedish = startlevelspeed + level * speedincrease;
@@ -562,7 +572,8 @@
 
         function next() {
             // clg('RUNNING!!!!')
-            if (elapsedsincenext === 0) {
+            // if (elapsedsincenext === 0) {
+            if (elapsed === 0) {
 
             } else {
 
@@ -579,8 +590,18 @@
 
                 // gei('level2').innerHTML += 'timesincenext';
 
-                let elementhtml = "<div style='display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;background-color:#f0a; height:1px;width:" + timesincenext / 30 + "px;'></div>";
-                gei('timechart').innerHTML += elementhtml;
+                // let elementhtml = "<div style='display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;background-color:#f0a; height:1px;width:" + timesincenext / 30 + "px;'></div>";
+                // geiha('timechart2', elementhtml);
+
+                // simple clean up
+                if (score > 50)
+                    geih('timechart', '');
+
+                let elementhtml = "<div style='display:inline-block;background-color:#f0a; width:8px;height:" + ((timesincenext / 300) > 40 ? 40 : (timesincenext / 300)) + "px;'></div>";
+                geiha('timechart', elementhtml);
+
+
+
 
             }
 
@@ -807,7 +828,10 @@
         }
 
         function newround() {
+            // hmm should perhaps only at one place.. 
+            speedish = startlevelspeed + level * speedincrease;
 
+            geih('timechart', '');
 
             // button sound sound3
             soundx3 = sound3.clone();
@@ -979,7 +1003,9 @@
                 blue.toString(16);
         }
     </script>
-    <script src="Pizzicato.js"></script>
+
+    <!-- fallback?     <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script> -->
+    <script src="js/Pizzicato.js"></script>
 
     <script>
         //
@@ -1142,6 +1168,8 @@
 
         // /* WORKS?! */ 
         const gei = (id) => document.getElementById(id); //wowsers!s
+        const geih = (id, innerhtml) => document.getElementById(id).innerHTML = innerhtml; //wowsers!s
+        const geiha = (id, innerhtml) => document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + innerhtml;
         //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
         //return document.getElementById.bind(document); //wowsers!s
     </script>
