@@ -260,7 +260,7 @@
                   background-position: center;
                   /* todo: bg gif should be slower though */
                   /* background-image: url('vortex3.gif'); */
-                  background-image: url('/gfx/intro0.gif');
+                  background-image: url('../gfx/intro0.gif');
                   opacity: 0.03;
                   /* z-index: 400; */
               }
@@ -280,7 +280,7 @@
                   /* background-size: 100% 100%; */
                   background-position: center;
                   /* todo: gif should be very much slower different? */
-                  background-image: url('/gfx/intro1.gif');
+                  background-image: url('../gfx/intro1.gif');
                   /* z-index: 400; */
                   opacity: 0.05;
                   /* z-index: 400; */
@@ -693,7 +693,7 @@
                   margin: -10px;
                   /* hmm ? */
                   background: #121212;
-                  background: radial-gradient(circle at 50% 30%, transparent, #6c6c6c55 50%, #317 95%, rgb(126, 0, 205) 99%);
+                  background: radial-gradient(circle at 50% 30%, transparent, #6c6c6c55 50%, #317 94%, rgb(126, 0, 205) 95% 50%);
                   /* background: radial-gradient(circle at 50% 30%, #f2f, #f29 40%, #317 95%); */
                   background-repeat: repeat;
                   margin: 0;
