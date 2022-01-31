@@ -4,7 +4,7 @@ An experimental simple Quiz / Math Game.
 **Game ready to try here**
 https://essingen123.github.io/mathgame
 
-![image](https://user-images.githubusercontent.com/20803840/151822312-0bc6aa47-2ae7-41af-9ad9-8f970a3f7c4b.png){width=150px}
+<img src='https://user-images.githubusercontent.com/20803840/151822312-0bc6aa47-2ae7-41af-9ad9-8f970a3f7c4b.png' width='150'>
 
 **Project & Design Principles**
 First MVP / functional prototype coded on a mobile. Yes, quite
