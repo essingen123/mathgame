@@ -601,10 +601,12 @@
                 // Ternary operator, condition ? expr1 : expr2
                 // or just below as ... condition || ...
                 barheightmax = 36 - 2;
+                barheightmin = 4;
                 barheight = Math.round(timesincenext / 180);
                 clg(barheight);
                 barheight < barheightmax || (barheight = barheightmax);
-                barheight += 2;
+                barheight > barheightmin || (barheight = barheightmin);
+                //barheight += 2;
                 clg(barheight);
                 let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;width:6px;height:" + barheight + "px;'></div>";
                 geiha('timechart', elementhtml);
@@ -1187,11 +1189,15 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182873219-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
+
         gtag('config', 'UA-182873219-6');
     </script>
+
 </body>
+
 </html>
