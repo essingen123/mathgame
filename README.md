@@ -15,8 +15,8 @@ wonderful, it actually did work.
 **Installation** 
  Minimal timeless fuzz in current version. Just open in a browser with access to sufficent local storage. 
  
-**CoPilot AI** 
-During desktop code clean up sessions - improvements were done using 
+**AI Usage** 
+Close to none in the running implementation. During desktop code clean up sessions - improvements were done using 
 the quite amazing CoPilot AI-assistant from Github. 
 
 
