@@ -9,9 +9,12 @@ https://essingen123.github.io/mathgame
 **Project & Design Principles**
 First MVP / functional prototype coded on a mobile. Yes, quite
 wonderful, it actually did work. 
- Tradeoffs in quality prioritizing practicality; using a minimal of files
+ Tradeoffs in code structure / quality prioritizing practicality; using a minimal of files
  and skipped code quality to clean up later.  
-
+ 
+**Installation** 
+ Minimal timeless fuzz in current version. Just open in a browser with access to sufficent local storage. 
+ 
 **CoPilot AI** 
 During desktop code clean up sessions - improvements were done using 
 the quite amazing CoPilot AI-assistant from Github. 
