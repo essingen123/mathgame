@@ -563,10 +563,12 @@ right: 0; */
     max-width: 430px;
     margin: 2px auto;
     color: #fff1ff;
-    letter-spacing: 1.2vw;
-    font-size: 1.9vh;
-    line-height: 2.7vh;
+    letter-spacing: calc(0.2 * (1.5vmax + 1.5vmin) + 0.1rem);
+    font-size: calc(0.3 * (2.5vmax + 1.5vmin) + 0.1rem);
+    line-height: 2.9vh;
     font-weight: 400 !important;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 .spansmall: nth-child(1) {
@@ -716,7 +718,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 h1 {
-    font-size: 3.7vw;
+    font-size: 5.1vmin;
     color: #fefafa;
     font-family: 'Games', sans-serif, arial;
     white-space: pre;
@@ -1243,7 +1245,8 @@ height: 100%; */
     /* display: flex; */
     flex-direction: column;
     /* justify-content: space-evenly; */
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
     overflow: hidden;
@@ -1255,7 +1258,7 @@ height: 100%; */
     /* max-height: 2em; */
     /* a x number of line to show (ex : 2 line)  */
     display: inline-flex;
-    font-size: 7.5vw;
+    font-size: 7.2vw;
     /* line-height: 9vw; */
     /* text-size-adjust: auto; */
     /* <percentage> value */
@@ -1269,8 +1272,11 @@ height: 100%; */
     margin: 0;
     /* display: flex; */
     flex-direction: column;
-    /* justify-content: space-evenly; */
-    justify-content: space-around;
+    justify-content: space-evenly;
+    /* justify-content: space-around; */
+    /* justify-content: stretch; */
+    /* justify-content: center; */
+    /* justify-content: safe center; */
     align-items: center;
     text-align: center;
     overflow: hidden;

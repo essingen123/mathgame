@@ -635,7 +635,9 @@
                 barheight > barheightmin || (barheight = barheightmin);
                 //barheight += 2;
                 clg(barheight);
-                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;width:4px;height:" + barheight + "px;transform: rotateZ(" + (score - 45) + "deg);'></div>";
+                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; " +
+                    "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
+                    " width:4px;height:" + barheight + "px;transform: rotateZ(" + (score - 45) + "deg);'></div>";
                 geiha('timechart', elementhtml);
 
 
@@ -1153,22 +1155,22 @@
 
 
         var flanger = new Pizzicato.Effects.Flanger({
-            attack: 0,
+            volume: 2.4,
             time: 12,
             speed: 0.001,
             depth: 0.02,
-            feedback: 0.09,
-            mix: 0.4
+            feedback: 0.2,
+            mix: 0.6
         });
 
         // sound.addEffect(flanger);
 
         var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.64,
+            feedback: 0.78,
             // time: 0.84,
             time: 0.42,
-            mix: 0.9,
-            cutoff: 890
+            mix: 0.95,
+            cutoff: 1290
         });
 
         // var stereoDelay = new Pizzicato.Effects.StereoDelay({
