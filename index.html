@@ -32,10 +32,10 @@
             <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
             <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
             <!-- start the boot camp, let's  warm warp up ;-) -->
-        </div><br /><br /><br /><br /><br />
+        </div><br /><br /><br /><br /><br /><br />
 
         <span class="gradient">
-            <button style="top: 12px;"class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
+            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
         </span>
         <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
             the Amazing AI CoPilot from GitHub<br />
@@ -319,15 +319,18 @@
                 }
 
                 // MELODY
-                soundx.play();
                 let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
                 // make a aha-melody ;-) ? 
                 // let pitcharray = [1, 1, (1 + 0.125 * 6)];
 
-
                 let pitchtonevol = pitcharray[(score - 1) % pitcharray.length];
                 soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
                 soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
+
+
+                // MELODY
+                soundx.play();
+
 
                 if (hiscore < score) {
                     hiscore++;
@@ -469,13 +472,16 @@
         }
 
         function makebuttons() {
+
+            document.getElementById('buttons').innerHTML += '<div class="buttonswrap2" id="buttonswrap2"></div>';
+
             var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
             arry.forEach(iok => {
-                document.getElementById('buttons').innerHTML += "<button class='numkey' value='" + iok + "'>" + iok + "</button>";
+                document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' value='" + iok + "'>" + iok + "</button>";
                 if (iok == 9)
-                    document.getElementById('buttons').innerHTML += "<button class='numkey' value='clear'>❌</button>";
+                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' value='clear'>❌</button>";
                 if (iok == 0)
-                    document.getElementById('buttons').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
+                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
             });
             var elements = document.getElementsByClassName("numkey");
             var myFunction = function() {
@@ -599,7 +605,7 @@
                 // geiha('timechart2', elementhtml);
 
                 // simple clean up
-                if (score % 50 == 0) {
+                if (score % 30 == 0) {
                     geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:40px;"></div>');
                 }
 
@@ -839,9 +845,13 @@
             document.getElementById('level3').innerHTML = level;
             // intro screen!
 
-            setTimeout(() => document.getElementById('scoreoverlay').classList.remove('hide'), 1);
 
-            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 20);
+
+
+            setTimeout(() => document.getElementById('scoreoverlay').classList.remove('hide'), 50);
+
+
+            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 100);
 
 
         }
@@ -877,7 +887,6 @@
 
             delement.classList.add('hide');
 
-
             // delement.classList.remove('show');
 
             // delement.setAttribute('animation-duration', '-2.5s');
@@ -893,6 +902,7 @@
 
             //somehow this is not working.. 
             setTimeout(() => delement.classList.remove('show'), 530);
+
 
 
             reset();
@@ -993,18 +1003,25 @@
 
                     // GAME OVER! 
                     // game music
+
+
+                    setTimeout(() => document.getElementById('buttonswrapper').classList.add('hide'), 1);
+                    setTimeout(() => document.getElementById('buttonswrap2').remove(), 2000);
+
+
+
+
+
                     sound8.stop();
 
 
                     soundx6 = sound6.clone();
                     soundx6.play();
 
-
                     // this logic below should be put elsewhere :-S
                     Array.from(document.getElementsByClassName("fox")).map(el => {
                         // el.addEventListener("animationend", function () {
                         el.innerHTML = "";
-
                         el.remove();
                         // }, false);
 
@@ -1013,7 +1030,12 @@
 
                     });
                     //   reset();
-                    startscreen();
+
+
+                    // setTimeout(() => document.getElementById('buttonswrap2').classList.add('hide'), 1);
+                    setTimeout(() => startscreen(), 1000);
+
+
                 }
             }
             window.requestAnimationFrame(step);
@@ -1034,18 +1056,18 @@
 
 
         var sound2b = new Pizzicato.Sound('./snd/coinx.mp3', function() {
-            sound.attack = 0.5;
-            sound.volume = 0.04;
+            sound2b.attack = 0.5;
+            sound2b.volume = 0.04;
         });
 
         var sound2 = new Pizzicato.Sound('./snd/plop.mp3', function() {
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            sound.attack = 0.1;
+            sound2.attack = 0.1;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.04;
+            sound2.volume = 0.04;
             // sound.release = 0.4;
         });
         var sound3 = new Pizzicato.Sound('./snd/failx3.mp3', function() {
@@ -1098,7 +1120,7 @@
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.22;
+            sound.volume = 0.12;
             // sound.release = 0.4;
         });
 
@@ -1118,7 +1140,7 @@
             feedback: 0.64,
             // time: 0.84,
             time: 0.42,
-            mix: .9,
+            mix: 0.9,
             cutoff: 890
         });
 

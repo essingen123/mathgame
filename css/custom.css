@@ -319,7 +319,7 @@ right: 0; */
 }
 
 .show {
-    opacity: 0.95;
+    opacity: 0.99;
     display: block;
     margin-top: 0;
     border-radius: 0;
@@ -334,7 +334,7 @@ right: 0; */
         top: -90px;
     }
     100% {
-        opacity: 0.95;
+        opacity: 0.99;
         top: 0;
         -webkit-backdrop-filter: blur(18px);
         backdrop-filter: blur(18px);
@@ -437,6 +437,7 @@ right: 0; */
     height: 30px;
     position: absolute;
     top: 0;
+    margin: auto;
 }
 
 .animatelevel2 {
@@ -889,8 +890,8 @@ body::before {
 }
 
 .tilt {
-    transform: rotateZ(-10deg);
-    transform: rotate(-10deg);
+    /* transform: rotateZ(-10deg);
+    transform: rotate(-10deg); */
     width: 200%;
     left: -50%;
     right: 0;
@@ -903,7 +904,7 @@ body::before {
     display: block;
     background-color: #fafafa43;
     transition: all .9s ease-in-out;
-    padding: 9px;
+    padding: 6px;
     animation-duration: 1.5s;
     animation-name: slideinfromright;
     animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
@@ -911,8 +912,8 @@ body::before {
 
 #leveling {
     background-color: #91228087;
-    padding: 9px;
-    margin: 7px auto 7px auto;
+    padding: 6px;
+    margin: 4px auto 4px auto;
     display: block;
     animation-duration: 1.7s;
     animation-name: fadein;
@@ -921,7 +922,7 @@ body::before {
 
 #hiscoring {
     background-color: #fafafa44;
-    padding: 9px;
+    padding: 6px;
     animation-duration: 2s;
     animation-name: slideinfromleft;
     animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 1.0955);
@@ -1130,7 +1131,7 @@ position: fi; */
 
 /* Landscape */
 
-@media only screen and (min-width: 481px)
+@media only screen and (min-width: 721px)
 /*and (-webkit-min-device-pixel-ratio: 2)*/
 
 
@@ -1156,7 +1157,7 @@ position: fi; */
 
 /* Portrait */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 720px) {
     /* and (-webkit-min-device-pixel-ratio: 2) */
     /*and (orientation: portrait) */
     .buttonswrapper {
@@ -1172,6 +1173,6 @@ height: 100%; */
         float: right;
         height: 50%;
         width: 100%;
-        max-width: 600px;
+        /* max-width: 720px; */
     }
 }
