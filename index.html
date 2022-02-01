@@ -619,22 +619,23 @@
                 // let elementhtml = "<div style='display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;background-color:#f0a; height:1px;width:" + timesincenext / 30 + "px;'></div>";
                 // geiha('timechart2', elementhtml);
 
-                // simple clean up
-                if (score % 30 == 0) {
-                    geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:40px;"></div>');
-                }
+
 
                 // Ternary operator, condition ? expr1 : expr2
                 // or just below as ... condition || ...
-                barheightmax = 36 - 2;
-                barheightmin = 4;
-                barheight = Math.round(timesincenext / 180);
+                barheightmax = 56 - 2;
+                // simple clean up
+                if (score % 90 == 0) {
+                    geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:' + barheightmax + 'px;"></div>');
+                }
+                barheightmin = 8;
+                barheight = Math.round(timesincenext / (barheightmax * 2));
                 clg(barheight);
                 barheight < barheightmax || (barheight = barheightmax);
                 barheight > barheightmin || (barheight = barheightmin);
                 //barheight += 2;
                 clg(barheight);
-                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;width:6px;height:" + barheight + "px;'></div>";
+                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;width:4px;height:" + barheight + "px;transform: rotateZ(" + (score - 45) + "deg);'></div>";
                 geiha('timechart', elementhtml);
 
 
