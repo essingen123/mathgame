@@ -2,10 +2,27 @@
 <html>
 
 <head>
-
-    <link rel="icon" type="image/png" href="./favicon-32x32.png">
-
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- OG -->
+    <meta property="og:title" content="Quiz Game" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.io/mathgame/" />
+    <meta property="og:image" content="https://github.io/mathgame/image.png" />
+    <meta property="og:description" content="A Math and JS Code Quiz Game." />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@w3schools" />
+    <meta name="twitter:title" content="Quiz Game" />
+    <meta name="twitter:description" content="A Math and JS Code Quiz Game." />
+    <meta name="twitter:image" content="https://github.io/mathgame/" />
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="favicon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <title>Math Game Pi 😀 • v0.0089b • Coded on a Mobile </title>
@@ -18,31 +35,29 @@
 </head>
 
 <body>
-    <div id="scoreoverlay" dragable="true" class="scoreoverlay" onclick="newround();" ondrag="newround();">
-
-
-        <h1>Math Game Pi 🏹</h1>
-        <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
-                <br /> before time's up?<br /> <br />
-            </span>
-        <div class="wrapper tilt">
-            <div id="scoring"> SCORE <span class="b" id="score3"></span>
-                <div id='score3x'></div>
+    <div id="scoreoverlay" dragable="true" class="scoreoverlay" onmousedown="newround();">
+        <div class="scoreoverlaywrapper">
+            <h1>Math Game Pi 🏹</h1>
+            <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
+                    <br /> before time's up?
+                </span>
+            <div class="wrapper tilt">
+                <div id="scoring"> SCORE <span class="b" id="score3"></span>
+                    <div id='score3x'></div>
+                </div>
+                <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
+                <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
+                <!-- start the boot camp, let's  warm warp up ;-) -->
             </div>
-            <div id="leveling"> LVL <span class="b" id="level3"></span> </div>
-            <div id="hiscoring"> HISCORE <span class="b" id="hiscore3"></span> </div>
-            <!-- start the boot camp, let's  warm warp up ;-) -->
-        </div><br /><br /><br /><br /><br /><br />
 
-        <span class="gradient">
-            <button class="superbounce" onclick="newround();"><i>Go train!</i> ⚡️</button>
-        </span>
-        <span class='spansmall slideinfrom'><br /> Coded to an estimated ~89% on a mobile and updated with
-            the Amazing AI CoPilot from GitHub<br />
-            <br />
-    
-    
-        </span>
+            <span class="gradient">
+                <button class="superbounce"><i>Go train!</i> ⚡️</button>
+            </span>
+            <span class='spansmall slideinfrom'>Coded to an estimated ~89% on a mobile and updated with
+                the Amazing AI CoPilot from GitHub        
+        
+            </span>
+        </div>
     </div>
     <div id="megadiv" class="megadiv">
         <!-- <div class="hint"></div> -->
@@ -69,19 +84,18 @@
                     </div>
                 </div>
             </div>
-            <div id="moutput" class="moutput"></div><br />
-
+            <div id="moutput" class="moutput"></div>
+            <div style="display:block;position:relative;width:80%;height:36px;overflow:visible;margin-top:8px;bottom:2px; text-align:left;margin:0 auto;padding:4px 24px;" id="timechart"></div>
             <div id="score2"></div>
 
         </div>
         <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
         <div id="gamediv2" class="gamediv2">
-            <div class="buttonswrapper">
-                <div style="display:block;position:relative;width:80%;height:36px;overflow:visible;margin-top:-14px;top:-15px; text-align:left;margin:0 auto;padding:4px 24px;" id="timechart"></div>
+
+            <div class="buttonswrapper" id="buttonswrapper">
                 <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
-                <span id="answer2" class="answer2"></span>
                 <div id="buttons" class="buttons"> </div>
-            </div>
+                <span id="answer2" class="answer2"></span> </div>
             <div class="fb" id="fb"></div>
 
         </div>
@@ -325,11 +339,12 @@
 
                 let pitchtonevol = pitcharray[(score - 1) % pitcharray.length];
                 soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
+                soundx.play();
                 soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
 
 
                 // MELODY
-                soundx.play();
+
 
 
                 if (hiscore < score) {
@@ -473,7 +488,7 @@
 
         function makebuttons() {
 
-            document.getElementById('buttons').innerHTML += '<div class="buttonswrap2" id="buttonswrap2"></div>';
+            document.getElementById('buttons').innerHTML = '<div class="buttonswrap2" id="buttonswrap2"></div>';
 
             var arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
             arry.forEach(iok => {
@@ -546,7 +561,7 @@
         const dl = () => {
             //            reset();
             startscreen();
-            makebuttons();
+            // makebuttons();
         }
         var q = z = w = 0;
 
@@ -693,20 +708,21 @@
             //  1`);
             // c(`/*  Press 1<br />*/
             //  1`);
+            c(`2+3`);
+            c(`2+2`);
+            c(`2+1`);
             c(`1+1`);
+            c(`1+0`);
+            c(`0+2`);
             c(`1+2`);
             c(`2+2`);
             c(`2+3`);
             c(`3+3`);
-            c(`3+2`);
-            c(`0+2`);
-            c(`0+1`);
-            c(`0+0`);
-            c(`0+8`);
-            c(`0+9`);
-            c(`0+9`);
-            c(`1+9`);
-            c(`2+9`);
+            c(`3+4`);
+            c(`3+5`);
+            c(`3+6`);
+            c(`10+2`);
+            c(`\'Skip 1!';10+1`);
             c(`10+0`);
             c(`10+3`);
             c(`10+2`);
@@ -857,6 +873,7 @@
         }
 
         function newround() {
+            makebuttons();
             // hmm should perhaps only at one place.. 
             speedish = startlevelspeed + level * speedincrease;
 
@@ -1006,6 +1023,7 @@
 
 
                     setTimeout(() => document.getElementById('buttonswrapper').classList.add('hide'), 1);
+                    clg('running!213548216577652387653218');
                     setTimeout(() => document.getElementById('buttonswrap2').remove(), 2000);
 
 
@@ -1033,7 +1051,7 @@
 
 
                     // setTimeout(() => document.getElementById('buttonswrap2').classList.add('hide'), 1);
-                    setTimeout(() => startscreen(), 1000);
+                    setTimeout(() => startscreen(), 500);
 
 
                 }
