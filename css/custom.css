@@ -1183,7 +1183,7 @@ position: fi; */
 
 /* Landscape */
 
-@media only screen and (min-width: 721px)
+@media only screen and (min-width: 521px)
 /*and (-webkit-min-device-pixel-ratio: 2)*/
 
 
@@ -1209,7 +1209,7 @@ position: fi; */
 
 /* Portrait */
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 520px) {
     /* and (-webkit-min-device-pixel-ratio: 2) */
     /*and (orientation: portrait) */
     .buttonswrapper {

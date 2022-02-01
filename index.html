@@ -1243,6 +1243,15 @@
         const geiha = (id, innerhtml) => document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + innerhtml;
         //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
         //return document.getElementById.bind(document); //wowsers!s
+
+
+
+        var supportsOrientationChange = "onorientationchange" in window,
+            orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+        window.addEventListener(orientationEvent, function() {
+            window.location.reload()
+        }, false);
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
