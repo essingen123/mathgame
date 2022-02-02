@@ -13,7 +13,7 @@ wonderful, it actually did work.
  and skipped code quality to clean up later.  
  
 **Installation** 
- Minimal timeless fuzz in current version. Just open in a browser with access to sufficent local storage. 
+ Minimal timeless fuzz in current version. Just open in a browser with access to sufficient local storage. 
  
 **AI Usage** 
 Close to none in the running implementation. During desktop code clean up sessions - improvements were done using 
