@@ -149,7 +149,7 @@ right: 0; */
     .hint {
         pointer-events: none;
         /* not preventing interaction with some elements for some browsers */
-        position: relative;
+        position: fixed;
         margin: 1px auto;
         left: 0;
         right: 0;
@@ -1403,7 +1403,7 @@ height: 100%; */
         /* background-color: #eee; */
         /* height: 244px; */
         /* width: 244px; */
-        height: 40px;
+        height: 44px;
         width: 70%;
         padding: 8px;
         /* border-radius: 8px; */
