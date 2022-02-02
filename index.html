@@ -41,10 +41,58 @@
     <!-- @import url('http://fonts.cdnfonts.com/css/games'); -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/progressbar.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
 </head>
 
 <body>
-    <div id="scoreoverlay" dragable="true" class="scoreoverlay" onmousedown="newround();">
+
+
+    <div id="leveloverlay" class="leveloverlay leveloverlay2">
+        <div class="leveloverlaywrapper">
+            <div class="slideinfromleft">GET READY</div><br />
+
+            <div class="slideinfromright" id="levelscreenlevel">LEVEL 01</div>
+        </div>
+    </div>
+    <style>
+        .hidden {
+            opacity: 0.9;
+        }
+        
+        .leveloverlay2 {
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: #606c88;
+            /* fallback for old browsers */
+            /* background: -webkit-linear-gradient(to right, #3f4c6b, #606c88); */
+            /* Chrome 10-25, Safari 5.1-6 */
+            background-size: 128px 128px;
+            /* opacity: 0.1; */
+            background-image: radial-gradient(circle, #253250aa 10% 10%, rgb(157, 173, 211) 900% 900%), linear-gradient(-135deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        .leveloverlay2::before {
+            background-size: 64px 64px;
+            opacity: 0.1;
+            background-image: linear-gradient(-135deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        .stripes::before {
+            z-index: 9999;
+            background-size: 64px 64px;
+            opacity: 0.1;
+            background-image: linear-gradient(-135deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+        }
+    </style>
+
+
+
+
+    <div id="scoreoverlay" class="scoreoverlay" onmousedown="newround();">
+        <canvas></canvas>
         <div class="scoreoverlaywrapper">
             <div class="logo">
                 <h1><span style="color:#FFF;">Math Code</span>
@@ -136,7 +184,7 @@
     <script>
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
-
+        var haltforlevelup = false;
         var powerup1 = 3;
         var diff = 0;
         var elapsedsincenext = 0;
@@ -173,10 +221,10 @@
         var maxlifetime = 450; // max time left in..  pixels ;-D
         var extralifetime = 30; //how much extra time per right answer         // var extralifetime = 203; //how much extra time per right answer 
         var speedish = 0.05; // hmm effects startspeed for the very first question     // var speedish = 0.3; // starting speed for testing, too fast for prod         // var speedish = 0.089; // starting speed
-        var speedincrease = 0.005; //may rather be in blocks of levels or per question
+        var speedincrease = 0.004; //may rather be in blocks of levels or per question
         var startlevelspeed = 0.017; // became starting speed
         var alternate, diffspin = 0; // can use score, but it might change in the future
-        var losslifetime = -30; // how much time is lost per wrong answer
+        var losslifetime = -20; // how much time is lost per wrong answer
         //debug setting, "is set"
         if (typeof debugmode !== 'undefined') {
             // is set
@@ -281,8 +329,8 @@
                         // document.getElementById('score2').innerHTML += "🔮";
                         scorez = scorez - 25; // buggy  time to fix
 
-                        sound5.volume = 0.5;
-                        sound5.play(1.9, 0);
+                        sound5.volume = 0.7;
+                        sound5.play(1.3, 0);
 
 
                         let elementx = document.createElement('span');
@@ -297,7 +345,7 @@
                         // document.getElementById('score2').innerHTML += "💎";
 
                         // only plays one sound when not cloned, easy setup..
-                        sound4.volume = 0.95;
+                        sound4.volume = 0.75;
                         // some delay to make it sync more with gfx
                         sound4.play(0.4, 0);
 
@@ -396,15 +444,18 @@
                 document.getElementById('hiscore').innerHTML = hiscore;
 
 
+
+
+
                 let levelbefore = level;
                 // level = 1+ Math.round(score / 10 - score*0.03,0);
                 level = 1 + Math.round(score / 10 - score * 0.03, 0);
                 if (levelbefore != level) {
                     // levlup levelup level up :D
-
+                    haltforlevelup = true;
 
                     // EXTRA LIFE  !!S
-                    lifetimeleft = lifetimeleft + (10 * extralifetime);
+                    lifetimeleft = lifetimeleft + (12 * extralifetime);
 
                     // sound7 = sound7.clone();
                     sound7.volume = 0.7;
@@ -976,6 +1027,7 @@
 
         function newround() {
 
+
             makebuttons();
 
 
@@ -1027,11 +1079,65 @@
             //somehow this is not working.. 
             setTimeout(() => delement.classList.remove('show'), 630);
 
-
-
             reset();
+            levelstart();
 
 
+
+
+
+
+
+
+            function levelstart() {
+
+                //console.log('levelstart');
+                //console.log(level);
+                //console.log(speedish);
+
+                geih('levelscreenlevel', "LEVEL 0" + level);
+
+                //console.log(level);
+                // geiac('leveloverlay', 'leveloverlay');
+                // geiac('leveloverlay', 'stripes');
+                // geiac('leveloverlay', 'leveloverlay2');
+                setTimeout(() => {
+                    geirec('leveloverlay', 'hide');
+                }, 50);
+
+                setTimeout(() => {
+                    geiac('leveloverlay', 'show');
+                }, 150);
+
+                geiac('leveloverlay', 'show');
+                // geirec('leveloverlay', 'hidden');
+
+                //   geiac('leveloverlay', 'leveloverlay');
+                // gei('leveloverlay').style.opacity = 1;
+                // gei('leveloverlay').style.display = 'flex';
+
+                setTimeout(() => {
+
+                    geiac('leveloverlay', 'hide');
+                    setTimeout(() => {
+                        // gei('leveloverlay').style.opacity = 0;
+                        // gei('leveloverlay').style.display = 'none';
+
+                        geirec('leveloverlay', 'show');
+                        // geiac('leveloverlay', 'hidden');
+                        // geirec('leveloverlay', 'leveloverlay');
+                        // geirec('leveloverlay', 'stripes');
+
+                        // geirec('leveloverlay', 'leveloverlay2');
+
+                    }, 600);
+
+                    // reset();
+                    window.requestAnimationFrame(step);
+
+                }, 2800);
+
+            }
 
             function step(timestamp) {
                 if (start === undefined) {
@@ -1122,7 +1228,14 @@
                 }
                 if (lifetimeleft > 1) {
                     previousTimeStamp = timestamp
-                    window.requestAnimationFrame(step);
+
+                    if (haltforlevelup == true) {
+
+                        haltforlevelup = false;
+                        levelstart();
+                    } else {
+                        window.requestAnimationFrame(step);
+                    }
                 } else {
 
                     // GAME OVER! 
@@ -1163,7 +1276,7 @@
 
                 }
             }
-            window.requestAnimationFrame(step);
+
         }
 
         function colortohex(red, green, blue) {
@@ -1343,10 +1456,10 @@
 
 
         var stereoPanner = new Pizzicato.Effects.StereoPanner({
-            pan: -0.1
+            pan: -0.2
         });
         var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
-            pan: 0.1
+            pan: 0.2
         });
 
         soundx.addEffect(stereoPanner);
@@ -1392,6 +1505,8 @@
 
         const geih = (id, innerhtml) => document.getElementById(id).innerHTML = innerhtml; //wowsers!s
         const geiha = (id, innerhtml) => document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + innerhtml;
+        const geirec = (id, removeclass) => document.getElementById(id).classList.remove(removeclass);
+        const geiac = (id, addclass) => document.getElementById(id).classList.add(addclass);
         //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
         //return document.getElementById.bind(document); //wowsers!s
 
@@ -1404,7 +1519,8 @@
             window.location.reload()
         }, false);
     </script>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/OrbitControls.js'></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182873219-6"></script>
     <script>
@@ -1416,7 +1532,89 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-182873219-6');
+
+
+
+
+
+        //Get window size
+        var ww = window.innerWidth,
+            wh = window.innerHeight;
+
+        //Create a WebGL renderer
+        var renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector("canvas")
+        });
+        renderer.setSize(ww, wh);
+
+        //Create an empty scene
+        var scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0x999999, 100, 200);
+
+        //Create a perpsective camera
+        var camera = new THREE.PerspectiveCamera(45, ww / wh, 0.001, 100);
+        camera.position.z = 400;
+
+        //Array of points
+        var points = [
+            [68.5, 185.5],
+            [1, 262.5],
+            [270.9, 281.9],
+            [300, 212.8],
+            [178, 155.7],
+            [240.3, 72.3],
+            [153.4, 0.6],
+            [52.6, 53.3],
+            [68.5, 185.5]
+        ];
+
+        //Convert the array of points into vertices
+        for (var i = 0; i < points.length; i++) {
+            var x = points[i][0];
+            var y = (Math.random() - 0.5) * 250;
+            var z = points[i][1];
+            points[i] = new THREE.Vector3(x, y, z);
+        }
+        //Create a path from the points
+        var path = new THREE.CatmullRomCurve3(points);
+
+        //Set colors
+        var colors = [0x777777, 0xFFFF9D, 0xBEEB9F, 0x79BD8F, 0x00A388];
+        //Loop through all those colors
+        for (var i = 0; i < colors.length; i++) {
+            //Create a new geometry with a different radius
+            var geometry = new THREE.TubeBufferGeometry(path, 100, (i * 2) + 4, 10, true);
+            //Set a new material with a new color and a different opacity
+            var material = new THREE.MeshBasicMaterial({
+                color: colors[i],
+                transparent: true,
+                wireframe: true,
+                opacity: ((1 - i / 5) * 0.25 + 0.01)
+            });
+            //Create a mesh
+            var tube = new THREE.Mesh(geometry, material);
+            //Push the mesh into the scene
+            scene.add(tube);
+        }
+
+        var percentage = 0;
+
+        function render() {
+
+            percentage += 0.0001;
+            var p1 = path.getPointAt(percentage % 1);
+            var p2 = path.getPointAt((percentage + 0.01) % 1);
+            camera.position.set(p1.x, p1.y, p1.z);
+            camera.lookAt(p2);
+
+            //Render the scene
+            renderer.render(scene, camera);
+
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
     </script>
+    <!-- partial -->
 
 </body>
 
