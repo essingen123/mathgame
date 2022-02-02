@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <script>
+        debugmode = true;
+    </script>
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -86,10 +89,13 @@
                     </div>
                 </div>
             </div>
-            <div id="moutput" class="moutput"></div>
-            <div style="display:block;position:relative;width:80%;height:36px;overflow:visible;margin-top:8px;bottom:2px; text-align:left;margin:0 auto;padding:4px 24px;" id="timechart"></div>
-            <div id="score2" class="score2"></div>
 
+            <div id="moutput" class="moutput"></div>
+            <div style="height:70px;">
+                <div id="score2" class="score2"></div>
+            </div>
+            <!-- <div style="background-color: #ccc; filter: drop-shadow(0 0 3px #ccc);height:44px;padding:8px;border-radius:8px;display:inner-block;position:relative;width:80%;overflow:visible; text-align:left;margin:0 auto;" id="timechart"></div> -->
+            <div style="background-color: #eee; filter: drop-shadow(0 0 9px #ccc);height:44px;padding:8px;border-radius:8px;display:inner-block;position:relative;width:80%;overflow:visible; text-align:left;margin:0 auto;" id="timechart"></div>
         </div>
         <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
         <div id="gamediv2" class="gamediv2">
@@ -107,9 +113,12 @@
 
 
             <div class="buttonswrapper" id="buttonswrapper">
+                <!-- <div style="background-color:#ccc;" id="answer2" class="answer2"></div> -->
+                <div id="answer2" class="answer2"></div>
                 <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
                 <div id="buttons" class="buttons"> </div>
-                <span id="answer2" class="answer2"></span> </div>
+
+            </div>
 
 
         </div>
@@ -158,9 +167,14 @@
         var startlevelspeed = 0.017; // became starting speed
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
-        //debug setting
-        //  maxlifetime = lifetimeleftstart = 120000;
+        //debug setting, "is set"
+        if (typeof debugmode !== 'undefined') {
+            // is set
 
+            maxlifetime = lifetimeleftstart = 120000;
+        } else {
+            debugmode = false;
+        }
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
         document.getElementById('level').innerHTML = level;
@@ -640,13 +654,17 @@
 
                 // Ternary operator, condition ? expr1 : expr2
                 // or just below as ... condition || ...
-                barheightmax = 56 - 2;
+                barheightmax = 36 - 2;
                 // simple clean up
-                if (score % 50 == 0) {
-                    geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:' + barheightmax + 'px;"></div>');
+                if (score % 30 == 0) {
+                    //   geih('timechart', '<div style="bottom: 0; display: block; width: 1px; height:' + barheightmax + 'px;"></div>');
+
+                    geih('timechart', '<div style="bottom: 0; display: inline-flex; width: 1px; height:' + barheightmax + 'px;"></div>');
+
+                    // gei('ftimechart').style.height = barheightmax + 'px';
                 }
                 barheightmin = 8;
-                barheight = Math.round(timesincenext / (barheightmax * 2));
+                barheight = Math.round(timesincenext / (barheightmax * 3));
                 clg(barheight);
                 barheight < barheightmax || (barheight = barheightmax);
                 barheight > barheightmin || (barheight = barheightmin);
@@ -655,9 +673,9 @@
                 // let elementhtml = "<div style='bottom:0;display:inline-flex;background-color:#f0a; " +
                 //     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
                 //     " width:6px;height:" + barheight + "px;transform: rotateZ(" + (score - 25) + "deg);'></div>";
-                let elementhtml = "<div style='bottom:0;display:inline-flex;background-color:#f0a; " +
+                let elementhtml = "<div style=' bottom:0;display:inline-flex;background-color:#f0a; " +
                     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
-                    " width:6px;height:" + barheight + "px;'></div>";
+                    " width:8px;height:" + barheight + "px;'></div>";
                 geiha('timechart', elementhtml);
 
 
@@ -1298,7 +1316,7 @@
             }
         }
 
-        const clg = console.log; // Yay for closures!
+        const clg = debugmode ? console.log : 0; // Yay for closures!
         //  const gei = document.getElementById.bind(document); //wowswers
 
 

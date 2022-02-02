@@ -108,7 +108,7 @@ animation-name: fbpow; */
         /* position: absolute; */
         /* left: 0;
 right: 0; */
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         display: flex-box;
         /* justify-content: space-evenly; */
         /* justify-content: center; */
@@ -189,9 +189,11 @@ right: 0; */
     
     .buttonswrapper {
         display: flex;
+        flex-direction: column;
+        align-self: flex-end;
         /* flex: content; */
         /* flex-wrap: wrap-reverse; */
-        flex-direction: column-reverse;
+        /* flex-direction: column-reverse; */
     }
     
     #buttonswrapper {
@@ -239,6 +241,7 @@ right: 0; */
         font-weight: bolder;
         opacity: 0.1;
         font-size: 175%;
+        width: 10%;
     }
     
     @keyframes fadeout {
@@ -679,19 +682,23 @@ animation-name: fbpowr;
         display: flex;
         /* display: flex; */
         align-self: flex-end;
+        justify-content: flex-end;
     }
     
     .buttons {
-        /* display: flex; */
+        display: flex;
         align-self: flex-end;
+        justify-content: space-between;
         /* display: flex; */
     }
     
     .buttonswrap2 {
-        display: flex;
+        justify-content: space-between;
+        /* display: flex; */
         /* container */
+        /* align-self: flex-end; */
+        /* flex-wrap: wrap; */
         align-self: flex-end;
-        flex-wrap: wrap;
         /* thing */
         /* justify-content: space-evenly; */
     }
@@ -706,7 +713,8 @@ animation-name: fbpowr;
         /* height: 100%; */
         /* position: absolute; */
         /* background: radial-gradient(circle at 30% 60%, #4CAF5055, #449e4855 50%); */
-        background: radial-gradient(circle at 30% 60%, #323232c8, #262626de 50%);
+        /* background: radial-gradient(circle at 30% 60%, #323232c8, #262626de 50%); */
+        background: radial-gradient(circle at 30% 60%, #32323238, #262626ae 90%);
         /* background-color: #7CAF80; */
         /* padding: 42px 0 2px 0; */
         padding: 2px 0 2px 0;
