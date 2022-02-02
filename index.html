@@ -176,7 +176,7 @@
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
         var startlevelspeed = 0.017; // became starting speed
         var alternate, diffspin = 0; // can use score, but it might change in the future
-
+        var losslifetime = -30; // how much time is lost per wrong answer
         //debug setting, "is set"
         if (typeof debugmode !== 'undefined') {
             // is set
@@ -402,6 +402,10 @@
                 if (levelbefore != level) {
                     // levlup levelup level up :D
 
+
+                    // EXTRA LIFE  !!S
+                    lifetimeleft = lifetimeleft + (10 * extralifetime);
+
                     // sound7 = sound7.clone();
                     sound7.volume = 0.7;
                     sound7.play();
@@ -478,7 +482,7 @@
 
                 //                bigtimeclock = bigtimeclock + extralifetime;
 
-
+                // extra life
                 lifetimeleft = lifetimeleft + extralifetime + 30;
 
                 // MIGHT BECOME BUGGY.. but a bit fun for more bounce:
@@ -500,7 +504,11 @@
 
 
             } else {
-                // NOT CORRECT.. YET! 
+                // NOT CORRECT.. YET!  "WRONG"
+
+                // loss life builds on length of the wrong answer... 
+                //lifetimeleft = lifetimeleft + losslifetime + 0;
+
 
 
 
@@ -527,6 +535,9 @@
                     //document.getElementById('answer').value = '';
                     //   document.getElementById('answer2').innerHTML = '_';
                     // sethint();
+                    // loss life builds on length of the wrong answer... 
+                    lifetimeleft = lifetimeleft + losslifetime + 0;
+
                 }
 
             }
