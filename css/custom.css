@@ -829,6 +829,7 @@ animation-name: fbpowr;
         letter-spacing: 3px;
         text-shadow: 0 0 90px #5d047b44, 0 0 20px #ffffff22, 0 0 50px #e66b, 0 0 60px #1f1601, 0 0 70px #ffeec8;
         margin-top: 20px;
+        line-height: 3.1vmin;
     }
     
     topgradient {
