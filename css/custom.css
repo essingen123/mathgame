@@ -147,6 +147,8 @@ right: 0; */
     }
     
     .hint {
+        pointer-events: none;
+        /* not preventing interaction with some elements for some browsers */
         position: relative;
         margin: 1px auto;
         left: 0;
@@ -335,8 +337,7 @@ right: 0; */
     }
     
     .scoreoverlay {
-        /* -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px); */
+        /* -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); */
         /* opacity: 50% !important; */
         -webkit-user-drag: element;
         margin-top: -1100px;
@@ -425,6 +426,7 @@ right: 0; */
     
     .fbpow {
         pointer-events: none;
+        /*supprter by later browsers to not cover a clickable area */
         position: absolute;
         display: block;
         left: 0;
@@ -693,12 +695,13 @@ animation-name: fbpowr;
     }
     
     .buttonswrap2 {
-        justify-content: space-between;
-        /* display: flex; */
+        /* justify-content: space-between; */
+        display: block;
+        width: 100%;
         /* container */
         /* align-self: flex-end; */
         /* flex-wrap: wrap; */
-        align-self: flex-end;
+        /* align-self: flex-end; */
         /* thing */
         /* justify-content: space-evenly; */
     }
@@ -771,6 +774,7 @@ animation-name: fbpowr;
         /* max-height: 78px; */
         font-size: 140%;
         color: rgb(223, 212, 228);
+        min-height: 56px;
     }
     
     html,
@@ -1386,4 +1390,89 @@ height: 100%; */
         /* <percentage> value */
         /* font-size: 200%; */
         /* text-size-adjust: 80%; */
+    }
+    
+    .timechart {
+        pointer-events: none;
+        /*interaction prev*/
+        z-index: 2000;
+        margin: 0 auto;
+        /* margin-top: -90px; */
+        backdrop-filter: blur(18px);
+        opacity: 0.7;
+        /* background-color: #eee; */
+        /* height: 244px; */
+        /* width: 244px; */
+        height: 40px;
+        width: 70%;
+        padding: 8px;
+        /* border-radius: 8px; */
+        /* border-radius: 50%; */
+        border-radius: 8px;
+        /* display: inner-block; */
+        position: relative;
+        /* width: 80%; */
+        overflow: visible;
+        /* text-align: left; */
+        /* background-color: rgba(255, 255, 255, .5); */
+        background: rgba( 255, 255, 255, 0.5);
+        /* position: absolute; */
+        /* display: block; */
+        box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37);
+    }
+    /* if backdrop support: very transparent and blurred */
+    
+    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        .timechart {
+            /* background-color: rgba(255, 255, 255, .5); */
+            background: rgba( 255, 255, 255, 0.5);
+            -webkit-backdrop-filter: blur(1rem);
+            backdrop-filter: blur(1rem);
+            /* position: absolute;
+            display: block; */
+            /* box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37); */
+        }
+    }
+    
+    .logo {
+        pointer-events: none;
+        /*interaction prev*/
+        z-index: 2000;
+        margin: 0 auto;
+        /* margin-top: -90px; */
+        backdrop-filter: blur(18px);
+        opacity: 0.9;
+        /* background-color: #eee; */
+        /* height: 244px; */
+        /* width: 244px; */
+        /* height: 120px; */
+        /* width: 120px; */
+        /* padding: 8px; */
+        /* border-radius: 8px; */
+        /* border-radius: 50%; */
+        border-radius: 50%;
+        padding: 5px;
+        /* display: inner-block; */
+        /* position: relative; */
+        /* width: 80%; */
+        overflow: visible;
+        /* text-align: left; */
+        /* background-color: rgba(255, 255, 255, .5); */
+        /* background: rgba( 255, 255, 255, 0.5); */
+        /* position: absolute; */
+        /* display: block; */
+        /* box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37); */
+    }
+    /* if backdrop support: very transparent and blurred */
+    
+    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        .logo {
+            /* background-color: rgba(255, 255, 255, .5); */
+            /* background: rgba( 255, 255, 255, 0.1); */
+            -webkit-backdrop-filter: blur(1rem);
+            backdrop-filter: blur(1rem);
+            /* position: absolute;
+            display: block; */
+            /* box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37); */
+        }
     }

@@ -3,7 +3,7 @@
 
 <head>
     <script>
-        debugmode = true;
+        debugmode = true; // uncomment to enable debug mode
     </script>
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
@@ -40,7 +40,9 @@
 <body>
     <div id="scoreoverlay" dragable="true" class="scoreoverlay" onmousedown="newround();">
         <div class="scoreoverlaywrapper">
-            <h1>Math Game Pi 🏹</h1>
+            <div class="logo">
+                <h1>Math Game Pi 🏹</h1>
+            </div>
 
 
             <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
@@ -95,7 +97,7 @@
                 <div id="score2" class="score2"></div>
             </div>
             <!-- <div style="background-color: #ccc; filter: drop-shadow(0 0 3px #ccc);height:44px;padding:8px;border-radius:8px;display:inner-block;position:relative;width:80%;overflow:visible; text-align:left;margin:0 auto;" id="timechart"></div> -->
-            <div style="background-color: #eee; filter: drop-shadow(0 0 9px #ccc);height:44px;padding:8px;border-radius:8px;display:inner-block;position:relative;width:80%;overflow:visible; text-align:left;margin:0 auto;" id="timechart"></div>
+            <div class="timechart" id="timechart"></div>
         </div>
         <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
         <div id="gamediv2" class="gamediv2">
@@ -128,6 +130,7 @@
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
 
+        var powerup1 = 3;
         var diff = 0;
         var elapsedsincenext = 0;
         var elapsedsincelast = 0;
@@ -400,6 +403,11 @@
                     // top bar score ... 
                     // document.getElementById('level').innerHTML = level;
 
+                    if (powerup1 < 3) {
+                        powerup1++;
+                        powerup1++; // more fun :)
+                        updatepowerups();
+                    }
 
 
 
@@ -527,7 +535,7 @@
                 if (iok == 9)
                     document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' value='clear'>❌</button>";
                 if (iok == 0)
-                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' id='check' value=''>⚡️</button>";
+                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' id='check' value='' style='font-size:100%;'>⚡️⚡️⚡️</button>";
             });
             var elements = document.getElementsByClassName("numkey");
             var myFunction = function() {
@@ -556,18 +564,28 @@
                 elements[i].addEventListener(eventtyper, myFunction, false);
             }
 
+
+
             // hint the right answer :)
             var hint = function() {
                 //  var attribute = this.getAttribute("value");
 
+                if (powerup1 > 0) {
+                    d = document.createElement("div");
+                    d.classList.add("hint");
+                    d.setAttribute("id", "hint");
+                    d.innerHTML = (document.getElementById('eval').value);
+                    document.body.append(d);
 
-                d = document.createElement("div");
-                d.classList.add("hint");
-                d.setAttribute("id", "hint");
-                d.innerHTML = (document.getElementById('eval').value);
-                document.body.append(d);
 
+                    setTimeout(() => {
+                        geirem('hint'); // removes the elemen
 
+                    }, 160);
+
+                    powerup1--;
+                }
+                updatepowerups();
 
 
             }
@@ -627,6 +645,23 @@
             ar.push(po);
         }
 
+
+        function updatepowerups() {
+
+
+            let i = powerup1;
+            if (i === 0) {
+                geih('check', 'NO POWERUPS');
+            } else {
+                geih('check', '');
+            }
+            while (i > 0) {
+                geiha('check', '⚡️');
+                --i;
+            }
+        }
+
+
         function next() {
             // clg('RUNNING!!!!')
             // if (elapsedsincenext === 0) {
@@ -675,7 +710,7 @@
                 //     " width:6px;height:" + barheight + "px;transform: rotateZ(" + (score - 25) + "deg);'></div>";
                 let elementhtml = "<div style=' bottom:0;display:inline-flex;background-color:#f0a; " +
                     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
-                    " width:8px;height:" + barheight + "px;'></div>";
+                    " width:9px;height:" + barheight + "px;'></div>";
                 geiha('timechart', elementhtml);
 
 
@@ -922,7 +957,12 @@
         }
 
         function newround() {
+
             makebuttons();
+
+
+            powerup1 = 3;
+
             // hmm should perhaps only at one place.. 
             speedish = startlevelspeed + level * speedincrease;
 
@@ -1073,7 +1113,7 @@
 
                     setTimeout(() => document.getElementById('buttonswrapper').classList.add('hide'), 1);
                     clg('running!213548216577652387653218');
-                    setTimeout(() => document.getElementById('buttonswrap2').remove(), 700);
+                    setTimeout(() => document.getElementById('buttonswrap2').remove(), 400);
 
 
 
@@ -1316,7 +1356,8 @@
             }
         }
 
-        const clg = debugmode ? console.log : 0; // Yay for closures!
+        const clg = debugmode ? console.log : () => {};
+        // Yay for closures!
         //  const gei = document.getElementById.bind(document); //wowswers
 
 
@@ -1329,6 +1370,8 @@
 
         // /* WORKS?! */ 
         const gei = (id) => document.getElementById(id); //wowsers!s
+        const geir = (id) => document.getElementById(id).remove();
+
         const geih = (id, innerhtml) => document.getElementById(id).innerHTML = innerhtml; //wowsers!s
         const geiha = (id, innerhtml) => document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + innerhtml;
         //  const gei = (id) => document.getElementById.bind(id); //wowsers!s
