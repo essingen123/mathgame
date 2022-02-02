@@ -108,6 +108,12 @@ animation-name: fbpow; */
     /* position: absolute; */
     /* left: 0;
 right: 0; */
+    margin-bottom: 20px;
+    display: flex-box;
+    /* justify-content: space-evenly; */
+    /* justify-content: center; */
+    justify-content: stretch;
+    align-items: center;
 }
 
 #score3x {
@@ -414,6 +420,7 @@ right: 0; */
 }
 
 .fbpow {
+    pointer-events: none;
     position: absolute;
     display: block;
     left: 0;
@@ -431,10 +438,57 @@ right: 0; */
     filter: drop-shadow(2px 2px 13px #ffeefa);
     color: #fff;
     animation-duration: 1.5s;
-    animation-name: fbpow;
     animation-timing-function: cubic-bezier(-.175, .885, .32, -.275);
     z-index: 200;
+    animation-name: fbpow;
 }
+
+
+/* animation-name: fbpowl;
+animation-name: fbpowr;
+@keyframes fbpowl {
+    0% {
+        bottom: 32%;
+        transform: rotateZ(25);
+        left: -100%;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 1;
+        bottom: 62%;
+        border: solid 1px #ffffff33;
+        transform: rotateZ(0deg);
+    }
+    100% {
+        opacity: 0;
+        bottom: 81%;
+        transform: rotateZ(calc(var(--fbpowro)* -0.05));
+    }
+}
+
+@keyframes fbpowr {
+    0% {
+        bottom: 32%;
+        transform: rotateZ(var(--fbpowro));
+        left: var(--fbpowstartpos);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 1;
+        bottom: 62%;
+        border: solid 1px #ffffff33;
+        transform: rotateZ(0deg);
+    }
+    100% {
+        opacity: 0;
+        bottom: 81%;
+        transform: rotateZ(calc(var(--fbpowro)* -0.05));
+    }
+} */
 
 @keyframes fbpow {
     0% {
@@ -633,7 +687,8 @@ right: 0; */
     margin: 0 auto;
     bottom: 0;
     position: relative;
-    margin-top: 6px;
+    margin-top: 2px;
+    margin-bottom: 90px;
 }
 
 button {
@@ -658,10 +713,10 @@ button {
     margin: 0;
     /* padding: 10px 6px 8px 3px; */
     padding: 8px;
-    max-height: 70px;
+    /* max-height: 70px; */
     /* width: 55%; */
-    min-height: 48px;
-    max-width: 260px;
+    /* min-height: 48px; */
+    /* max-width: 260px; */
 }
 
 .numkey {
@@ -671,11 +726,11 @@ button {
     background: radial-gradient(circle at 50% 40%, #353535, #252525 90%);
     border: 1px solid rgba(84, 84, 84, 0.2);
     padding: 12px 5px 10px 5px;
-    max-height: 60px;
+    /* max-height: 60px; */
     width: 32.5%;
     /* height: 24.2%; */
-    min-height: 64px;
-    max-height: 78px;
+    /* min-height: 64px; */
+    /* max-height: 78px; */
     font-size: 140%;
     color: rgb(223, 212, 228);
 }
@@ -1220,13 +1275,14 @@ height: 100%; */
     }
     .gamediv {
         float: left;
-        height: 50%;
+        height: 45%;
         width: 100%;
     }
     .gamediv2 {
         float: right;
-        height: 50%;
+        height: 55%;
         width: 100%;
+        min-height: 200px;
         /* max-width: 720px; */
     }
 }
@@ -1258,7 +1314,10 @@ height: 100%; */
     /* max-height: 2em; */
     /* a x number of line to show (ex : 2 line)  */
     display: inline-flex;
-    font-size: 7.2vw;
+    /* display: flex; */
+    /* font-size: 7.2vw; */
+    font-size: 2.5rem;
+    justify-content: center;
     /* line-height: 9vw; */
     /* text-size-adjust: auto; */
     /* <percentage> value */

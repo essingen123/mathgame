@@ -290,34 +290,48 @@
 
                 }
 
-                try {
-                    soundx.removeEffect(flanger);
-                    soundx.removeEffect(dubDelay);
+                // try {
+                //     soundx.removeEffect(flanger);
+                //     soundx.removeEffect(dubDelay);
 
-                    switch (score % 2) {
-                        case 0:
-                            try {
-                                soundx.removeEffect(stereoPanner2);
-                            } catch (error) {}
-                            break;
-                        case 1:
-                            try {
-                                soundx.removeEffect(stereoPanner);
-                            } catch (error) {}
-                            break;
-                    }
+                //     switch (score % 2) {
+                //         case 0:
+                //             try {
+                //                 soundx.removeEffect(stereoPanner2);
+                //             } catch (error) {}
+                //             break;
+                //         case 1:
+                //             try {
+                //                 soundx.removeEffect(stereoPanner);
+                //             } catch (error) {}
+                //             break;
+                //     }
 
-                } catch (error) {
+                // } catch (error) {
 
+                // }
+                switch (score % 2) {
+                    case 0:
+                        try {
+                            soundx.removeEffect(stereoPanner2);
+                            soundx.stop();
+                        } catch (error) {}
+                        break;
+                    case 1:
+                        try {
+                            soundx.removeEffect(stereoPanner);
+                            soundx.stop();
+                        } catch (error) {}
+                        break;
                 }
 
 
 
 
-
-                soundx = sound.clone();
-                soundx.addEffect(dubDelay);
-                soundx.addEffect(flanger);
+                // soundx = sound.clone();
+                // soundx = sound;
+                // soundx.addEffect(dubDelay);
+                // soundx.addEffect(flanger);
 
                 switch (score % 2) {
                     case 0:
@@ -338,7 +352,7 @@
                 // let pitcharray = [1, 1, (1 + 0.125 * 6)];
 
                 let pitchtonevol = pitcharray[(score - 1) % pitcharray.length];
-                soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
+                // soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
                 soundx.play();
                 soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
 
@@ -1141,15 +1155,38 @@
 
 
 
-        var sound = new Pizzicato.Sound('./snd/success.mp3', function() {
+        var soundx = new Pizzicato.Sound('./snd/success.mp3', function() {
             // MELODY SOUND!
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            sound.attack = 0.4;
+            soundx.attack = 0.4;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            sound.volume = 0.12;
+            soundx.volume = 0.19;
+            // sound.release = 0.4;
+        });
+
+        var soundxb = new Pizzicato.Sound('./snd/success.mp3', function() {
+            // MELODY SOUND!
+            //     sound.play();
+            // sound.sourceNode.playbackRate.value = 0.5;
+            soundb.attack = 0.4;
+            // sound.decay = 0.9;
+            // sound.decay = 0.6;
+            // sound.cutoff = 600;
+            soundb.volume = 0.12;
+            // sound.release = 0.4;
+        });
+        var soundxc = new Pizzicato.Sound('./snd/success.mp3', function() {
+            // MELODY SOUND!
+            //     sound.play();
+            // sound.sourceNode.playbackRate.value = 0.5;
+            soundc.attack = 0.4;
+            // sound.decay = 0.9;
+            // sound.decay = 0.6;
+            // sound.cutoff = 600;
+            soundc.volume = 0.12;
             // sound.release = 0.4;
         });
 
@@ -1160,10 +1197,12 @@
             speed: 0.001,
             depth: 0.02,
             feedback: 0.2,
-            mix: 0.6
+            mix: 0.5
         });
 
-        // sound.addEffect(flanger);
+        soundx.addEffect(flanger);
+        // soundxb.addEffect(flanger);
+        // soundxc.addEffect(flanger);
 
         var dubDelay = new Pizzicato.Effects.DubDelay({
             feedback: 0.78,
@@ -1172,6 +1211,9 @@
             mix: 0.95,
             cutoff: 1290
         });
+        soundx.addEffect(dubDelay);
+        // soundxb.addEffect(dubDelay);
+        // soundxc.addEffect(dubDelay);
 
         // var stereoDelay = new Pizzicato.Effects.StereoDelay({
         //         feedback: 0.79,
@@ -1201,10 +1243,10 @@
 
 
         var stereoPanner = new Pizzicato.Effects.StereoPanner({
-            pan: -0.4
+            pan: -0.1
         });
         var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
-            pan: 0.4
+            pan: 0.1
         });
 
 
