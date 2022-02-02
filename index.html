@@ -38,6 +38,8 @@
     <div id="scoreoverlay" dragable="true" class="scoreoverlay" onmousedown="newround();">
         <div class="scoreoverlaywrapper">
             <h1>Math Game Pi 🏹</h1>
+
+
             <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
                     <br /> before time's up?
                 </span>
@@ -92,15 +94,27 @@
         <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
         <div id="gamediv2" class="gamediv2">
 
+
+            <!-- <div style="background-color: #fbfbfe; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
+                <div style="background-color: #8a8a8f; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
+                    <div style="background-color: #1c1b22; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
+                        <div style="background-color: #42414d; border-radius: 16px; display: flexbox; justify-content:center;align-items:center;padding:12px;margin:0;">
+                            <h1 style="color:#ffffff;margin:0;padding:2px;">Math Game Pi 🏹</h1>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
             <div class="buttonswrapper" id="buttonswrapper">
                 <!-- <div style="opacity:0.2;margin-bottom:-24px;display:block;width:100%;height:14%; position: absolute; display:flex;flex-wrap:wrap;float:left;flex-flow: column wrap;justify-content:end;align-items: center;align-content:center;gap:0 0;" id="timechart2"></div> -->
                 <div id="buttons" class="buttons"> </div>
                 <span id="answer2" class="answer2"></span> </div>
-            <div class="fb" id="fb"></div>
+
 
         </div>
     </div>
-
+    <div class="fb" id="fb"></div>
     <script>
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
@@ -137,20 +151,15 @@
 
         // var lifetimeleft = 20; // life in start
         var lifetimeleftstart = 150; // time in start (??)
-
         var maxlifetime = 450; // max time left in..  pixels ;-D
-        // var extralifetime = 203; //how much extra time per right answer 
-        // var speedish = 0.089; // starting speed
-        var extralifetime = 30; //how much extra time per right answer 
-
-        var speedish = 0.05; // hmm effects startspeed for the very first question
-        // var speedish = 0.3; // starting speed for testing, too fast for prod
+        var extralifetime = 30; //how much extra time per right answer         // var extralifetime = 203; //how much extra time per right answer 
+        var speedish = 0.05; // hmm effects startspeed for the very first question     // var speedish = 0.3; // starting speed for testing, too fast for prod         // var speedish = 0.089; // starting speed
         var speedincrease = 0.005; //may rather be in blocks of levels or per question
-
         var startlevelspeed = 0.017; // became starting speed
-
         var alternate, diffspin = 0; // can use score, but it might change in the future
 
+        //debug setting
+        //  maxlifetime = lifetimeleftstart = 120000;
 
         document.getElementById('score').innerHTML = score;
         document.getElementById('hiscore').innerHTML = hiscore;
@@ -182,7 +191,7 @@
                 soundx2.play(0.16, 0.01);
                 let ploppitcher = score % 30 * 0.01 + parseFloat(1.6 + 10 * (0.6 * parseFloat(1 / (-score % 50 - 8))));
                 soundx2.sourceNode.playbackRate.value = ploppitcher;
-                soundx2.volume = 0.28 + 0.02 * (2 + score % 4);
+                soundx2.volume = 0.23 + 0.02 * (2 + score % 4);
 
                 //  soundx2z = sound2.clone();
                 // soundx2z.play(0.16, 0.01);
@@ -310,21 +319,6 @@
                 // } catch (error) {
 
                 // }
-                switch (score % 2) {
-                    case 0:
-                        try {
-                            soundx.removeEffect(stereoPanner2);
-                            soundx.stop();
-                        } catch (error) {}
-                        break;
-                    case 1:
-                        try {
-                            soundx.removeEffect(stereoPanner);
-                            soundx.stop();
-                        } catch (error) {}
-                        break;
-                }
-
 
 
 
@@ -333,18 +327,6 @@
                 // soundx.addEffect(dubDelay);
                 // soundx.addEffect(flanger);
 
-                switch (score % 2) {
-                    case 0:
-                        try {
-                            soundx.addEffect(stereoPanner);
-                        } catch (error) {}
-                        break;
-                    case 1:
-                        try {
-                            soundx.addEffect(stereoPanner2);
-                        } catch (error) {}
-                        break;
-                }
 
                 // MELODY
                 let pitcharray = [1.001, 0.75, 1.25, 1.125, 1.5005, 0.875, 1.0004, 1.2503, 1.5002, 0.9998];
@@ -353,11 +335,32 @@
 
                 let pitchtonevol = pitcharray[(score - 1) % pitcharray.length];
                 // soundx.volume = 0.05 + score % 3 * 0.05 + (pitchtonevol / 9);
-                soundx.play();
-                soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
 
 
                 // MELODY
+
+                switch (score % 2) {
+                    case 0:
+                        try {
+                            soundx.stop();
+
+                            soundx.play();
+                            soundx.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
+
+                        } catch (error) {}
+                        break;
+                    case 1:
+                        try {
+
+                            soundxb.stop();
+                            soundxb.play();
+                            soundxb.sourceNode.playbackRate.value = pitcharray[(score - 1) % pitcharray.length];
+
+                        } catch (error) {}
+                        break;
+                }
+
+
 
 
 
@@ -639,7 +642,7 @@
                 // or just below as ... condition || ...
                 barheightmax = 56 - 2;
                 // simple clean up
-                if (score % 90 == 0) {
+                if (score % 50 == 0) {
                     geih('timechart', '<div style="bottom: 0; display: inline-block; width: 1px; height:' + barheightmax + 'px;"></div>');
                 }
                 barheightmin = 8;
@@ -649,9 +652,12 @@
                 barheight > barheightmin || (barheight = barheightmin);
                 //barheight += 2;
                 clg(barheight);
-                let elementhtml = "<div style='bottom:0;display:inline-block;background-color:#f0a; " +
+                // let elementhtml = "<div style='bottom:0;display:inline-flex;background-color:#f0a; " +
+                //     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
+                //     " width:6px;height:" + barheight + "px;transform: rotateZ(" + (score - 25) + "deg);'></div>";
+                let elementhtml = "<div style='bottom:0;display:inline-flex;background-color:#f0a; " +
                     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
-                    " width:4px;height:" + barheight + "px;transform: rotateZ(" + (score - 45) + "deg);'></div>";
+                    " width:6px;height:" + barheight + "px;'></div>";
                 geiha('timechart', elementhtml);
 
 
@@ -1171,24 +1177,41 @@
             // MELODY SOUND!
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            soundb.attack = 0.4;
+            soundxb.attack = 0.4;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            soundb.volume = 0.12;
+            soundxb.volume = 0.12;
             // sound.release = 0.4;
         });
         var soundxc = new Pizzicato.Sound('./snd/success.mp3', function() {
             // MELODY SOUND!
             //     sound.play();
             // sound.sourceNode.playbackRate.value = 0.5;
-            soundc.attack = 0.4;
+            soundxc.attack = 0.4;
             // sound.decay = 0.9;
             // sound.decay = 0.6;
             // sound.cutoff = 600;
-            soundc.volume = 0.12;
+            soundxc.volume = 0.12;
             // sound.release = 0.4;
         });
+
+
+        //   switch (score % 2) {
+        //         case 0:
+        //             try {
+        //                 soundx.removeEffect(stereoPanner2);
+        //                 soundx.stop();
+        //             } catch (error) { }
+        //             break;
+        //         case 1:
+        //             try {
+        //                 soundx.removeEffect(stereoPanner);
+        //                 soundx.stop();
+        //             } catch (error) { }
+        //             break;
+        //     }
+
 
 
         var flanger = new Pizzicato.Effects.Flanger({
@@ -1201,18 +1224,19 @@
         });
 
         soundx.addEffect(flanger);
+        soundxb.addEffect(flanger);
         // soundxb.addEffect(flanger);
         // soundxc.addEffect(flanger);
 
         var dubDelay = new Pizzicato.Effects.DubDelay({
-            feedback: 0.78,
+            feedback: 0.70,
             // time: 0.84,
             time: 0.42,
-            mix: 0.95,
-            cutoff: 1290
+            mix: 0.90,
+            cutoff: 1090
         });
         soundx.addEffect(dubDelay);
-        // soundxb.addEffect(dubDelay);
+        soundxb.addEffect(dubDelay);
         // soundxc.addEffect(dubDelay);
 
         // var stereoDelay = new Pizzicato.Effects.StereoDelay({
@@ -1248,6 +1272,10 @@
         var stereoPanner2 = new Pizzicato.Effects.StereoPanner({
             pan: 0.1
         });
+
+        soundx.addEffect(stereoPanner);
+        soundxb.addEffect(stereoPanner2);
+
 
 
         function sethint() {
