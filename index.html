@@ -3,7 +3,13 @@
 
 <head>
     <script>
-        debugmode = true; // uncomment to enable debug mode
+        // if running local should be in debug mode
+        if (document.URL.indexOf("127.0.0.1") != -1) {
+            // debugmode = true; // uncomment to enable debug mode
+        } else {
+            // to test if not local; unciomment the following line
+            // debugmode = true; // should not be set at all
+        }
     </script>
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
@@ -536,7 +542,7 @@
                 if (iok == 9)
                     document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' value='clear'>❌</button>";
                 if (iok == 0)
-                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' id='check' value='' style='font-size:60%;'>⚡️⚡️⚡️</button>";
+                    document.getElementById('buttonswrap2').innerHTML += "<button class='numkey' id='check' value='' style='font-size:55%;'>⚡️⚡️⚡️</button>";
             });
             var elements = document.getElementsByClassName("numkey");
             var myFunction = function() {
@@ -582,7 +588,7 @@
                     setTimeout(() => {
                         geir('hint'); // removes the elemen
 
-                    }, 1600);
+                    }, 1800);
 
                     powerup1--;
                 }
@@ -652,7 +658,7 @@
 
             let i = powerup1;
             if (i === 0) {
-                geih('check', 'NO POWERUPS');
+                geih('check', 'NO POWERUPS<br />LEFT');
             } else {
                 geih('check', '');
             }
