@@ -1608,6 +1608,70 @@ height: 100%; */
     </style>
     <link href="css/progressbar.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    <style>
+        html,
+        body {
+            height: 105%;
+            scroll-behavior: smooth;
+            overflow: visible;
+        }
+    </style>
+    <script>
+        window.onscroll = function(ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                //  alert("You've reached the bottom of the page!");
+
+
+                // left: 37, up: 38, right: 39, down: 40,
+                // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+                var keys = {
+                    37: 1,
+                    38: 1,
+                    39: 1,
+                    40: 1
+                };
+
+                function preventDefault(e) {
+                    e.preventDefault();
+                }
+
+                function preventDefaultForScrollKeys(e) {
+                    if (keys[e.keyCode]) {
+                        preventDefault(e);
+                        return false;
+                    }
+                }
+
+                // modern Chrome requires { passive: false } when adding event
+                var supportsPassive = false;
+                try {
+                    window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                        get: function() {
+                            supportsPassive = true;
+                        }
+                    }));
+                } catch (e) {}
+
+                var wheelOpt = supportsPassive ? {
+                    passive: false
+                } : false;
+                var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+
+                // you're at the bottom of the page
+                // stop listenting for scroll events
+                window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+                window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+                window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+                window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+
+                document.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+                document.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+                document.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+                document.addEventListener('keydown', preventDefaultForScrollKeys, false);
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -3485,11 +3549,11 @@ height: 100%; */
             }, 0);
         });
     </script>
-    <button id="goFS">Go fullscreen</button>
+    <button id="goFS" style="position: fixed; z-index:999;">Go fullscreen</button>
     <script>
         var goFS = document.getElementById("goFS");
         goFS.addEventListener("click", function() {
-
+            console.log("goFS");
             const elem = document.documentElement;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen()
