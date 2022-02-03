@@ -49,12 +49,149 @@
 
     <div id="leveloverlay" class="leveloverlay leveloverlay2">
         <div class="leveloverlaywrapper">
-            <div class="slideinfromleft">GET READY</div><br />
 
+
+            <div class="slideinfromleft">GET READY</div><br />
             <div class="slideinfromright" id="levelscreenlevel">LEVEL 01</div>
+            <div class="pietimerwrapper">
+                <div class="pie spinner"></div>
+                <div class="pie filler"></div>
+                <div class="mask"></div>
+            </div>
         </div>
     </div>
     <style>
+        /*
+    * {
+        box-sizing: border-box;
+    }
+    */
+        
+        .pietimerwrapper {
+            width: 60px;
+            height: 60px;
+            margin: 10px auto;
+            position: relative;
+            transform: rotate(180deg);
+            animation: rota2 5s ease-in infinite;
+            /*      animation-iteration-count: 1; */
+            animation-timing-function: cubic-bezier(0, .7, .11, 0.89);
+        }
+        
+        .pie {
+            width: 50%;
+            height: 100%;
+            transform-origin: 100% 50%;
+            position: absolute;
+            /* background: rgb(187, 196, 196); */
+            background: none;
+            border: 10px solid #e0faffe5;
+        }
+        
+        .spinner {
+            border-radius: 100% 0 0 100% / 50% 0 0 50%;
+            z-index: 200;
+            border-right: none;
+            animation: rota 5s linear infinite;
+            animation-timing-function: cubic-bezier(0, .7, .11, 0.89);
+            /*    animation-iteration-count: 1;*/
+        }
+        /* .wrapper:hover .spinner,
+.wrapper:hover .filler,
+.wrapper:hover .mask {
+    animation-play-state: paused;
+} */
+        
+        .spinner:after {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            top: 10px;
+            right: 10px;
+            content: "";
+            display: none;
+        }
+        
+        .filler {
+            border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+            left: 50%;
+            opacity: 0;
+            z-index: 100;
+            animation: opa 5s steps(1, end) infinite reverse;
+            border-left: none;
+            /* animation-iteration-count: 1;*/
+        }
+        
+        .mask {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            background: inherit;
+            opacity: 1;
+            z-index: 300;
+            animation: opa 5s steps(1, end) infinite;
+            /* animation-iteration-count: 1;*/
+        }
+        
+        @keyframes rota {
+            0% {
+                transform: rotate(0deg);
+                /* animation-timing-function: none; */
+            }
+            1% {
+                transform: rotate(0deg);
+                animation-timing-function: cubic-bezier(0, .7, .11, 0.89);
+            }
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg);
+                animation-timing-function: none;
+            }
+            51% {
+                animation-timing-function: cubic-bezier(0, .33, .11, 0.89);
+                transform: rotate(180deg);
+            }
+            75% {
+                transform: rotate(270deg);
+            }
+            99% {
+                transform: rotate(359deg);
+                animation-timing-function: none;
+            }
+            100% {
+                transform: rotate(360deg);
+                animation-timing-function: none;
+            }
+        }
+        
+        @keyframes opa {
+            0% {
+                opacity: 0;
+            }
+            50%,
+            100% {
+                opacity: 1;
+            }
+            /* 100% {
+        opacity: 0;
+    } */
+        }
+        
+        @keyframes rota2 {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(450deg);
+            }
+        }
+        
         .hidden {
             opacity: 0.9;
         }
@@ -91,7 +228,7 @@
 
 
 
-    <div id="scoreoverlay" class="scoreoverlay" onmousedown="newround();">
+    <div id="scoreoverlay" class="scoreoverlay">
         <canvas></canvas>
         <div class="scoreoverlaywrapper">
             <div class="logo">
@@ -113,7 +250,7 @@
             </div>
 
             <span class="gradient">
-                <button class="superbounce"><i>Go train!</i> ⚡️</button>
+                <button id="bigstartbutton" class="superbounce"><i>Go train!</i> ⚡️</button>
             </span>
             <span class='spansmall slideinfrom'>Coded to an estimated ~89% on a mobile and updated with
                 the Amazing AI CoPilot from GitHub        
@@ -184,7 +321,7 @@
     <script>
         // ? var soundx;
         const canVibrate = window.navigator.vibrate
-        var haltforlevelup = false;
+        var haltforlevelup = false; // pause time ticking
         var powerup1 = 3;
         var diff = 0;
         var elapsedsincenext = 0;
@@ -217,14 +354,16 @@
         }
 
         // var lifetimeleft = 20; // life in start
-        var lifetimeleftstart = 150; // time in start (??)
+        var lifetimeleftstart = 110; // time in start (??)
         var maxlifetime = 450; // max time left in..  pixels ;-D
         var extralifetime = 30; //how much extra time per right answer         // var extralifetime = 203; //how much extra time per right answer 
         var speedish = 0.05; // hmm effects startspeed for the very first question     // var speedish = 0.3; // starting speed for testing, too fast for prod         // var speedish = 0.089; // starting speed
-        var speedincrease = 0.004; //may rather be in blocks of levels or per question
+        var speedincrease = 0.003; //may rather be in blocks of levels or per question
         var startlevelspeed = 0.017; // became starting speed
         var alternate, diffspin = 0; // can use score, but it might change in the future
         var losslifetime = -20; // how much time is lost per wrong answer
+
+        var levelextralivemulti = 6;
         //debug setting, "is set"
         if (typeof debugmode !== 'undefined') {
             // is set
@@ -313,7 +452,7 @@
 
 
 
-                next();
+                //next();
 
                 if (score % 40 === 5) {
                     // ambient music 2
@@ -454,37 +593,10 @@
                     // levlup levelup level up :D
                     haltforlevelup = true;
 
-                    // EXTRA LIFE  !!S
-                    lifetimeleft = lifetimeleft + (12 * extralifetime);
-
-                    // sound7 = sound7.clone();
-                    sound7.volume = 0.7;
-                    sound7.play();
-                    document.getElementById('level').innerHTML = level;
-
-                    // top bar score ... 
-                    // document.getElementById('level').innerHTML = level;
-
-                    if (powerup1 < 3) {
-                        powerup1++;
-                        powerup1++; // more fun :)
-                        updatepowerups();
-                    }
 
 
-
-
-
-                    // document.getElementById('level2').style.webkitAnimationPlayState = "running";
-                    // A more proper animation  reset than before
-                    var levelanimation = document.getElementById('level2');
-                    levelanimation.classList.add('animatelevel2');
-                    levelanimation.addEventListener("animationend", function() {
-                        levelanimation.classList.remove('animatelevel2');
-                    }, false);
-
-
-
+                } else {
+                    next();
                 }
 
                 delement4 = document.getElementById('buttons');
@@ -732,7 +844,7 @@
 
 
         function next() {
-            // clg('RUNNING!!!!')
+            // clg('running)
             // if (elapsedsincenext === 0) {
             if (elapsed === 0) {
 
@@ -942,7 +1054,7 @@
 
 
             //v(ar.shift());
-            next();
+            //next(); // hmm  after level screen ?
 
             //console.log('startscreen call');
             //        startscreen(); // pink start screen overlay
@@ -951,8 +1063,9 @@
         }
 
         function startscreen() {
-            if (score > 0) {
 
+
+            if (score > 0) {
 
                 /* save hiscore to local storage*/
                 // console.log("saving?");
@@ -1020,10 +1133,46 @@
             setTimeout(() => document.getElementById('scoreoverlay').classList.remove('hide'), 50);
 
 
-            setTimeout(() => document.getElementById('scoreoverlay').classList.add('show'), 100);
+            setTimeout(() => {
+                document.getElementById('scoreoverlay').classList.add('show');
+                //      document.getElementById('scoreoverlay').addEventListener(eventtyper, pitchpath, false);
+                document.getElementById('bigstartbutton').addEventListener(eventtyper, pitchpath, false);
+                setTimeout(() => {
+                    document.getElementById('bigstartbutton').removeEventListener(eventtyper, pitchpath, true);
+                    document.getElementById('scoreoverlay').addEventListener(eventtyper, pitchpath, false);
+                }, 1000);
 
+            }, 100);
 
         }
+
+        function pitchpath() {
+
+            //js
+            /*
+
+            Pi
+
+            Simple
+
+            Multiplication
+
+            Mix
+
+            Javascript
+
+
+            speedincrease
+
+
+
+            */
+
+
+
+            newround();
+        }
+
 
         function newround() {
 
@@ -1129,11 +1278,49 @@
                         // geirec('leveloverlay', 'stripes');
 
                         // geirec('leveloverlay', 'leveloverlay2');
+                        haltforlevelup = false;
 
-                    }, 600);
+
+                        // EXTRA LIFE  !!S
+                        lifetimeleft = lifetimeleft + (levelextralivemulti * extralifetime);
+
+                        // sound7 = sound7.clone();
+                        sound7.volume = 0.7;
+                        sound7.play();
+                        document.getElementById('level').innerHTML = level;
+
+                        // top bar score ... 
+                        // document.getElementById('level').innerHTML = level;
+
+                        if (powerup1 < 3) {
+                            powerup1++;
+                            powerup1++; // more fun :)
+                            updatepowerups();
+                        }
+
+
+
+
+
+                        // document.getElementById('level2').style.webkitAnimationPlayState = "running";
+                        // A more proper animation  reset than before
+                        var levelanimation = document.getElementById('level2');
+                        levelanimation.classList.add('animatelevel2');
+                        levelanimation.addEventListener("animationend", function() {
+                            levelanimation.classList.remove('animatelevel2');
+                        }, false);
+
+
+
+                        window.requestAnimationFrame(step);
+
+                        setTimeout(() => {
+                            next();
+                        }, 400);
+                    }, 900);
 
                     // reset();
-                    window.requestAnimationFrame(step);
+
 
                 }, 2800);
 
@@ -1218,7 +1405,7 @@
                     element.style.width = lifetimeleft + 'px';
 
                     if (score % 12 == 0)
-                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 150, 55 + Math.ceil(90 + lifetimeleft / 2) % 85, 130 + Math.ceil(lifetimeleft / 3) % 70);
+                        element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 135, 75 + Math.ceil(70 + lifetimeleft / 2) % 85, 110 + Math.ceil(lifetimeleft / 3) % 70);
 
                     // element.style.backgroundColor = '#000000';
 
@@ -1231,7 +1418,8 @@
 
                     if (haltforlevelup == true) {
 
-                        haltforlevelup = false;
+                        // set intside function to false
+                        //haltforlevelup = false;
                         levelstart();
                     } else {
                         window.requestAnimationFrame(step);
@@ -1536,7 +1724,7 @@
 
 
 
-
+        /*three.js intro */
         //Get window size
         var ww = window.innerWidth,
             wh = window.innerHeight;
@@ -1547,9 +1735,11 @@
         });
         renderer.setSize(ww, wh);
 
+
         //Create an empty scene
         var scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0x999999, 100, 200);
+        scene.background = new THREE.Color(0x552299);
 
         //Create a perpsective camera
         var camera = new THREE.PerspectiveCamera(45, ww / wh, 0.001, 100);
