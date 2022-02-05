@@ -5,7 +5,7 @@
     <script>
         // if running local should be in debug mode
         if (document.URL.indexOf("127.0.0.1") != -1) {
-            // debugmode = true; // uncomment to enable debug mode
+            debugmode = true; // uncomment to enable debug mode
         } else {
             // to test if not local; unciomment the following line
             // debugmode = true; // should not be set at all
@@ -42,7 +42,27 @@
     <!-- @import url('http://fonts.cdnfonts.com/css/games'); -->
     <!-- <link href="css/custom.css" rel="stylesheet"> -->
     <style>
+        .chartbar {
+            display: inline-flex;
+            background-color: #f0a;
+            background: linear-gradient(#f6299b, #a33287);
+            border: 1px solid #6e1571;
+            border-top-color: rgb(110, 21, 113);
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-top-color: rgb(165, 165, 165);
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-top: 3px solid #7f0092;
+            width: 6px;
+        }
         /* @import url('https://fonts.cdnfonts.com/css/games'); */
+        /* .whitegradgrey {
+            background: linear-gradient(to right, #f8f8f8, #e8e8e8);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 8px;
+        } */
         
         @font-face {
             font-family: 'Games';
@@ -158,6 +178,8 @@ right: 0; */
             /* justify-content: center; */
             justify-content: stretch;
             align-items: center;
+            margin-bottom: 42px;
+            padding: 12px;
         }
         
         #score3x {
@@ -181,7 +203,7 @@ right: 0; */
             margin-left: 0;
             margin-right: 0;
             padding-top: 1px;
-            margin-top: -10px;
+            margin-top: -5px;
             position: relative;
             width: 100%;
         }
@@ -244,13 +266,13 @@ right: 0; */
         
         #buttonswrapper {
             /* min-height: 300px;
-         */
+*/
             /* display: flex;
-        align-self: flex-end; */
+align-self: flex-end; */
         }
         /* 
 .gamediv2 {
-    min-height: 270px;
+min-height: 270px;
 } */
         
         .buttonswrap2 {
@@ -389,13 +411,14 @@ right: 0; */
             /* opacity: 0.1; */
             position: relative;
             width: 100%;
-            height: 108%;
+            height: 100%;
             z-index: 100;
             left: 0;
             top: 0;
             /* background: radial-gradient(circle at 50% 30%, #f230228e, #f29 40%, rgba(53, 10, 109, 0.836) 95%); */
             /* background: radial-gradient(circle at 50% 30%, #f27522, #f29 40%, rgb(53, 10, 109) 95%); */
-            background: radial-gradient(circle at 50% 30%, #e39e30, #da2284 40%, #520397 95%);
+            background: radial-gradient(circle at 50% 30%, #860660, #11060a 40%, #08031d 95%);
+            /* background: radial-gradient(circle at 50% 30%, #e39e30, #da2284 40%, #520397 95%); */
             /* background: radial-gradient(circle at 50% 30%, #e07d26, rgb(189, 38, 167) 40%, rgba(53, 10, 109, 0.836) 95%); */
             /* background: radial-gradient(circle at 50% 30%, #d57, rgb(119, 24, 138) 40%, rgb(68, 36, 108) 95%); */
             /* font-size: 120%; */
@@ -525,47 +548,47 @@ right: 0; */
         /* animation-name: fbpowl;
 animation-name: fbpowr;
 @keyframes fbpowl {
-    0% {
-        bottom: 32%;
-        transform: rotateZ(25);
-        left: -100%;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    60% {
-        opacity: 1;
-        bottom: 62%;
-        border: solid 1px #ffffff33;
-        transform: rotateZ(0deg);
-    }
-    100% {
-        opacity: 0;
-        bottom: 81%;
-        transform: rotateZ(calc(var(--fbpowro)* -0.05));
-    }
+0% {
+bottom: 32%;
+transform: rotateZ(25);
+left: -100%;
+}
+50% {
+opacity: 0.5;
+}
+60% {
+opacity: 1;
+bottom: 62%;
+border: solid 1px #ffffff33;
+transform: rotateZ(0deg);
+}
+100% {
+opacity: 0;
+bottom: 81%;
+transform: rotateZ(calc(var(--fbpowro)* -0.05));
+}
 }
 
 @keyframes fbpowr {
-    0% {
-        bottom: 32%;
-        transform: rotateZ(var(--fbpowro));
-        left: var(--fbpowstartpos);
-    }
-    50% {
-        opacity: 0.5;
-    }
-    60% {
-        opacity: 1;
-        bottom: 62%;
-        border: solid 1px #ffffff33;
-        transform: rotateZ(0deg);
-    }
-    100% {
-        opacity: 0;
-        bottom: 81%;
-        transform: rotateZ(calc(var(--fbpowro)* -0.05));
-    }
+0% {
+bottom: 32%;
+transform: rotateZ(var(--fbpowro));
+left: var(--fbpowstartpos);
+}
+50% {
+opacity: 0.5;
+}
+60% {
+opacity: 1;
+bottom: 62%;
+border: solid 1px #ffffff33;
+transform: rotateZ(0deg);
+}
+100% {
+opacity: 0;
+bottom: 81%;
+transform: rotateZ(calc(var(--fbpowro)* -0.05));
+}
 } */
         
         @keyframes fbpow {
@@ -783,9 +806,9 @@ animation-name: fbpowr;
             /* justify-content: space-evenly; */
         }
         /* #gamediv2 {
-    background-color: #666;
-    margin: 6px 0;
-    padding: 0;
+background-color: #666;
+margin: 6px 0;
+padding: 0;
 } */
         
         .buttonswrapper {
@@ -870,7 +893,12 @@ animation-name: fbpowr;
         
         html,
         body {
-            background-color: #000000 !important;
+            /* background-color: #ffffff !important; */
+            /* background-color: #000000 !important; */
+            /* background: radial-gradient(circle at 30% 60%, #2c203deb, #1d1c1af5 50%); */
+            /* dark black purple gradient background */
+            /* background-color: #3334433f !important; */
+            /* background-color: #ffffff !important; */
             /* overflow: hidden; */
             height: 100%;
             letter-spacing: 6px;
@@ -880,9 +908,9 @@ animation-name: fbpowr;
             /* touch-action: none !important;*/
             user-select: none;
             /* -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none; */
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none; */
         }
         
         input[type=number]::-webkit-inner-spin-button,
@@ -1109,7 +1137,7 @@ opacity: 1; */
         
         .tilt {
             /* transform: rotateZ(-10deg);
-    transform: rotate(-10deg); */
+transform: rotate(-10deg); */
             /* width: 200%; */
             /* left: -50%; */
             /* right: 0; */
@@ -1126,7 +1154,7 @@ opacity: 1; */
             opacity: 0.7;
             letter-spacing: 1vw;
             /* margin-top: -4%;
-    margin-bottom: -4%; */
+margin-bottom: -4%; */
         }
         
         #scoring {
@@ -1325,21 +1353,21 @@ position: fi; */
         
         .gradient::before {
             /* border-radius: 14px;
-    position: absolute;
-    display: flex;
-    content: "";
-    top: -0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0;
-    z-index: -3;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
-    background-size: 300% 300%;
-    background-position: 0 50%;
-    animation: moveGradient 4s alternate infinite; */
+position: absolute;
+display: flex;
+content: "";
+top: -0px;
+left: 0px;
+right: 0px;
+bottom: 0;
+z-index: -3;
+width: 100%;
+height: 100%;
+opacity: 0.2;
+background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+background-size: 300% 300%;
+background-position: 0 50%;
+animation: moveGradient 4s alternate infinite; */
         }
         
         @keyframes moveGradient {
@@ -1447,10 +1475,11 @@ height: 100%; */
             /* touch-action: none; */
             user-select: none;
             width: 100%;
-            height: 100%;
+            height: 80%;
             margin: 0;
             /* display: flex; */
             flex-direction: column;
+            /* justify-content: space-evenly; */
             justify-content: space-evenly;
             /* justify-content: space-around; */
             /* justify-content: stretch; */
@@ -1520,9 +1549,9 @@ height: 100%; */
             /* background-color: #eee; */
             /* height: 244px; */
             /* width: 244px; */
-            height: 44px;
+            min-height: 44px;
             width: 70%;
-            padding: 8px;
+            padding: 4px;
             /* border-radius: 8px; */
             /* border-radius: 50%; */
             border-radius: 8px;
@@ -1532,7 +1561,7 @@ height: 100%; */
             overflow: visible;
             /* text-align: left; */
             /* background-color: rgba(255, 255, 255, .5); */
-            background: rgba( 255, 255, 255, 0.5);
+            /* background: rgba( 255, 255, 255, 0.7); */
             /* position: absolute; */
             /* display: block; */
             box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37);
@@ -1542,11 +1571,11 @@ height: 100%; */
         @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
             .timechart {
                 /* background-color: rgba(255, 255, 255, .5); */
-                background: rgba( 255, 255, 255, 0.5);
+                /* background: rgba(113, 113, 113, 0.541); */
                 -webkit-backdrop-filter: blur(1rem);
                 backdrop-filter: blur(1rem);
                 /* position: absolute;
-            display: block; */
+display: block; */
                 /* box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37); */
             }
         }
@@ -1592,7 +1621,7 @@ height: 100%; */
                 backdrop-filter: blur(0.2rem);
                 z-index: 9000;
                 /* position: absolute;
-            display: block; */
+display: block; */
                 /* box-shadow: 0 8px 32px 0 rgba( 70, 38, 31, 0.37); */
             }
         }
@@ -1608,23 +1637,28 @@ height: 100%; */
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.5;
+            opacity: 0.3;
         }
     </style>
     <link href="css/progressbar.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
     <style>
         body {
-            overflow: visible;
+            /* overflow: visible; */
+            /* hääär kilian */
+            overflow: auto;
         }
         
         html {
             /* height: 105%; */
             /* scroll-behavior: smooth; */
-            overflow: visible;
+            /* overflow: visible; */
         }
     </style>
     <script>
+        var gamerunning = false;
+
+
         // BIG CODE BLOCK for scroll scroll to bottom disable scroll but fullscreen bla bla
         window.onscroll = function(ev) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1) {
@@ -1668,10 +1702,15 @@ height: 100%; */
 
                 // alert("scroll");
                 //    eecuted twice?
-                pitchpath();
+                // IF NOT RUNNING? 
 
-                document.body.style.overflow = 'hidden';
+                if (score == 0) {
+                    pitchpath();
+                }
 
+
+                // document.body.style.overflow = 'hidden';
+                // document.style.overflow = 'hidden';
 
                 // CAN BUGG WITH SCROLLSTART; MUST BE AFTER SCROLLED
                 window.addEventListener('touchmove' || 'touchdowm' || 'touchend' || 'mousedown', ev => {
@@ -1698,8 +1737,7 @@ height: 100%; */
 </head>
 
 <body>
-    <div style="height:106%; overflow:none;display:block;">
-
+    <div style="height:105%; overflow:none;display:block;">
         <div id="leveloverlay" class="leveloverlay leveloverlay2">
             <div class="leveloverlaywrapper">
 
@@ -1715,10 +1753,10 @@ height: 100%; */
         </div>
         <style>
             /*
-    * {
-        box-sizing: border-box;
-    }
-    */
+* {
+box-sizing: border-box;
+}
+*/
             
             .pietimerwrapper {
                 width: 60px;
@@ -1752,7 +1790,7 @@ height: 100%; */
             /* .wrapper:hover .spinner,
 .wrapper:hover .filler,
 .wrapper:hover .mask {
-    animation-play-state: paused;
+animation-play-state: paused;
 } */
             
             .spinner:after {
@@ -1832,8 +1870,8 @@ height: 100%; */
                     opacity: 1;
                 }
                 /* 100% {
-        opacity: 0;
-    } */
+opacity: 0;
+} */
             }
             
             @keyframes rota2 {
@@ -1855,7 +1893,7 @@ height: 100%; */
                 align-items: center;
                 justify-content: center;
                 font-size: 2rem;
-                background: #606c88;
+                background: #333c52;
                 /* fallback for old browsers */
                 /* background: -webkit-linear-gradient(to right, #3f4c6b, #606c88); */
                 /* Chrome 10-25, Safari 5.1-6 */
@@ -1882,8 +1920,8 @@ height: 100%; */
         <style>
             html,
             body {
-                height: 109%;
-                margin-top: -9px;
+                height: 105%;
+                margin-top: -20px;
             }
             
             html {
@@ -1891,7 +1929,6 @@ height: 100%; */
             }
             
             body {
-                /* background-color: blue; */
                 /* important to allow page to scroll */
                 height: calc(100% + 40px);
                 margin: 0;
@@ -1936,47 +1973,47 @@ height: 100%; */
         </style>
         <script>
             /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 var timeout;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        var timeout;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    function interceptTouchMove() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // and disable the touchmove features 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        window.addEventListener("touchmove", (event) => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            if (!event.target.classList.contains('scrollable')) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // no more scrolling
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }, false);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        function interceptTouchMove() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            // and disable the touchmove features 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            window.addEventListener("touchmove", (event) => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                if (!event.target.classList.contains('scrollable')) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // no more scrolling
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }, false);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    function scrollDetect(event) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // wait for the result to settle
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        if (timeout) clearTimeout(timeout);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        function scrollDetect(event) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            // wait for the result to settle
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            if (timeout) clearTimeout(timeout);
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        timeout = setTimeout(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            console.log('scrolled up detected..');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            if (window.scrollY > 35) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // alert("ok");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                console.log(' .. moved up enough to go into minimal UI mode. cover off and locking touchmove!');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // hide the fixed scroll-cover
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                var cover = document.querySelector('div.cover');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                cover.style.display = 'none';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            timeout = setTimeout(function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                console.log('scrolled up detected..');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                if (window.scrollY > 35) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // alert("ok");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    console.log(' .. moved up enough to go into minimal UI mode. cover off and locking touchmove!');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // hide the fixed scroll-cover
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    var cover = document.querySelector('div.cover');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    cover.style.display = 'none';
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // push back down to designated start-point. (as it sometimes overscrolls (this is jQuery implementation I used))
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                window.scrollY = 40;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // push back down to designated start-point. (as it sometimes overscrolls (this is jQuery implementation I used))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    window.scrollY = 40;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // and disable the touchmove features 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                interceptTouchMove();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // and disable the touchmove features 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    interceptTouchMove();
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // turn off scroll checker
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                window.removeEventListener('scroll', scrollDetect);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                window.removeEventListener('scroll', scrollDetect);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }, 200);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // turn off scroll checker
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    window.removeEventListener('scroll', scrollDetect);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    window.removeEventListener('scroll', scrollDetect);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }, 200);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    // listen to scroll to know when in minimal-ui mode.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    window.addEventListener('scroll', scrollDetect, false);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // listen to scroll to know when in minimal-ui mode.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        window.addEventListener('scroll', scrollDetect, false);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
         </script>
 
         <div id="scoreoverlay" class="scoreoverlay">
@@ -1989,10 +2026,10 @@ height: 100%; */
 
 
                 <span class='spansmall slideinfromleft' style="font-weight: bolder !important;"> SCROLL UP TO START
-                </span>
+</span>
                 <!-- <span class='spansmall slideinfromleft'>1000 Decimals of Pi !<br /> How many can you crank
-                    <br /> before time's up?
-                </span> -->
+<br /> before time's up?
+</span> -->
 
 
                 <div class="wrapper tilt">
@@ -2005,12 +2042,12 @@ height: 100%; */
                 </div>
 
                 <span class="gradient">
-                <button id="bigstartbutton" class="superbounce"><i>Swipe me up!</i> ⚡️</button>
-            </span>
+<button id="bigstartbutton" class="superbounce"><i>Press n Swipe me up!</i> ⚡️</button>
+</span>
                 <!-- <span class='spansmall slideinfrom'>Coded to an estimated ~89% on a mobile and updated with
-                the Amazing AI CoPilot from GitHub        
-        
-            </span> -->
+the Amazing AI CoPilot from GitHub        
+
+</span> -->
                 <span class='spansmall slideinfrom'>© Copyleft 2022 All nights reserved <br />to it's respective inc. </span>
 
                 </span>
@@ -2023,8 +2060,8 @@ height: 100%; */
 
                 <input type="hidden" value="" id="eval" />
                 <!-- <topgradient>
-           ⚠️ 
-            </topgradient> -->
+⚠️ 
+</topgradient> -->
                 <div class="scorebar">
                     <span class=score>SCORE <span class="b" id="score"></span> </span>
                     <span class=level id="level2"> LVL <span class="b" id="level"></span> </span>
@@ -2046,22 +2083,25 @@ height: 100%; */
                 <div style="height:70px;">
                     <div id="score2" class="score2"></div>
                 </div>
+
                 <!-- <div style="background-color: #ccc; filter: drop-shadow(0 0 3px #ccc);height:44px;padding:8px;border-radius:8px;display:inner-block;position:relative;width:80%;overflow:visible; text-align:left;margin:0 auto;" id="timechart"></div> -->
-                <div class="timechart" id="timechart"></div>
+                <div class="whitegradgrey">
+                    <div class="timechart" id="timechart"></div>
+                </div>
             </div>
             <!-- <div style="display:block;width:80%;max-width:80%;height:160px;margin-top:-80px; " id="timechart"></div> -->
             <div id="gamediv2" class="gamediv2">
 
 
                 <!-- <div style="background-color: #fbfbfe; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
-                <div style="background-color: #8a8a8f; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
-                    <div style="background-color: #1c1b22; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
-                        <div style="background-color: #42414d; border-radius: 16px; display: flexbox; justify-content:center;align-items:center;padding:12px;margin:0;">
-                            <h1 style="color:#ffffff;margin:0;padding:2px;">Math Game Pi 🏹</h1>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+<div style="background-color: #8a8a8f; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
+<div style="background-color: #1c1b22; border-radius: 16px; display: flexbox; justify-content:center;align-items: center;padding:2px;margin:0;">
+<div style="background-color: #42414d; border-radius: 16px; display: flexbox; justify-content:center;align-items:center;padding:12px;margin:0;">
+<h1 style="color:#ffffff;margin:0;padding:2px;">Math Game Pi 🏹</h1>
+</div>
+</div>
+</div>
+</div> -->
 
 
                 <div class="buttonswrapper" id="buttonswrapper">
@@ -2091,7 +2131,7 @@ height: 100%; */
             mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
             eventtyper = mobile ? "touchstart" : "mousedown";
 
-
+            var levelbefore = 1; // hmm
             var arrayblaha = 1;
             var delement3 = [];
             var start, previousTimeStamp, timestamp;
@@ -2114,7 +2154,7 @@ height: 100%; */
             // var lifetimeleft = 20; // life in start
             var lifetimeleftstart = 100; // time in start (??)
             var maxlifetime = 450; // max time left in..  pixels ;-D
-            var extralifetime = 25; //how much extra time per right answer         // var extralifetime = 203; //how much extra time per right answer 
+            var extralifetime = 35; //how much extra time per right answer         // var extralifetime = 203; //how much extra time per right answer 
             var speedish = 0.05; // hmm effects startspeed for the very first question     // var speedish = 0.3; // starting speed for testing, too fast for prod         // var speedish = 0.089; // starting speed
             var speedincrease = 0.0025; //may rather be in blocks of levels or per question
             var startlevelspeed = 0.03; // became starting speed
@@ -2344,7 +2384,8 @@ height: 100%; */
 
 
 
-                    let levelbefore = level;
+                    //let 
+                    levelbefore = level;
                     // level = 1+ Math.round(score / 10 - score*0.03,0);
                     level = 1 + Math.round(score / 10 - score * 0.03, 0);
                     if (levelbefore != level) {
@@ -2492,7 +2533,7 @@ height: 100%; */
                     if (attribute == "clear") {
                         document.getElementById('answer').value = '';
                         document.getElementById('answer2').innerHTML = '_';
-                        next();
+                        //   next();
                     } else {
                         document.getElementById('answer').value += attribute;
                         document.getElementById('answer2').innerHTML += attribute;
@@ -2632,10 +2673,10 @@ height: 100%; */
                     // simple clean up
                     if (score % 30 == 0) {
                         //   geih('timechart', '<div style="bottom: 0; display: block; width: 1px; height:' + barheightmax + 'px;"></div>');
+                        // quick fix ..  ehhh NEW LINE? hmmhm
+                        geih('timechart', '<div class="chartbar" style="display:inline-block; margin:0;width:1px;height:' + barheightmax + 'px;"></div>');
 
-                        geih('timechart', '<div style="bottom: 0; display: inline-flex; width: 1px; height:' + barheightmax + 'px;"></div>');
-
-                        // gei('ftimechart').style.height = barheightmax + 'px';
+                        // gei('timechart').style.height = barheightmax + 'px';
                     }
                     barheightmin = 8;
                     barheight = Math.round(timesincenext / (barheightmax * 3));
@@ -2647,9 +2688,7 @@ height: 100%; */
                     // let elementhtml = "<div style='bottom:0;display:inline-flex;background-color:#f0a; " +
                     //     "background: linear-gradient(#c28, #74a);border:1px solid #666;border-top:1px solid #fff;" +
                     //     " width:6px;height:" + barheight + "px;transform: rotateZ(" + (score - 25) + "deg);'></div>";
-                    let elementhtml = "<div style=' bottom:0;display:inline-flex;background-color:#f0a; " +
-                        "background: linear-gradient(#c38, #73c);border:1px solid #ccc;border-top:3px solid #fff;" +
-                        " width:6px;height:" + barheight + "px;'></div>";
+                    let elementhtml = "<div class='chartbar' style='height:" + barheight + "px;'></div>";
                     geiha('timechart', elementhtml);
 
 
@@ -2717,6 +2756,12 @@ height: 100%; */
                 //  1`);
                 // c(`/*  Press 1<br />*/
                 //  1`);
+
+
+                c(`9+3`);
+                c(`9+5`);
+
+
                 c(`2+3`);
                 c(`3+3`);
                 c(`3+4`);
@@ -2904,6 +2949,7 @@ height: 100%; */
 
 
             function newround() {
+                //set in pitch path instead! -->  gamerunning = true; // hmm be ware the pot conflict with oitch path.. pitchpath, level choose, paoth hmm path
 
 
                 makebuttons();
@@ -2931,7 +2977,8 @@ height: 100%; */
                 score = startscore; // score
                 level = startlevel; //llevel
                 document.getElementById('level').innerHTML = level;
-                document.getElementById('score2').innerHTML = "😀<br />";
+                // document.getElementById('score2').innerHTML = "😀<br />";
+                document.getElementById('score2').innerHTML = "";
 
 
 
@@ -3136,6 +3183,10 @@ height: 100%; */
                         if (score % 12 == 0)
                             element.style.backgroundColor = colortohex(100 + Math.ceil(lifetimeleft / 2.5) % 135, 75 + Math.ceil(70 + lifetimeleft / 2) % 85, 110 + Math.ceil(lifetimeleft / 3) % 70);
 
+                        // ONLY PURPLE...
+                        // element.style.backgroundColor = "#8040a0"
+
+
                         // element.style.backgroundColor = '#000000';
 
                         // element.style.backgroundColor = colortohex(123, 175 + Math.ceil(lifetimeleft / 3) % 65, 123);
@@ -3165,13 +3216,15 @@ height: 100%; */
 
 
 
-
+                        gamerunning = false; //!? right spot? 
+                        levelbefore = 1; // hmm
 
                         sound8.stop();
 
 
-                        soundx6 = sound6.clone();
-                        soundx6.play();
+                        gameoversoundclone = gameoversound.clone();
+                        gameoversoundclone.play();
+
 
                         // this logic below should be put elsewhere :-S
                         Array.from(document.getElementsByClassName("fox")).map(el => {
@@ -3235,7 +3288,7 @@ height: 100%; */
             var sound5 = new Pizzicato.Sound('./snd/100pointsx2b.mp3', function() {
 
             });
-            var sound6 = new Pizzicato.Sound('./snd/gameover.mp3', function() {
+            var gameoversound = new Pizzicato.Sound('./snd/gameover.mp3', function() {
 
             });
 
@@ -3355,14 +3408,14 @@ height: 100%; */
 
             // soundx.addEffect(dubDelay);
             /*
-                        var dubDelay2 = new Pizzicato.Effects.DubDelay({
-                                feedback: 0.49,
-                                time: 0.74 * 3,
-                                mix: .48,
-                                cutoff: 400
-                            });
+            var dubDelay2 = new Pizzicato.Effects.DubDelay({
+            feedback: 0.49,
+            time: 0.74 * 3,
+            mix: .48,
+            cutoff: 400
+            });
 
-                sound.addEffect(dubDelay2);*/
+            sound.addEffect(dubDelay2);*/
             //  var dubDelay3 = new Pizzicato.Effects.DubDelay({
             //         feedback: 0.49,
             //         time: 0.74 * 4,
@@ -3437,10 +3490,20 @@ height: 100%; */
             // }, false);
 
             function pitchpath() {
+
+                // gamelooprunning = false; 
                 // alert("pitchpatch");
                 setTimeout(() => {
-                    window.scrollTo(0, 1); // unsure if works // ERROR on some ios
+                    window.scrollTo(0, 1); // unsure if works // ERROR on some ios perhaps?
                 }, 5);
+                if (gamerunning == false) {
+                    document.body.style.overflow = 'hidden';
+                    // ONLY IF ACCIDENTLY SETS HTML TO OVERFLOW...  document.style.overflow = 'hidden';
+                    newround();
+                }
+                //                gamerunning = true? 
+                gamerunning = true;
+
 
                 //js
                 /*
@@ -3464,7 +3527,7 @@ height: 100%; */
 
 
 
-                newround();
+
             }
         </script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
@@ -3499,7 +3562,8 @@ height: 100%; */
             //Create an empty scene
             var scene = new THREE.Scene();
             scene.fog = new THREE.Fog(0x999999, 100, 200);
-            scene.background = new THREE.Color(0x552299);
+            // scene.background = new THREE.Color(0x552299);
+            scene.background = new THREE.Color(0x331166);
 
             //Create a perpsective camera
             var camera = new THREE.PerspectiveCamera(45, ww / wh, 0.001, 100);
@@ -3579,18 +3643,7 @@ height: 100%; */
             //     }, 0);
             // });
         </script>
-        <!-- <button id="goFS" style="position: fixed; z-index:999;">Go fullscreen</button>
-    <script>
-        var goFS = document.getElementById("goFS");
-        goFS.addEventListener("click", function() {
-            console.log("goFS");
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen()
-           f }
 
-        }, false);
-    </script> -->
     </div>
 </body>
 
