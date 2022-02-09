@@ -164,7 +164,7 @@
         /* spinnertop*/
         
         .whitegradgrey {
-            /* padding: 4px; */
+            padding: 0;
         }
         
         .flash {
@@ -253,7 +253,7 @@
             }
             60% {
                 opacity: .7;
-                font-size: 200%;
+                font-size: 180%;
                 transform: rotateZ(360deg)
             }
             to {
@@ -308,7 +308,7 @@
             0% {
                 border-radius: 0 0 50% 50%;
                 opacity: 0;
-                top: -90px
+                top: -40px
             }
             to {
                 border-radius: 0 0 0 0;
@@ -573,13 +573,13 @@
         .bodycolor {
             overflow: none !important;
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-            box-shadow: 0 0 32px -19px #a09a98
+            box-shadow: 0 0 32px -19px #a09a98;
         }
         
         .megadiv,
         .gamediv,
         .bodycolor {
-            max-width: 720px;
+            max-width: 520px;
             margin: 0 auto;
             overflow: none !important
         }
@@ -637,7 +637,7 @@
             width: 100%;
             color: #ffdbc2;
             letter-spacing: 3px;
-            text-shadow: 0 0 90px #5d047b44, 0 0 20px #fff22, 0 0 50px #e66b, 0 0 60px #1f1601, 0 0 70px #ffeec8;
+            text-shadow: 0 0 90px #5d047b44, 0 0 20px #f1f1f122, 0 0 50px #e66b, 0 0 60px #1f1601, 0 0 70px #ffeec8;
             margin-top: 20px;
             font: small-caps 600 5.1vmin/3.1vmin Games, sans-serif, arial
         }
@@ -703,6 +703,13 @@
         }
         
         @media only screen and (max-height:521px) {
+            .megadiv,
+            .gamediv,
+            .bodycolor {
+                max-width: 920px;
+                margin: 0 auto;
+                overflow: none !important
+            }
             .gamediv {
                 float: left;
                 height: 100%;
@@ -751,7 +758,11 @@
         }
         
         .bodycolor {
-            background-color: #ede9e7
+            background-color: #8025a7;
+        }
+        
+        .gamediv {
+            background-color: #ede9e7;
         }
         
         .chartbar {
@@ -810,7 +821,7 @@
         .buttons {
             border-radius: 16px 16px 0 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 60%, #22212155 12%, #00055 50%);
+            background: radial-gradient(circle at 30% 60%, #22212155 12%, #01010155 50%);
             background-color: #3d3a3e;
             opacity: 1;
             align-items: center;
@@ -893,12 +904,12 @@
             white-space: pre-wrap;
             word-break: break-all;
             word-wrap: break-word;
-            text-shadow: 0 0 20px #a97aa, 0 0 40px #fb388;
+            text-shadow: 0 0 20px #a19171aa, 0 0 40px #f1b13188;
             letter-spacing: 1px;
             text-indent: -1px;
             line-height: 2.8rem;
             padding-top: 8px;
-            color: #fffbb;
+            color: #f1f1f1bb;
             font-weight: bolder;
             font-size: 165%;
             opacity: 1;
@@ -1289,7 +1300,7 @@
         #scoring {
             border-radius: 0;
             display: block;
-            background-color: #00033;
+            background-color: #01010133;
             transition: all .9s ease-in-out;
             animation-duration: 1.5s;
             animation-name: slideinfromright
@@ -1303,7 +1314,7 @@
         }
         
         #leveling {
-            background-color: #00066;
+            background-color: #01010166;
             margin: 4px auto;
             display: block;
             animation-duration: 1.7s;
@@ -1375,7 +1386,8 @@
             left: 0;
             right: 0;
             top: 0;
-            bottom: 0
+            bottom: 0;
+            transition: all 1s ease-in-out;
         }
         
         @media only screen and (max-height:521px) {
@@ -1850,7 +1862,7 @@
             background-color: #eee;
             border-radius: 9px;
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2);
-            box-shadow: 0 0 14px #eca88
+            box-shadow: 0 0 14px #e1c1a188
         }
         
         .progress2 .cssProgress-bar {
@@ -1916,7 +1928,7 @@
                 </span>
             </div>
         </div>
-        <div id=megadiv class=megadiv>
+        <div id=megadiv class="megadiv" style="opacity:0;">
             <div id=gamediv class=gamediv>
                 <input type=hidden class=number pattern=[0-9]* id=answer name=answer>
                 <input type=hidden id=eval>
@@ -2283,6 +2295,7 @@
                 lifetimeleft = lifetimeleftstart;
                 w = 0;
                 //c('c=3;c*1;c**=4;');
+
                 c(`0+3`);
                 string = "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726 024914127372458700660631558817488152092096282925409171536436 7892590360 0113305305 4882046652 1384146951 9415116094 3305727036 5759591953 0921861173 8193261179 3105118548 0744623799 6274956735 1885752724 8912279381 8301194912 9833673362 4406566430 8602139494 6395224737 1907021798 6094370277 0539217176 2931767523 8467481846 7669405132 0005681271 4526356082 7785771342 7577896091 7363717872 1468440901 2249534301 4654958537 1050792279 6892589235 4201995611 2129021960 8640344181 5981362977 4771309960 5187072113 4999999837 2978049951 0597317328 1609631859 5024459455 3469083026 4252230825 3344685035 2619311881 7101000313 7838752886 5875332083 8142061717 7669147303 5982534904 2875546873 1159562863 8823537875 9375195778 1857780532 1712268066 1300192787 6611195909 2164201989";
                 string = string.replace(/\D/g, '');
@@ -2302,14 +2315,25 @@
             }
 
             function startscreen() {
+
+                gei('scoreoverlay').onscroll = function(ev) {
+                    if (gamerunning == true) {} else {
+
+                        setTimeout(() => {
+                            pitchpath();
+                            haltforlevelup = false;
+                        }, 60);
+
+                    }
+                }
                 window.onscroll = function(ev) {
                     if (gamerunning == true) {} else {
-                        window.onscroll = function(ev) {
-                            setTimeout(() => {
-                                pitchpath();
-                                haltforlevelup = false;
-                            }, 400);
-                        }
+                        //  window.onscroll = function(ev) {
+                        setTimeout(() => {
+                            pitchpath();
+                            haltforlevelup = false;
+                        }, 60);
+                        //  }
                     }
                     var keys = {
                         37: 1,
@@ -2318,17 +2342,29 @@
                         40: 1
                     };
 
+                    function hmm(event) {
+                        if (gamerunning == true) {
+                            // HEY? TRY ADDING THIS TO A CLASS TO ADD / REMOVE / restore / remove preventdefault?
+                            event.preventDefault();
+                            event.stopImmediatePropagation();
+                        }
+                    }
+
                     function preventDefault(e) {
-                        if (gamerunning == true) {} else {}
+                        if (gamerunning == true) {} else {
+                            // hmm .. not sure if this is the right way to do it
+                            document.body.style.overflow = 'visible';
+                        }
                         if ((window.innerHeight + window.scrollY) + 3 >= document.body.offsetHeight - 1) {
                             window.addEventListener('touchmove' || 'touchdowm' || 'touchend' || 'mousedown' || 'dblclick', event => {
-                                event.preventDefault();
+                                hmm(event);
                             }, {
                                 passive: false
                             });
                             document.body.style.overflow = 'hidden';
                         };
                     }
+
 
                     function preventDefaultForScrollKeys(e) {
                         if (gamerunning === true) {} else {
@@ -2391,6 +2427,9 @@
             }
 
             function newround() {
+                //gei('megadiv').classList.remove('hide');
+                //gei('megadiv').classList.add('fadein');
+                // gei('megadiv').style.opacity = 1;
                 makebuttons();
                 powerup1 = 3;
                 speedish = startlevelspeed + level * speedincrease;
@@ -2412,6 +2451,8 @@
                 levelstart();
 
                 function levelstart() {
+                    gei('megadiv').style.opacity = 0;
+
                     geih('levelscreenlevel', "LEVEL 0" + level);
                     geirec('leveloverlay', 'hide');
                     geiac('leveloverlay', 'show');
@@ -2439,8 +2480,11 @@
                                 next();
                                 haltforlevelup = false;
                             }, 2);
+                            gei('megadiv').style.opacity = 1;
                         }, 800);
+
                     }, 1400);
+
                 }
 
                 function step(timestamp) {
@@ -2476,6 +2520,7 @@
                         levelbefore = 1;
                         sound8.stop();
                         gameoversound.play();
+                        gei('megadiv').style.opacity = 0;
                         Array.from(document.getElementsByClassName("fox")).map(el => {
                             el.innerHTML = "";
                             el.remove();
@@ -2565,13 +2610,13 @@
 
 
             function pitchpath() {
-                setTimeout(() => {
-                    window.scrollTo(0, 1);
-                }, 5);
                 if (gamerunning === false) {
                     newround();
                 }
                 gamerunning = true;
+                setTimeout(() => {
+                    window.scrollTo(0, 1);
+                }, 5);
             }
         </script>
         <script src=https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js></script>
@@ -2627,6 +2672,7 @@
                 scene.add(tube);
             }
             var percentage = 0;
+
 
             function render() {
                 percentage += 0.00005;
